@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="just_so_it_compiles">#ffffff</color>
+	<bool name="just_so_it_compiles">false</bool>
+	<dimen name="just_so_it_compiles">0dp</dimen>
+	<string name="just_so_it_compiles">0</string>
+	<integer name="just_so_it_compiles">0</integer>
+	<fraction name="just_so_it_compiles">0%</fraction>
+
+	<style name="just_so_it_compiles" />
+</resources>

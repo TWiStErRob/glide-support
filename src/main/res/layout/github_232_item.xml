@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="150dp"
+	android:layout_margin="4dp"
+	>
+	<!-- see interactions with MyProgressTarget.image
+	     scaleType is fitXY because the LevelListDrawable in github_232_progress contains a fixed sized
+	     indeterminate drawable. fitXY stretches everything out so it's screen-wide.
+	     .centerCrop() on the Glide load will load an appropriately resized bitmap, so that won't be stretched. -->
+	<ImageView
+		android:id="@+id/image"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:scaleType="fitXY"
+		tools:src="@drawable/github_232_progress"
+		tools:ignore="ContentDescription"
+		/>
+	<!-- see interactions with MyProgressTarget.text -->
+	<TextView
+		android:id="@+id/text"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="bottom|end"
+		android:padding="4dp"
+		android:background="#60000000"
+		android:textColor="#ffffff"
+		tools:text="progress: ??.? %"
+		/>
+	<!-- see interactions with MyProgressTarget.progress -->
+	<ProgressBar
+		android:id="@+id/progress"
+		style="?android:attr/progressBarStyleHorizontal"
+		android:layout_width="64dp"
+		android:layout_height="64dp"
+		android:layout_gravity="top|end"
+		android:max="100"
+		android:progress="0"
+		android:progressDrawable="@drawable/github_232_circular"
+		/>
+</FrameLayout>

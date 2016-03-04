@@ -1,0 +1,49 @@
+package com.bumptech.glide.supportapp.groups._w_dash_14wTLJC5U_1px;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.view.*;
+import android.support.v7.app.AppCompatActivity;
+import android.view.*;
+import android.widget.*;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView.ScaleType;
+
+import static android.view.ViewGroup.LayoutParams.*;
+
+import com.bumptech.glide.Glide;
+
+public class TestActivity extends AppCompatActivity {
+	@Override protected void onCreate(@Nullable Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		FrameLayout layout = new FrameLayout(this);
+		layout.setLayoutParams(new LayoutParams(MATCH_PARENT, MATCH_PARENT));
+		ViewPager pager = new ViewPager(this);
+		//pager.setId(View.generateViewId());
+		pager.setLayoutParams(new LayoutParams(MATCH_PARENT, MATCH_PARENT));
+		pager.setAdapter(new PagerAdapter() {
+			@Override public int getCount() {
+				return 1;
+			}
+			@Override public Object instantiateItem(ViewGroup container, int position) {
+				ImageView image = new ImageView(container.getContext());
+				image.setLayoutParams(new LayoutParams(MATCH_PARENT, MATCH_PARENT, Gravity.CENTER));
+				image.setScaleType(ScaleType.FIT_CENTER);
+				container.addView(image);
+
+				Glide.with(image.getContext())
+				     .load("http://www.gettyimages.co.uk/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg")
+				     .into(image);
+
+				return image;
+			}
+			@Override public boolean isViewFromObject(View view, Object object) {
+				return view == object;
+			}
+		});
+
+		layout.addView(pager);
+		setContentView(layout);
+	}
+}

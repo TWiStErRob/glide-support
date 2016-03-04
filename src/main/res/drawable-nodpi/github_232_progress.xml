@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Display indeterminate progress at the beginning and end, see setImageLevel calls inside MyProgressTarget -->
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+	<!-- keep [1, 9999] range first to optimize lookup, see LevelListDrawable.LevelListState#indexOfLevel -->
+	<item android:drawable="@android:drawable/progress_horizontal"
+	      android:minLevel="1" android:maxLevel="9999" />
+	<item android:drawable="@android:drawable/progress_indeterminate_horizontal"
+	      android:minLevel="0" android:maxLevel="0" />
+	<item android:drawable="@android:drawable/progress_indeterminate_horizontal"
+	      android:minLevel="10000" android:maxLevel="10000" />
+</level-list>

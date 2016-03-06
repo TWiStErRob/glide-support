@@ -1,5 +1,6 @@
 package com.bumptech.glide.supportapp.issue;
 
+import android.content.*;
 import android.content.pm.*;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,7 +8,9 @@ import android.util.Log;
 import android.view.ViewGroup.*;
 import android.widget.FrameLayout;
 
-import com.bumptech.glide.supportapp.*;
+import com.bumptech.glide.supportapp.GlideSupportActivity;
+import com.bumptech.glide.supportapp.random.__quicky.QuickFragment;
+import com.bumptech.glide.supportapp.utils.Utils;
 
 public class IssueFragmentActivity extends GlideSupportActivity {
 	public static final String CONTENT_FRAGMENT = "contentFragment";
@@ -41,22 +44,9 @@ public class IssueFragmentActivity extends GlideSupportActivity {
 			fragmentClass = getIntent().getStringExtra(CONTENT_FRAGMENT);
 			Log.i("SYS", "Using " + fragmentClass + " from intent.");
 		} else {
-			try {
-				ActivityInfo ai = getPackageManager().getActivityInfo(getComponentName(), PackageManager.GET_META_DATA);
-				if (ai.metaData != null) {
-					String clazz = ai.metaData.getString(CONTENT_FRAGMENT);
-					if (clazz != null) {
-						fragmentClass = clazz;
-						Log.i("SYS", "Using " + fragmentClass + " from metadata.");
-					} else {
-						Log.w("SYS",
-								IssueFragmentActivity.class.getName() + " doesn't have a contentFragment metadata.");
-					}
-				} else {
-					Log.w("SYS", IssueFragmentActivity.class.getName() + " doesn't have metadata.");
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
+			String metadataValue = Utils.getMetadataValue(this, this.getComponentName(), CONTENT_FRAGMENT);
+			if (metadataValue != null) {
+				fragmentClass = metadataValue;
 			}
 		}
 		return fragmentClass;

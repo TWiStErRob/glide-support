@@ -2,7 +2,9 @@ package com.bumptech.glide.supportapp.utils;
 
 import java.io.*;
 
-import android.content.Context;
+import android.content.*;
+import android.content.pm.*;
+import android.util.Log;
 
 public class Utils {
 	public static void copy(File source, File target) throws IOException {
@@ -37,5 +39,26 @@ public class Utils {
 		} catch (ClassNotFoundException e) {
 			throw new IllegalStateException("Cannot determine application package", e);
 		}
+	}
+
+	public static String getMetadataValue(Context context, ComponentName name, String metadataName) {
+		String result = null;
+		try {
+			ActivityInfo ai = context.getPackageManager().getActivityInfo(name, PackageManager.GET_META_DATA);
+			if (ai.metaData != null) {
+				String clazz = ai.metaData.getString(metadataName);
+				if (clazz != null) {
+					result = clazz;
+					Log.i("SYS", "Using " + result + " from metadata.");
+				} else {
+					Log.w("SYS", name + " doesn't have a " + metadataName + " metadata.");
+				}
+			} else {
+				Log.w("SYS", name + " doesn't have metadata.");
+			}
+		} catch (Exception e) {
+			Log.w("SYS", name + " not registered in package manager.", e);
+		}
+		return result;
 	}
 }

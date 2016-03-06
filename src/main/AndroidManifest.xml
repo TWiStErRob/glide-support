@@ -12,7 +12,7 @@
 		android:allowBackup="true"
 		android:theme="@style/AppTheme">
 		<meta-data
-			android:name="com.bumptech.glide.supportapp.QuickModule"
+			android:name="com.bumptech.glide.supportapp.random.__quicky.QuickModule"
 			android:value="GlideModule" />
 
 		<activity
@@ -22,6 +22,8 @@
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
+			<meta-data android:name="favoredClass"
+			           android:value="com.bumptech.glide.supportapp.random.__quicky.QuickFragment" />
 		</activity>
 
 		<activity
@@ -32,7 +34,7 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 			<meta-data android:name="contentFragment"
-			           android:value="com.bumptech.glide.supportapp.QuickFragment" />
+			           android:value="com.bumptech.glide.supportapp.random.__quicky.QuickFragment" />
 		</activity>
 	</application>
 

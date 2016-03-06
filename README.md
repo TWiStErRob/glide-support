@@ -58,15 +58,13 @@ It's using Google's official Gradle plugin to build, you can find the setup in a
 
 ### Running a sample
 
-Currently there's now way on UI to select which one to run so you'll have to modify the `AndroidManifest.xml` and set one or more of:
- * `application/meta-data[value='GlideModule'].name`  
-   to a FQCN of a GlideModule in your chosen package
- * `activity/[name~='TestActivity']/meta-data[name='contentFragment'].value`  
-   to a FQCN of a TestFragment in your chosen package
- * `activity/.name`  
-   to a FQCN of a TestActivity in your chosen package
+There's a list of the issue demonstrations so most likely a tap is enough to try out a sample. 
 
-The default `QuickFragment` and `QuickModule` are there to quickly test if something would compile with potential of running it too.
+The default `QuickFragment` and `QuickModule` are there to quickly test if something would compile with potential of running it too, there's a separate launcher for this.
+
+It's possible to bring an item to the top of the list by adding it to the `AndroidManifest.xml` as `favoredClass`, the default is the `QuickFragment`. It's useful for testing with a clean slate because on each selection of a list item an attempt is made to tear down Glide and re-setup with the correct `GlideModule`s.
+
+This should cover most of the issue type, if anything special is needed some code probably need to be modified.
 
 ## License and stuff
 

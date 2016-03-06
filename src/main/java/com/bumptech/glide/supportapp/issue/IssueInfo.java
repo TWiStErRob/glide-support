@@ -7,6 +7,8 @@ import android.content.Context;
 import android.support.annotation.DrawableRes;
 import android.support.v4.app.Fragment;
 
+import com.bumptech.glide.module.GlideModule;
+
 public class IssueInfo {
 	private static final Map<String, String> SOURCES = new HashMap<>();
 
@@ -17,16 +19,18 @@ public class IssueInfo {
 		SOURCES.put("random", null);
 	}
 
-	private final Class<?> clazz;
+	private final ClassNameSplitter clazz;
 	private final String source;
 	private final String name;
 	private String display;
 	private String id;
+	private List<Class<? extends GlideModule>> modules;
 
-	public IssueInfo(Class<?> clazz, String source, String name) {
+	public IssueInfo(ClassNameSplitter clazz, List< Class<? extends GlideModule>> modules) {
 		this.clazz = clazz;
-		this.source = source;
-		this.name = name;
+		this.source = clazz.getHostPackageName();
+		this.name = clazz.getPackageName();
+		this.modules = modules;
 	}
 
 	public String getSource() {
@@ -53,13 +57,13 @@ public class IssueInfo {
 	}
 
 	public Class<?> getEntryClass() {
-		return clazz;
+		return clazz.getClassObject();
 	}
 	public boolean isActivity() {
-		return Activity.class.isAssignableFrom(clazz);
+		return Activity.class.isAssignableFrom(clazz.getClassObject());
 	}
 	public boolean isFragment() {
-		return Fragment.class.isAssignableFrom(clazz);
+		return Fragment.class.isAssignableFrom(clazz.getClassObject());
 	}
 
 	private void ensureSplit() {
@@ -76,5 +80,8 @@ public class IssueInfo {
 	
 	public static Collection<String> getSources() {
 		return Collections.unmodifiableSet(SOURCES.keySet());
+	}
+	public List<Class<? extends GlideModule>> getModules() {
+		return modules;
 	}
 }

@@ -12,7 +12,7 @@ import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.*;
 
-import com.bumptech.glide.supportapp.*;
+import com.bumptech.glide.supportapp.R;
 import com.bumptech.glide.supportapp.issue.IssueInfoAdapter.TestInfoViewHolder;
 import com.bumptech.glide.supportapp.utils.Utils;
 
@@ -67,6 +67,7 @@ public class IssueInfoAdapter extends Adapter<TestInfoViewHolder> {
 						Toast.makeText(context, "Cannot start " + boundInfo.getEntryClass(), Toast.LENGTH_LONG).show();
 						return;
 					}
+					new GlideReset(context).replace(boundInfo.getModules());
 					Log.d("SYS", "Starting " + intent);
 					context.startActivity(intent);
 				}
@@ -77,7 +78,11 @@ public class IssueInfoAdapter extends Adapter<TestInfoViewHolder> {
 			boundInfo = info;
 			Context context = itemView.getContext();
 			icon.setImageResource(info.getIcon(context));
-			title.setText(info.getName());
+			String name = info.getName();
+			if (!info.getModules().isEmpty()) {
+				name += " (modules: " + info.getModules().size() + ")";
+			}
+			title.setText(name);
 			clazz.setText(info.getEntryClass().getName().replace(Utils.getAppPackage(context).getName(), "app"));
 			link.setText(info.getLink());
 		}

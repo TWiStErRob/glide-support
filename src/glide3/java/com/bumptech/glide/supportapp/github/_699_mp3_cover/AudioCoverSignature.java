@@ -19,7 +19,7 @@ public class AudioCoverSignature implements Key {
 	public void refresh() {
 		File parent = file.getParentFile();
 		signature.putLong(parent.lastModified());
-		signature.putLong(parent.length());
+		//signature.putLong(parent.length());
 		for (String fallback : AudioCoverFetcher.FALLBACKS) {
 			File cover = new File(parent, fallback);
 			// no need for File.exists() or File.isFile() checks, both fall back to 0 if invalid

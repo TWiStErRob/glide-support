@@ -12,7 +12,7 @@ import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.*;
 
-import com.bumptech.glide.supportapp.R;
+import com.bumptech.glide.supportapp.*;
 import com.bumptech.glide.supportapp.issue.IssueInfoAdapter.TestInfoViewHolder;
 import com.bumptech.glide.supportapp.utils.Utils;
 

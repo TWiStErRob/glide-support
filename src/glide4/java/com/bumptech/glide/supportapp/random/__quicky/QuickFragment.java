@@ -1,4 +1,4 @@
-package com.bumptech.glide.supportapp;
+package com.bumptech.glide.supportapp.random.__quicky;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.supportapp.GlideImageFragment;
 
 public class QuickFragment extends GlideImageFragment {
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+	<application>
+		<!-- Activities must be declared in the Manifest: http://stackoverflow.com/a/3116857/253468 -->
+		<!--<activity android:name="..." />-->
+		<activity android:name="com.bumptech.glide.supportapp.github._662_detail_cache_hit.TestActivity" />
+		<activity android:name="com.bumptech.glide.supportapp.github._1021_leak_back.TestActivity" />
+		<activity android:name="com.bumptech.glide.supportapp.github._1032_restart_app_gif.TestActivity" />
+		<activity android:name="com.bumptech.glide.supportapp.groups._w_dash_14wTLJC5U_1px.TestActivity" />
+	</application>
+</manifest>

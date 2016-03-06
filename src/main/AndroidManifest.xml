@@ -16,8 +16,17 @@
 			android:value="GlideModule" />
 
 		<activity
-			android:name="com.bumptech.glide.supportapp.TestActivity"
-			android:label="Test">
+			android:name=".issue.IssueListActivity"
+			android:label="Glide Support">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name=".issue.IssueFragmentActivity"
+			android:label="Glide Quick">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />

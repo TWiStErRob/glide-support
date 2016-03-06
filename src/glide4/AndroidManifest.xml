@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+	<application>
+		<!-- Activities must be declared in the Manifest: http://stackoverflow.com/a/3116857/253468 -->
+		<!--<activity android:name="..." />-->
+	</application>
+</manifest>

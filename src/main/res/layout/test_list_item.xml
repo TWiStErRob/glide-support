@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="horizontal"
+	android:background="?android:selectableItemBackground"
+    android:focusable="true"
+    android:clickable="true"
+	>
+	<ImageView
+		android:id="@android:id/icon"
+		android:layout_width="wrap_content"
+		android:layout_height="48dp"
+		android:layout_margin="8dp"
+		android:adjustViewBounds="true"
+		tools:src="@drawable/glide"
+		tools:ignore="ContentDescription"
+		/>
+	<LinearLayout
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:orientation="vertical"
+		>
+		<TextView
+			android:id="@android:id/title"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textStyle="bold"
+			tools:text="Issue short name"
+			/>
+
+		<TextView
+			android:id="@android:id/text1"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:typeface="monospace"
+			android:textSize="10sp"
+			tools:text="entry.class.Name"
+			/>
+		<TextView
+			android:id="@android:id/text2"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textSize="10sp"
+			tools:text="Issue source link"
+			/>
+	</LinearLayout>
+
+</LinearLayout>

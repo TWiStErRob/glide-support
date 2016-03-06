@@ -1,4 +1,4 @@
-package com.bumptech.glide.supportapp.random;
+package com.bumptech.glide.supportapp.random.__sync_cache;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,16 +9,14 @@ import android.widget.*;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.supportapp.*;
-import com.bumptech.glide.supportapp.utils.SyncLoadImageViewTarget;
+import com.bumptech.glide.supportapp.utils.LoggingListener;
 
 /**
  * @see <a href="https://groups.google.com/d/msgid/glidelibrary/03644dfd-6a00-4441-b078-0edaf8bb76f4%40googlegroups.com">
  *     Load image only if present in memory cache</a>
  */
-public class Test_SyncCacheLoadList extends GlideListFragment {
+public class TestListFragment extends GlideListFragment {
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		listView.setAdapter(new SyncCacheLoadAdapter());
@@ -53,23 +51,11 @@ public class Test_SyncCacheLoadList extends GlideListFragment {
 			//Glide.with(this).resumeRequests();
 			// AND imageview size must not have match_parent
 			SyncLoadImageViewTarget target = Glide
-					.with(Test_SyncCacheLoadList.this)
+					.with(TestListFragment.this)
 					.load(getItem(position))
 					.diskCacheStrategy(DiskCacheStrategy.ALL)
 					.placeholder(R.drawable.glide_placeholder)
-					.listener(new RequestListener<String, GlideDrawable>() {
-						@Override public boolean onException(Exception e, String model,
-								Target<GlideDrawable> target,
-								boolean isFirstResource) {
-							return false;
-						}
-
-						@Override public boolean onResourceReady(GlideDrawable resource, String model,
-								Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-							Log.d("resource ready", "isFromMemoryCache: " + isFromMemoryCache);
-							return false;
-						}
-					})
+					.listener(new LoggingListener<String, GlideDrawable>())
 					.into(new SyncLoadImageViewTarget(imageView));
 
 			Log.d("isLoaded", target.isLoaded() + "");

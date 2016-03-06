@@ -1,4 +1,4 @@
-package com.bumptech.glide.supportapp;
+package com.bumptech.glide.supportapp.random.__quicky;
 
 import java.util.concurrent.ExecutionException;
 
@@ -10,6 +10,7 @@ import android.view.View;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.supportapp.*;
 import com.bumptech.glide.supportapp.utils.LoggingListener;
 
 public class QuickFragment extends GlideImageFragment {

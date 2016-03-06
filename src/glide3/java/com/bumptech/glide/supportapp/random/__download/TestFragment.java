@@ -1,4 +1,4 @@
-package com.bumptech.glide.supportapp.random;
+package com.bumptech.glide.supportapp.random.__download;
 
 import java.io.File;
 
@@ -15,7 +15,7 @@ import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.supportapp.GlideListFragment;
 import com.bumptech.glide.supportapp.utils.Downloader;
 
-public class Test_GlideDownloadFromList extends GlideListFragment {
+public class TestFragment extends GlideListFragment {
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		listView.setAdapter(new BaseAdapter() {

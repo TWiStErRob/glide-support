@@ -3,6 +3,7 @@ package com.bumptech.glide.supportapp.github._864_staggered_grid;
 import org.json.*;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.*;
 
 import com.bumptech.glide.RequestManager;
@@ -41,7 +42,7 @@ class FeedAdapter extends RecyclerView.Adapter<FeedEntryViewHolder> {
 			JSONObject entry = data.getJSONObject(position);
 			holder.bind(entry);
 		} catch (JSONException ex) {
-			ex.printStackTrace();
+			Log.e("FeedAdapter", "Cannot bind object at position " + position, ex);
 		}
 	}
 }

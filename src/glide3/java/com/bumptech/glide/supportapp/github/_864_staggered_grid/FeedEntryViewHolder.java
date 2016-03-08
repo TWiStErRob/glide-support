@@ -11,30 +11,35 @@ import android.widget.*;
 
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.supportapp.R;
 import com.bumptech.glide.supportapp.utils.LoggingListener;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 class FeedEntryViewHolder extends RecyclerView.ViewHolder {
 	private final RequestManager glide;
-	ImageView image;
-	TextView title;
-	ImageView author;
+	private final ImageView image;
+	private final TextView title;
+	private final ImageView author;
+	/** Only for logging, it stores the previous adapter position.
+	 * {@link RecyclerView.ViewHolder#getOldPosition()} doesn't do this. */
 	private int previousPosition = -1;
 
 	public FeedEntryViewHolder(View itemView, RequestManager glide) {
 		super(itemView);
 		this.glide = glide;
-		image = (ImageView)itemView.findViewById(android.R.id.icon);
-		title = (TextView)itemView.findViewById(android.R.id.text1);
-		author = (ImageView)itemView.findViewById(android.R.id.icon1);
+		this.image = (ImageView)itemView.findViewById(R.id.github_864_image);
+		this.title = (TextView)itemView.findViewById(R.id.github_864_title);
+		this.author = (ImageView)itemView.findViewById(R.id.github_864_author_icon);
 	}
 
 	public void bind(JSONObject entry) throws JSONException {
-		bindImage(entry.getJSONObject("media$group").getJSONArray("media$content").getJSONObject(0));
-		bindAuthor(entry.getJSONArray("author").getJSONObject(0));
-
-		previousPosition = getAdapterPosition();
+		try {
+			bindImage(entry.getJSONObject("media$group").getJSONArray("media$content").getJSONObject(0));
+			bindAuthor(entry.getJSONArray("author").getJSONObject(0));
+		} finally {
+			previousPosition = getAdapterPosition();
+		}
 	}
 
 	private void bindAuthor(JSONObject author) throws JSONException {

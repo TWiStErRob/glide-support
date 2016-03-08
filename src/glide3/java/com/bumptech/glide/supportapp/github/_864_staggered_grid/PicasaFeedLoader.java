@@ -1,6 +1,7 @@
 package com.bumptech.glide.supportapp.github._864_staggered_grid;
 
 import java.io.*;
+import java.util.concurrent.TimeUnit;
 
 import org.json.*;
 
@@ -25,13 +26,17 @@ class PicasaFeedLoader extends UsefulAsyncTaskLoader<JSONArray> {
 			JSONObject feed = new JSONObject(json);
 			return feed.getJSONObject("feed").getJSONArray("entry");
 		} catch (Exception ex) {
-			Log.w(TAG, ex);
+			Log.w(TAG, ex.toString(), ex);
 			return new JSONArray();
 		}
 	}
 
 	private String loadNetwork() throws IOException {
-		OkHttpClient client = new OkHttpClient();
+		OkHttpClient client = new OkHttpClient.Builder()
+				.connectTimeout(5, TimeUnit.SECONDS)
+				.readTimeout(5, TimeUnit.SECONDS)
+				.writeTimeout(5, TimeUnit.SECONDS)
+				.build();
 		Request request = new Request.Builder()
 				.url("https://picasaweb.google.com/data/feed/api/featured?alt=json")
 				.build();

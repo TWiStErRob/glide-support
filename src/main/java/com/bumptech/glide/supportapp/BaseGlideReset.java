@@ -36,14 +36,14 @@ public abstract class BaseGlideReset {
 			originalGlide = Glide.get(applicationContext);
 			tearDown();
 		}
-		Log.i(TAG, "Setting up new Glide...");
+		Log.d(TAG, "Setting up new Glide...");
 		GlideBuilder builder = newBuilder();
 		List<GlideModule> modules = createModules(moduleClasses);
-		Log.d(TAG, "using modules: " + modules);
+		Log.v(TAG, "using modules: " + modules);
 		applyOptions(modules, builder);
 		Glide glide = createGlide(builder);
 		registerComponents(modules, glide);
-		Log.w(TAG, "Glide has been replaced, original=" + originalGlide + ", new=" + glide);
+		Log.i(TAG, "Glide has been replaced, original=" + originalGlide + ", new=" + glide);
 	}
 
 	/** new ManifestParser(applicationContext).parse(); */
@@ -64,7 +64,7 @@ public abstract class BaseGlideReset {
 		if (!isSetup()) {
 			return;
 		}
-		Log.d(TAG, "Tearing down Glide, it was set up before");
+		Log.v(TAG, "Tearing down Glide, it was set up before");
 		destroy();
 		Glide.get(applicationContext).clearMemory();
 		doTearDown();

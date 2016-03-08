@@ -37,11 +37,15 @@ android {
 	productFlavors {
 		glide3 {
 			applicationId "com.bumptech.glide.supportapp.v3"
+			sourceSets.glide3.java.srcDir 'src/glide3/thirdparty'
 			sourceSets.glide3.java.srcDir 'src/glide3/hacks'
+			sourceSets.glide3.res.srcDir 'src/glide3/res'
 		}
 		glide4 {
 			applicationId "com.bumptech.glide.supportapp.v4"
+			sourceSets.glide4.java.srcDir 'src/glide4/thirdparty'
 			sourceSets.glide4.java.srcDir 'src/glide4/hacks'
+			sourceSets.glide4.res.srcDir 'src/glide4/res'
 		}
 	}
 

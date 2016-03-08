@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	app:contentPadding="4dp"
+	app:cardCornerRadius="8dp"
+	>
+	<android.support.percent.PercentFrameLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:clickable="true"
+		android:focusable="true"
+		>
+		<ImageView
+			android:id="@android:id/icon"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:layout_widthPercent="100%"
+			tools:layout_aspectRatio="178%"
+			tools:src="@drawable/glide"
+			tools:ignore="ContentDescription"
+			/>
+		<TextView
+			android:id="@android:id/text1"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="bottom"
+			android:background="#33000000"
+			android:gravity="center"
+			android:textColor="@android:color/white"
+			tools:text="Image Title"
+			/>
+	</android.support.percent.PercentFrameLayout>
+	<ImageView
+		android:id="@android:id/icon1"
+		android:layout_width="32dp"
+		android:layout_height="32dp"
+		android:layout_gravity="top|end"
+		android:layout_marginTop="4dp"
+		android:layout_marginRight="4dp"
+		android:layout_marginEnd="4dp"
+		tools:ignore="ContentDescription"
+		/>
+</android.support.v7.widget.CardView>

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.RecyclerView
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:id="@android:id/list"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".GlideRecyclerFragment"
+	tools:context=".GlideRecyclerFragment"
+	tools:listitem="@layout/base_item"
 	>
 
 </android.support.v7.widget.RecyclerView>

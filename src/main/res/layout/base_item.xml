@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	android:background="?android:selectableItemBackground"
+	android:minHeight="100dp"
+	android:clickable="true"
+	android:focusable="true"
+	tools:context="GlideListFragment.SimpleUrlAdapter"
+	>
+	<TextView
+		android:id="@android:id/title"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="bottom"
+		android:background="#33000000"
+		android:gravity="center"
+		tools:text="http://full/url.jpg"
+		/>
+	<ImageView
+		android:id="@android:id/icon"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:adjustViewBounds="true"
+		tools:src="@drawable/glide"
+		tools:ignore="ContentDescription"
+		/>
+
+</LinearLayout>

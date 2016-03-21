@@ -19,7 +19,7 @@
 
 		<activity
 			android:name=".issue.IssueListActivity"
-			android:label="Glide Support">
+			android:label="@string/launcher_main">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
@@ -30,7 +30,7 @@
 
 		<activity
 			android:name=".issue.IssueFragmentActivity"
-			android:label="Glide Quick">
+			android:label="@string/launcher_quick">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />

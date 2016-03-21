@@ -1,3 +1,7 @@
 <resources>
-	<string name="app_name">Glide Tester</string>
+	<string name="app_name">Glide Support Examples</string>
+
+	<!-- Overridden in variants -->
+	<string name="launcher_main">Glide Support</string>
+	<string name="launcher_quick">Glide Quick</string>
 </resources>

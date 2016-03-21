@@ -79,7 +79,7 @@ dependencies {
 	//configurations.glide4Compile.resolutionStrategy.cacheChangingModulesFor 0, 'seconds' 
 
 	compile fileTree(dir: 'libs', include: [ '*.jar' ])
-	def supportVersion = '23.2.0'
+	def supportVersion = '23.2.1'
 
 	// Basic Android dependencies
 	compile "com.android.support:support-annotations:${supportVersion}"

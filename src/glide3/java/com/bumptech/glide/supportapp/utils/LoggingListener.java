@@ -43,7 +43,7 @@ public class LoggingListener<A, B> implements RequestListener<A, B> {
 	@Override public boolean onException(Exception e, A model, Target<B> target, boolean isFirstResource) {
 		android.util.Log.println(level, "GLIDE", String.format(Locale.ROOT,
 				"%s.onException(%s, %s, %s, %s)\n%s",
-				name, e, model, strip(target), isFirstResource, android.util.Log.getStackTraceString(e)));
+				name, e, model, strip(target), isFirst(isFirstResource), android.util.Log.getStackTraceString(e)));
 		return delegate.onException(e, model, target, isFirstResource);
 	}
 
@@ -53,8 +53,15 @@ public class LoggingListener<A, B> implements RequestListener<A, B> {
 		String targetString = strip(getTargetDescription(target));
 		android.util.Log.println(level, "GLIDE", String.format(Locale.ROOT,
 				"%s.onResourceReady(%s, %s, %s, %s, %s)",
-				name, resourceString, model, targetString, isFromMemoryCache, isFirstResource));
+				name, resourceString, model, targetString, isMem(isFromMemoryCache), isFirst(isFirstResource)));
 		return delegate.onResourceReady(resource, model, target, isFromMemoryCache, isFirstResource);
+	}
+	
+	private String isMem(boolean isFromMemoryCache) {
+		return isFromMemoryCache? "sync" : "async";
+	}
+	private String isFirst(boolean isFirstResource) {
+		return isFirstResource? "first" : "not first";
 	}
 
 	private String getTargetDescription(Target<B> target) {

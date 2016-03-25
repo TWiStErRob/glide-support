@@ -40,6 +40,10 @@ I'm using **IntelliJ IDEA Ultimate 16 EAP** to maintain this so it'll likely "ju
 
 It's using Google's official Gradle plugin to build, you can find the setup in app/build.gradle
 
+To consume a Gradle SNAPSHOT [built locally](https://github.com/bumptech/glide/wiki/Snapshots#building-snapshots-locally) create a `gradle.properties` file:
+```properties
+local.repo=p:\\path\\to\\repo
+```
 
 ### Prerequisites
  * Android SDK (see `build.gradle` for exact versions)

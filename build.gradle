@@ -19,8 +19,11 @@ apply plugin: 'com.android.application'
 
 repositories {
 	jcenter()
-	// https://github.com/bumptech/glide/wiki/Snapshots
-	maven { name 'glide'; url 'http://oss.sonatype.org/content/repositories/snapshots' }
+	// https://github.com/bumptech/glide/wiki/Snapshots#building-snapshots-locally
+	if (project.hasProperty('local.repo')) maven { name 'glide-local'; url project.property('local.repo') }
+	// https://github.com/bumptech/glide/wiki/Snapshots#obtaining-snapshots
+	maven { name 'glide-snapshot'; url 'http://oss.sonatype.org/content/repositories/snapshots' }
+	flatDir name: 'libs', dirs: 'libs'
 }
 
 android {
@@ -79,6 +82,7 @@ dependencies {
 	//configurations.glide4Compile.resolutionStrategy.cacheChangingModulesFor 0, 'seconds' 
 
 	compile fileTree(dir: 'libs', include: [ '*.jar' ])
+	//compile(name: 'somefile_name', ext: 'aar')
 	def supportVersion = '23.2.1'
 
 	// Basic Android dependencies

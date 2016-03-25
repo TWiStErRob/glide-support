@@ -20,12 +20,7 @@ public abstract class GlideImageFragment extends GlideBaseImageFragment {
 
 	@Override public @Nullable View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		ImageView view = new ImageView(container.getContext());
-		view.setId(android.R.id.icon);
-		view.setLayoutParams(new MarginLayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-		view.setAdjustViewBounds(true);
-		view.setScaleType(ScaleType.FIT_CENTER);
-		return view;
+		return inflater.inflate(R.layout.base_image, container, false);
 	}
 
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -50,7 +45,7 @@ public abstract class GlideImageFragment extends GlideBaseImageFragment {
 				Log.i("GLIDE", "Clearing target " + imageView);
 				clear(imageView);
 				Log.i("GLIDE", "Clearing target " + imageView + " finished");
-				Toast.makeText(getActivity(), "Target cleared", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getContext(), "Target cleared", Toast.LENGTH_SHORT).show();
 				return true;
 			default:
 				return super.onOptionsItemSelected(item);
@@ -60,7 +55,7 @@ public abstract class GlideImageFragment extends GlideBaseImageFragment {
 	private void load() {
 		Log.i("GLIDE", "Loading");
 		try {
-			load(getActivity());
+			load(getContext());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

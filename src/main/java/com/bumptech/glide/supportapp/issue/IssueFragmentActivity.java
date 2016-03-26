@@ -1,7 +1,5 @@
 package com.bumptech.glide.supportapp.issue;
 
-import android.content.*;
-import android.content.pm.*;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -32,10 +30,17 @@ public class IssueFragmentActivity extends GlideSupportActivity {
 					.add(android.R.id.content, fragment)
 					.commit()
 			;
-			String name = fragment.getClass().getPackage().getName();
-			int lastDot = name.lastIndexOf('.');
-			setTitle(name.substring(lastDot + 1));
+			setTitle(fragment);
+		} else {
+			setTitle(getSupportFragmentManager().findFragmentById(android.R.id.content));
 		}
+	}
+	
+	private void setTitle(Fragment fragment) {
+		if (fragment == null) return;
+		String name = fragment.getClass().getPackage().getName();
+		int lastDot = name.lastIndexOf('.');
+		setTitle(name.substring(lastDot + 1));
 	}
 
 	private String getFragmentClass() {

@@ -42,13 +42,11 @@ android {
 			applicationId "com.bumptech.glide.supportapp.v3"
 			sourceSets.glide3.java.srcDir 'src/glide3/thirdparty'
 			sourceSets.glide3.java.srcDir 'src/glide3/hacks'
-			sourceSets.glide3.res.srcDir 'src/glide3/res'
 		}
 		glide4 {
 			applicationId "com.bumptech.glide.supportapp.v4"
 			sourceSets.glide4.java.srcDir 'src/glide4/thirdparty'
 			sourceSets.glide4.java.srcDir 'src/glide4/hacks'
-			sourceSets.glide4.res.srcDir 'src/glide4/res'
 		}
 	}
 
@@ -109,7 +107,7 @@ dependencies {
 	glide4Compile 'com.mcxiaoke.volley:library:1.0.16'
 
 	// Glide v3 (stable)
-	glide3Compile 'com.github.bumptech.glide:glide:3.7.0'
+	glide3Compile 'com.github.bumptech.glide:glide:3.8.0-SNAPSHOT'
 	// OkHttp
 	glide3Compile('com.github.bumptech.glide:okhttp-integration:1.4.0')
 	glide3Compile 'com.squareup.okhttp:okhttp:2.7.5'

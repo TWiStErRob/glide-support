@@ -1,14 +1,15 @@
 package com.bumptech.glide.supportapp.utils;
 
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 
 import com.bumptech.glide.request.Request;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.*;
 
 public class WrappingTarget<Z> implements Target<Z> {
-	protected final Target<Z> target;
-	public WrappingTarget(Target<Z> target) {
+	@NonNull protected final Target<? super Z> target;
+	public WrappingTarget(@NonNull Target<? super Z> target) {
 		this.target = target;
 	}
 
@@ -22,8 +23,9 @@ public class WrappingTarget<Z> implements Target<Z> {
 	@Override public void onLoadFailed(Exception e, Drawable errorDrawable) {
 		target.onLoadFailed(e, errorDrawable);
 	}
+	@SuppressWarnings("unchecked")
 	@Override public void onResourceReady(Z resource, GlideAnimation<? super Z> glideAnimation) {
-		target.onResourceReady(resource, glideAnimation);
+		target.onResourceReady(resource, (GlideAnimation)glideAnimation);
 	}
 	@Override public void onLoadCleared(Drawable placeholder) {
 		target.onLoadCleared(placeholder);

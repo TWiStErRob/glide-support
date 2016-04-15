@@ -4,15 +4,20 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.MenuItemCompat;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.*;
 
 public abstract class GlideDualImageFragment extends GlideBaseImageFragment {
+	protected static final String LI = "<br>&nbsp;&nbsp;*&nbsp;";
+
 	protected ImageView imageView1;
 	protected ImageView imageView2;
-	
+	private TextView usage;
+
 	@Override public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
@@ -25,6 +30,7 @@ public abstract class GlideDualImageFragment extends GlideBaseImageFragment {
 
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
+		usage = (TextView)view.findViewById(android.R.id.text1);
 		imageView1 = (ImageView)view.findViewById(android.R.id.icon1);
 		imageView2 = (ImageView)view.findViewById(android.R.id.icon2);
 		imageView1.setOnClickListener(new OnClickListener() {
@@ -66,6 +72,17 @@ public abstract class GlideDualImageFragment extends GlideBaseImageFragment {
 			default:
 				return super.onOptionsItemSelected(item);
 		}
+	}
+
+	/**
+	 * Call from {@link #onViewCreated(View, Bundle)}.
+	 * Refer to images as first and second to preserve generality (e.g. landscape may be left and right).
+	 * Supported tags: {@code <a><b><big><blockquote><br><cite><dfn><div><em><font color face><i><img src><p><small><strong><sub><sup><tt><u>
+	 * @see #LI
+	 */
+	protected final void setUsage(String htmlText) {
+		usage.setText(Html.fromHtml(htmlText));
+		usage.setMovementMethod(LinkMovementMethod.getInstance());
 	}
 
 	private void load1() {

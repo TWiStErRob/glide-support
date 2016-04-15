@@ -5,6 +5,14 @@
               android:layout_height="match_parent"
               android:orientation="vertical"
 	>
+	<TextView
+		android:id="@android:id/text1"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:autoLink="map|email|web"
+		android:textIsSelectable="true"
+		tools:text="Describe what should be shown here."
+		/>
 	<ImageView
 		android:id="@android:id/icon1"
 		android:layout_width="match_parent"
@@ -12,6 +20,7 @@
 		android:layout_weight="0.5"
 		android:adjustViewBounds="true"
 		android:scaleType="fitCenter"
+		tools:src="@drawable/glide"
 		tools:ignore="ContentDescription"
 		/>
 	<ImageView
@@ -21,6 +30,7 @@
 		android:layout_weight="0.5"
 		android:adjustViewBounds="true"
 		android:scaleType="fitCenter"
+		tools:src="@drawable/glide"
 		tools:ignore="ContentDescription"
 		/>
 </LinearLayout>

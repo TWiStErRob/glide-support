@@ -1,4 +1,4 @@
-package com.bumptech.glide.supportapp.github._1133_stetho_integration;
+package com.bumptech.glide.supportapp.stackoverflow._36642052_stetho_integration;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,6 +13,10 @@ import com.bumptech.glide.supportapp.utils.LoggingListener;
 
 import static com.bumptech.glide.load.engine.DiskCacheStrategy.*;
 
+/**
+ * Similar example to bumptech/glide#1133, but without OkHttp3
+ * @see com.bumptech.glide.supportapp.github._1133_stetho_integration.TestFragment
+ */
 public class TestFragment extends GlideDualImageFragment {
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);

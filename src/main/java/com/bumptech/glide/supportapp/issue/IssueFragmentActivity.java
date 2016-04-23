@@ -45,7 +45,7 @@ public class IssueFragmentActivity extends GlideSupportActivity {
 
 	private String getFragmentClass() {
 		String fragmentClass = QuickFragment.class.getName();
-		if (getIntent().getExtras().containsKey(CONTENT_FRAGMENT)) {
+		if (getIntent().hasExtra(CONTENT_FRAGMENT)) {
 			fragmentClass = getIntent().getStringExtra(CONTENT_FRAGMENT);
 			Log.i("SYS", "Using " + fragmentClass + " from intent.");
 		} else {

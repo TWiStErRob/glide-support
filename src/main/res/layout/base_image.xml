@@ -12,5 +12,6 @@
 		android:adjustViewBounds="true"
 		android:scaleType="fitCenter"
 		tools:ignore="ContentDescription"
+		tools:src="@drawable/glide"
 		/>
 </FrameLayout>

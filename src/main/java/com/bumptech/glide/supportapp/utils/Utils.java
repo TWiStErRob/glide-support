@@ -4,6 +4,7 @@ import java.io.*;
 
 import android.content.*;
 import android.content.pm.*;
+import android.net.Uri;
 import android.util.Log;
 
 public class Utils {
@@ -39,6 +40,13 @@ public class Utils {
 		} catch (ClassNotFoundException e) {
 			throw new IllegalStateException("Cannot determine application package", e);
 		}
+	}
+
+	public static Uri toResourceUri(Context context, int resID) {
+		return Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" +
+				context.getResources().getResourcePackageName(resID) + '/' +
+				context.getResources().getResourceTypeName(resID) + '/' +
+				context.getResources().getResourceEntryName(resID));
 	}
 
 	public static String getMetadataValue(Context context, ComponentName name, String metadataName) {

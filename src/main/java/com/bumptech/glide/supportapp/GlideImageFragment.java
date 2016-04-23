@@ -7,9 +7,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.util.Log;
 import android.view.*;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.*;
 import android.widget.*;
-import android.widget.ImageView.ScaleType;
 
 public abstract class GlideImageFragment extends GlideBaseImageFragment {
 	protected ImageView imageView;
@@ -52,7 +50,7 @@ public abstract class GlideImageFragment extends GlideBaseImageFragment {
 		}
 	}
 
-	private void load() {
+	public void load() {
 		Log.i("GLIDE", "Loading");
 		try {
 			load(getContext());

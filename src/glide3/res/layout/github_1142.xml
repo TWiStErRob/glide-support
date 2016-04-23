@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	tools:ignore="ContentDescription"
+	>
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		>
+		<ImageButton
+			android:id="@+id/github_1142_normal"
+			android:layout_width="64dp"
+			android:layout_height="64dp"
+			android:src="@drawable/glide"
+			android:scaleType="fitCenter"
+			/>
+		<ImageButton
+			android:id="@+id/github_1142_placeholder"
+			android:layout_width="64dp"
+			android:layout_height="64dp"
+			android:src="@drawable/glide_placeholder"
+			android:scaleType="fitCenter"
+			/>
+		<ImageButton
+			android:id="@+id/github_1142_error"
+			android:layout_width="64dp"
+			android:layout_height="64dp"
+			android:src="@drawable/glide_error"
+			android:scaleType="fitCenter"
+			/>
+		<ImageButton
+			android:id="@+id/github_1142_fallback"
+			android:layout_width="64dp"
+			android:layout_height="64dp"
+			android:src="@drawable/glide_fallback"
+			android:scaleType="fitCenter"
+			/>
+	</LinearLayout>
+
+	<ImageView
+		android:id="@android:id/icon"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:scaleType="fitCenter"
+		tools:ignore="ContentDescription"
+		/>
+</LinearLayout>

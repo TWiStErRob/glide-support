@@ -50,6 +50,10 @@ public class GlideRecyclerFragment extends BaseFragment {
 			return urls.size();
 		}
 
+		public String getItem(int position) {
+			return urls.get(position);
+		}
+
 		@Override public SimpleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 			LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 			View view = inflater.inflate(R.layout.base_item, parent, false);
@@ -57,7 +61,7 @@ public class GlideRecyclerFragment extends BaseFragment {
 		}
 
 		@Override public void onBindViewHolder(SimpleViewHolder holder, int position) {
-			String url = urls.get(position);
+			String url = getItem(position);
 			holder.titleText.setText(url);
 			try {
 				load(holder.itemView.getContext(), glide, url, holder.imageView);

@@ -1,4 +1,4 @@
-package com.bumptech.glide.supportapp.github._556_data_uri;
+package com.bumptech.glide.supportapp.github._556_data_uri_firebase;
 
 import java.io.*;
 

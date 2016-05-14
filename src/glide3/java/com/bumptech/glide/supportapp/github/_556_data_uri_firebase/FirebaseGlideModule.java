@@ -1,4 +1,4 @@
-package com.bumptech.glide.supportapp.github._556_data_uri;
+package com.bumptech.glide.supportapp.github._556_data_uri_firebase;
 
 import java.io.InputStream;
 
@@ -9,7 +9,7 @@ import com.bumptech.glide.module.GlideModule;
 import com.firebase.client.Firebase;
 
 // TODO https://github.com/bumptech/glide/wiki/Configuration#creating-a-glidemodule
-class FirebaseGlideModule implements GlideModule {
+public class FirebaseGlideModule implements GlideModule {
 	@Override public void applyOptions(Context context, GlideBuilder builder) {
 
 	}

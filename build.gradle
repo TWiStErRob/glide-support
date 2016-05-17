@@ -12,7 +12,7 @@ buildscript {
 		jcenter()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:1.5.0'
+		classpath 'com.android.tools.build:gradle:2.1.0'
 	}
 }
 apply plugin: 'com.android.application'
@@ -20,7 +20,9 @@ apply plugin: 'com.android.application'
 repositories {
 	jcenter()
 	// https://github.com/bumptech/glide/wiki/Snapshots#building-snapshots-locally
-	if (project.hasProperty('local.repo')) maven { name 'glide-local'; url project.property('local.repo') }
+	if (project.hasProperty('local.repo')) {
+		maven { name 'glide-local'; url project.property('local.repo') }
+	}
 	// https://github.com/bumptech/glide/wiki/Snapshots#obtaining-snapshots
 	maven { name 'glide-snapshot'; url 'http://oss.sonatype.org/content/repositories/snapshots' }
 	flatDir name: 'libs', dirs: 'libs'
@@ -28,11 +30,11 @@ repositories {
 
 android {
 	compileSdkVersion 23
-	buildToolsVersion "23.0.2"
+	buildToolsVersion "23.0.3"
 	defaultConfig {
 		minSdkVersion 10
-		//noinspection OldTargetApi I only have a Samsung Galaxy S4 4.4.2 to test on
-		targetSdkVersion 19
+		//noinspection OldTargetApi I only have a Samsung Galaxy S5 Duos 5.0 to test on
+		targetSdkVersion 21
 		versionCode 1
 		versionName "0.1"
 	}
@@ -81,7 +83,7 @@ dependencies {
 
 	compile fileTree(dir: 'libs', include: [ '*.jar' ])
 	//compile(name: 'somefile_name', ext: 'aar')
-	def supportVersion = '23.2.1'
+	def supportVersion = '23.4.0'
 
 	// Basic Android dependencies
 	compile "com.android.support:support-annotations:${supportVersion}"
@@ -93,7 +95,7 @@ dependencies {
 	compile "com.android.support:recyclerview-v7:${supportVersion}"
 	compile "com.android.support:palette-v7:${supportVersion}"
 	compile "com.android.support:percent:${supportVersion}"
-	compile 'jp.wasabeef:glide-transformations:2.0.0'
+	compile 'jp.wasabeef:glide-transformations:2.0.1'
 	compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.3.0'
 	compile 'com.firebase:firebase-client-android:2.5.2'
 	compile 'com.facebook.stetho:stetho:1.3.1'
@@ -105,10 +107,10 @@ dependencies {
 	glide4Compile 'com.github.bumptech.glide:recyclerview-integration:2.0.0-SNAPSHOT@aar'
 	// OkHttp
 	glide4Compile 'com.github.bumptech.glide:okhttp3-integration:2.0.0-SNAPSHOT'
-	glide4Compile 'com.squareup.okhttp3:okhttp:3.1.2'
+	glide4Compile 'com.squareup.okhttp3:okhttp:3.2.0'
 	// Volley
 	glide4Compile 'com.github.bumptech.glide:volley-integration:2.0.0-SNAPSHOT'
-	glide4Compile 'com.mcxiaoke.volley:library:1.0.16'
+	glide4Compile 'com.mcxiaoke.volley:library:1.0.19'
 
 	// Glide v3 (stable)
 	glide3Compile 'com.github.bumptech.glide:glide:3.8.0-SNAPSHOT'
@@ -119,13 +121,13 @@ dependencies {
 	glide3Compile('com.github.bumptech.glide:okhttp3-integration:1.4.0') {
 		exclude group: 'glide-parent'
 	}
-	glide3Compile 'com.squareup.okhttp3:okhttp:3.1.2'
+	glide3Compile 'com.squareup.okhttp3:okhttp:3.2.0'
 	// Volley
 	glide3Compile 'com.github.bumptech.glide:volley-integration:1.4.0'
-	glide3Compile 'com.mcxiaoke.volley:library:1.0.7'
+	glide3Compile 'com.mcxiaoke.volley:library:1.0.19'
 
 	// Competition
 	compile 'com.squareup.picasso:picasso:2.5.2'
 	compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-	//compile 'com.facebook.fresco:fresco:0.9.0' // not used yet, it's too many dependencies
+	//compile 'com.facebook.fresco:fresco:0.9.0' // not used yet, it has too many dependencies
 }

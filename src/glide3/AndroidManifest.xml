@@ -7,5 +7,7 @@
 		<activity android:name="com.bumptech.glide.supportapp.github._1021_leak_back.TestActivity" />
 		<activity android:name="com.bumptech.glide.supportapp.github._1032_restart_app_gif.TestActivity" />
 		<activity android:name="com.bumptech.glide.supportapp.groups._w_dash_14wTLJC5U_1px.TestActivity" />
+		<activity android:name="com.bumptech.glide.supportapp.github._982_rotate_collapse.TestActivity"
+		          android:theme="@style/AppTheme.NoActionBar" />
 	</application>
 </manifest>

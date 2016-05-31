@@ -8,9 +8,11 @@ import android.widget.ImageView.ScaleType;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.DrawableCrossFadeFactory;
 import com.bumptech.glide.supportapp.*;
+import com.bumptech.glide.supportapp.utils.DelayTransformation;
 
 public class TestFragment extends GlideImageFragment {
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -22,9 +24,11 @@ public class TestFragment extends GlideImageFragment {
 		Glide
 				.with(context)
 				.load(R.drawable.glide)
-				.diskCacheStrategy(DiskCacheStrategy.NONE)
-				.fitCenter()
+				.diskCacheStrategy(DiskCacheStrategy.NONE) // necessary only because I'm loading an APK resource
+				.skipMemoryCache(true) // remove in production, this is just there so it's reproducible quickly
 				.placeholder(R.drawable.glide_placeholder)
+				// delay to see what's going on, in normal usage replace this with .fitCenter()
+				.transform(new FitCenter(context), new DelayTransformation(1000))
 				.animate(new PaddingAnimationFactory<>(new DrawableCrossFadeFactory<GlideDrawable>(2000)))
 				.into(imageView)
 		;

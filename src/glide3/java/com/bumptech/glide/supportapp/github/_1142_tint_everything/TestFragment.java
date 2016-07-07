@@ -21,8 +21,7 @@ abstract class TestFragment extends GlideImageFragment {
 	protected static final int FALLBACK_COLOR = Color.YELLOW;
 
 	protected Uri model;
-	@Override public @Nullable View onCreateView(
-			LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.github_1142, container, false);
 	}
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

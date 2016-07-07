@@ -2,7 +2,6 @@ package com.bumptech.glide.supportapp.github._913_gif_stops;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.*;
 
 import com.bumptech.glide.Glide;
@@ -14,8 +13,7 @@ import com.bumptech.glide.supportapp.*;
 import com.bumptech.glide.supportapp.utils.LoggingListener;
 
 public class TestFragment extends GlideImageFragment {
-	@Override public @Nullable View onCreateView(
-			LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.github_913, container, false);
 	}
 	@Override protected void load(Context context) throws Exception {

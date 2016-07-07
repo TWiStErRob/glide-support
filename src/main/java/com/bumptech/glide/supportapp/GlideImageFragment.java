@@ -16,15 +16,14 @@ public abstract class GlideImageFragment extends GlideBaseImageFragment {
 		setHasOptionsMenu(true);
 	}
 
-	@Override public @Nullable View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.base_image, container, false);
 	}
 
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		imageView = (ImageView)view.findViewById(android.R.id.icon);
-		imageView.setOnClickListener(new OnClickListener() {
+		((View)view.getParent()).setOnClickListener(new OnClickListener() {
 			@Override public void onClick(View v) {
 				load();
 			}

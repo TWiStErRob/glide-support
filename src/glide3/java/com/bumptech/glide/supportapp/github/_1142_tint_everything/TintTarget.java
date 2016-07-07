@@ -49,7 +49,7 @@ public class TintTarget extends ImageViewTarget<GlideDrawable> {
 		super.onLoadFailed(e, tint(errorDrawable, errorColor));
 	}
 	@Override public void onLoadCleared(Drawable placeholder) {
-		super.onLoadStarted(tint(placeholder, placeholderColor));
+		super.onLoadCleared(tint(placeholder, placeholderColor));
 	}
 	@SuppressWarnings("unchecked")
 	@Override public void onResourceReady(GlideDrawable resource, GlideAnimation glideAnimation) {

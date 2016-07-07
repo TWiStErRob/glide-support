@@ -12,7 +12,7 @@ buildscript {
 		jcenter()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:2.1.0'
+		classpath 'com.android.tools.build:gradle:2.2.0-alpha4'
 	}
 }
 apply plugin: 'com.android.application'
@@ -29,8 +29,8 @@ repositories {
 }
 
 android {
-	compileSdkVersion 23
-	buildToolsVersion "23.0.3"
+	compileSdkVersion 24
+	buildToolsVersion "24.0.0"
 	defaultConfig {
 		minSdkVersion 10
 		//noinspection OldTargetApi I only have a Samsung Galaxy S5 Duos 5.0 to test on
@@ -83,7 +83,7 @@ dependencies {
 
 	compile fileTree(dir: 'libs', include: [ '*.jar' ])
 	//compile(name: 'somefile_name', ext: 'aar')
-	def supportVersion = '23.4.0'
+	def supportVersion = '24.0.0'
 
 	// Basic Android dependencies
 	compile "com.android.support:support-annotations:${supportVersion}"

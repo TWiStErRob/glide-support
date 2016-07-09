@@ -75,7 +75,7 @@ public class TestFragment extends Fragment {
 					.asBitmap()
 					.placeholder(R.drawable.github_232_progress)
 					.centerCrop() // needs explicit transformation, because we're using a custom target
-					.transform(new CenterCrop(image.getContext()), new DelayTransformation(1000))
+					.transform(new CenterCrop(image.getContext()), new DelayBitmapTransformation(1000))
 					.listener(new LoggingListener<String, Bitmap>())
 					.into(target)
 			;

@@ -1,24 +1,22 @@
 package com.bumptech.glide.supportapp.utils;
 
-import android.graphics.Bitmap;
 import android.util.Log;
 
-import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
-import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
+import com.bumptech.glide.load.Transformation;
+import com.bumptech.glide.load.engine.Resource;
 
-public class DelayTransformation extends BitmapTransformation {
+public class DelayTransformation<T> implements Transformation<T> {
 	private final int delay;
 	public DelayTransformation(int delay) {
-		super((BitmapPool)null);
 		this.delay = delay;
 	}
-	@Override protected Bitmap transform(BitmapPool pool, Bitmap toTransform, int w, int h) {
+	@Override public Resource<T> transform(Resource<T> resource, int outWidth, int outHeight) {
 		try {
 			Thread.sleep(delay);
 		} catch (InterruptedException e) {
 			Log.i("DELAY", "Sleeping for " + delay + "ms was interrupted.", e);
 		}
-		return toTransform;
+		return resource;
 	}
 	@Override public String getId() {
 		return "";

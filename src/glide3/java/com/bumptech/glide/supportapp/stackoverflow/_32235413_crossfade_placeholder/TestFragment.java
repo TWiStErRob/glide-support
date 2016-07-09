@@ -12,7 +12,7 @@ import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.DrawableCrossFadeFactory;
 import com.bumptech.glide.supportapp.*;
-import com.bumptech.glide.supportapp.utils.DelayTransformation;
+import com.bumptech.glide.supportapp.utils.DelayBitmapTransformation;
 
 public class TestFragment extends GlideImageFragment {
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class TestFragment extends GlideImageFragment {
 				.skipMemoryCache(true) // remove in production, this is just there so it's reproducible quickly
 				.placeholder(R.drawable.glide_placeholder)
 				// delay to see what's going on, in normal usage replace this with .fitCenter()
-				.transform(new FitCenter(context), new DelayTransformation(1000))
+				.transform(new FitCenter(context), new DelayBitmapTransformation(1000))
 				.animate(new PaddingAnimationFactory<>(new DrawableCrossFadeFactory<GlideDrawable>(2000)))
 				.into(imageView)
 		;

@@ -18,7 +18,7 @@ public class TestFragment extends GlideImageFragment {
 				.placeholder(R.drawable.github_958_progress)
 				.placeholder(getProgressBarIndeterminate())
 				.diskCacheStrategy(DiskCacheStrategy.SOURCE)
-				.transform(new DelayTransformation(5000)) // display placeholder for 5 seconds
+				.transform(new DelayBitmapTransformation(5000)) // display placeholder for 5 seconds
 				.listener(new LoggingListener<Integer, GlideDrawable>())
 				.into(imageView)
 		;

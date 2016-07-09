@@ -64,6 +64,7 @@ class HtmlChatAdapter extends BaseAdapter {
 		EMOTICONS.put(":emo4:", "http://www.lifeshore.com/smiley/data/media/2/3D_emoticon_226.gif");
 	}
 
+	@SuppressWarnings("deprecation")
 	private void bindEmoticonMessage(TextView target, String html) {
 		if (TextUtils.isEmpty(html)) {
 			return;

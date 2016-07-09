@@ -80,6 +80,7 @@ public abstract class GlideDualImageFragment extends GlideBaseImageFragment {
 	 * Supported tags: {@code <a><b><big><blockquote><br><cite><dfn><div><em><font color face><i><img src><p><small><strong><sub><sup><tt><u>
 	 * @see #LI
 	 */
+	@SuppressWarnings("deprecation")
 	protected final void setUsage(String htmlText) {
 		usage.setText(Html.fromHtml(htmlText));
 		usage.setMovementMethod(LinkMovementMethod.getInstance());

@@ -1,6 +1,5 @@
 package com.bumptech.glide.supportapp.github._921_different_headers;
 
-import android.app.Activity;
 import android.content.Context;
 
 import com.bumptech.glide.Glide;
@@ -11,10 +10,10 @@ public class TestFragment extends GlideImageFragment {
 	private LazyHeaders.Builder authHeaders;
 	private LazyHeaders.Builder otherHeaders;
 
-	@Override public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		authHeaders = AuthLoader.createHeaders(activity);
-		otherHeaders = OtherLoader.createHeaders(activity);
+	@Override public void onAttach(Context context) {
+		super.onAttach(context);
+		authHeaders = AuthLoader.createHeaders(context);
+		otherHeaders = OtherLoader.createHeaders(context);
 	}
 	@Override protected void load(Context context) throws Exception {
 		String url = "http://blah";

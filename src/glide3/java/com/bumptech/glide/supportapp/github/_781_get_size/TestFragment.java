@@ -3,7 +3,6 @@ package com.bumptech.glide.supportapp.github._781_get_size;
 import java.io.InputStream;
 import java.util.Locale;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.BitmapFactory.Options;
 import android.net.Uri;
@@ -21,11 +20,11 @@ import com.bumptech.glide.supportapp.utils.LoggingListener;
 
 public class TestFragment extends GlideImageFragment {
 	private GenericRequestBuilder<Uri, InputStream, Options, Size> SIZE_REQUEST;
-	@Override public void onAttach(Activity activity) {
-		super.onAttach(activity);
+	@Override public void onAttach(Context context) {
+		super.onAttach(context);
 		SIZE_REQUEST = Glide
 				.with(this)
-				.using(new StreamUriLoader(activity), InputStream.class)
+				.using(new StreamUriLoader(context), InputStream.class)
 				.from(Uri.class)
 				.as(Options.class)
 				.transcode(new OptionsSizeResourceTranscoder(), Size.class)

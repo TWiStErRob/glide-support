@@ -11,7 +11,7 @@ import android.view.*;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.supportapp.utils.ClearCachesTask;
 
-public class GlideSupportActivity extends AppCompatActivity {
+public class GlideBaseActivity extends AppCompatActivity {
 	@Override public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 		item(menu, 1, "Glide.clear*", "#888888", false);
@@ -21,7 +21,7 @@ public class GlideSupportActivity extends AppCompatActivity {
 		return true;
 	}
 
-	private void item(Menu menu, int id, String title, String color, boolean always) {
+	protected void item(Menu menu, int id, String title, String color, boolean always) {
 		Drawable icon = ContextCompat.getDrawable(this, android.R.drawable.ic_menu_delete).mutate();
 		icon.setColorFilter(Color.parseColor(color), Mode.SCREEN);
 		MenuItem item = menu.add(0, id, 0, title).setIcon(icon);

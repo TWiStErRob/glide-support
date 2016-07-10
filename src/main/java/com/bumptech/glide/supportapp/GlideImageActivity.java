@@ -8,9 +8,7 @@ import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.*;
 
-import static com.bumptech.glide.Glide.*;
-
-public abstract class GlideImageActivity extends GlideSupportActivity {
+public abstract class GlideImageActivity extends GlideBaseImageActivity {
 	protected ImageView imageView;
 	@Override public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

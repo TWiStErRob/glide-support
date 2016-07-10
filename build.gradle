@@ -37,6 +37,7 @@ android {
 		targetSdkVersion 21
 		versionCode 1
 		versionName "0.1"
+		proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 	}
 	sourceSets.main.java.srcDir 'src/main/thirdparty'
 	productFlavors {
@@ -52,10 +53,9 @@ android {
 		}
 	}
 
-	buildTypes {
-		release {
-			minifyEnabled true
-			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+	variantFilter { variant ->
+		if (variant.buildType.name == buildTypes.release.name) {
+			variant.setIgnore(true);
 		}
 	}
 

@@ -6,11 +6,11 @@ import android.util.Log;
 import android.view.ViewGroup.*;
 import android.widget.FrameLayout;
 
-import com.bumptech.glide.supportapp.GlideSupportActivity;
+import com.bumptech.glide.supportapp.GlideBaseActivity;
 import com.bumptech.glide.supportapp.random.__quicky.QuickFragment;
 import com.bumptech.glide.supportapp.utils.Utils;
 
-public class IssueFragmentActivity extends GlideSupportActivity {
+public class IssueFragmentActivity extends GlideBaseActivity {
 	public static final String CONTENT_FRAGMENT = "contentFragment";
 
 	@Override protected void onCreate(Bundle savedInstanceState) {

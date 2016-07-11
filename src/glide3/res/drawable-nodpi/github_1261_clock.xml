@@ -1,0 +1,40 @@
+<vector
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:width="200dp"
+	android:height="200dp"
+	android:viewportHeight="100"
+	android:viewportWidth="100"
+	tools:targetApi="honeycomb"
+	tools:ignore="VectorRaster">
+	<group
+		android:name="minutes"
+		android:pivotX="50"
+		android:pivotY="50"
+		android:rotation="0">
+		<path
+			android:pathData="M 50,50 L 50,12"
+			android:strokeColor="@android:color/black"
+			android:strokeLineCap="round"
+			android:strokeWidth="4" />
+	</group>
+	<group
+		android:name="hours"
+		android:pivotX="50"
+		android:pivotY="50"
+		android:rotation="0">
+		<path
+			android:pathData="M 50,50 L 24,50"
+			android:strokeColor="@android:color/black"
+			android:strokeLineCap="round"
+			android:strokeWidth="4" />
+	</group>
+	<path
+		android:pathData="M 50,50
+			m -48,0
+			a 48,48 0 1,0 96,0
+			a 48,48 0 1,0 -96,0
+		"
+		android:strokeColor="@android:color/black"
+		android:strokeWidth="4" />
+</vector>

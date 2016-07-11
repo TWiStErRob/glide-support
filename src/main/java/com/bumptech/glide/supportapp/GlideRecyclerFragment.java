@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.*;
 import android.util.Log;
 import android.view.*;
+import android.view.View.OnClickListener;
 import android.widget.*;
 
 import com.bumptech.glide.RequestManager;
@@ -57,7 +58,13 @@ public class GlideRecyclerFragment extends BaseFragment {
 		@Override public SimpleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 			LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 			View view = inflater.inflate(R.layout.base_item, parent, false);
-			return new SimpleViewHolder(view);
+			final SimpleViewHolder holder = new SimpleViewHolder(view);
+			holder.itemView.setOnClickListener(new OnClickListener() {
+				@Override public void onClick(View v) {
+					onBindViewHolder(holder, holder.getAdapterPosition());
+				}
+			});
+			return holder;
 		}
 
 		@Override public void onBindViewHolder(SimpleViewHolder holder, int position) {

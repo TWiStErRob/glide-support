@@ -21,4 +21,9 @@ public class DelayTransformation<T> implements Transformation<T> {
 	@Override public String getId() {
 		return "";
 	}
+
+	@SuppressWarnings("unchecked")
+	public static <T> Transformation<T>[] create(int delay) {
+		return new Transformation[] {new DelayTransformation<>(delay)};
+	}
 }

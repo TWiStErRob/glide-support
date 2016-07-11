@@ -8,11 +8,13 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.*;
 
 public class WrappingTarget<Z> implements Target<Z> {
-	@NonNull protected final Target<? super Z> target;
+	protected final @NonNull Target<? super Z> target;
 	public WrappingTarget(@NonNull Target<? super Z> target) {
 		this.target = target;
 	}
-
+	public @NonNull Target<? super Z> getWrappedTarget() {
+		return target;
+	}
 	@Override public void getSize(SizeReadyCallback cb) {
 		target.getSize(cb);
 	}

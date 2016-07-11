@@ -2,6 +2,7 @@ package com.bumptech.glide.supportapp;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatDelegate;
 
 import com.bumptech.glide.load.engine.cache.DiskCache;
 
@@ -23,5 +24,10 @@ public class App extends android.app.Application {
 	}
 	public DiskCache getDiskCache() {
 		return diskCache;
+	}
+
+	@Override public void onCreate() {
+		super.onCreate();
+		AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 	}
 }

@@ -69,4 +69,7 @@ public class Utils {
 		}
 		return result;
 	}
+	public static int random(int lo, int hi) {
+		return (int)Math.round(lo + Math.random() * (hi - lo));
+	}
 }

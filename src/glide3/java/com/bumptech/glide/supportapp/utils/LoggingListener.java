@@ -56,7 +56,7 @@ public class LoggingListener<A, B> implements RequestListener<A, B> {
 				name, resourceString, model, targetString, isMem(isFromMemoryCache), isFirst(isFirstResource)));
 		return delegate.onResourceReady(resource, model, target, isFromMemoryCache, isFirstResource);
 	}
-	
+
 	private String isMem(boolean isFromMemoryCache) {
 		return isFromMemoryCache? "sync" : "async";
 	}
@@ -64,9 +64,12 @@ public class LoggingListener<A, B> implements RequestListener<A, B> {
 		return isFirstResource? "first" : "not first";
 	}
 
-	private String getTargetDescription(Target<B> target) {
+	private String getTargetDescription(Target<?> target) {
 		String result;
-		if (target instanceof ViewTarget) {
+		if (target instanceof WrappingTarget) {
+			Target wrapped = ((WrappingTarget)target).getWrappedTarget();
+			result = String.format(Locale.ROOT, "%s in %s", getTargetDescription(wrapped), target);
+		} else if (target instanceof ViewTarget) {
 			View v = ((ViewTarget)target).getView();
 			LayoutParams p = v.getLayoutParams();
 			result = String.format(Locale.ROOT,

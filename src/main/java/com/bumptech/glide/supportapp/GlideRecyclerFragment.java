@@ -57,14 +57,22 @@ public class GlideRecyclerFragment extends BaseFragment {
 
 		@Override public SimpleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 			LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-			View view = inflater.inflate(R.layout.base_item, parent, false);
-			final SimpleViewHolder holder = new SimpleViewHolder(view);
+			View view = onCreateView(inflater, parent, viewType);
+			final SimpleViewHolder holder = onCreateViewHolder(parent, viewType, view);
 			holder.itemView.setOnClickListener(new OnClickListener() {
 				@Override public void onClick(View v) {
 					onBindViewHolder(holder, holder.getAdapterPosition());
 				}
 			});
 			return holder;
+		}
+
+		protected SimpleViewHolder onCreateViewHolder(ViewGroup parent, int viewType, View view) {
+			return new SimpleViewHolder(view);
+		}
+
+		protected View onCreateView(LayoutInflater inflater, ViewGroup parent, int viewType) {
+			return inflater.inflate(R.layout.base_item, parent, false);
 		}
 
 		@Override public void onBindViewHolder(SimpleViewHolder holder, int position) {

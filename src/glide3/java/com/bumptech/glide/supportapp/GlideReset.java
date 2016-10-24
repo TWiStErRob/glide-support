@@ -40,6 +40,7 @@ public class GlideReset extends BaseGlideReset {
 	}
 
 	@Override protected void doTearDown() {
+		// TODO RequestManagerRetriever.get().applicationManager = null;
 		try {
 			GLIDE_FIELD.set(null, null);
 		} catch (Exception ex) {

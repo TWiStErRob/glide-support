@@ -12,7 +12,7 @@ buildscript {
 		jcenter()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:2.2.0-beta1'
+		classpath 'com.android.tools.build:gradle:2.2.0'
 	}
 }
 apply plugin: 'com.android.application'
@@ -124,6 +124,7 @@ dependencies {
 	glide3Compile 'com.squareup.okhttp:okhttp:2.7.5'
 	// OkHttp3
 	glide3Compile('com.github.bumptech.glide:okhttp3-integration:1.4.0') {
+		// @see https://github.com/bumptech/glide/issues/941
 		exclude group: 'glide-parent'
 	}
 	glide3Compile 'com.squareup.okhttp3:okhttp:3.2.0'

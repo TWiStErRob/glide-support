@@ -13,6 +13,10 @@
 		android:icon="@drawable/glide"
 		android:allowBackup="true"
 		android:theme="@style/AppTheme">
+
+		<meta-data android:name="com.bumptech.glide.integration.volley.VolleyGlideModule" tools:node="remove" />
+		<meta-data android:name="com.bumptech.glide.integration.okhttp.OkHttpGlideModule" tools:node="remove" />
+		<meta-data android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule" tools:node="remove" />
 		<meta-data
 			android:name="com.bumptech.glide.supportapp.random.__quicky.QuickModule"
 			android:value="GlideModule" />

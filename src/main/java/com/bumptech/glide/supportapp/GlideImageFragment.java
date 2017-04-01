@@ -54,7 +54,8 @@ public abstract class GlideImageFragment extends GlideBaseImageFragment {
 		try {
 			load(getContext());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Log.e("GLIDE", "Failed to start load", e);
+			Toast.makeText(getContext(), "Load: " + e, Toast.LENGTH_SHORT).show();
 		}
 		Log.i("GLIDE", "Loaded");
 	}

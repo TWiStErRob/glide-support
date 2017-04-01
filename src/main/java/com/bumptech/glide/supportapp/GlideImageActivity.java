@@ -49,7 +49,8 @@ public abstract class GlideImageActivity extends GlideBaseImageActivity {
 		try {
 			load(this);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Log.e("GLIDE", "Failed to start load", e);
+			Toast.makeText(this, "Load: " + e, Toast.LENGTH_SHORT).show();
 		}
 		Log.i("GLIDE", "Loaded");
 	}

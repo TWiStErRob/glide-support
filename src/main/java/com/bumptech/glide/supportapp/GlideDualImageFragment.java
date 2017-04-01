@@ -91,7 +91,8 @@ public abstract class GlideDualImageFragment extends GlideBaseImageFragment {
 		try {
 			load1(getContext(), imageView1);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Log.e("GLIDE", "Failed to start load #1", e);
+			Toast.makeText(getContext(), "Load #1: " + e, Toast.LENGTH_SHORT).show();
 		}
 		Log.i("GLIDE", "Loaded #1");
 	}
@@ -101,7 +102,8 @@ public abstract class GlideDualImageFragment extends GlideBaseImageFragment {
 		try {
 			load2(getContext(), imageView2);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Log.e("GLIDE", "Failed to start load #2", e);
+			Toast.makeText(getContext(), "Load #2: " + e, Toast.LENGTH_SHORT).show();
 		}
 		Log.i("GLIDE", "Loaded #2");
 	}

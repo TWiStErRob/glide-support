@@ -57,13 +57,12 @@ public class TestFragment extends GlideImageFragment {
 				.decoder(decoder)
 				.sourceEncoder(new StreamEncoder())
 				.cacheDecoder(new FileToStreamDecoder<>(decoder))
-				.animate(new AlwaysCrossFade(true))
+				.animate(new AlwaysCrossFade<>(true))
 				.encoder(new GifBitmapWrapperResourceEncoder(new BitmapEncoder(), new GifResourceEncoder(pool)))
 				.diskCacheStrategy(DiskCacheStrategy.ALL) // just to demonstrate it's working, pick your preference
 				.transform(new GifBitmapWrapperTransformation(pool, new FitCenter(context))) // == .fitCenter()
 				.listener(new LoggingListener<String, Drawable>("url")) // debug
 		;
-
 		// see https://github.com/bumptech/glide/issues/122#issuecomment-99629392
 		drawableGlide = Glide
 				.with(this)
@@ -73,7 +72,7 @@ public class TestFragment extends GlideImageFragment {
 				// this works even if the drawables don't behave well regarding constantState.newDrawable
 				// Beware: might be problematic if constant state is supported, but altered (e.g. color filters)
 				.decoder(new SimpleResourceDecoder<Drawable>()) // prefer DrawableResourceDecoder if possible!
-				.animate(new AlwaysCrossFade(true))
+				.animate(new AlwaysCrossFade<>(true))
 				.diskCacheStrategy(DiskCacheStrategy.NONE)
 				.listener(new LoggingListener<Drawable, Drawable>("drawable")) // debug
 		;

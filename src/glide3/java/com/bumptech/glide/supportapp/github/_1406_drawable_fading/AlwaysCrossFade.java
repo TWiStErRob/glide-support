@@ -6,7 +6,17 @@ import com.bumptech.glide.request.animation.*;
 import com.bumptech.glide.request.animation.GlideAnimation.ViewAdapter;
 import com.bumptech.glide.supportapp.utils.WrappingViewAdapter;
 
-class AlwaysCrossFade extends DrawableCrossFadeFactory<Drawable> {
+/**
+ * Use it as:
+ * <pre><code>
+ * Glide.with(this)
+ *     	.load(url)
+ *     	.animate(new AlwaysCrossFade&lt;GlideDrawable&gt;(false))
+ *     	.into(imageView);
+ * </code></pre>
+ * @since 3.8.0
+ */
+class AlwaysCrossFade<T extends Drawable> extends DrawableCrossFadeFactory<T> {
 	private final boolean transparentImagesPossible;
 
 	/**
@@ -19,23 +29,23 @@ class AlwaysCrossFade extends DrawableCrossFadeFactory<Drawable> {
 		this.transparentImagesPossible = transparentImagesPossible;
 	}
 
-	@Override public GlideAnimation<Drawable> build(boolean isFromMemoryCache, boolean isFirstResource) {
+	@Override public GlideAnimation<T> build(boolean isFromMemoryCache, boolean isFirstResource) {
 		// passing isFirstResource instead of isFromMemoryCache achieves the result we want
-		GlideAnimation<Drawable> animation = super.build(isFirstResource, isFirstResource);
+		GlideAnimation<T> animation = super.build(isFirstResource, isFirstResource);
 		if (!transparentImagesPossible) {
-			animation = new RealCrossFadeAnimation(animation);
+			animation = new RealCrossFadeAnimation<>(animation);
 		}
 		return animation;
 	}
 
-	private static class RealCrossFadeAnimation implements GlideAnimation<Drawable> {
-		private final GlideAnimation<Drawable> animation;
+	private static class RealCrossFadeAnimation<T extends Drawable> implements GlideAnimation<T> {
+		private final GlideAnimation<T> animation;
 
-		public RealCrossFadeAnimation(GlideAnimation<Drawable> animation) {
+		public RealCrossFadeAnimation(GlideAnimation<T> animation) {
 			this.animation = animation;
 		}
 
-		@Override public boolean animate(Drawable current, final ViewAdapter adapter) {
+		@Override public boolean animate(T current, final ViewAdapter adapter) {
 			return animation.animate(current, new CrossFadeDisablingViewAdapter(adapter));
 		}
 	}

@@ -6,6 +6,12 @@ import com.bumptech.glide.load.data.DataFetcher;
 import com.bumptech.glide.load.model.ModelLoader;
 import com.bumptech.glide.load.model.stream.StreamModelLoader;
 
+/**
+ * Workaround for <a href="https://github.com/bumptech/glide/issues/1832">bumptech/glide#1832</a>.
+ *
+ * @deprecated not needed after 3.8.0
+ */
+@Deprecated
 class StreamModelLoaderWrapper<T> implements StreamModelLoader<T> {
 	private final ModelLoader<T, InputStream> wrapped;
 

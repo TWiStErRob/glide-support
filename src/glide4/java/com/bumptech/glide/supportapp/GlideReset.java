@@ -1,6 +1,6 @@
 package com.bumptech.glide.supportapp;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Field;
 import java.util.List;
 
 import android.content.Context;
@@ -10,17 +10,11 @@ import com.bumptech.glide.module.GlideModule;
 
 public class GlideReset extends BaseGlideReset {
 	private static final Field GLIDE_FIELD;
-	private static final Constructor<GlideBuilder> BUILDER_CONSTRUCTOR;
-	private static final Method CREATEGLIDE_METHOD;
 
 	static {
 		try {
 			GLIDE_FIELD = Glide.class.getDeclaredField("glide");
 			GLIDE_FIELD.setAccessible(true);
-			BUILDER_CONSTRUCTOR = GlideBuilder.class.getDeclaredConstructor(Context.class);
-			BUILDER_CONSTRUCTOR.setAccessible(true);
-			CREATEGLIDE_METHOD = GlideBuilder.class.getDeclaredMethod("createGlide");
-			CREATEGLIDE_METHOD.setAccessible(true);
 		} catch (Exception ex) {
 			throw new ExceptionInInitializerError(ex);
 		}
@@ -31,19 +25,11 @@ public class GlideReset extends BaseGlideReset {
 	}
 
 	@Override protected GlideBuilder newBuilder() {
-		try {
-			return BUILDER_CONSTRUCTOR.newInstance(applicationContext);
-		} catch (Exception ex) {
-			throw new IllegalStateException(ex);
-		}
+		return new GlideBuilder();
 	}
 
 	@Override protected Glide createGlide(GlideBuilder builder) {
-		try {
-			return (Glide)CREATEGLIDE_METHOD.invoke(builder);
-		} catch (Exception ex) {
-			throw new IllegalStateException(ex);
-		}
+		return builder.build(applicationContext);
 	}
 
 	@Override protected void applyOptions(List<GlideModule> modules, GlideBuilder builder) {

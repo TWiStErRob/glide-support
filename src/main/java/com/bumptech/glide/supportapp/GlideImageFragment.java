@@ -50,14 +50,14 @@ public abstract class GlideImageFragment extends GlideBaseImageFragment {
 	}
 
 	public void load() {
-		Log.i("GLIDE", "Loading");
+		Log.i("GLIDE", "Starting load");
 		try {
 			load(getContext());
 		} catch (Exception e) {
 			Log.e("GLIDE", "Failed to start load", e);
 			Toast.makeText(getContext(), "Load: " + e, Toast.LENGTH_SHORT).show();
 		}
-		Log.i("GLIDE", "Loaded");
+		Log.i("GLIDE", "Load started");
 	}
 
 	@Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {

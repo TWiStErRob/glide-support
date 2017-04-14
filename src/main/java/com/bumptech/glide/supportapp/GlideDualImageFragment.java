@@ -87,25 +87,25 @@ public abstract class GlideDualImageFragment extends GlideBaseImageFragment {
 	}
 
 	private void load1() {
-		Log.i("GLIDE", "Loading #1");
+		Log.i("GLIDE", "Starting load #1");
 		try {
 			load1(getContext(), imageView1);
 		} catch (Exception e) {
 			Log.e("GLIDE", "Failed to start load #1", e);
 			Toast.makeText(getContext(), "Load #1: " + e, Toast.LENGTH_SHORT).show();
 		}
-		Log.i("GLIDE", "Loaded #1");
+		Log.i("GLIDE", "Load #1 started");
 	}
 
 	private void load2() {
-		Log.i("GLIDE", "Loading #2");
+		Log.i("GLIDE", "Starting load #2");
 		try {
 			load2(getContext(), imageView2);
 		} catch (Exception e) {
 			Log.e("GLIDE", "Failed to start load #2", e);
 			Toast.makeText(getContext(), "Load #2: " + e, Toast.LENGTH_SHORT).show();
 		}
-		Log.i("GLIDE", "Loaded #2");
+		Log.i("GLIDE", "Load #2 started");
 	}
 
 	@Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {

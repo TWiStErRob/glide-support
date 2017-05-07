@@ -16,13 +16,13 @@ public class TestFragment extends GlideImageFragment {
 		RequestBuilder<Drawable> mFullRequest = requestManager
 				.asDrawable()
 				.apply(RequestOptions
-						.centerCropTransform(context)
+						.centerCropTransform()
 						.placeholder(new ColorDrawable(Color.GRAY))
 				);
 		RequestBuilder<Drawable> mThumbnailRequest = requestManager
 				.asDrawable()
 				.apply(RequestOptions
-						.centerCropTransform(context)
+						.centerCropTransform()
 						.override(100, 100)
 				);
 		mFullRequest

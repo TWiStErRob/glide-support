@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lint>
+
+	<!-- This is a test projects, don't bother with these. -->
+	<issue id="GoogleAppIndexingWarning" severity="ignore" />
+	<issue id="LogConditional" severity="ignore" />
+	<issue id="ContentDescription" severity="ignore" />
+	<issue id="SelectableText" severity="ignore" />
+	<issue id="InvalidPackage">
+		<ignore regexp="java\.nio\.file" />
+	</issue>
+
+	<!-- AllowBackup/FullBackupContent Problems: somehow the manifest is not merged into the variant so lint doesn't pick it up -->
+	<issue id="AllowBackup" severity="ignore" />
+
+	<issue id="UnusedResources">
+		<!-- Keep these as they could be used to test things out with file formats. -->
+		<ignore path="**/res/drawable*/glide_*.*" />
+		<ignore path="**/res/raw*/glide_*.*" />
+		<ignore regexp="R\.string\.glide_base64" />
+		<!-- These are useful to just drop it in to compile, without worrying what the actual value is. -->
+		<ignore regexp="R\..*\.just_so_it_compiles" />
+	</issue>
+
+	<issue id="IconLocation">
+		<!-- Don't want to duplicate files, they're only used for tests, in production DO put them in their corresponding folder. -->
+		<ignore path="**/res/drawable/glide.png" />
+		<ignore path="**/res/drawable/glide_*.*" />
+		<ignore path="**/res/drawable/source_*.*" />
+	</issue>
+
+	<issue id="GifUsage">
+		<!-- GIFs are needed to test Glide features and compatibility. -->
+		<ignore path="**/res/drawable*/glide_*.*" />
+	</issue>
+
+</lint>

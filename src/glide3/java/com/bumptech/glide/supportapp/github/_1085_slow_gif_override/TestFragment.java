@@ -4,16 +4,14 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.*;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.load.resource.gifbitmap.GifBitmapWrapper;
-import com.bumptech.glide.load.resource.transcode.*;
-import com.bumptech.glide.supportapp.*;
+import com.bumptech.glide.supportapp.GlideDualImageFragment;
 import com.bumptech.glide.supportapp.utils.LoggingListener;
 
 public class TestFragment extends GlideDualImageFragment {
-	// https://cloud.githubusercontent.com/assets/2437726/14014172/3372df2c-f1b1-11e5-814a-90650a752a62.gif
-	private final String url = "/sdcard/3372df2c-f1b1-11e5-814a-90650a752a62.gif";
+	private final String url =
+			"https://cloud.githubusercontent.com/assets/2437726/14014172/3372df2c-f1b1-11e5-814a-90650a752a62.gif";
 	@Override protected void load1(Context context, ImageView imageView) throws Exception {
 		Glide
 				.with(this)
@@ -50,7 +48,7 @@ public class TestFragment extends GlideDualImageFragment {
 						.load(url)
 						.diskCacheStrategy(DiskCacheStrategy.RESULT)
 						.listener(new LoggingListener<String, GlideDrawable>("second-thumb"))
-						.animate(R.anim.abc_fade_in)
+						.animate(android.R.anim.fade_in)
 						.override(72, 72)
 				)
 				.into(imageView)

@@ -2,7 +2,7 @@ package com.bumptech.glide.supportapp.github._906_cache_put;
 
 import java.io.*;
 
-import android.annotation.TargetApi;
+import android.annotation.*;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -21,6 +21,7 @@ import com.bumptech.glide.signature.StringSignature;
 import com.bumptech.glide.supportapp.*;
 
 public class TestFragment extends GlideImageFragment {
+	@SuppressLint("SdCardPath")
 	@Override protected void load(Context context) throws Exception {
 		Glide
 				.with(this)

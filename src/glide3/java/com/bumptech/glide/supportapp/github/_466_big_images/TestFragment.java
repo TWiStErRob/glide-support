@@ -4,6 +4,7 @@ import java.io.File;
 
 import android.content.Context;
 import android.graphics.*;
+import android.os.Environment;
 import android.util.Log;
 
 import com.bumptech.glide.Glide;
@@ -12,7 +13,7 @@ import com.bumptech.glide.supportapp.GlideImageFragment;
 import com.bumptech.glide.supportapp.utils.LoggingListener;
 
 public class TestFragment extends GlideImageFragment {
-	private final File folder = new File("/sdcard/");
+	private final File folder = Environment.getExternalStorageDirectory();
 	// download https://drive.google.com/file/d/0B6kFDyLnqV5FXzBieGpoYUxET1k/view?usp=sharing as 1..5.jpg
 
 	@Override protected void load(final Context context) {

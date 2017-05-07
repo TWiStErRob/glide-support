@@ -2,6 +2,7 @@ package com.bumptech.glide.supportapp.github._232_progress;
 
 import java.util.*;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -95,6 +96,7 @@ public class TestFragment extends Fragment {
 	 *
 	 * @param <Z> automatically match any real Glide target so it can be used flexibly without reimplementing.
 	 */
+	@SuppressLint("SetTextI18n") // text set only for debugging
 	private static class MyProgressTarget<Z> extends ProgressTarget<String, Z> {
 		private final TextView text;
 		private final ProgressBar progress;
@@ -121,7 +123,7 @@ public class TestFragment extends Fragment {
 			progress.setIndeterminate(false);
 			progress.setProgress((int)(100 * bytesRead / expectedLength));
 			image.setImageLevel((int)(10000 * bytesRead / expectedLength));
-			text.setText(String.format("downloading %.2f/%.2f MB %.1f%%",
+			text.setText(String.format(Locale.ROOT, "downloading %.2f/%.2f MB %.1f%%",
 					bytesRead / 1e6, expectedLength / 1e6, 100f * bytesRead / expectedLength));
 		}
 		@Override protected void onDownloaded() {

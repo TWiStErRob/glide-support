@@ -11,7 +11,7 @@ import android.view.*;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.supportapp.utils.ClearCachesTask;
 
-public class GlideBaseActivity extends AppCompatActivity {
+public abstract class GlideBaseActivity extends AppCompatActivity {
 	@Override public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 		item(menu, 1, "Glide.clear*", "#888888", false);

@@ -51,6 +51,7 @@ import java.util.ArrayList;
  * that expect Uri access to media files.
  *
  */
+@SuppressWarnings("ALL")
 public abstract class APEZProvider extends ContentProvider {	
 
 	private ZipResourceFile mAPKExtensionFile;
@@ -139,10 +140,12 @@ public abstract class APEZProvider extends ContentProvider {
             if ( null != pi.metaData ) {
                 mainFileVersion = pi.metaData.getInt("mainVersion", appVersionCode);
                 patchFileVersion = pi.metaData.getInt("patchVersion", appVersionCode);
-                String mainFileName = pi.metaData.getString("mainFilename", NO_FILE);
-                if ( NO_FILE != mainFileName ) {
-                    String patchFileName = pi.metaData.getString("patchFilename", NO_FILE);
-                    if ( NO_FILE != patchFileName ) {
+	            String mainFileName = pi.metaData.getString("mainFilename");
+	            mainFileName = mainFileName != null? mainFileName : NO_FILE;
+	            if ( NO_FILE != mainFileName ) {
+	                String patchFileName = pi.metaData.getString("patchFilename");
+	                patchFileName = patchFileName != null? patchFileName : NO_FILE;
+		            if ( NO_FILE != patchFileName ) {
                         resourceFiles = new String[] { mainFileName, patchFileName };
                     } else {
                         resourceFiles = new String[] { mainFileName };

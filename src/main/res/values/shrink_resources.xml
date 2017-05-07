@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources>
+<!-- See http://tools.android.com/tech-docs/new-build-system/resource-shrinking -->
+<!-- See build.gradle android.buildTypes.release.shrinkResources -->
+<resources
+	xmlns:tools="http://schemas.android.com/tools"
+	tools:shrinkMode="strict"
+	tools:keep="@drawable/source_*"
+	/>

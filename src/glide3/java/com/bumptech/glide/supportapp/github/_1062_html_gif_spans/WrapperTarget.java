@@ -1,5 +1,6 @@
 package com.bumptech.glide.supportapp.github._1062_html_gif_spans;
 
+import android.annotation.SuppressLint;
 import android.graphics.*;
 import android.graphics.drawable.*;
 import android.support.v7.graphics.drawable.DrawableWrapper;
@@ -23,6 +24,7 @@ import com.bumptech.glide.request.target.SimpleTarget;
  * }
  * </code></pre>
  */
+@SuppressLint("RestrictedApi") // DrawableWrapper is a handy class, wouldn't want to copy-paste it
 class WrapperTarget extends SimpleTarget<GlideDrawable> {
 	/** Workaround because the AppCompat DrawableWrapper doesn't support null drawable as the API23 version does */
 	private final ColorDrawable nullObject = new ColorDrawable(Color.TRANSPARENT);

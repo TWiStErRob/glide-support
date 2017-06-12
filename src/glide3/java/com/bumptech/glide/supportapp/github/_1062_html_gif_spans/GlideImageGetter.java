@@ -88,7 +88,12 @@ final class GlideImageGetter implements Html.ImageGetter, Drawable.Callback {
 		}
 	}
 	@Override public void invalidateDrawable(Drawable who) {
-		targetView.invalidate();
+		targetView.post(new Runnable() {
+		    @Override
+		    public void run() {
+			targetView.setText(targetView.getText());
+		    }
+		});
 	}
 	@Override public void scheduleDrawable(Drawable who, Runnable what, long when) {
 

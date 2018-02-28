@@ -33,6 +33,7 @@ public class IssueInfosBuilder {
 		return this;
 	}
 
+	@SuppressWarnings("deprecation")
 	public List<IssueInfo> build() {
 		groupByPackage();
 		List<IssueInfo> issues = new ArrayList<>(classes.size());
@@ -50,7 +51,7 @@ public class IssueInfosBuilder {
 			}
 			for (ClassNameSplitter clazz : others) {
 				IssueInfo info = new IssueInfo(clazz, modules);
-				if (wantActivities && info.isActivity() || wantFragments && info.isFragment()) {
+				if ((wantActivities && info.isActivity()) || (wantFragments && info.isFragment())) {
 					issues.add(info);
 				}
 			}
@@ -80,12 +81,12 @@ public class IssueInfosBuilder {
 			this.sort = sort;
 		}
 		@Override public int compare(IssueInfo lhs, IssueInfo rhs) {
-			boolean lfav = favored.contains(lhs.getEntryClass().getName());
-			boolean rfav = favored.contains(rhs.getEntryClass().getName());
-			if (lfav && !rfav) {
+			boolean lFav = favored.contains(lhs.getEntryClass().getName());
+			boolean rFav = favored.contains(rhs.getEntryClass().getName());
+			if (lFav && !rFav) {
 				return -1;
 			}
-			if (!lfav && rfav) {
+			if (!lFav && rFav) {
 				return 1;
 			}
 			return sort != null ? sort.compare(lhs, rhs) : 0; // if sort is undefined, everything else is equal

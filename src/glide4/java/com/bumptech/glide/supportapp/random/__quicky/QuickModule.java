@@ -9,7 +9,7 @@ public class QuickModule implements GlideModule {
 	@Override public void applyOptions(Context context, GlideBuilder builder) {
 //		builder.setDiskCache(new ExternalCacheDiskCacheFactory(context));
 	}
-	@Override public void registerComponents(Context context, Registry registry) {
+	@Override public void registerComponents(Context context, Glide glide, Registry registry) {
 //		registry.replace(GlideUrl.class, InputStream.class, new HttpGlideUrlLoader.Factory());
 //		OkHttpClient client = new OkHttpClient.Builder()
 //				.connectTimeout(15, TimeUnit.SECONDS)

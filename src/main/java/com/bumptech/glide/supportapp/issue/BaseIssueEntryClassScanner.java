@@ -7,17 +7,17 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 
-import com.bumptech.glide.module.GlideModule;
-import com.bumptech.glide.supportapp.utils.*;
+import com.bumptech.glide.supportapp.utils.ClassScanner;
+import com.bumptech.glide.supportapp.utils.Utils;
 
-public class IssueEntryClassScanner extends ClassScanner {
+public class BaseIssueEntryClassScanner extends ClassScanner {
+
 	private final Set<String> filterPackages = new HashSet<>();
 	private final List<Class<?>> classes = new ArrayList<>();
-	private final Package appPackage;
 
-	public IssueEntryClassScanner(Context context, Collection<String> subpackages) {
+	public BaseIssueEntryClassScanner(Context context, Collection<String> subpackages) {
 		super(context);
-		this.appPackage = Utils.getAppPackage(context);
+		Package appPackage = Utils.getAppPackage(context);
 		for (String subpackage : subpackages) {
 			this.filterPackages.add(appPackage.getName() + "." + subpackage);
 		}
@@ -33,12 +33,13 @@ public class IssueEntryClassScanner extends ClassScanner {
 	}
 
 	@Override protected boolean isTargetClass(Class<?> clazz) {
-		boolean accessible = !Modifier.isAbstract(clazz.getModifiers()) && Modifier.isPublic(clazz.getModifiers());
-		return accessible && (
-				Fragment.class.isAssignableFrom(clazz)
-						|| GlideModule.class.isAssignableFrom(clazz)
-						|| Activity.class.isAssignableFrom(clazz)
+		return isAccessible(clazz) && (
+				Fragment.class.isAssignableFrom(clazz) || Activity.class.isAssignableFrom(clazz)
 		);
+	}
+
+	protected final boolean isAccessible(Class<?> clazz) {
+		return !Modifier.isAbstract(clazz.getModifiers()) && Modifier.isPublic(clazz.getModifiers());
 	}
 
 	@Override protected void onScanResult(Class<?> clazz) {

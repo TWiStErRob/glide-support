@@ -11,12 +11,14 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.*;
 import com.bumptech.glide.supportapp.*;
+import com.bumptech.glide.supportapp.R;
 import com.bumptech.glide.supportapp.utils.LoggingListener;
 
 /**
  * @see <a href="http://www.imagemagick.org/Usage/anim_basics/">Source Images</a>
  */
 public class TestFragment extends GlideRecyclerFragment {
+
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		listView.setAdapter(new SimpleUrlAdapter(Glide.with(this), Arrays.asList(
@@ -41,8 +43,8 @@ public class TestFragment extends GlideRecyclerFragment {
 				holder.imageView.setBackgroundResource(R.drawable.glide);
 				return holder;
 			}
-			@Override protected void load(Context context, RequestManager glide, String url, ImageView imageView)
-					throws Exception {
+
+			@Override protected void load(Context context, RequestManager glide, String url, ImageView imageView) {
 				glide
 						.load(url)
 						.listener(new LoggingListener<Drawable>())

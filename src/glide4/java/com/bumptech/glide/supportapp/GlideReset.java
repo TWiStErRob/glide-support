@@ -40,7 +40,7 @@ public class GlideReset extends BaseGlideReset {
 
 	@Override protected void registerComponents(List<GlideModule> modules, Glide glide) {
 		for (GlideModule module : modules) {
-			module.registerComponents(applicationContext, glide.getRegistry());
+			module.registerComponents(applicationContext, glide, glide.getRegistry());
 		}
 	}
 

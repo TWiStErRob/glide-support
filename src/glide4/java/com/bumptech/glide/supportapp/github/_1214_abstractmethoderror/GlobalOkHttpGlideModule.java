@@ -4,6 +4,7 @@ import java.io.InputStream;
 
 import android.content.Context;
 
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.Registry;
 import com.bumptech.glide.integration.okhttp3.*;
 import com.bumptech.glide.load.model.GlideUrl;
@@ -11,7 +12,7 @@ import com.bumptech.glide.load.model.GlideUrl;
 import okhttp3.OkHttpClient;
 
 public class GlobalOkHttpGlideModule extends OkHttpGlideModule {
-	@Override public void registerComponents(Context context, Registry registry) {
+	@Override public void registerComponents(Context context, Glide glide, Registry registry) {
 		okhttp3.OkHttpClient client = new OkHttpClient.Builder().build();
 		registry.replace(GlideUrl.class, InputStream.class, new OkHttpUrlLoader.Factory(client));
 	}

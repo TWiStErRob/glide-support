@@ -3,7 +3,7 @@ task wrapper(type: Wrapper) {
 }
 project.afterEvaluate {
 	tasks.withType(JavaCompile) {
-		options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+		options.compilerArgs << "-Xlint:unchecked" << "-Xlint:-deprecation"
 	}
 }
 
@@ -19,6 +19,7 @@ apply plugin: 'com.android.application'
 
 repositories {
 	jcenter()
+	maven { name 'google'; url 'https://maven.google.com' }
 	// https://github.com/bumptech/glide/wiki/Snapshots#building-snapshots-locally
 	if (project.hasProperty('local.repo')) {
 		maven { name 'glide-local'; url project.property('local.repo') }
@@ -29,9 +30,10 @@ repositories {
 }
 
 android {
-	compileSdkVersion 25
-	buildToolsVersion "25.0.3"
+	compileSdkVersion 27
+	buildToolsVersion "27.0.3"
 	defaultConfig {
+		minSdkVersion 14
 		//noinspection OldTargetApi I only have a Samsung Galaxy S5 Duos 6.0 to test on
 		targetSdkVersion 23
 		versionCode 1
@@ -42,13 +44,11 @@ android {
 	sourceSets.main.java.srcDir 'src/main/thirdparty'
 	productFlavors {
 		glide3 {
-			minSdkVersion 10
 			applicationId "com.bumptech.glide.supportapp.v3"
 			sourceSets.glide3.java.srcDir 'src/glide3/thirdparty'
 			sourceSets.glide3.java.srcDir 'src/glide3/hacks'
 		}
 		glide4 {
-			minSdkVersion 14
 			applicationId "com.bumptech.glide.supportapp.v4"
 			sourceSets.glide4.java.srcDir 'src/glide4/thirdparty'
 			sourceSets.glide4.java.srcDir 'src/glide4/hacks'
@@ -87,7 +87,7 @@ dependencies {
 	compile fileTree(dir: 'libs', include: [ '*.jar' ])
 	//compile(name: 'somefile_name', ext: 'aar')
 
-	def supportVersion = '25.3.1'
+	def supportVersion = '27.0.2'
 
 	// Basic Android dependencies
 	compile "com.android.support:support-annotations:${supportVersion}"
@@ -108,13 +108,17 @@ dependencies {
 	compile 'com.facebook.stetho:stetho-urlconnection:1.5.0'
 
 	// Glide v4 (unreleased)
-	glide4Compile 'com.github.bumptech.glide:glide:4.0.0-SNAPSHOT'
-	glide4Compile 'com.github.bumptech.glide:recyclerview-integration:2.0.0-SNAPSHOT@aar'
+	glide4Compile 'com.github.bumptech.glide:glide:4.6.1'
+	glide4Compile 'com.github.bumptech.glide:annotations:4.6.1'
+	glide4Compile 'com.github.bumptech.glide:compiler:4.6.1'
+	glide4AnnotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
+	glide4Compile 'com.github.bumptech.glide:recyclerview-integration:4.6.1@aar'
 	// OkHttp
-	glide4Compile 'com.github.bumptech.glide:okhttp3-integration:2.0.0-SNAPSHOT'
+	glide4Compile 'com.github.bumptech.glide:okhttp3-integration:4.6.1'
 	glide4Compile 'com.squareup.okhttp3:okhttp:3.7.0'
+	glide4Compile 'com.squareup.okhttp3:logging-interceptor:3.7.0'
 	// Volley
-	glide4Compile('com.github.bumptech.glide:volley-integration:2.0.0-SNAPSHOT') {
+	glide4Compile('com.github.bumptech.glide:volley-integration:4.6.1') {
 		// exclude to prevent "depends on one or more Android Libraries but is a jar", but still depend on it below
 		exclude group: 'com.android.volley', module: 'volley'
 	}

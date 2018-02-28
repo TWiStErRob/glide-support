@@ -76,7 +76,7 @@ android {
 
 dependencies {
 	// Immediate SNAPSHOT resolution (in case the built version is too new), default is a day
-	//configurations.glide4Compile.resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+	//configurations.glide4Implementation.resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
 
 	implementation fileTree(dir: 'libs', include: [ '*.jar' ])
 	//implementation(name: 'somefile_name', ext: 'aar')
@@ -103,37 +103,41 @@ dependencies {
 }
 
 dependencies { // Glide v4 (unreleased)
-	glide4Implementation 'com.github.bumptech.glide:glide:4.7.0-SNAPSHOT'
-	glide4Implementation 'com.github.bumptech.glide:annotations:4.7.0-SNAPSHOT'
-	glide4Implementation 'com.github.bumptech.glide:compiler:4.7.0-SNAPSHOT'
-	glide4AnnotationProcessor 'com.github.bumptech.glide:compiler:4.7.0-SNAPSHOT'
-	glide4Implementation 'com.github.bumptech.glide:recyclerview-integration:4.7.0-SNAPSHOT@aar'
+	def glideVersion = '4.7.0-SNAPSHOT'
+	glide4Implementation "com.github.bumptech.glide:glide:${glideVersion}"
+	glide4Implementation "com.github.bumptech.glide:annotations:${glideVersion}"
+	glide4Implementation "com.github.bumptech.glide:compiler:${glideVersion}"
+	glide4AnnotationProcessor "com.github.bumptech.glide:compiler:${glideVersion}"
+	glide4Implementation "com.github.bumptech.glide:recyclerview-integration:${glideVersion}@aar"
 	// OkHttp
-	glide4Implementation 'com.github.bumptech.glide:okhttp3-integration:4.7.0-SNAPSHOT'
+	glide4Implementation "com.github.bumptech.glide:okhttp3-integration:${glideVersion}"
 	glide4Implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 	glide4Implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
 	// Volley
-	glide4Implementation('com.github.bumptech.glide:volley-integration:4.7.0-SNAPSHOT') {
-		// exclude to prevent "depends on one or more Android Libraries but is a jar", but still depend on it below
-		exclude group: 'com.android.volley', module: 'volley'
-	}
+	glide4Implementation "com.github.bumptech.glide:volley-integration:${glideVersion}"
 	glide4Implementation 'com.android.volley:volley:1.0.0'
 }
 
 dependencies { // Glide v3
+	def glideVersion = '3.9.0-SNAPSHOT'
+	def glideIntegrationVersion = '1.6.0-SNAPSHOT'
 	//noinspection GradleDependency latest v3, no need to upgrade to v4
-	glide3Implementation 'com.github.bumptech.glide:glide:3.9.0-SNAPSHOT'
+	glide3Implementation "com.github.bumptech.glide:glide:${glideVersion}"
+
 	// OkHttp
-	glide3Implementation 'com.github.bumptech.glide:okhttp-integration:1.6.0-SNAPSHOT'
+	//noinspection GradleDependency latest v3, no need to upgrade to v4
+	glide3Implementation "com.github.bumptech.glide:okhttp-integration:${glideIntegrationVersion}"
 	glide3Implementation 'com.squareup.okhttp:okhttp:2.7.5'
+
 	// OkHttp3
 	//noinspection GradleDependency latest v3, no need to upgrade to v4
-	glide3Implementation 'com.github.bumptech.glide:okhttp3-integration:1.6.0-SNAPSHOT'
+	glide3Implementation "com.github.bumptech.glide:okhttp3-integration:${glideIntegrationVersion}"
 	glide3Implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 	glide3Implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+
 	// Volley
 	//noinspection GradleDependency latest v3, no need to upgrade to v4
-	glide3Implementation 'com.github.bumptech.glide:volley-integration:1.6.0-SNAPSHOT'
+	glide3Implementation "com.github.bumptech.glide:volley-integration:${glideIntegrationVersion}"
 	glide3Implementation 'com.mcxiaoke.volley:library:1.0.19'
 }
 

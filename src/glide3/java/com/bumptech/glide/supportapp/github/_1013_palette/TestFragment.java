@@ -32,19 +32,19 @@ public class TestFragment extends GlideRecyclerFragment {
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		listView.setAdapter(new PaletteAdapter(getContext(), Glide.with(this), Arrays.asList(
-				"http://hdimagesnew.com/wp-content/uploads/2015/09/Colorful-Flowers-Wallpapers-1.jpg",
-				"http://hdimagesnew.com/wp-content/uploads/2015/09/Colorful-Flowers-Wallpapers-2.jpg",
-				"http://hdimagesnew.com/wp-content/uploads/2015/09/Colorful-Flowers-Wallpapers-3.jpg",
+				"https://placeimg.com/640/480/nature?1",
+				"https://placeimg.com/640/480/nature?2",
+				"https://placeimg.com/640/480/nature?3",
 				null,
-				"http://hdimagesnew.com/wp-content/uploads/2015/09/Colorful-Flowers-Wallpapers-4.jpg",
-				"http://hdimagesnew.com/wp-content/uploads/2015/09/Colorful-Flowers-Wallpapers-5.jpg",
-				"http://hdimagesnew.com/wp-content/uploads/2015/09/Colorful-Flowers-Wallpapers-6.jpg",
+				"https://placeimg.com/640/480/nature?4",
+				"https://placeimg.com/640/480/nature?5",
+				"https://placeimg.com/640/480/nature?6",
 				null,
-				"http://hdimagesnew.com/wp-content/uploads/2015/09/Colorful-Flowers-Wallpapers-7.jpg",
-				"http://hdimagesnew.com/wp-content/uploads/2015/09/Colorful-Flowers-Wallpapers-8.jpg",
-				"http://hdimagesnew.com/wp-content/uploads/2015/09/Colorful-Flowers-Wallpapers-9.jpg",
+				"https://placeimg.com/640/480/nature?7",
+				"https://placeimg.com/640/480/nature?8",
+				"https://placeimg.com/640/480/nature?9",
 				null,
-				"http://hdimagesnew.com/wp-content/uploads/2015/09/Colorful-Flowers-Wallpapers-10.jpg"
+				"https://placeimg.com/640/480/nature?10"
 		)));
 	}
 

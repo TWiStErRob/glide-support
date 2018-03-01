@@ -17,13 +17,13 @@ import com.bumptech.glide.load.model.ModelLoader;
 import com.bumptech.glide.load.model.ModelLoaderFactory;
 import com.bumptech.glide.load.model.MultiModelLoaderFactory;
 import com.bumptech.glide.load.model.stream.BaseGlideUrlLoader;
-import com.bumptech.glide.module.AppGlideModule;
+import com.bumptech.glide.module.LibraryGlideModule;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 
 @com.bumptech.glide.annotation.GlideModule
-public class GlideModule extends AppGlideModule implements com.bumptech.glide.module.GlideModule {
+public class GlideModule extends LibraryGlideModule implements com.bumptech.glide.module.GlideModule {
 
 	@Override public void applyOptions(@NonNull Context context, @NonNull GlideBuilder builder) {
 	}

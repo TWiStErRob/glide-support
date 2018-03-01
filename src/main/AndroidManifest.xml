@@ -21,13 +21,6 @@
 		android:theme="@style/AppTheme"
 		tools:ignore="UnusedAttribute">
 
-		<meta-data android:name="com.bumptech.glide.integration.volley.VolleyGlideModule" tools:node="remove" />
-		<meta-data android:name="com.bumptech.glide.integration.okhttp.OkHttpGlideModule" tools:node="remove" />
-		<meta-data android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule" tools:node="remove" />
-		<meta-data
-			android:name="com.bumptech.glide.supportapp.random.__quicky.QuickModule"
-			android:value="GlideModule" />
-
 		<activity
 			android:name=".issue.IssueListActivity"
 			android:label="@string/launcher_main">

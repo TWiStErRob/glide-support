@@ -14,6 +14,6 @@ public class RawModule implements GlideModule {
 		builder.setDiskCache(new ExternalCacheDiskCacheFactory(context));
 	}
 	@Override public void registerComponents(Context context, Glide glide, Registry registry) {
-		registry.prepend(File.class, Bitmap.class, new RawFileDecoder(Glide.get(context).getBitmapPool()));
+		registry.prepend(File.class, Bitmap.class, new RawFileDecoder(glide.getBitmapPool()));
 	}
 }

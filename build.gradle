@@ -106,13 +106,17 @@ dependencies { // Glide v4 (unreleased)
 	def glideVersion = '4.7.0-SNAPSHOT'
 	glide4Implementation "com.github.bumptech.glide:glide:${glideVersion}"
 	glide4Implementation "com.github.bumptech.glide:annotations:${glideVersion}"
-	glide4Implementation "com.github.bumptech.glide:compiler:${glideVersion}"
 	glide4AnnotationProcessor "com.github.bumptech.glide:compiler:${glideVersion}"
 	glide4Implementation "com.github.bumptech.glide:recyclerview-integration:${glideVersion}@aar"
+
+	// APT for code navigation (DO NOT USE in production, not even for testing)
+	testGlide4CompileOnly "com.github.bumptech.glide:compiler:${glideVersion}"
+
 	// OkHttp
 	glide4Implementation "com.github.bumptech.glide:okhttp3-integration:${glideVersion}"
 	glide4Implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 	glide4Implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+
 	// Volley
 	glide4Implementation "com.github.bumptech.glide:volley-integration:${glideVersion}"
 	glide4Implementation 'com.android.volley:volley:1.0.0'

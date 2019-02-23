@@ -1,158 +1,160 @@
 buildscript {
-	repositories {
-		jcenter()
-		google()
-	}
-	dependencies {
-		classpath 'com.android.tools.build:gradle:3.0.1'
-	}
+    repositories {
+        jcenter()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.3.1'
+    }
 }
 apply plugin: 'com.android.application'
 
 repositories {
-	jcenter()
-	google()
-	// https://github.com/bumptech/glide/wiki/Snapshots#building-snapshots-locally
-	if (project.hasProperty('local.repo')) {
-		maven {name = 'glide-local'; url = project.property('local.repo')}
-	}
-	// https://github.com/bumptech/glide/wiki/Snapshots#obtaining-snapshots
-	maven {name = 'glide-snapshot'; url = 'http://oss.sonatype.org/content/repositories/snapshots'}
-	flatDir name: 'libs', dirs: 'libs'
+    jcenter()
+    google()
+    // https://github.com/bumptech/glide/wiki/Snapshots#building-snapshots-locally
+    if (project.hasProperty('local.repo')) {
+        maven { name = 'glide-local'; url = project.property('local.repo') }
+    }
+    // https://github.com/bumptech/glide/wiki/Snapshots#obtaining-snapshots
+    maven {
+        name = 'glide-snapshot'; url = 'http://oss.sonatype.org/content/repositories/snapshots'
+    }
+    flatDir name: 'libs', dirs: 'libs'
 }
 
 android {
-	compileSdkVersion 27
-	buildToolsVersion "27.0.3"
-	defaultConfig {
-		minSdkVersion 14
-		//noinspection OldTargetApi I only have a Samsung Galaxy S5 Duos 6.0 to test on
-		targetSdkVersion 23
-		versionCode = 1
-		versionName = "0.1"
-		vectorDrawables.useSupportLibrary = true
-		proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-	}
-	sourceSets.main.java.srcDir 'src/main/thirdparty'
-	productFlavors {
-		glide3 {
-			flavorDimensions 'default'
-			applicationId = "com.bumptech.glide.supportapp.v3"
-			sourceSets.glide3.java.srcDir 'src/glide3/thirdparty'
-			sourceSets.glide3.java.srcDir 'src/glide3/hacks'
-		}
-		glide4 {
-			flavorDimensions 'default'
-			applicationId = "com.bumptech.glide.supportapp.v4"
-			sourceSets.glide4.java.srcDir 'src/glide4/thirdparty'
-			sourceSets.glide4.java.srcDir 'src/glide4/hacks'
-		}
-	}
+    compileSdkVersion 27
+    defaultConfig {
+        minSdkVersion 14
+        //noinspection OldTargetApi I only have a Samsung Galaxy S5 Duos 6.0 to test on
+        targetSdkVersion 23
+        versionCode = 1
+        versionName = "0.1"
+        vectorDrawables.useSupportLibrary = true
+        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+    sourceSets.main.java.srcDir 'src/main/thirdparty'
+    productFlavors {
+        glide3 {
+            flavorDimensions 'default'
+            applicationId = "com.bumptech.glide.supportapp.v3"
+            sourceSets.glide3.java.srcDir 'src/glide3/thirdparty'
+            sourceSets.glide3.java.srcDir 'src/glide3/hacks'
+        }
+        glide4 {
+            flavorDimensions 'default'
+            applicationId = "com.bumptech.glide.supportapp.v4"
+            sourceSets.glide4.java.srcDir 'src/glide4/thirdparty'
+            sourceSets.glide4.java.srcDir 'src/glide4/hacks'
+        }
+    }
 
-	variantFilter {variant ->
-		if (variant.buildType.name == buildTypes.release.name) {
-			variant.ignore = true
-		}
-	}
+    variantFilter { variant ->
+        if (variant.buildType.name == buildTypes.release.name) {
+            variant.ignore = true
+        }
+    }
 
-	compileOptions {
-		sourceCompatibility = JavaVersion.VERSION_1_7
-		targetCompatibility = JavaVersion.VERSION_1_7
-	}
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_7
+        targetCompatibility = JavaVersion.VERSION_1_7
+    }
 
-	packagingOptions {
-		exclude 'META-INF/DEPENDENCIES.txt'
-		exclude 'META-INF/NOTICE'
-		exclude 'META-INF/NOTICE.txt'
-		exclude 'META-INF/LICENSE'
-		exclude 'META-INF/LICENSE.txt'
-	}
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+    }
 
-	lintOptions {
-		checkAllWarnings = true
-		abortOnError = false
-	}
+    lintOptions {
+        checkAllWarnings = true
+        abortOnError = false
+    }
 }
 
 dependencies {
-	// Immediate SNAPSHOT resolution (in case the built version is too new), default is a day
-	//configurations.glide4Implementation.resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    // Immediate SNAPSHOT resolution (in case the built version is too new), default is a day
+    //configurations.glide4Implementation.resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
 
-	implementation fileTree(dir: 'libs', include: [ '*.jar' ])
-	//implementation(name: 'somefile_name', ext: 'aar')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //implementation(name: 'somefile_name', ext: 'aar')
 
-	def supportVersion = '27.1.0'
+    def supportVersion = '27.1.0'
 
-	// Basic Android dependencies
-	implementation "com.android.support:support-annotations:${supportVersion}"
-	implementation "com.android.support:support-v4:${supportVersion}"
-	implementation "com.android.support:appcompat-v7:${supportVersion}"
+    // Basic Android dependencies
+    implementation "com.android.support:support-annotations:${supportVersion}"
+    implementation "com.android.support:support-v4:${supportVersion}"
+    implementation "com.android.support:appcompat-v7:${supportVersion}"
 
-	// Extra dependencies for individual issues
-	implementation "com.android.support:cardview-v7:${supportVersion}"
-	implementation "com.android.support:recyclerview-v7:${supportVersion}"
-	implementation "com.android.support:palette-v7:${supportVersion}"
-	implementation "com.android.support:percent:${supportVersion}"
-	implementation "com.android.support:design:${supportVersion}"
-	implementation 'jp.wasabeef:glide-transformations:2.0.2'
-	implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
-	implementation 'com.firebase:firebase-client-android:2.5.2'
-	implementation 'com.facebook.stetho:stetho:1.5.0'
-	implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
-	implementation 'com.facebook.stetho:stetho-urlconnection:1.5.0'
+    // Extra dependencies for individual issues
+    implementation "com.android.support:cardview-v7:${supportVersion}"
+    implementation "com.android.support:recyclerview-v7:${supportVersion}"
+    implementation "com.android.support:palette-v7:${supportVersion}"
+    implementation "com.android.support:percent:${supportVersion}"
+    implementation "com.android.support:design:${supportVersion}"
+    implementation 'jp.wasabeef:glide-transformations:2.0.2'
+    implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
+    implementation 'com.firebase:firebase-client-android:2.5.2'
+    implementation 'com.facebook.stetho:stetho:1.5.0'
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
+    implementation 'com.facebook.stetho:stetho-urlconnection:1.5.0'
 }
 
 dependencies { // Glide v4 (unreleased)
-	def glideVersion = '4.7.0-SNAPSHOT'
-	glide4Implementation "com.github.bumptech.glide:glide:${glideVersion}"
-	glide4Implementation "com.github.bumptech.glide:annotations:${glideVersion}"
-	glide4AnnotationProcessor "com.github.bumptech.glide:compiler:${glideVersion}"
-	glide4Implementation "com.github.bumptech.glide:recyclerview-integration:${glideVersion}@aar"
+//	def glideVersion = '4.7.0-SNAPSHOT'
+    def glideVersion = '4.9.0'
+    glide4Implementation "com.github.bumptech.glide:glide:${glideVersion}"
+    glide4Implementation "com.github.bumptech.glide:annotations:${glideVersion}"
+    glide4AnnotationProcessor "com.github.bumptech.glide:compiler:${glideVersion}"
+    glide4Implementation "com.github.bumptech.glide:recyclerview-integration:${glideVersion}@aar"
 
-	// APT for code navigation (DO NOT USE in production, not even for testing)
-	testGlide4CompileOnly "com.github.bumptech.glide:compiler:${glideVersion}"
+    // APT for code navigation (DO NOT USE in production, not even for testing)
+    testGlide4CompileOnly "com.github.bumptech.glide:compiler:${glideVersion}"
 
-	// OkHttp
-	glide4Implementation "com.github.bumptech.glide:okhttp3-integration:${glideVersion}"
-	glide4Implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-	glide4Implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    // OkHttp
+    glide4Implementation "com.github.bumptech.glide:okhttp3-integration:${glideVersion}"
+    glide4Implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    glide4Implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
 
-	// Volley
-	glide4Implementation "com.github.bumptech.glide:volley-integration:${glideVersion}"
-	glide4Implementation 'com.android.volley:volley:1.0.0'
+    // Volley
+    glide4Implementation "com.github.bumptech.glide:volley-integration:${glideVersion}"
+    glide4Implementation 'com.android.volley:volley:1.1.0'
 }
 
 dependencies { // Glide v3
-	def glideVersion = '3.9.0-SNAPSHOT'
-	def glideIntegrationVersion = '1.6.0-SNAPSHOT'
-	//noinspection GradleDependency latest v3, no need to upgrade to v4
-	glide3Implementation "com.github.bumptech.glide:glide:${glideVersion}"
+    def glideVersion = '3.9.0-SNAPSHOT'
+    def glideIntegrationVersion = '1.6.0-SNAPSHOT'
+    //noinspection GradleDependency latest v3, no need to upgrade to v4
+    glide3Implementation "com.github.bumptech.glide:glide:${glideVersion}"
 
-	// OkHttp
-	//noinspection GradleDependency latest v3, no need to upgrade to v4
-	glide3Implementation "com.github.bumptech.glide:okhttp-integration:${glideIntegrationVersion}"
-	glide3Implementation 'com.squareup.okhttp:okhttp:2.7.5'
+    // OkHttp
+    //noinspection GradleDependency latest v3, no need to upgrade to v4
+    glide3Implementation "com.github.bumptech.glide:okhttp-integration:${glideIntegrationVersion}"
+    glide3Implementation 'com.squareup.okhttp:okhttp:2.7.5'
 
-	// OkHttp3
-	//noinspection GradleDependency latest v3, no need to upgrade to v4
-	glide3Implementation "com.github.bumptech.glide:okhttp3-integration:${glideIntegrationVersion}"
-	glide3Implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-	glide3Implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    // OkHttp3
+    //noinspection GradleDependency latest v3, no need to upgrade to v4
+    glide3Implementation "com.github.bumptech.glide:okhttp3-integration:${glideIntegrationVersion}"
+    glide3Implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    glide3Implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
 
-	// Volley
-	//noinspection GradleDependency latest v3, no need to upgrade to v4
-	glide3Implementation "com.github.bumptech.glide:volley-integration:${glideIntegrationVersion}"
-	glide3Implementation 'com.mcxiaoke.volley:library:1.0.19'
+    // Volley
+    //noinspection GradleDependency latest v3, no need to upgrade to v4
+    glide3Implementation "com.github.bumptech.glide:volley-integration:${glideIntegrationVersion}"
+    glide3Implementation 'com.mcxiaoke.volley:library:1.0.19'
 }
 
 dependencies { // Competition
-	implementation 'com.squareup.picasso:picasso:2.5.2'
-	implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-	//implementation 'com.facebook.fresco:fresco:0.9.0' // not used yet, it has too many dependencies
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    //implementation 'com.facebook.fresco:fresco:0.9.0' // not used yet, it has too many dependencies
 }
 
 project.afterEvaluate {
-	tasks.withType(JavaCompile) {
-		options.compilerArgs << "-Xlint:unchecked" << "-Xlint:-deprecation"
-	}
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xlint:unchecked" << "-Xlint:-deprecation"
+    }
 }

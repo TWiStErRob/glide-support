@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-	<application>
-		<!-- Activities must be declared in the Manifest: http://stackoverflow.com/a/3116857/253468 -->
-		<!--<activity android:name="..." />-->
-	</application>
+
+    <application>
+        <!-- Activities must be declared in the Manifest: http://stackoverflow.com/a/3116857/253468 -->
+        <!--<activity android:name="..." />-->
+
+        <!--Exported : true so that it can be launch from edit configuration (Specified Activity)-->
+        <activity
+            android:name="com.bumptech.glide.supportapp.github._1062_html_gif_spans.TestActivity"
+            android:exported="true" />
+    </application>
 </manifest>

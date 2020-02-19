@@ -4,11 +4,11 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
 public final class NoOpRequestListener<A, B> implements RequestListener<A, B> {
-	private static final RequestListener INSTANCE = new NoOpRequestListener();
+	private static final RequestListener<?, ?> INSTANCE = new NoOpRequestListener<Object, Object>();
 
 	@SuppressWarnings("unchecked")
 	public static <A, B> RequestListener<A, B> get() {
-		return INSTANCE;
+		return (RequestListener<A, B>)INSTANCE;
 	}
 
 	private NoOpRequestListener() {

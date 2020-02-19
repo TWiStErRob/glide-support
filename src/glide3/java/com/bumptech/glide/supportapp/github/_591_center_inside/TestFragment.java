@@ -76,13 +76,13 @@ public class TestFragment extends GlidePagerFragment {
 						     .into(image);
 						break;
 					case PICASSO_DEFAULT_SMALL:
-						Picasso.with(image.getContext())
+						Picasso.get()
 						       .load(SMALL_IMAGE + "PS")
 						       .into(image, new MyCallback(image, position))
 						;
 						break;
 					case PICASSO_DEFAULT_BIG:
-						Picasso.with(image.getContext())
+						Picasso.get()
 						       .load(BIG_IMAGE + "PB")
 						       .into(image, new MyCallback(image, position))
 						;
@@ -90,7 +90,7 @@ public class TestFragment extends GlidePagerFragment {
 					case PICASSO_CENTER_INSIDE_SMALL:
 						// java.lang.IllegalStateException: Center inside requires calling resize with positive width and height.
 						image.setScaleType(ScaleType.CENTER_INSIDE);
-						Picasso.with(image.getContext())
+						Picasso.get()
 						       .load(SMALL_IMAGE + "PSC")
 						       .resize(768, 768)
 						       .centerInside()
@@ -100,7 +100,7 @@ public class TestFragment extends GlidePagerFragment {
 					case PICASSO_CENTER_INSIDE_BIG:
 						// java.lang.IllegalStateException: Center inside requires calling resize with positive width and height.
 						image.setScaleType(ScaleType.CENTER_INSIDE);
-						Picasso.with(image.getContext())
+						Picasso.get()
 						       .load(BIG_IMAGE + "PBC")
 						       .resize(768, 768)
 						       .centerInside()
@@ -129,7 +129,7 @@ public class TestFragment extends GlidePagerFragment {
 					Log.wtf(getPageTitle(position).toString(),
 							"Loaded " + bitmap.getWidth() + "x" + bitmap.getHeight());
 				}
-				@Override public void onError() {
+				@Override public void onError(Exception e) {
 
 				}
 			}

@@ -22,8 +22,8 @@ public class DelayTransformation<T> implements Transformation<T> {
 		return "";
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	public static <T> Transformation<T>[] create(int delay) {
-		return new Transformation[] {new DelayTransformation<>(delay)};
+		return new Transformation[] {new DelayTransformation<Object>(delay)};
 	}
 }

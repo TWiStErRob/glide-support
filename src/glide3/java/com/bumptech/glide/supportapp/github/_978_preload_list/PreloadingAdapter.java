@@ -50,7 +50,7 @@ class PreloadingAdapter extends BaseAdapter implements PreloadModelProvider<Stri
 	@Override public List<String> getPreloadItems(int position) {
 		return Collections.singletonList(getItem(position));
 	}
-	@Override public GenericRequestBuilder getPreloadRequestBuilder(String item) {
+	@Override public GenericRequestBuilder<?, ?, ?, ?> getPreloadRequestBuilder(String item) {
 		return request.load(item);
 	}
 	public OnScrollListener preload(int maxPreload) {

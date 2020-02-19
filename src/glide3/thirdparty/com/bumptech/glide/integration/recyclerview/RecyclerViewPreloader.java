@@ -1,5 +1,6 @@
 package com.bumptech.glide.integration.recyclerview;
 
+import android.annotation.SuppressLint;
 import android.support.v7.widget.RecyclerView;
 
 import com.bumptech.glide.ListPreloader;
@@ -32,6 +33,7 @@ public final class RecyclerViewPreloader<T> extends RecyclerView.OnScrollListene
 	 * @param preloadDimensionProvider Provides the dimensions of images to load.
 	 * @param maxPreload               Maximum number of items to preload.
 	 */
+	@SuppressLint("LambdaLast") // matching ListPreloader constructor order
 	public RecyclerViewPreloader(PreloadModelProvider<T> preloadModelProvider,
 			PreloadSizeProvider<T> preloadDimensionProvider, int maxPreload) {
 

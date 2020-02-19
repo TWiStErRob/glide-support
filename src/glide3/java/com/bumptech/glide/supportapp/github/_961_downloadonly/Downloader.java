@@ -21,7 +21,7 @@ class Downloader extends AsyncTask<String, String, Downloader.Result> {
 
 	@SuppressWarnings("ThrowableResultOfMethodCallIgnored")
 	@Override protected Result doInBackground(String... params) {
-		@SuppressWarnings("unchecked")
+		@SuppressWarnings({"unchecked", "rawtypes"})
 		FutureTarget<File>[] requests = new FutureTarget[params.length];
 		// fire everything into Glide queue
 		for (int i = 0; i < params.length; i++) {

@@ -104,6 +104,7 @@ class HtmlChatAdapter extends BaseAdapter {
 			this.messageView = (TextView)itemView.findViewById(R.id.github_1062_message);
 		}
 
+		@SuppressWarnings("unchecked")
 		void bind(ChatMessage message) {
 			nameView.setText(message.getUserName());
 			Context context = avatarView.getContext();

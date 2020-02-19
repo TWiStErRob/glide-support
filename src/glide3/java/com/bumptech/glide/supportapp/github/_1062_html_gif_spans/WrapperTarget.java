@@ -32,7 +32,7 @@ class WrapperTarget extends SimpleTarget<GlideDrawable> {
 	public WrapperTarget(int size) {
 		super(size, size);
 		setDrawable(null);
-		// set wrapper bounds to fix the size of the view, TextViews don't like ImageSpans changing dimensions 
+		// set wrapper bounds to fix the size of the view, TextViews don't like ImageSpans changing dimensions
 		wrapper.setBounds(0, 0, size, size);
 	}
 
@@ -44,12 +44,12 @@ class WrapperTarget extends SimpleTarget<GlideDrawable> {
 		setDrawable(placeholder);
 	}
 
-	
+
 	@Override public void onLoadFailed(Exception e, Drawable errorDrawable) {
 		setDrawable(errorDrawable);
 	}
 
-	@Override public void onResourceReady(GlideDrawable glideDrawable, GlideAnimation glideAnimation) {
+	@Override public void onResourceReady(GlideDrawable glideDrawable, GlideAnimation<? super GlideDrawable> glideAnimation) {
 		// start GlideDrawable, even if it's not animated (these methods are No-op in that case)
 		glideDrawable.setLoopCount(GlideDrawable.LOOP_FOREVER);
 		glideDrawable.start();

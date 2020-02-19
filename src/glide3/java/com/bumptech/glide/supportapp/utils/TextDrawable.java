@@ -23,7 +23,7 @@ public class TextDrawable extends Drawable {
 
 	@Override
 	public void draw(Canvas canvas) {
-		canvas.drawText(text, canvas.getWidth() / 2, canvas.getHeight() / 2, paint);
+		canvas.drawText(text, getBounds().exactCenterX(), getBounds().exactCenterY(), paint);
 	}
 
 	@Override

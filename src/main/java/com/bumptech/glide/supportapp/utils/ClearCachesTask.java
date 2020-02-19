@@ -26,7 +26,7 @@ public class ClearCachesTask extends AsyncTask<Void, Void, Void> {
 		}
 	}
 
-	@Override protected Void doInBackground(Void[] params) {
+	@Override protected Void doInBackground(Void... params) {
 		if (clearDisk) {
 			Log.i("GLIDE", "Clearing disk cache");
 			Glide.get(context).clearDiskCache();

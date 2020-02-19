@@ -6,6 +6,9 @@
 	<issue id="LogConditional" severity="ignore" />
 	<issue id="ContentDescription" severity="ignore" />
 	<issue id="SelectableText" severity="ignore" />
+	<issue id="UnknownNullness" severity="ignore" />
+	<issue id="SyntheticAccessor" severity="ignore" />
+	<issue id="StaticFieldLeak" severity="ignore" />
 	<issue id="InvalidPackage">
 		<ignore regexp="java\.nio\.file" />
 	</issue>
@@ -32,6 +35,11 @@
 	<issue id="GifUsage">
 		<!-- GIFs are needed to test Glide features and compatibility. -->
 		<ignore path="**/res/drawable*/glide_*.*" />
+	</issue>
+
+	<issue id="NewerVersionAvailable">
+		<!-- Cannot come more forward than 4.9.0, because of AndroidX -->
+		<ignore regexp="A newer version of com.github.bumptech.glide:(.*) than 4\.9\.0 is available: .*" />
 	</issue>
 
 </lint>

@@ -13,7 +13,7 @@ public class BitmapCrossfadeRequestListener<T> implements RequestListener<T, Bit
 	}
 	@Override public boolean onResourceReady(
 			Bitmap resource, T model, Target<Bitmap> target, boolean isFromMemoryCache, boolean isFirstResource) {
-		ImageViewTarget imTarget = (ImageViewTarget)target;
+		ImageViewTarget<?> imTarget = (ImageViewTarget<?>)target;
 		return new DrawableCrossFadeFactory<>()
 				.build(isFromMemoryCache, isFirstResource)
 				.animate(new BitmapDrawable(imTarget.getView().getResources(), resource), imTarget);

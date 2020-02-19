@@ -42,6 +42,7 @@ class FeedEntryViewHolder extends RecyclerView.ViewHolder {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	private void bindAuthor(JSONObject author) throws JSONException {
 		this.title.setText(author.getJSONObject("name").getString("$t"));
 		String url = author.getJSONObject("gphoto$thumbnail").getString("$t");

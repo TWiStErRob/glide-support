@@ -47,7 +47,7 @@ public class TestFragment extends GlideImageFragment {
 		SIZE_REQUEST
 				.load(uri)
 				.into(new SimpleTarget<Size>() {
-					@Override public void onResourceReady(Size resource, GlideAnimation glideAnimation) {
+					@Override public void onResourceReady(Size resource, GlideAnimation<? super Size> glideAnimation) {
 						Log.wtf("SIZE", String.format(Locale.ROOT, "%dx%d", resource.width, resource.height));
 					}
 				})

@@ -30,6 +30,7 @@ public class TestFragment extends GlideImageFragment {
 	 */
 	private GenericRequestBuilder<?, ?, ?, Drawable> lastLoad;
 
+	@SuppressWarnings("unchecked")
 	@Override public void onAttach(Context context) {
 		super.onAttach(context);
 		BitmapPool pool = Glide.get(context).getBitmapPool();

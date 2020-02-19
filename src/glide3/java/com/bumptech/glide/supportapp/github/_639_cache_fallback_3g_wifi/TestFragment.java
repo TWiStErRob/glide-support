@@ -171,7 +171,8 @@ public class TestFragment extends GlideImageFragment {
 						cached.set(false);
 						latch.countDown();
 					}
-					@Override public void onResourceReady(GlideDrawable resource, GlideAnimation glideAnimation) {
+					@Override public void onResourceReady(
+							GlideDrawable resource, GlideAnimation<?super GlideDrawable> glideAnimation) {
 						Log.i("GLIDE", String.format(Locale.ROOT, "onResourceReady(%s, %s)", resource, glideAnimation));
 						cached.set(true);
 						latch.countDown();

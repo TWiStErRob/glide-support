@@ -8,10 +8,5 @@
 		<item name="android:windowBackground">@color/material_background</item>
 	</style>
 
-	<style name="AppTheme.NoActionBar" parent="AppTheme">
-		<item name="windowActionBar">false</item>
-		<item name="windowNoTitle">true</item>
-	</style>
-
 	<color name="material_background">#EEEEEE</color>
 </resources>

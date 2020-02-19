@@ -51,7 +51,7 @@ public class TintTarget extends ImageViewTarget<GlideDrawable> {
 	@Override public void onLoadCleared(Drawable placeholder) {
 		super.onLoadCleared(tint(placeholder, placeholderColor));
 	}
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	@Override public void onResourceReady(GlideDrawable resource, GlideAnimation glideAnimation) {
 		Drawable tinted = tint(resource, resultColor);
 		// animate works with drawable likely because it's accepting Drawables, but declaring GlideDrawable as generics

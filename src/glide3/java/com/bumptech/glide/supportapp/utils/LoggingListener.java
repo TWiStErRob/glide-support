@@ -67,10 +67,10 @@ public class LoggingListener<A, B> implements RequestListener<A, B> {
 	private String getTargetDescription(Target<?> target) {
 		String result;
 		if (target instanceof WrappingTarget) {
-			Target wrapped = ((WrappingTarget)target).getWrappedTarget();
+			Target<?> wrapped = ((WrappingTarget<?>)target).getWrappedTarget();
 			result = String.format(Locale.ROOT, "%s in %s", getTargetDescription(wrapped), target);
 		} else if (target instanceof ViewTarget) {
-			View v = ((ViewTarget)target).getView();
+			View v = ((ViewTarget<?, ?>)target).getView();
 			LayoutParams p = v.getLayoutParams();
 			result = String.format(Locale.ROOT,
 					"%s(params=%dx%d->size=%dx%d)", target, p.width, p.height, v.getWidth(), v.getHeight());

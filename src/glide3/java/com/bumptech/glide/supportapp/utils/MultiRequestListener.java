@@ -5,6 +5,7 @@ import com.bumptech.glide.request.target.Target;
 
 public class MultiRequestListener<A, B> implements RequestListener<A, B> {
 	private final RequestListener<? super A, B>[] listeners;
+	@SuppressWarnings("varargs")
 	@SafeVarargs
 	public MultiRequestListener(RequestListener<? super A, B>... listeners) {
 		this.listeners = listeners;

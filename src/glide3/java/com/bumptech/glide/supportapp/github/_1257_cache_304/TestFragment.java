@@ -13,6 +13,7 @@ import com.bumptech.glide.supportapp.utils.LoggingListener;
 import jp.wasabeef.glide.transformations.GrayscaleTransformation;
 
 public class TestFragment extends GlideImageFragment {
+	@SuppressWarnings("unchecked")
 	@Override protected void load(Context context) throws Exception {
 		String urlString = "http://web.twisterrob.net/glide/1257_changing.php";
 		Glide

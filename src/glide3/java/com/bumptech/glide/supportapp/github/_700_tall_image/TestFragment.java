@@ -3,6 +3,7 @@ package com.bumptech.glide.supportapp.github._700_tall_image;
 import java.io.File;
 import java.util.concurrent.ExecutionException;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.*;
 import android.graphics.BitmapFactory.Options;
@@ -21,7 +22,7 @@ public class TestFragment extends GlideRecyclerFragment {
 		new AsyncTask<Void, Void, Point>() {
 			String url = "http://imgfave-herokuapp-com.global.ssl.fastly.net/image_cache/142083463797243_tall.jpg";
 			//String url = "https://upload.wikimedia.org/wikipedia/commons/a/a3/Berliner_Fernsehturm,_Sicht_vom_Neptunbrunnen_-_Berlin_Mitte.jpg";
-			@Override protected Point doInBackground(Void[] params) {
+			@Override protected Point doInBackground(Void... params) {
 				try {
 					File image = Glide
 							.with(TestFragment.this)
@@ -44,6 +45,7 @@ public class TestFragment extends GlideRecyclerFragment {
 		}.execute();
 	}
 
+	@SuppressLint("ObsoleteSdkInt") // keep it in case someone copies this function for < 14
 	@SuppressWarnings("deprecation")
 	private Point getScreenSize() {
 		WindowManager window = (WindowManager)getActivity().getSystemService(Context.WINDOW_SERVICE);

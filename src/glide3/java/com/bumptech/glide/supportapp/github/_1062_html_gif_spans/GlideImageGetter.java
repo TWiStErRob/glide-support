@@ -16,7 +16,7 @@ import com.bumptech.glide.supportapp.utils.LoggingListener;
 
 final class GlideImageGetter implements Html.ImageGetter, Drawable.Callback {
 	private final GenericRequestBuilder<String, ?, ?, GlideDrawable> glide;
-	private final Collection<Target> imageTargets = new ArrayList<>();
+	private final Collection<Target<?>> imageTargets = new ArrayList<>();
 	private final TextView targetView;
 	private final int size;
 	private final Context context;
@@ -74,7 +74,7 @@ final class GlideImageGetter implements Html.ImageGetter, Drawable.Callback {
 	}
 
 	public void clear() {
-		for (Target target : imageTargets) {
+		for (Target<?> target : imageTargets) {
 			Glide.clear(target);
 		}
 	}

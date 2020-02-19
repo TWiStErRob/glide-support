@@ -19,6 +19,7 @@
 		android:extractNativeLibs="false"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme"
+		android:usesCleartextTraffic="true"
 		tools:ignore="UnusedAttribute">
 
 		<activity

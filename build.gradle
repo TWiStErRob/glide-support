@@ -4,7 +4,7 @@ buildscript {
 		google()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:3.0.1'
+		classpath 'com.android.tools.build:gradle:3.5.3'
 	}
 }
 apply plugin: 'com.android.application'
@@ -22,12 +22,12 @@ repositories {
 }
 
 android {
-	compileSdkVersion 27
-	buildToolsVersion "27.0.3"
+	compileSdkVersion 28
+	buildToolsVersion "29.0.3"
 	defaultConfig {
 		minSdkVersion 14
-		//noinspection OldTargetApi I only have a Samsung Galaxy S5 Duos 6.0 to test on
-		targetSdkVersion 23
+		//noinspection OldTargetApi holding back for when AndroidX is migrated
+		targetSdkVersion 28
 		versionCode = 1
 		versionName = "0.1"
 		vectorDrawables.useSupportLibrary = true
@@ -81,7 +81,7 @@ dependencies {
 	implementation fileTree(dir: 'libs', include: [ '*.jar' ])
 	//implementation(name: 'somefile_name', ext: 'aar')
 
-	def supportVersion = '27.1.0'
+	def supportVersion = '28.0.0'
 
 	// Basic Android dependencies
 	implementation "com.android.support:support-annotations:${supportVersion}"
@@ -94,16 +94,19 @@ dependencies {
 	implementation "com.android.support:palette-v7:${supportVersion}"
 	implementation "com.android.support:percent:${supportVersion}"
 	implementation "com.android.support:design:${supportVersion}"
+	implementation "com.android.support:exifinterface:${supportVersion}"
 	implementation 'jp.wasabeef:glide-transformations:2.0.2'
 	implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
 	implementation 'com.firebase:firebase-client-android:2.5.2'
-	implementation 'com.facebook.stetho:stetho:1.5.0'
-	implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
-	implementation 'com.facebook.stetho:stetho-urlconnection:1.5.0'
+	implementation 'com.facebook.stetho:stetho:1.5.1'
+	implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
+	implementation 'com.facebook.stetho:stetho-urlconnection:1.5.1'
 }
 
-dependencies { // Glide v4 (unreleased)
-	def glideVersion = '4.7.0-SNAPSHOT'
+
+dependencies { // Glide v4 (last non-AndroidX release)
+	def glideVersion = '4.9.0'
+	//noinspection GradleDependency latest v3, no need to upgrade to v4
 	glide4Implementation "com.github.bumptech.glide:glide:${glideVersion}"
 	glide4Implementation "com.github.bumptech.glide:annotations:${glideVersion}"
 	glide4AnnotationProcessor "com.github.bumptech.glide:compiler:${glideVersion}"
@@ -114,12 +117,12 @@ dependencies { // Glide v4 (unreleased)
 
 	// OkHttp
 	glide4Implementation "com.github.bumptech.glide:okhttp3-integration:${glideVersion}"
-	glide4Implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-	glide4Implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+	glide4Implementation 'com.squareup.okhttp3:okhttp:4.4.0'
+	glide4Implementation 'com.squareup.okhttp3:logging-interceptor:4.4.0'
 
 	// Volley
 	glide4Implementation "com.github.bumptech.glide:volley-integration:${glideVersion}"
-	glide4Implementation 'com.android.volley:volley:1.0.0'
+	glide4Implementation 'com.android.volley:volley:1.1.0'
 }
 
 dependencies { // Glide v3
@@ -136,8 +139,8 @@ dependencies { // Glide v3
 	// OkHttp3
 	//noinspection GradleDependency latest v3, no need to upgrade to v4
 	glide3Implementation "com.github.bumptech.glide:okhttp3-integration:${glideIntegrationVersion}"
-	glide3Implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-	glide3Implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+	glide3Implementation 'com.squareup.okhttp3:okhttp:4.4.0'
+	glide3Implementation 'com.squareup.okhttp3:logging-interceptor:4.4.0'
 
 	// Volley
 	//noinspection GradleDependency latest v3, no need to upgrade to v4
@@ -146,13 +149,19 @@ dependencies { // Glide v3
 }
 
 dependencies { // Competition
-	implementation 'com.squareup.picasso:picasso:2.5.2'
+	implementation 'com.squareup.picasso:picasso:2.71828'
 	implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 	//implementation 'com.facebook.fresco:fresco:0.9.0' // not used yet, it has too many dependencies
 }
 
 project.afterEvaluate {
 	tasks.withType(JavaCompile) {
-		options.compilerArgs << "-Xlint:unchecked" << "-Xlint:-deprecation"
+		options.compilerArgs += [
+				"-Werror",
+				"-Xlint:unchecked",
+				"-Xlint:rawtypes",
+				"-Xlint:varargs",
+				"-Xlint:-deprecation"
+		]
 	}
 }

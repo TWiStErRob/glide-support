@@ -59,7 +59,7 @@ public class TestFragment extends GlideRecyclerFragment {
 			return urls.get(position);
 		}
 
-		@Override public SimpleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+		@Override public @NonNull SimpleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 			LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 			View view = inflater.inflate(R.layout.base_item, parent, false);
 
@@ -90,7 +90,7 @@ public class TestFragment extends GlideRecyclerFragment {
 			return Collections.singletonList(getItem(position));
 		}
 
-		@Override public GenericRequestBuilder getPreloadRequestBuilder(String item) {
+		@Override public GenericRequestBuilder<?, ?, ?, ?> getPreloadRequestBuilder(String item) {
 			return builder.load(item);
 		}
 

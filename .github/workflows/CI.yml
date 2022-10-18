@@ -35,3 +35,19 @@ jobs:
           --stacktrace
           --continue
           assemble
+
+      - name: Upload "Reports" artifact.
+        if: success() || failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: Reports
+          path: |
+            ${{ github.workspace }}/build/reports/
+
+      - name: Upload "APKs" artifact.
+        if: success() || failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: APKs
+          path: |
+            ${{ github.workspace }}/build/outputs/apk/

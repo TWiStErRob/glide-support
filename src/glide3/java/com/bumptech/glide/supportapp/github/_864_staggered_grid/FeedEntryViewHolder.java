@@ -9,7 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.*;
 
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.supportapp.R;
 import com.bumptech.glide.supportapp.utils.LoggingListener;
@@ -46,10 +48,11 @@ class FeedEntryViewHolder extends RecyclerView.ViewHolder {
 	private void bindAuthor(JSONObject author) throws JSONException {
 		this.title.setText(author.getJSONObject("name").getString("$t"));
 		String url = author.getJSONObject("gphoto$thumbnail").getString("$t");
+		BitmapPool pool = Glide.get(this.author.getContext()).getBitmapPool();
 		glide
 				.load(url)
 				.asBitmap()
-				.transform(new CropCircleTransformation(this.author.getContext()))
+				.transform(new CropCircleTransformation(pool))
 				.into(this.author);
 	}
 

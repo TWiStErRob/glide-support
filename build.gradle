@@ -99,8 +99,8 @@ dependencies {
 	implementation "com.android.support:percent:${supportVersion}"
 	implementation "com.android.support:design:${supportVersion}"
 	implementation "com.android.support:exifinterface:${supportVersion}"
-	implementation 'jp.wasabeef:glide-transformations:2.0.2'
-	implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
+	implementation 'jp.wasabeef:glide-transformations:1.0.6'
+	implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.0'
 	implementation 'com.firebase:firebase-client-android:2.5.2'
 	implementation 'com.facebook.stetho:stetho:1.5.1'
 	implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'

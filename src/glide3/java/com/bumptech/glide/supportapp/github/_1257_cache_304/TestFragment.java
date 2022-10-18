@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
@@ -16,6 +17,7 @@ public class TestFragment extends GlideImageFragment {
 	@SuppressWarnings("unchecked")
 	@Override protected void load(Context context) throws Exception {
 		String urlString = "http://web.twisterrob.net/glide/1257_changing.php";
+		BitmapPool pool = Glide.get(context).getBitmapPool();
 		Glide
 				.with(this)
 				.load(new ForceLoadGlideUrl(urlString))
@@ -31,7 +33,7 @@ public class TestFragment extends GlideImageFragment {
 						.diskCacheStrategy(DiskCacheStrategy.NONE)
 						.skipMemoryCache(true)
 						.listener(new LoggingListener<GlideUrl, GlideDrawable>("thumbnail"))
-						.bitmapTransform(new FitCenter(context), new GrayscaleTransformation(context))
+						.bitmapTransform(new FitCenter(context), new GrayscaleTransformation(pool))
 						.sizeMultiplier(0.25f)
 				)
 				.into(imageView);

@@ -11,6 +11,7 @@ import android.widget.*;
 import static android.util.TypedValue.*;
 
 import com.bumptech.glide.*;
+import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.supportapp.R;
@@ -108,8 +109,9 @@ class HtmlChatAdapter extends BaseAdapter {
 		void bind(ChatMessage message) {
 			nameView.setText(message.getUserName());
 			Context context = avatarView.getContext();
+			BitmapPool pool = Glide.get(context).getBitmapPool();
 			glide.load(message.getAvatarUrl())
-			     .bitmapTransform(new FitCenter(context), new CropCircleTransformation(context))
+			     .bitmapTransform(new FitCenter(context), new CropCircleTransformation(pool))
 			     .listener(new LoggingListener<String, GlideDrawable>())
 			     .into(avatarView);
 			bindEmoticonMessage(messageView, message.getMessage());

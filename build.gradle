@@ -1,29 +1,29 @@
 buildscript {
 	repositories {
-		jcenter()
+		mavenCentral()
 		google()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:3.5.3'
+		classpath 'com.android.tools.build:gradle:7.3.1'
 	}
 }
 apply plugin: 'com.android.application'
 
 repositories {
-	jcenter()
+	mavenCentral()
 	google()
 	// https://github.com/bumptech/glide/wiki/Snapshots#building-snapshots-locally
 	if (project.hasProperty('local.repo')) {
-		maven {name = 'glide-local'; url = project.property('local.repo')}
+		maven { name = 'glide-local'; url = project.property('local.repo') }
 	}
 	// https://github.com/bumptech/glide/wiki/Snapshots#obtaining-snapshots
-	maven {name = 'glide-snapshot'; url = 'http://oss.sonatype.org/content/repositories/snapshots'}
+	maven { name = 'glide-snapshot'; url = 'https://oss.sonatype.org/content/repositories/snapshots' }
 	flatDir name: 'libs', dirs: 'libs'
 }
 
 android {
 	compileSdkVersion 28
-	buildToolsVersion "29.0.3"
+	namespace = 'com.bumptech.glide.supportapp'
 	defaultConfig {
 		minSdkVersion 14
 		//noinspection OldTargetApi holding back for when AndroidX is migrated
@@ -61,16 +61,20 @@ android {
 	}
 
 	packagingOptions {
-		exclude 'META-INF/DEPENDENCIES.txt'
-		exclude 'META-INF/NOTICE'
-		exclude 'META-INF/NOTICE.txt'
-		exclude 'META-INF/LICENSE'
-		exclude 'META-INF/LICENSE.txt'
+		resources {
+			excludes += [
+					'META-INF/DEPENDENCIES.txt',
+					'META-INF/NOTICE',
+					'META-INF/NOTICE.txt',
+					'META-INF/LICENSE',
+					'META-INF/LICENSE.txt'
+			]
+		}
 	}
 
-	lintOptions {
-		checkAllWarnings = true
-		abortOnError = false
+	lint {
+		checkAllWarnings true
+		abortOnError false
 	}
 }
 
@@ -116,13 +120,15 @@ dependencies { // Glide v4 (last non-AndroidX release)
 	testGlide4CompileOnly "com.github.bumptech.glide:compiler:${glideVersion}"
 
 	// OkHttp
+	//noinspection GradleDependency the warning is for v3 below.
 	glide4Implementation "com.github.bumptech.glide:okhttp3-integration:${glideVersion}"
-	glide4Implementation 'com.squareup.okhttp3:okhttp:4.4.0'
+	glide4Implementation 'com.squareup.okhttp3:okhttp:4.9.3'
 	glide4Implementation 'com.squareup.okhttp3:logging-interceptor:4.4.0'
 
 	// Volley
+	//noinspection GradleDependency the warning is for v3 below.
 	glide4Implementation "com.github.bumptech.glide:volley-integration:${glideVersion}"
-	glide4Implementation 'com.android.volley:volley:1.1.0'
+	glide4Implementation 'com.android.volley:volley:1.2.1'
 }
 
 dependencies { // Glide v3
@@ -139,7 +145,7 @@ dependencies { // Glide v3
 	// OkHttp3
 	//noinspection GradleDependency latest v3, no need to upgrade to v4
 	glide3Implementation "com.github.bumptech.glide:okhttp3-integration:${glideIntegrationVersion}"
-	glide3Implementation 'com.squareup.okhttp3:okhttp:4.4.0'
+	glide3Implementation 'com.squareup.okhttp3:okhttp:4.9.3'
 	glide3Implementation 'com.squareup.okhttp3:logging-interceptor:4.4.0'
 
 	// Volley

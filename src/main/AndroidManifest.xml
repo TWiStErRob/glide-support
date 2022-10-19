@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="com.bumptech.glide.supportapp">
+<manifest
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	>
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -20,29 +21,39 @@
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme"
 		android:usesCleartextTraffic="true"
-		tools:ignore="UnusedAttribute">
+		tools:ignore="UnusedAttribute"
+		>
 
 		<activity
 			android:name=".issue.IssueListActivity"
-			android:label="@string/launcher_main">
+			android:label="@string/launcher_main"
+			android:exported="true"
+			>
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
-			<meta-data android:name="favoredClass"
-			           android:value="com.bumptech.glide.supportapp.random.__quicky.QuickFragment" />
+			<meta-data
+				android:name="favoredClass"
+				android:value="com.bumptech.glide.supportapp.random.__quicky.QuickFragment"
+				/>
 		</activity>
 
 		<activity
 			android:name=".issue.IssueFragmentActivity"
-			android:label="@string/launcher_quick">
+			android:label="@string/launcher_quick"
+			android:exported="true"
+			>
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
-			<meta-data android:name="contentFragment"
-			           android:value="com.bumptech.glide.supportapp.random.__quicky.QuickFragment" />
+			<meta-data
+				android:name="contentFragment"
+				android:value="com.bumptech.glide.supportapp.random.__quicky.QuickFragment"
+				/>
 		</activity>
+
 	</application>
 
 </manifest>

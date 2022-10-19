@@ -1,8 +1,10 @@
 package com.bumptech.glide.supportapp.github._958_animated_placeholder;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.StyleableRes;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -25,7 +27,8 @@ public class TestFragment extends GlideImageFragment {
 	}
 
 	private Drawable getProgressBarIndeterminate() {
-		final int[] attrs = {android.R.attr.indeterminateDrawable};
+		@SuppressLint("ResourceType") // https://stackoverflow.com/a/25345657/253468
+		@StyleableRes final int[] attrs = {android.R.attr.indeterminateDrawable};
 		final int attrs_indeterminateDrawable_index = 0;
 		TypedArray a = getContext().obtainStyledAttributes(android.R.style.Widget_ProgressBar, attrs);
 		try {

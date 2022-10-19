@@ -9,6 +9,9 @@
 	<issue id="UnknownNullness" severity="ignore" />
 	<issue id="SyntheticAccessor" severity="ignore" />
 	<issue id="StaticFieldLeak" severity="ignore" />
+	<issue id="StringFormatTrivial" severity="ignore">
+		<!-- Don't care about performance in this project, but also generally readability wins. -->
+	</issue>
 	<issue id="InvalidPackage">
 		<ignore regexp="java\.nio\.file" />
 	</issue>

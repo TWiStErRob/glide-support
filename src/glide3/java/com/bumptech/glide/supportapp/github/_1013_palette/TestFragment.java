@@ -140,7 +140,6 @@ public class TestFragment extends GlideRecyclerFragment {
 					}
 				}
 			}
-			@TargetApi(VERSION_CODES.HONEYCOMB)
 			@Override public void onLoadCleared(Drawable placeholder) {
 				super.onLoadCleared(placeholder);
 				if (anims != null) {
@@ -158,7 +157,6 @@ public class TestFragment extends GlideRecyclerFragment {
 					holder.titleView.setTextColor(swatch.getTitleTextColor());
 				}
 			}
-			@TargetApi(VERSION_CODES.HONEYCOMB)
 			private void animateColors(Palette palette) {
 				int color = palette.getVibrantColor(defaultColor);
 				Swatch swatch = palette.getMutedSwatch();

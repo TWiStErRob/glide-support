@@ -5,7 +5,6 @@
 	android:height="200dp"
 	android:viewportHeight="100"
 	android:viewportWidth="100"
-	tools:targetApi="honeycomb"
 	tools:ignore="VectorRaster">
 	<group
 		android:name="minutes"

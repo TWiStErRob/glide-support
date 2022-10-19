@@ -25,8 +25,9 @@ android {
 	compileSdkVersion 28
 	namespace = 'com.bumptech.glide.supportapp'
 	defaultConfig {
+		//noinspection MinSdkTooLow holding back for when AndroidX is migrated.
 		minSdkVersion 14
-		//noinspection OldTargetApi holding back for when AndroidX is migrated
+		//noinspection ExpiredTargetSdkVersion holding back for when AndroidX is migrated.
 		targetSdkVersion 28
 		versionCode = 1
 		versionName = "0.1"
@@ -99,8 +100,6 @@ dependencies {
 	implementation "com.android.support:percent:${supportVersion}"
 	implementation "com.android.support:design:${supportVersion}"
 	implementation "com.android.support:exifinterface:${supportVersion}"
-	implementation 'jp.wasabeef:glide-transformations:1.0.6'
-	implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.0'
 	implementation 'com.firebase:firebase-client-android:2.5.2'
 	implementation 'com.facebook.stetho:stetho:1.5.1'
 	implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
@@ -116,7 +115,7 @@ dependencies { // Glide v4 (last non-AndroidX release)
 	glide4AnnotationProcessor "com.github.bumptech.glide:compiler:${glideVersion}"
 	glide4Implementation "com.github.bumptech.glide:recyclerview-integration:${glideVersion}@aar"
 
-	// APT for code navigation (DO NOT USE in production, not even for testing)
+	//noinspection AnnotationProcessorOnCompilePath APT for code navigation (DO NOT USE in production, not even for testing)
 	testGlide4CompileOnly "com.github.bumptech.glide:compiler:${glideVersion}"
 
 	// OkHttp
@@ -152,6 +151,12 @@ dependencies { // Glide v3
 	//noinspection GradleDependency latest v3, no need to upgrade to v4
 	glide3Implementation "com.github.bumptech.glide:volley-integration:${glideIntegrationVersion}"
 	glide3Implementation 'com.mcxiaoke.volley:library:1.0.19'
+
+	// Glide Transformations
+	//noinspection GradleDependency cannot upgrade because not in Maven Central, or needs Glide v4.
+	glide3Implementation 'jp.wasabeef:glide-transformations:1.0.6'
+	//noinspection GradleDependency cannot upgrade because not in Maven Central, or needs Glide v4.
+	glide3Implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.0'
 }
 
 dependencies { // Competition

@@ -165,14 +165,12 @@ dependencies { // Competition
 	//implementation 'com.facebook.fresco:fresco:0.9.0' // not used yet, it has too many dependencies
 }
 
-project.afterEvaluate {
-	tasks.withType(JavaCompile) {
-		options.compilerArgs += [
-				"-Werror",
-				"-Xlint:all",
-				"-Xlint:-auxiliaryclass",
-				"-Xlint:-deprecation",
-				"-Xlint:-processing",
-		]
-	}
+tasks.withType(JavaCompile).configureEach {
+	options.compilerArgs += [
+			"-Werror",
+			"-Xlint:all",
+			"-Xlint:-auxiliaryclass",
+			"-Xlint:-deprecation",
+			"-Xlint:-processing",
+	]
 }

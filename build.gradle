@@ -85,27 +85,7 @@ dependencies {
 
 	implementation fileTree(dir: 'libs', include: [ '*.jar' ])
 	//implementation(name: 'somefile_name', ext: 'aar')
-
-	def supportVersion = '28.0.0'
-
-	// Basic Android dependencies
-	implementation "com.android.support:support-annotations:${supportVersion}"
-	implementation "com.android.support:support-v4:${supportVersion}"
-	implementation "com.android.support:appcompat-v7:${supportVersion}"
-
-	// Extra dependencies for individual issues
-	implementation "com.android.support:cardview-v7:${supportVersion}"
-	implementation "com.android.support:recyclerview-v7:${supportVersion}"
-	implementation "com.android.support:palette-v7:${supportVersion}"
-	implementation "com.android.support:percent:${supportVersion}"
-	implementation "com.android.support:design:${supportVersion}"
-	implementation "com.android.support:exifinterface:${supportVersion}"
-	implementation 'com.firebase:firebase-client-android:2.5.2'
-	implementation 'com.facebook.stetho:stetho:1.5.1'
-	implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
-	implementation 'com.facebook.stetho:stetho-urlconnection:1.5.1'
 }
-
 
 dependencies { // Glide v4 (last non-AndroidX release)
 	def glideVersion = '4.9.0'
@@ -128,6 +108,21 @@ dependencies { // Glide v4 (last non-AndroidX release)
 	//noinspection GradleDependency the warning is for v3 below.
 	glide4Implementation "com.github.bumptech.glide:volley-integration:${glideVersion}"
 	glide4Implementation 'com.android.volley:volley:1.2.1'
+
+	def supportVersion = '28.0.0'
+
+	// Basic Android dependencies
+	glide4Implementation "com.android.support:support-annotations:${supportVersion}"
+	glide4Implementation "com.android.support:support-v4:${supportVersion}"
+	glide4Implementation "com.android.support:appcompat-v7:${supportVersion}"
+	glide4Implementation("com.android.support:exifinterface:${supportVersion}")
+
+	// Extra dependencies for individual issues
+	glide4Implementation "com.android.support:recyclerview-v7:${supportVersion}"
+
+	glide4Implementation("com.facebook.stetho:stetho:1.5.1")
+	glide4Implementation("com.facebook.stetho:stetho-okhttp3:1.5.1")
+	glide4Implementation("com.facebook.stetho:stetho-urlconnection:1.5.1")
 }
 
 dependencies { // Glide v3
@@ -157,11 +152,32 @@ dependencies { // Glide v3
 	glide3Implementation("jp.wasabeef:glide-transformations:1.0.6")
 	//noinspection GradleDependency cannot upgrade because not in Maven Central, or needs Glide v4.
 	glide3Implementation("jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.0")
+
+	def supportVersion = "28.0.0"
+
+	// Basic Android dependencies
+	glide3Implementation("com.android.support:support-annotations:${supportVersion}")
+	glide3Implementation("com.android.support:support-v4:${supportVersion}")
+	glide3Implementation("com.android.support:appcompat-v7:${supportVersion}")
+
+	// Extra dependencies for individual issues
+	glide3Implementation("com.android.support:cardview-v7:${supportVersion}")
+	glide3Implementation("com.android.support:recyclerview-v7:${supportVersion}")
+	glide3Implementation("com.android.support:palette-v7:${supportVersion}")
+	glide3Implementation("com.android.support:percent:${supportVersion}")
+	glide3Implementation("com.android.support:design:${supportVersion}")
+	glide3Implementation("com.android.support:exifinterface:${supportVersion}")
+	glide3Implementation("com.firebase:firebase-client-android:2.5.2")
+
+	glide3Implementation("com.facebook.stetho:stetho:1.5.1")
+	glide3Implementation("com.facebook.stetho:stetho-okhttp3:1.5.1")
+	glide3Implementation("com.facebook.stetho:stetho-urlconnection:1.5.1")
+
+	glide3Implementation("com.squareup.picasso:picasso:2.71828")
 }
 
 dependencies { // Competition
-	implementation 'com.squareup.picasso:picasso:2.71828'
-	implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+	//implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5' // not used yet
 	//implementation 'com.facebook.fresco:fresco:0.9.0' // not used yet, it has too many dependencies
 }
 

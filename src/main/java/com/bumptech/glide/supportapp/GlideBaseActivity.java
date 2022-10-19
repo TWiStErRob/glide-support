@@ -45,6 +45,7 @@ public abstract class GlideBaseActivity extends AppCompatActivity {
 				return true;
 			case 4:
 				Glide.get(this).getBitmapPool().clearMemory();
+				return true;
 			default:
 				return super.onOptionsItemSelected(item);
 		}

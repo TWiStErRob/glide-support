@@ -8,6 +8,8 @@ import android.support.v7.graphics.Palette.*;
 import android.util.Log;
 
 class PaletteSerializer implements Serializable {
+	private static final long serialVersionUID = 2237950322023662639L;
+
 	private /*final*/ Palette palette;
 	public PaletteSerializer(Palette palette) {
 		this.palette = palette;

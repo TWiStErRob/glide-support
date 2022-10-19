@@ -4,26 +4,26 @@ buildscript {
 		google()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:7.3.1'
+		classpath("com.android.tools.build:gradle:7.3.1")
 	}
 }
-apply plugin: 'com.android.application'
+apply plugin: "com.android.application"
 
 repositories {
 	mavenCentral()
 	google()
 	// https://github.com/bumptech/glide/wiki/Snapshots#building-snapshots-locally
-	if (project.hasProperty('local.repo')) {
-		maven { name = 'glide-local'; url = project.property('local.repo') }
+	if (project.hasProperty("local.repo")) {
+		maven { name = "glide-local"; url = project.property("local.repo") }
 	}
 	// https://github.com/bumptech/glide/wiki/Snapshots#obtaining-snapshots
-	maven { name = 'glide-snapshot'; url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+	maven { name = "glide-snapshot"; url = "https://oss.sonatype.org/content/repositories/snapshots" }
 	flatDir name: 'libs', dirs: 'libs'
 }
 
 android {
-	compileSdkVersion 28
-	namespace = 'com.bumptech.glide.supportapp'
+	compileSdkVersion = 28
+	namespace = "com.bumptech.glide.supportapp"
 	defaultConfig {
 		//noinspection MinSdkTooLow holding back for when AndroidX is migrated.
 		minSdkVersion 14
@@ -64,18 +64,18 @@ android {
 	packagingOptions {
 		resources {
 			excludes += [
-					'META-INF/DEPENDENCIES.txt',
-					'META-INF/NOTICE',
-					'META-INF/NOTICE.txt',
-					'META-INF/LICENSE',
-					'META-INF/LICENSE.txt'
+					"META-INF/DEPENDENCIES.txt",
+					"META-INF/NOTICE",
+					"META-INF/NOTICE.txt",
+					"META-INF/LICENSE",
+					"META-INF/LICENSE.txt",
 			]
 		}
 	}
 
 	lint {
-		checkAllWarnings true
-		abortOnError false
+		checkAllWarnings = true
+		abortOnError = false
 	}
 }
 
@@ -154,9 +154,9 @@ dependencies { // Glide v3
 
 	// Glide Transformations
 	//noinspection GradleDependency cannot upgrade because not in Maven Central, or needs Glide v4.
-	glide3Implementation 'jp.wasabeef:glide-transformations:1.0.6'
+	glide3Implementation("jp.wasabeef:glide-transformations:1.0.6")
 	//noinspection GradleDependency cannot upgrade because not in Maven Central, or needs Glide v4.
-	glide3Implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.0'
+	glide3Implementation("jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.0")
 }
 
 dependencies { // Competition
@@ -169,10 +169,10 @@ project.afterEvaluate {
 	tasks.withType(JavaCompile) {
 		options.compilerArgs += [
 				"-Werror",
-				"-Xlint:unchecked",
-				"-Xlint:rawtypes",
-				"-Xlint:varargs",
-				"-Xlint:-deprecation"
+				"-Xlint:all",
+				"-Xlint:-auxiliaryclass",
+				"-Xlint:-deprecation",
+				"-Xlint:-processing",
 		]
 	}
 }

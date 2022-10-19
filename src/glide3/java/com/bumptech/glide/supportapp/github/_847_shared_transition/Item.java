@@ -6,6 +6,8 @@ import java.util.*;
 import android.support.annotation.ColorInt;
 
 class Item implements Serializable {
+	private static final long serialVersionUID = -8313038232621345965L;
+
 	final String color;
 	final String thumbUrl;
 	final String fullUrl;

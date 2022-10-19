@@ -21,6 +21,7 @@ public abstract class GlideBaseImageActivity extends GlideBaseActivity {
 		switch (item.getItemId()) {
 			case 5:
 				Glide.get(this).getArrayPool().clearMemory();
+				return true;
 			default:
 				return super.onOptionsItemSelected(item);
 		}

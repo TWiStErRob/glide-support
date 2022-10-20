@@ -41,6 +41,7 @@ import android.os.ParcelFileDescriptor;
 import android.provider.BaseColumns;
 
 import com.android.vending.expansion.zipfile.ZipResourceFile.ZipEntryRO;
+import com.bumptech.glide.supportapp.utils.PackageManagerCompat;
 
 /**
  * This content provider is an optional part of the library.
@@ -125,10 +126,11 @@ public abstract class APEZProvider extends ContentProvider {
 	    if ( !mInit ) {
             Context ctx = getContext();
             PackageManager pm = ctx.getPackageManager();
-            ProviderInfo pi = pm.resolveContentProvider(getAuthority(), PackageManager.GET_META_DATA);
+            ProviderInfo pi = PackageManagerCompat.resolveContentProvider(
+					pm, getAuthority(), PackageManager.GET_META_DATA);
             PackageInfo packInfo;
             try {
-                packInfo = pm.getPackageInfo(ctx.getPackageName(), 0);
+                packInfo = PackageManagerCompat.getPackageInfo(pm, ctx.getPackageName(), 0);
             } catch (NameNotFoundException e1) {
                 e1.printStackTrace();
                 return false;

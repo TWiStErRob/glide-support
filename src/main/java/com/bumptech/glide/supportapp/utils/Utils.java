@@ -60,7 +60,8 @@ public class Utils {
 	public static String getMetadataValue(Context context, ComponentName name, String metadataName) {
 		String result = null;
 		try {
-			ActivityInfo ai = context.getPackageManager().getActivityInfo(name, PackageManager.GET_META_DATA);
+			ActivityInfo ai = PackageManagerCompat.getActivityInfo(
+					context.getPackageManager(), name, PackageManager.GET_META_DATA);
 			if (ai.metaData != null) {
 				String clazz = ai.metaData.getString(metadataName);
 				if (clazz != null) {

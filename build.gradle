@@ -21,7 +21,7 @@ repositories {
 }
 
 android {
-	compileSdkVersion = 32
+	compileSdkVersion = 33
 	namespace = "com.bumptech.glide.supportapp"
 	defaultConfig {
 		//noinspection MinSdkTooLow holding back for when AndroidX is migrated.

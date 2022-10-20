@@ -40,6 +40,7 @@ public class DetailFragment extends Fragment {
 
 	@Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		@SuppressWarnings("deprecation") // TODO replace with ktx or compat when available.
 		final ListItem model = (ListItem)getArguments().getSerializable("model");
 		Glide
 				.with(this)

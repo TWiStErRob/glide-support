@@ -51,7 +51,9 @@ public abstract class DetailFragment extends Fragment {
 		if (VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
 			LoggingTransitionListener.listenForAll("onCreate", this);
 		}
-		item = (Item)getArguments().getSerializable(ARG_ITEM);
+		@SuppressWarnings("deprecation") // TODO replace with ktx or compat when available.
+		Item argItem = (Item)getArguments().getSerializable(ARG_ITEM);
+		this.item = argItem;
 		setupGlide();
 	}
 

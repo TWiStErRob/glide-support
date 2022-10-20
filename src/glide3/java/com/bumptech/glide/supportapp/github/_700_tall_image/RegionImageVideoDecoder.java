@@ -7,6 +7,7 @@ import android.graphics.BitmapRegionDecoder;
 import android.graphics.Rect;
 
 import com.bumptech.glide.load.model.ImageVideoWrapper;
+import com.bumptech.glide.supportapp.utils.BitmapRegionDecoderCompat;
 
 class RegionImageVideoDecoder extends RegionResourceDecoder<ImageVideoWrapper> {
 	public RegionImageVideoDecoder(Context context, Rect region) {
@@ -17,9 +18,9 @@ class RegionImageVideoDecoder extends RegionResourceDecoder<ImageVideoWrapper> {
 			throws IOException {
 		BitmapRegionDecoder decoder;
 		try {
-			decoder = BitmapRegionDecoder.newInstance(source.getStream(), false);
+			decoder = BitmapRegionDecoderCompat.newInstance(source.getStream());
 		} catch (Exception ex) {
-			decoder = BitmapRegionDecoder.newInstance(source.getFileDescriptor().getFileDescriptor(), false);
+			decoder = BitmapRegionDecoderCompat.newInstance(source.getFileDescriptor());
 		}
 		return decoder;
 	}

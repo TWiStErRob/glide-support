@@ -7,12 +7,14 @@ import android.content.Context;
 import android.graphics.BitmapRegionDecoder;
 import android.graphics.Rect;
 
+import com.bumptech.glide.supportapp.utils.BitmapRegionDecoderCompat;
+
 class RegionFileDecoder extends RegionResourceDecoder<File> {
 	public RegionFileDecoder(Context context, Rect region) {
 		super(context, region);
 	}
 
 	@Override protected BitmapRegionDecoder createDecoder(File source, int width, int height) throws IOException {
-		return BitmapRegionDecoder.newInstance(source.getAbsolutePath(), false);
+		return BitmapRegionDecoderCompat.newInstance(source.getAbsolutePath());
 	}
 }

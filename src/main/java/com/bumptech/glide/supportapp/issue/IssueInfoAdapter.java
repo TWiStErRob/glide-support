@@ -83,7 +83,7 @@ public class IssueInfoAdapter extends RecyclerView.Adapter<TestInfoViewHolder> {
 		private void bind(IssueInfo info) {
 			boundInfo = info;
 			Context context = itemView.getContext();
-			icon.setImageResource(info.getIcon(context));
+			icon.setImageDrawable(info.getIcon(context));
 			String name = info.getName();
 			if (!info.getModules().isEmpty()) {
 				name += " (modules: " + info.getModules().size() + ")";

@@ -32,7 +32,6 @@
 		<!-- Don't want to duplicate files, they're only used for tests, in production DO put them in their corresponding folder. -->
 		<ignore path="**/res/drawable/glide.png" />
 		<ignore path="**/res/drawable/glide_*.*" />
-		<ignore path="**/res/drawable/source_*.*" />
 	</issue>
 
 	<issue id="GifUsage">

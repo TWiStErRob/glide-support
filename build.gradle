@@ -82,6 +82,19 @@ android {
 dependencies {
 	// Immediate SNAPSHOT resolution (in case the built version is too new), default is a day
 	//configurations.glide4Implementation.resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+
+	// Basic Android dependencies
+	implementation("androidx.annotation:annotation:1.5.0")
+	implementation("androidx.legacy:legacy-support-v4:1.0.0")
+	implementation("androidx.appcompat:appcompat:1.0.0")
+
+	// Extra dependencies for individual issues
+	implementation("androidx.cardview:cardview:1.0.0")
+	implementation("androidx.recyclerview:recyclerview:1.0.0")
+	implementation("androidx.palette:palette:1.0.0")
+	implementation("androidx.percentlayout:percentlayout:1.0.0")
+	implementation("com.google.android.material:material:1.0.0")
+	implementation("androidx.exifinterface:exifinterface:1.0.0")
 }
 
 dependencies { // Glide v4
@@ -105,13 +118,6 @@ dependencies { // Glide v4
 	//noinspection GradleDependency the warning is for v3 below.
 	glide4Implementation "com.github.bumptech.glide:volley-integration:${glideVersion}"
 	glide4Implementation 'com.android.volley:volley:1.2.1'
-
-	// Basic Android dependencies
-	glide4Implementation("androidx.annotation:annotation:1.5.0")
-	glide4Implementation("androidx.legacy:legacy-support-v4:1.0.0")
-	glide4Implementation("androidx.appcompat:appcompat:1.0.0")
-	glide4Implementation("androidx.exifinterface:exifinterface:1.0.0")
-	glide4Implementation("androidx.recyclerview:recyclerview:1.0.0")
 
 	glide4Implementation("com.facebook.stetho:stetho:1.5.1")
 	glide4Implementation("com.facebook.stetho:stetho-okhttp3:1.5.1")
@@ -146,18 +152,7 @@ dependencies { // Glide v3
 	//noinspection GradleDependency cannot upgrade because not in Maven Central, or needs Glide v4.
 	glide3Implementation("jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.0")
 
-	// Basic Android dependencies
-	glide3Implementation("androidx.annotation:annotation:1.5.0")
-	glide3Implementation("androidx.legacy:legacy-support-v4:1.0.0")
-	glide3Implementation("androidx.appcompat:appcompat:1.0.0")
-
 	// Extra dependencies for individual issues
-	glide3Implementation("androidx.cardview:cardview:1.0.0")
-	glide3Implementation("androidx.recyclerview:recyclerview:1.0.0")
-	glide3Implementation("androidx.palette:palette:1.0.0")
-	glide3Implementation("androidx.percentlayout:percentlayout:1.0.0")
-	glide3Implementation("com.google.android.material:material:1.0.0")
-	glide3Implementation("androidx.exifinterface:exifinterface:1.0.0")
 	glide3Implementation("com.firebase:firebase-client-android:2.5.2")
 
 	glide3Implementation("com.facebook.stetho:stetho:1.5.1")

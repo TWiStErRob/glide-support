@@ -44,6 +44,7 @@ public class TestFragment extends GlideDualImageFragment {
 		;
 	}
 
+	@SuppressWarnings("deprecation") // example.
 	@Override protected void load2(Context context, ImageView imageView) throws Exception {
 		Glide
 				.with(this)

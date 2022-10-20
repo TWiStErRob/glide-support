@@ -181,7 +181,11 @@ tasks.withType(JavaCompile).configureEach {
 			"-Werror",
 			"-Xlint:all",
 			"-Xlint:-auxiliaryclass",
-			"-Xlint:-deprecation",
 			"-Xlint:-processing",
 	]
+	if (it.name.contains("Glide4")) {
+		options.compilerArgs += [
+				"-Xlint:-deprecation",
+		]
+	}
 }

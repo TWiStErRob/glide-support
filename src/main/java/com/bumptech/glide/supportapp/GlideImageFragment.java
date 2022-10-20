@@ -40,7 +40,7 @@ public abstract class GlideImageFragment extends GlideBaseImageFragment {
 	@Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		super.onCreateOptionsMenu(menu, inflater);
 		MenuItem clearImage = menu.add(0, 9, 0, "Clear image").setIcon(android.R.drawable.ic_menu_close_clear_cancel);
-		MenuItemCompat.setShowAsAction(clearImage, MenuItemCompat.SHOW_AS_ACTION_ALWAYS);
+		clearImage.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 	}
 
 	@Override public boolean onOptionsItemSelected(MenuItem item) {

@@ -15,8 +15,6 @@ import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.supportapp.R;
 import com.bumptech.glide.supportapp.utils.LoggingListener;
 
-import androidx.percentlayout.widget.PercentFrameLayout;
-import androidx.percentlayout.widget.PercentLayoutHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
@@ -71,9 +69,11 @@ class FeedEntryViewHolder extends RecyclerView.ViewHolder {
 	}
 
 	private void fixlayout(float width, float height) {
-		PercentFrameLayout.LayoutParams layoutParams =
-				(PercentFrameLayout.LayoutParams)image.getLayoutParams();
-		PercentLayoutHelper.PercentLayoutInfo info = layoutParams.getPercentLayoutInfo();
+		@SuppressWarnings("deprecation") // legacy code, TODO migrate to ConstraintLayout.
+		androidx.percentlayout.widget.PercentFrameLayout.LayoutParams layoutParams =
+				(androidx.percentlayout.widget.PercentFrameLayout.LayoutParams)image.getLayoutParams();
+		@SuppressWarnings("deprecation") // legacy code, TODO migrate to ConstraintLayout.
+		androidx.percentlayout.widget.PercentLayoutHelper.PercentLayoutInfo info = layoutParams.getPercentLayoutInfo();
 
 		float oldAspect = info.aspectRatio;
 		float newAspect = width / height;

@@ -59,8 +59,8 @@ public abstract class GlideDualImageFragment extends GlideBaseImageFragment {
 				menu.add(0, 9, 0, "Clear image 1").setIcon(android.R.drawable.ic_menu_close_clear_cancel);
 		MenuItem clearImage2 =
 				menu.add(0, 10, 0, "Clear image 2").setIcon(android.R.drawable.ic_menu_close_clear_cancel);
-		MenuItemCompat.setShowAsAction(clearImage1, MenuItemCompat.SHOW_AS_ACTION_ALWAYS);
-		MenuItemCompat.setShowAsAction(clearImage2, MenuItemCompat.SHOW_AS_ACTION_ALWAYS);
+		clearImage1.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		clearImage2.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 	}
 
 	@Override public boolean onOptionsItemSelected(MenuItem item) {

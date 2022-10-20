@@ -35,7 +35,7 @@ public class TestFragment extends GlideRecyclerFragment {
 
 	@Override public void onStart() {
 		super.onStart();
-		getLoaderManager().initLoader(0, null, new LoaderManager.LoaderCallbacks<JSONArray>() {
+		LoaderManager.getInstance(this).initLoader(0, null, new LoaderManager.LoaderCallbacks<JSONArray>() {
 			@Override public Loader<JSONArray> onCreateLoader(int id, Bundle args) {
 				return new PicasaFeedLoader(getContext());
 			}

@@ -28,9 +28,9 @@ public abstract class GlideBaseActivity extends AppCompatActivity {
 		icon.setColorFilter(Color.parseColor(color), Mode.SCREEN);
 		MenuItem item = menu.add(0, id, 0, title).setIcon(icon);
 		if (always) {
-			MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_ALWAYS);
+			item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 		} else {
-			MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
+			item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
 		}
 	}
 	

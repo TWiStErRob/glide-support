@@ -31,7 +31,7 @@ public abstract class GlideImageActivity extends GlideBaseImageActivity {
 	@Override public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 		MenuItem clearImage = menu.add(0, 9, 0, "Clear image").setIcon(android.R.drawable.ic_menu_close_clear_cancel);
-		MenuItemCompat.setShowAsAction(clearImage, MenuItemCompat.SHOW_AS_ACTION_ALWAYS);
+		clearImage.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 		return true;
 	}
 

@@ -135,6 +135,7 @@ public abstract class APEZProvider extends ContentProvider {
             }
             int patchFileVersion;
             int mainFileVersion;
+			@SuppressWarnings("deprecation")
             int appVersionCode = packInfo.versionCode;
             String[] resourceFiles = null;
             if ( null != pi.metaData ) {

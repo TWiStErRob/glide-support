@@ -56,13 +56,17 @@ public class TestFragment extends GlideListFragment {
 			}
 		});
 		listView.setOnItemClickListener(new OnItemClickListener() {
-			@SuppressWarnings("unchecked")
 			@Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				String url = (String)parent.getAdapter().getItem(position);
 				FutureTarget<File> download = Glide
 						.with(view.getContext())
 						.load(url)
 						.downloadOnly(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL);
+				execute(download);
+			}
+
+			@SuppressWarnings({"unchecked", "deprecation"}) // Historical code.
+			private void execute(FutureTarget<File> download) {
 				new Downloader("downloaded.jpg").execute(download);
 			}
 		});

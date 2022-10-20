@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.TimeUnit;
 
-import android.os.AsyncTask;
 import android.util.Log;
 
 import com.bumptech.glide.Glide;
@@ -15,7 +14,8 @@ import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.FutureTarget;
 import com.bumptech.glide.request.target.Target;
 
-class Downloader extends AsyncTask<String, String, Downloader.Result> {
+@SuppressWarnings("deprecation") // Historical code.
+class Downloader extends android.os.AsyncTask<String, String, Downloader.Result> {
 	private static final String TAG = "Downloader";
 
 	private final RequestManager glide;

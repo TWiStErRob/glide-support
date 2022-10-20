@@ -3,7 +3,6 @@ package com.bumptech.glide.supportapp.github._861_preload_loop;
 import java.util.Arrays;
 import java.util.List;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -60,8 +59,9 @@ public class TestFragment extends Fragment {
 		//cycler.setAnimation(new DrawableCrossFadeFactory<>(1000));
 	}
 
+	@SuppressWarnings("deprecation") // Historical code.
 	private void loadDataAsync() {
-		new AsyncTask<Void, Void, List<Item>>() {
+		new android.os.AsyncTask<Void, Void, List<Item>>() {
 			@Override protected List<Item> doInBackground(Void... params) {
 				return Arrays.asList(
 						new Item("http://placehold.it/200x200.gif?text=0"),

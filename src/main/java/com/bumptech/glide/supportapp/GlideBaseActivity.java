@@ -36,7 +36,8 @@ public abstract class GlideBaseActivity extends AppCompatActivity {
 			item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
 		}
 	}
-	
+
+	@SuppressWarnings("deprecation") // Historical code.
 	@Override public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case 1:

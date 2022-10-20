@@ -10,7 +10,6 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build.VERSION_CODES;
 
 import com.bumptech.glide.Glide;
@@ -50,8 +49,10 @@ public class TestFragment extends GlideImageFragment {
 				.into(imageView)
 		;
 	}
+
+	@SuppressWarnings("deprecation") // Historical code.
 	private void upload(Bitmap resource) {
-		new AsyncTask<Bitmap, Void, String>() {
+		new android.os.AsyncTask<Bitmap, Void, String>() {
 			@Override protected String doInBackground(Bitmap... params) {
 				Bitmap bitmap = params[0];
 				String url = "https://aws.amazon.com/........png";

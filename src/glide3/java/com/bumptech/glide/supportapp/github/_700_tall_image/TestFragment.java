@@ -8,7 +8,6 @@ import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Point;
-import android.os.AsyncTask;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
@@ -25,7 +24,12 @@ import androidx.annotation.Nullable;
 public class TestFragment extends GlideRecyclerFragment {
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		new AsyncTask<Void, Void, Point>() {
+		download();
+	}
+
+	@SuppressWarnings("deprecation") // Historical code.
+	private void download() {
+		new android.os.AsyncTask<Void, Void, Point>() {
 			String url = "http://imgfave-herokuapp-com.global.ssl.fastly.net/image_cache/142083463797243_tall.jpg";
 			//String url = "https://upload.wikimedia.org/wikipedia/commons/a/a3/Berliner_Fernsehturm,_Sicht_vom_Neptunbrunnen_-_Berlin_Mitte.jpg";
 			@Override protected Point doInBackground(Void... params) {

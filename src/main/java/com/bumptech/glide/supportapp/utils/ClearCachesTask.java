@@ -1,13 +1,13 @@
 package com.bumptech.glide.supportapp.utils;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
-public class ClearCachesTask extends AsyncTask<Void, Void, Void> {
+@SuppressWarnings("deprecation") // Historical code.
+public class ClearCachesTask extends android.os.AsyncTask<Void, Void, Void> {
 	private final Context context;
 	private final boolean clearMemory;
 	private final boolean clearDisk;

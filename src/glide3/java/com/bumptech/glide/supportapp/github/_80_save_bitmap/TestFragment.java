@@ -7,7 +7,6 @@ import java.io.IOException;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.os.AsyncTask;
 import android.os.Environment;
 
 import com.bumptech.glide.Glide;
@@ -24,9 +23,11 @@ public class TestFragment extends GlideImageFragment {
 				.toBytes(Bitmap.CompressFormat.JPEG, 100)
 				// .centerCrop().override(2000, 2000).atMost() // optional extras
 				.into(new SimpleTarget<byte[]>() {
+
+					@SuppressWarnings("deprecation") // Historical code.
 					@Override public void onResourceReady(final byte[] resource,
 							GlideAnimation<? super byte[]> glideAnimation) {
-						new AsyncTask<Void, Void, Void>() {
+						new android.os.AsyncTask<Void, Void, Void>() {
 							@Override protected Void doInBackground(Void... params) {
 								@SuppressWarnings("deprecation") // Historical code.
 								File sdcard = Environment.getExternalStorageDirectory();

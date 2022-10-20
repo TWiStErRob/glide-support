@@ -8,7 +8,8 @@ import java.util.Enumeration;
 import android.content.Context;
 import android.util.Log;
 
-import dalvik.system.*;
+import dalvik.system.DexFile;
+import dalvik.system.PathClassLoader;
 
 /** @see <a href="http://stackoverflow.com/a/31088067/253468">Find all classes in a package in Android</a> */
 public abstract class ClassScanner {

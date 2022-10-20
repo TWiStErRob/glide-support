@@ -6,15 +6,21 @@ import java.util.concurrent.CountDownLatch;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.*;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.data.*;
-import com.bumptech.glide.load.model.*;
+import com.bumptech.glide.load.data.DataFetcher;
+import com.bumptech.glide.load.data.HttpUrlFetcher;
+import com.bumptech.glide.load.model.GenericLoaderFactory;
+import com.bumptech.glide.load.model.GlideUrl;
+import com.bumptech.glide.load.model.ModelLoader;
+import com.bumptech.glide.load.model.ModelLoaderFactory;
 import com.bumptech.glide.load.model.stream.StreamModelLoader;
 import com.bumptech.glide.supportapp.utils.NetworkDisablingFetcher;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 public class TestActivity extends FragmentActivity implements ListFragment.Callback {
 	@Override protected void onCreate(Bundle savedInstanceState) {

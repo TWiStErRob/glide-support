@@ -1,12 +1,14 @@
 package com.bumptech.glide.supportapp.utils;
 
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.bumptech.glide.request.Request;
 import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.*;
+import com.bumptech.glide.request.target.SizeReadyCallback;
+import com.bumptech.glide.request.target.Target;
+
+import androidx.annotation.NonNull;
 
 /**
  * Usage:

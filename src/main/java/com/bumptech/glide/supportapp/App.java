@@ -2,9 +2,10 @@ package com.bumptech.glide.supportapp;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatDelegate;
 
 import com.bumptech.glide.load.engine.cache.DiskCache;
+
+import androidx.appcompat.app.AppCompatDelegate;
 
 public class App extends android.app.Application {
 	private static App instance;

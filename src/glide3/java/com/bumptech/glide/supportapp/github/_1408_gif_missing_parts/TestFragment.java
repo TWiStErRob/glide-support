@@ -2,10 +2,13 @@ package com.bumptech.glide.supportapp.github._1408_gif_missing_parts;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.supportapp.*;
+import com.bumptech.glide.supportapp.GlideImageFragment;
+import com.bumptech.glide.supportapp.R;
 
 public class TestFragment extends GlideImageFragment {
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

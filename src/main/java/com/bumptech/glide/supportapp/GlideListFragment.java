@@ -4,14 +4,21 @@ import java.util.List;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.*;
+import android.widget.AbsListView;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.bumptech.glide.RequestManager;
+
+import androidx.annotation.Nullable;
 
 public class GlideListFragment extends BaseFragment {
 	protected ListView listView;

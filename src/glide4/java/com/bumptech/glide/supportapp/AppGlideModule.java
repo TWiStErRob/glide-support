@@ -3,13 +3,14 @@ package com.bumptech.glide.supportapp;
 import java.util.Collections;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.Registry;
 import com.bumptech.glide.annotation.Excludes;
 import com.bumptech.glide.annotation.GlideModule;
+
+import androidx.annotation.NonNull;
 
 /**
  * Since there can be only one {@link com.bumptech.glide.module.AppGlideModule} that single one has to be able to

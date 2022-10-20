@@ -1,16 +1,20 @@
 package com.bumptech.glide.supportapp.github._832_raw;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.nio.ByteBuffer;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
-import android.support.annotation.Nullable;
 
-import com.bumptech.glide.load.*;
+import com.bumptech.glide.load.Options;
+import com.bumptech.glide.load.ResourceDecoder;
 import com.bumptech.glide.load.engine.Resource;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapResource;
+
+import androidx.annotation.Nullable;
 
 public class RawFileDecoder implements ResourceDecoder<File, Bitmap> {
 	private final BitmapPool pool;

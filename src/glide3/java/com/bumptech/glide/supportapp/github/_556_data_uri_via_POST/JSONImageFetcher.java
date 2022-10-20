@@ -1,17 +1,25 @@
 package com.bumptech.glide.supportapp.github._556_data_uri_via_POST;
 
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import org.json.*;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.util.Base64;
 
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.data.DataFetcher;
-import com.bumptech.glide.supportapp.*;
+import com.bumptech.glide.supportapp.App;
+import com.bumptech.glide.supportapp.R;
 
 class JSONImageFetcher implements DataFetcher<InputStream> {
 	private final Image model;

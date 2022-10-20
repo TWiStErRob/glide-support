@@ -1,10 +1,11 @@
 package com.bumptech.glide.supportapp.github._961_downloadonly;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.supportapp.BaseFragment;
+
+import androidx.annotation.Nullable;
 
 public class TestFragment extends BaseFragment {
 	private Downloader downloader;

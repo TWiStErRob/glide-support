@@ -3,7 +3,6 @@ package com.bumptech.glide.supportapp.github._1272_palette_cache;
 import java.io.OutputStream;
 
 import android.graphics.Bitmap;
-import android.support.v7.graphics.Palette;
 
 import com.bumptech.glide.load.ResourceEncoder;
 import com.bumptech.glide.load.engine.Resource;
@@ -11,6 +10,8 @@ import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPoolAdapter;
 import com.bumptech.glide.load.resource.SimpleResource;
 import com.bumptech.glide.load.resource.bitmap.BitmapResource;
 import com.bumptech.glide.supportapp.github._1013_palette.PaletteBitmap;
+
+import androidx.palette.graphics.Palette;
 
 public class PaletteBitmapEncoder implements ResourceEncoder<PaletteBitmap> {
 	/** BitmapEncoder doesn't need the real pool, because the resource won't ever be recycled. */

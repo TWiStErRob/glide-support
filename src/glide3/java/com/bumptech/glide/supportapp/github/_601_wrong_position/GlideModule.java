@@ -2,7 +2,8 @@ package com.bumptech.glide.supportapp.github._601_wrong_position;
 
 import android.content.Context;
 
-import com.bumptech.glide.*;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.cache.MemoryCacheAdapter;
 

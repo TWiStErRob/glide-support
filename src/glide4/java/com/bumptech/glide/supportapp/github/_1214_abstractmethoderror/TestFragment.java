@@ -2,9 +2,12 @@ package com.bumptech.glide.supportapp.github._1214_abstractmethoderror;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.*;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 
-import com.bumptech.glide.*;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.supportapp.GlideImageFragment;

@@ -1,6 +1,7 @@
 package com.bumptech.glide.supportapp.github._556_data_uri_from_string;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 
 import android.util.Base64;
 

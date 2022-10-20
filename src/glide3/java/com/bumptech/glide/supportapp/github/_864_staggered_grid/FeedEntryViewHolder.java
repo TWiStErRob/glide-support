@@ -1,13 +1,12 @@
 package com.bumptech.glide.supportapp.github._864_staggered_grid;
 
-import org.json.*;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import android.support.percent.PercentFrameLayout;
-import android.support.percent.PercentLayoutHelper.PercentLayoutInfo;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.*;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
@@ -16,6 +15,9 @@ import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.supportapp.R;
 import com.bumptech.glide.supportapp.utils.LoggingListener;
 
+import androidx.percentlayout.widget.PercentFrameLayout;
+import androidx.percentlayout.widget.PercentLayoutHelper;
+import androidx.recyclerview.widget.RecyclerView;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 class FeedEntryViewHolder extends RecyclerView.ViewHolder {
@@ -71,7 +73,7 @@ class FeedEntryViewHolder extends RecyclerView.ViewHolder {
 	private void fixlayout(float width, float height) {
 		PercentFrameLayout.LayoutParams layoutParams =
 				(PercentFrameLayout.LayoutParams)image.getLayoutParams();
-		PercentLayoutInfo info = layoutParams.getPercentLayoutInfo();
+		PercentLayoutHelper.PercentLayoutInfo info = layoutParams.getPercentLayoutInfo();
 
 		float oldAspect = info.aspectRatio;
 		float newAspect = width / height;

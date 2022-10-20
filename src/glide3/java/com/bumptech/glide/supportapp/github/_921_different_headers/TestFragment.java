@@ -3,7 +3,8 @@ package com.bumptech.glide.supportapp.github._921_different_headers;
 import android.content.Context;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.model.*;
+import com.bumptech.glide.load.model.GlideUrl;
+import com.bumptech.glide.load.model.LazyHeaders;
 import com.bumptech.glide.supportapp.GlideImageFragment;
 
 public class TestFragment extends GlideImageFragment {

@@ -2,7 +2,9 @@ package com.bumptech.glide.supportapp.stackoverflow._32235413_crossfade_placehol
 
 import android.graphics.drawable.Drawable;
 
-import com.bumptech.glide.request.animation.*;
+import com.bumptech.glide.request.animation.DrawableCrossFadeFactory;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.animation.GlideAnimationFactory;
 
 class PaddingAnimationFactory<T extends Drawable> implements GlideAnimationFactory<T> {
 	private final DrawableCrossFadeFactory<T> realFactory;

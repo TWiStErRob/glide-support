@@ -1,11 +1,13 @@
 package com.bumptech.glide.supportapp.github._938_background;
 
 import android.graphics.drawable.Drawable;
-import android.os.Build.*;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.view.View;
 
 import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.*;
+import com.bumptech.glide.request.target.ImageViewTarget;
+import com.bumptech.glide.request.target.ViewTarget;
 
 /** @see ImageViewTarget */
 public abstract class ViewBackgroundTarget<Z> extends ViewTarget<View, Z> implements GlideAnimation.ViewAdapter {

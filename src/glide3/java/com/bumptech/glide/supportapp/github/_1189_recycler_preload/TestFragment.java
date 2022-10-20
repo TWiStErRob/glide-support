@@ -1,20 +1,33 @@
 package com.bumptech.glide.supportapp.github._1189_recycler_preload;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.annotation.*;
-import android.support.v7.widget.RecyclerView;
-import android.util.*;
-import android.view.*;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import com.bumptech.glide.*;
-import com.bumptech.glide.ListPreloader.*;
+import com.bumptech.glide.BitmapRequestBuilder;
+import com.bumptech.glide.GenericRequestBuilder;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.ListPreloader.PreloadModelProvider;
+import com.bumptech.glide.ListPreloader.PreloadSizeProvider;
+import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.integration.recyclerview.RecyclerViewPreloader;
-import com.bumptech.glide.request.target.*;
-import com.bumptech.glide.supportapp.*;
+import com.bumptech.glide.request.target.SizeReadyCallback;
+import com.bumptech.glide.request.target.Target;
+import com.bumptech.glide.supportapp.GlideRecyclerFragment;
+import com.bumptech.glide.supportapp.R;
 import com.bumptech.glide.supportapp.utils.LoggingListener;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class TestFragment extends GlideRecyclerFragment {
 	private static final int LIST_LENGTH = 1000;

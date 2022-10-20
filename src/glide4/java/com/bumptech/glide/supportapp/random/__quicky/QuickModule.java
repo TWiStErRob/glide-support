@@ -1,13 +1,14 @@
 package com.bumptech.glide.supportapp.random.__quicky;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.Registry;
 import com.bumptech.glide.module.GlideModule;
 import com.bumptech.glide.module.LibraryGlideModule;
+
+import androidx.annotation.NonNull;
 
 @com.bumptech.glide.annotation.GlideModule
 public class QuickModule extends LibraryGlideModule implements GlideModule {

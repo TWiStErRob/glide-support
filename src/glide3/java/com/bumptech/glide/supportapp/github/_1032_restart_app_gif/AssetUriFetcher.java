@@ -1,9 +1,11 @@
 package com.bumptech.glide.supportapp.github._1032_restart_app_gif;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.ref.WeakReference;
 
-import android.content.*;
+import android.content.ContentResolver;
+import android.content.Context;
 import android.content.res.AssetManager;
 import android.net.Uri;
 import android.util.Log;

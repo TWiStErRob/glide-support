@@ -5,8 +5,11 @@ import java.io.InputStream;
 import android.content.Context;
 
 import com.bumptech.glide.load.data.DataFetcher;
-import com.bumptech.glide.load.model.*;
-import com.bumptech.glide.load.model.stream.*;
+import com.bumptech.glide.load.model.GenericLoaderFactory;
+import com.bumptech.glide.load.model.ModelLoader;
+import com.bumptech.glide.load.model.ModelLoaderFactory;
+import com.bumptech.glide.load.model.stream.StreamModelLoader;
+import com.bumptech.glide.load.model.stream.StreamStringLoader;
 
 // TODO read https://github.com/bumptech/glide/wiki/Downloading-custom-sizes-with-Glide
 class DataUriModelLoader implements StreamModelLoader<String> {

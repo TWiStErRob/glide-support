@@ -1,12 +1,15 @@
 package com.bumptech.glide.supportapp.github._1272_palette_cache;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 
-import android.support.v7.graphics.Palette;
 import android.util.Log;
 
 import com.bumptech.glide.load.ResourceEncoder;
 import com.bumptech.glide.load.engine.Resource;
+
+import androidx.palette.graphics.Palette;
 
 public class PaletteEncoder implements ResourceEncoder<Palette> {
 	@Override public boolean encode(Resource<Palette> data, OutputStream os) {

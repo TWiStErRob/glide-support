@@ -1,13 +1,19 @@
 package com.bumptech.glide.supportapp.issue;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.DrawableRes;
-import android.support.v4.app.Fragment;
 
 import com.bumptech.glide.module.GlideModule;
+
+import androidx.annotation.DrawableRes;
+import androidx.fragment.app.Fragment;
 
 public class IssueInfo {
 	private static final Map<String, String> SOURCES = new HashMap<>();

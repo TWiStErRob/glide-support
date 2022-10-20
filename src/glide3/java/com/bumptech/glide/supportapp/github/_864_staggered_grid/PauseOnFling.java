@@ -1,13 +1,13 @@
 package com.bumptech.glide.supportapp.github._864_staggered_grid;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.*;
-
-import static android.support.v7.widget.RecyclerView.*;
-
 import com.bumptech.glide.RequestManager;
 
-class PauseOnFling extends OnScrollListener {
+import androidx.recyclerview.widget.RecyclerView;
+
+import static androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_DRAGGING;
+import static androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE;
+
+class PauseOnFling extends RecyclerView.OnScrollListener {
 	private static final int FLING_JUMP_LOW_THRESHOLD = 80;
 	private static final int FLING_JUMP_HIGH_THRESHOLD = 120;
 

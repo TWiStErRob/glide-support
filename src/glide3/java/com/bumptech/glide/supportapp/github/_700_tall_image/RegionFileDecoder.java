@@ -1,9 +1,11 @@
 package com.bumptech.glide.supportapp.github._700_tall_image;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 
 import android.content.Context;
-import android.graphics.*;
+import android.graphics.BitmapRegionDecoder;
+import android.graphics.Rect;
 
 class RegionFileDecoder extends RegionResourceDecoder<File> {
 	public RegionFileDecoder(Context context, Rect region) {

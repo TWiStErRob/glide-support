@@ -8,7 +8,7 @@ import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.supportapp.*;
+import com.bumptech.glide.supportapp.GlideImageFragment;
 import com.bumptech.glide.supportapp.utils.LoggingListener;
 
 import jp.wasabeef.glide.transformations.GrayscaleTransformation;

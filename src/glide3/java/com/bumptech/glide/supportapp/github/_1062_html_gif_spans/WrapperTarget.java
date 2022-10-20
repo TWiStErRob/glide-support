@@ -1,14 +1,17 @@
 package com.bumptech.glide.supportapp.github._1062_html_gif_spans;
 
 import android.annotation.SuppressLint;
-import android.graphics.*;
-import android.graphics.drawable.*;
-import android.support.v7.graphics.drawable.DrawableWrapper;
+import android.graphics.Color;
+import android.graphics.Rect;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+
+import androidx.appcompat.graphics.drawable.DrawableWrapper;
 
 /**
  * Glide target for fixed sized Drawables that require sync return.

@@ -1,6 +1,11 @@
 package com.bumptech.glide.supportapp.github._699_mp3_cover;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 
 import android.media.MediaMetadataRetriever;
 

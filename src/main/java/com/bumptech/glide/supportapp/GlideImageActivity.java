@@ -2,11 +2,15 @@ package com.bumptech.glide.supportapp;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.view.MenuItemCompat;
 import android.util.Log;
-import android.view.*;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.*;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import androidx.core.view.MenuItemCompat;
 
 public abstract class GlideImageActivity extends GlideBaseImageActivity {
 	protected ImageView imageView;

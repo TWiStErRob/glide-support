@@ -1,11 +1,13 @@
 package com.bumptech.glide.supportapp.utils;
 
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
 
 import com.bumptech.glide.request.Request;
 import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.*;
+import com.bumptech.glide.request.target.SizeReadyCallback;
+import com.bumptech.glide.request.target.Target;
+
+import androidx.annotation.NonNull;
 
 public class WrappingTarget<Z> implements Target<Z> {
 	protected final @NonNull Target<? super Z> target;

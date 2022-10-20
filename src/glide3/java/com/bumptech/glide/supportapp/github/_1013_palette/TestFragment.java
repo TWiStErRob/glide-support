@@ -1,32 +1,46 @@
 package com.bumptech.glide.supportapp.github._1013_palette;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
-import android.animation.*;
+import android.animation.AnimatorSet;
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.drawable.*;
-import android.os.Build.*;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
-import android.support.annotation.*;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.graphics.ColorUtils;
-import android.support.v7.graphics.Palette;
-import android.support.v7.graphics.Palette.Swatch;
-import android.support.v7.widget.*;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.*;
-import android.widget.*;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import static android.animation.ObjectAnimator.*;
+import static android.animation.ObjectAnimator.ofObject;
 
-import com.bumptech.glide.*;
+import com.bumptech.glide.BitmapRequestBuilder;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.animation.*;
-import com.bumptech.glide.request.target.*;
-import com.bumptech.glide.supportapp.*;
+import com.bumptech.glide.request.animation.BitmapContainerCrossFadeFactory;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.ImageViewTarget;
+import com.bumptech.glide.request.target.Target;
+import com.bumptech.glide.supportapp.GlideRecyclerFragment;
+import com.bumptech.glide.supportapp.R;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.ColorUtils;
+import androidx.palette.graphics.Palette;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class TestFragment extends GlideRecyclerFragment {
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -48,7 +62,7 @@ public class TestFragment extends GlideRecyclerFragment {
 		)));
 	}
 
-	private static class PaletteAdapter extends Adapter<PaletteAdapter.ImageTextViewHolder> {
+	private static class PaletteAdapter extends RecyclerView.Adapter<PaletteAdapter.ImageTextViewHolder> {
 		private static final int FADE_DURATION = 3000;
 		private final BitmapRequestBuilder<String, PaletteBitmap> glideRequest;
 		private final List<String> data;
@@ -149,7 +163,7 @@ public class TestFragment extends GlideRecyclerFragment {
 			}
 			private void setColors(Palette palette) {
 				int color = palette.getVibrantColor(defaultColor);
-				Swatch swatch = palette.getMutedSwatch();
+				Palette.Swatch swatch = palette.getMutedSwatch();
 
 				holder.card.setCardBackgroundColor(color);
 				if (swatch != null) {
@@ -159,7 +173,7 @@ public class TestFragment extends GlideRecyclerFragment {
 			}
 			private void animateColors(Palette palette) {
 				int color = palette.getVibrantColor(defaultColor);
-				Swatch swatch = palette.getMutedSwatch();
+				Palette.Swatch swatch = palette.getMutedSwatch();
 				anims = new AnimatorSet();
 
 				ValueAnimator cardBG = ValueAnimator.ofObject(new ArgbEvaluator(),

@@ -15,9 +15,6 @@ package com.android.vending.expansion.zipfile;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import android.content.res.AssetFileDescriptor;
-import android.os.ParcelFileDescriptor;
-import android.util.Log;
 
 import java.io.EOFException;
 import java.io.File;
@@ -34,6 +31,10 @@ import java.util.HashMap;
 import java.util.Vector;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
+
+import android.content.res.AssetFileDescriptor;
+import android.os.ParcelFileDescriptor;
+import android.util.Log;
 
 public class ZipResourceFile {
 

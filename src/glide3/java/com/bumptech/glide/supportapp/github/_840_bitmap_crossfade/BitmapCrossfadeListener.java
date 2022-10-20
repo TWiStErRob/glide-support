@@ -2,11 +2,14 @@ package com.bumptech.glide.supportapp.github._840_bitmap_crossfade;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.drawable.*;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 
 import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.animation.*;
+import com.bumptech.glide.request.animation.DrawableCrossFadeFactory;
+import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.animation.GlideAnimation.ViewAdapter;
+import com.bumptech.glide.request.animation.GlideAnimationFactory;
 import com.bumptech.glide.request.target.Target;
 
 public class BitmapCrossfadeListener<ModelType> implements RequestListener<ModelType, Bitmap> {

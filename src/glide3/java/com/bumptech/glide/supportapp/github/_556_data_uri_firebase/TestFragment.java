@@ -4,7 +4,8 @@ import android.content.Context;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.supportapp.*;
+import com.bumptech.glide.supportapp.GlideImageFragment;
+import com.bumptech.glide.supportapp.R;
 
 public class TestFragment extends GlideImageFragment {
 	@Override protected void load(Context context) {
@@ -20,4 +21,3 @@ public class TestFragment extends GlideImageFragment {
 				.into(imageView);
 	}
 }
-

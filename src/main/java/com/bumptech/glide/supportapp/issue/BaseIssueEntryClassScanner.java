@@ -1,14 +1,20 @@
 package com.bumptech.glide.supportapp.issue;
 
 import java.lang.reflect.Modifier;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v4.app.Fragment;
 
 import com.bumptech.glide.supportapp.utils.ClassScanner;
 import com.bumptech.glide.supportapp.utils.Utils;
+
+import androidx.fragment.app.Fragment;
 
 public class BaseIssueEntryClassScanner extends ClassScanner {
 

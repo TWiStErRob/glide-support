@@ -4,7 +4,8 @@ import android.graphics.Color;
 import android.widget.ImageView;
 
 import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.*;
+import com.bumptech.glide.request.target.ImageViewTarget;
+import com.bumptech.glide.request.target.Target;
 
 // Just a rough idea, not really functional
 public class IndicatorListener<T, Z> implements RequestListener<T, Z> {

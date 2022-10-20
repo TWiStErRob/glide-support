@@ -3,13 +3,15 @@ package com.bumptech.glide.supportapp;
 import android.graphics.Color;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.view.*;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.supportapp.utils.ClearCachesTask;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.MenuItemCompat;
 
 public abstract class GlideBaseActivity extends AppCompatActivity {
 	@Override public boolean onCreateOptionsMenu(Menu menu) {

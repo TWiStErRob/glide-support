@@ -1,13 +1,17 @@
 package com.bumptech.glide.supportapp.github._961_downloadonly;
 
 import java.io.File;
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.TimeUnit;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.bumptech.glide.*;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.FutureTarget;
 import com.bumptech.glide.request.target.Target;
 

@@ -1,11 +1,11 @@
 package com.bumptech.glide.supportapp.utils;
 
-import android.support.annotation.Nullable;
-
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+
+import androidx.annotation.Nullable;
 
 public final class NoOpRequestListener<R> implements RequestListener<R> {
 	private static final RequestListener<?> INSTANCE = new NoOpRequestListener<Object>();

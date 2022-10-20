@@ -1,7 +1,10 @@
 package com.bumptech.glide.supportapp.stackoverflow._32235413_crossfade_placeholder;
 
-import android.graphics.drawable.*;
-import android.os.Build.*;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.InsetDrawable;
+import android.graphics.drawable.TransitionDrawable;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.view.View;
 
 import com.bumptech.glide.request.animation.GlideAnimation.ViewAdapter;

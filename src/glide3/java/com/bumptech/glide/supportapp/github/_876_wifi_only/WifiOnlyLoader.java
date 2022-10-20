@@ -2,10 +2,15 @@ package com.bumptech.glide.supportapp.github._876_wifi_only;
 
 import java.io.InputStream;
 
-import android.content.*;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.bumptech.glide.load.data.DataFetcher;
-import com.bumptech.glide.load.model.*;
+import com.bumptech.glide.load.model.GenericLoaderFactory;
+import com.bumptech.glide.load.model.GlideUrl;
+import com.bumptech.glide.load.model.ModelCache;
+import com.bumptech.glide.load.model.ModelLoader;
+import com.bumptech.glide.load.model.ModelLoaderFactory;
 import com.bumptech.glide.load.model.stream.HttpUrlGlideUrlLoader;
 import com.bumptech.glide.supportapp.App;
 import com.bumptech.glide.supportapp.utils.NetworkDisablingFetcher;
@@ -34,4 +39,3 @@ public class WifiOnlyLoader implements ModelLoader<GlideUrl, InputStream> {
 		}
 	}
 }
-

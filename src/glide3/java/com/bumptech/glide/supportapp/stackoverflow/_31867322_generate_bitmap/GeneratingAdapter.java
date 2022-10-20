@@ -1,18 +1,22 @@
 package com.bumptech.glide.supportapp.stackoverflow._31867322_generate_bitmap;
 
 import android.content.Context;
-import android.graphics.*;
-import android.support.v7.widget.RecyclerView;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import static android.view.ViewGroup.LayoutParams.*;
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
-import com.bumptech.glide.*;
-import com.bumptech.glide.load.resource.bitmap.*;
+import com.bumptech.glide.GenericRequestBuilder;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.BitmapEncoder;
+import com.bumptech.glide.load.resource.bitmap.StreamBitmapDecoder;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.load.resource.file.FileToStreamDecoder;
 import com.bumptech.glide.load.resource.transcode.BitmapToGlideDrawableTranscoder;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 class GeneratingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 	// See https://docs.google.com/drawings/d/1KyOJkNd5Dlm8_awZpftzW7KtqgNR6GURvuF6RfB210g/edit?usp=sharing

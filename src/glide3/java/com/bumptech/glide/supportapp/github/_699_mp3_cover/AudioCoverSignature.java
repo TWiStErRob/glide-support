@@ -1,6 +1,7 @@
 package com.bumptech.glide.supportapp.github._699_mp3_cover;
 
-import java.io.*;
+import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.security.MessageDigest;
 

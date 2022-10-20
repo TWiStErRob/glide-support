@@ -1,12 +1,19 @@
 package com.bumptech.glide.supportapp;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.*;
-import android.support.v4.view.ViewPager.LayoutParams;
-import android.view.*;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.*;
+import android.widget.AbsListView;
+import android.widget.ImageView;
+
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.PagerTabStrip;
+import androidx.viewpager.widget.PagerTitleStrip;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager.widget.ViewPager.LayoutParams;
 
 public class GlidePagerFragment extends BaseFragment {
 	protected ViewPager list;
@@ -17,7 +24,8 @@ public class GlidePagerFragment extends BaseFragment {
 		view.setId(android.R.id.list);
 		view.setLayoutParams(new MarginLayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 
-		PagerTitleStrip title = new PagerTabStrip(view.getContext());
+		PagerTitleStrip
+				title = new PagerTabStrip(view.getContext());
 		ViewPager.LayoutParams params = new ViewPager.LayoutParams();
 		params.width = LayoutParams.MATCH_PARENT;
 		params.height = LayoutParams.WRAP_CONTENT;

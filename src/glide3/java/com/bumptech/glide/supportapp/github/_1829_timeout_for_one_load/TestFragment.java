@@ -13,8 +13,10 @@ import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.bumptech.glide.signature.StringSignature;
-import com.bumptech.glide.supportapp.*;
-import com.bumptech.glide.supportapp.utils.*;
+import com.bumptech.glide.supportapp.GlideDualImageFragment;
+import com.bumptech.glide.supportapp.R;
+import com.bumptech.glide.supportapp.utils.LoggingListener;
+import com.bumptech.glide.supportapp.utils.LoggingTarget;
 
 import okhttp3.OkHttpClient;
 

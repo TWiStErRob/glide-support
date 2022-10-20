@@ -3,7 +3,8 @@ package com.bumptech.glide.supportapp.github._700_tall_image;
 import java.io.IOException;
 
 import android.content.Context;
-import android.graphics.*;
+import android.graphics.BitmapRegionDecoder;
+import android.graphics.Rect;
 
 import com.bumptech.glide.load.model.ImageVideoWrapper;
 

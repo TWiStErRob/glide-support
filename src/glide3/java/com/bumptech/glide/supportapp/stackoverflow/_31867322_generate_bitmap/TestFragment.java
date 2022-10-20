@@ -1,13 +1,17 @@
 package com.bumptech.glide.supportapp.stackoverflow._31867322_generate_bitmap;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.*;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 
-import static android.view.ViewGroup.LayoutParams.*;
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class TestFragment extends Fragment {
 	@Override public @Nullable View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -22,4 +26,3 @@ public class TestFragment extends Fragment {
 
 // Here are the imports in case you need it;
 // didn't want to put it in the beginning to keep the relevant code first.
-

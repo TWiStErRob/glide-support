@@ -1,18 +1,26 @@
 package com.bumptech.glide.supportapp.github._861_preload_loop;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
-import android.os.*;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.*;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.*;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.supportapp.R;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 public class TestFragment extends Fragment {
 	private ImageView imageView;

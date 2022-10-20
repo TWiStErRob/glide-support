@@ -1,13 +1,16 @@
 package com.bumptech.glide.supportapp.github._1062_html_gif_spans;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.Html;
 import android.widget.TextView;
 
-import com.bumptech.glide.*;
+import com.bumptech.glide.GenericRequestBuilder;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.load.resource.transcode.BitmapToGlideDrawableTranscoder;

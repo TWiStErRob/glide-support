@@ -1,13 +1,16 @@
 package com.bumptech.glide.supportapp.github._1272_palette_cache;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
 
-import android.support.v7.graphics.Palette;
 import android.util.Log;
 
 import com.bumptech.glide.load.ResourceDecoder;
 import com.bumptech.glide.load.engine.Resource;
 import com.bumptech.glide.load.resource.SimpleResource;
+
+import androidx.palette.graphics.Palette;
 
 public class PaletteDecoder implements ResourceDecoder<InputStream, Palette> {
 	@Override public Resource<Palette> decode(InputStream source, int width, int height) throws IOException {

@@ -2,7 +2,6 @@ package com.bumptech.glide.supportapp.stackoverflow._32235413_crossfade_placehol
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView.ScaleType;
 
@@ -11,8 +10,11 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.DrawableCrossFadeFactory;
-import com.bumptech.glide.supportapp.*;
+import com.bumptech.glide.supportapp.GlideImageFragment;
+import com.bumptech.glide.supportapp.R;
 import com.bumptech.glide.supportapp.utils.DelayBitmapTransformation;
+
+import androidx.annotation.Nullable;
 
 public class TestFragment extends GlideImageFragment {
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

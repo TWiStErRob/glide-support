@@ -4,7 +4,12 @@ import java.io.InputStream;
 
 import android.content.Context;
 
-import com.bumptech.glide.load.model.*;
+import com.bumptech.glide.load.model.GenericLoaderFactory;
+import com.bumptech.glide.load.model.Headers;
+import com.bumptech.glide.load.model.LazyHeaderFactory;
+import com.bumptech.glide.load.model.LazyHeaders;
+import com.bumptech.glide.load.model.ModelLoader;
+import com.bumptech.glide.load.model.ModelLoaderFactory;
 import com.bumptech.glide.load.model.stream.BaseGlideUrlLoader;
 
 public class AuthModel extends UrlModel {
@@ -53,4 +58,3 @@ class AuthLoader extends BaseGlideUrlLoader<AuthModel> {
 		}
 	}
 }
-

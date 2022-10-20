@@ -1,24 +1,33 @@
 package com.bumptech.glide.supportapp.github._847_shared_transition;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
-import android.annotation.*;
-import android.os.*;
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Build.VERSION_CODES;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.*;
-import android.transition.*;
-import android.view.*;
+import android.os.Bundle;
+import android.transition.TransitionInflater;
+import android.transition.TransitionSet;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.*;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.supportapp.*;
-import com.bumptech.glide.supportapp.utils.*;
+import com.bumptech.glide.supportapp.GlideRecyclerFragment;
+import com.bumptech.glide.supportapp.R;
+import com.bumptech.glide.supportapp.utils.LoggingListener;
+import com.bumptech.glide.supportapp.utils.LoggingTransitionListener;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class TestFragment extends GlideRecyclerFragment {
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -62,7 +71,7 @@ public class TestFragment extends GlideRecyclerFragment {
 		return set;
 	}
 
-	class ItemAdapter extends Adapter<ItemAdapter.ItemViewHolder> {
+	class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
 		List<Item> items = Arrays.asList(
 				new Item(0xffff0000),
 				new Item(0xff00ff00),
@@ -82,7 +91,7 @@ public class TestFragment extends GlideRecyclerFragment {
 			return items.size();
 		}
 
-		class ItemViewHolder extends ViewHolder {
+		class ItemViewHolder extends RecyclerView.ViewHolder {
 			public final ImageView image;
 			public final TextView text;
 			public Item item;
@@ -116,4 +125,3 @@ public class TestFragment extends GlideRecyclerFragment {
 		}
 	}
 }
-

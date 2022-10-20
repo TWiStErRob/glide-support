@@ -7,7 +7,10 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.Resource;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.load.resource.gifbitmap.GifBitmapWrapper;
-import com.bumptech.glide.load.resource.transcode.*;
+import com.bumptech.glide.load.resource.transcode.GifBitmapWrapperDrawableTranscoder;
+import com.bumptech.glide.load.resource.transcode.GlideBitmapDrawableTranscoder;
+import com.bumptech.glide.load.resource.transcode.ResourceTranscoder;
+import com.bumptech.glide.load.resource.transcode.UnitTranscoder;
 
 public class DelayTranscoder<Z, R> implements ResourceTranscoder<Z, R> {
 	private final int delay;

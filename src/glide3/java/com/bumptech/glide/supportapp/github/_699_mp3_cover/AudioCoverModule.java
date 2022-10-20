@@ -4,7 +4,8 @@ import java.io.InputStream;
 
 import android.content.Context;
 
-import com.bumptech.glide.*;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.load.engine.cache.MemoryCacheAdapter;
 import com.bumptech.glide.module.GlideModule;
 

@@ -2,7 +2,8 @@ package com.bumptech.glide.supportapp.utils;
 
 import java.io.File;
 
-import android.os.*;
+import android.os.AsyncTask;
+import android.os.Environment;
 import android.util.Log;
 
 import com.bumptech.glide.request.FutureTarget;

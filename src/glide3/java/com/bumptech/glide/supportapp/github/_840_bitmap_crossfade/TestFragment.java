@@ -3,11 +3,11 @@ package com.bumptech.glide.supportapp.github._840_bitmap_crossfade;
 import android.content.Context;
 import android.graphics.Bitmap;
 
-import com.bumptech.glide.*;
+import com.bumptech.glide.BitmapRequestBuilder;
+import com.bumptech.glide.Github840_GlideRequestBuilderAccessor;
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.supportapp.GlideImageFragment;
-
-import static com.bumptech.glide.supportapp.github._840_bitmap_crossfade.BitmapCrossfadeListener.*;
 
 /** @see com.bumptech.glide.supportapp.github._605_bitmap_crossfade.TestFragment */
 public class TestFragment extends GlideImageFragment {
@@ -38,11 +38,14 @@ public class TestFragment extends GlideImageFragment {
 	}
 
 	private void loadHacky(BitmapRequestBuilder<String, Bitmap> request) {
-		Github840_GlideRequestBuilderAccessor.animate(request, CROSS_FADE_FACTORY);
+		Github840_GlideRequestBuilderAccessor
+				.animate(request, BitmapCrossfadeListener.CROSS_FADE_FACTORY);
 		request.into(imageView);
 	}
 
 	private void loadHackyAlt(BitmapRequestBuilder<String, Bitmap> request) {
-		Github840_GlideRequestBuilderAccessor.animateAlt(request, CROSS_FADE_FACTORY).into(imageView);
+		Github840_GlideRequestBuilderAccessor
+				.animateAlt(request, BitmapCrossfadeListener.CROSS_FADE_FACTORY)
+				.into(imageView);
 	}
 }

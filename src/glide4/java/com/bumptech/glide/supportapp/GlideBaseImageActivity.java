@@ -1,10 +1,10 @@
 package com.bumptech.glide.supportapp;
 
-import android.view.*;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.supportapp.utils.ClearCachesTask;
 
 public abstract class GlideBaseImageActivity extends GlideBaseActivity {
 	protected void clear(ImageView imageView) {

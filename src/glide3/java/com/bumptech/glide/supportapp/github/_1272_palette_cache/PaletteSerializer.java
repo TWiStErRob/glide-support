@@ -1,11 +1,18 @@
 package com.bumptech.glide.supportapp.github._1272_palette_cache;
 
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import android.support.v7.graphics.*;
-import android.support.v7.graphics.Palette.*;
 import android.util.Log;
+
+import androidx.palette.graphics.Palette;
+import androidx.palette.graphics.Target;
 
 class PaletteSerializer implements Serializable {
 	private static final long serialVersionUID = 2237950322023662639L;
@@ -19,9 +26,9 @@ class PaletteSerializer implements Serializable {
 	}
 
 	private void writeObject(ObjectOutputStream out) throws IOException {
-		List<Swatch> swatches = palette.getSwatches();
+		List<Palette.Swatch> swatches = palette.getSwatches();
 		out.writeInt(swatches.size());
-		for (Swatch swatch : swatches) {
+		for (Palette.Swatch swatch : swatches) {
 			out.writeInt(swatch.getRgb());
 			out.writeInt(swatch.getPopulation());
 		}
@@ -44,13 +51,13 @@ class PaletteSerializer implements Serializable {
 
 	private void readObject(ObjectInputStream in) throws IOException {
 		int swatchCount = in.readInt();
-		List<Swatch> swatches = new ArrayList<>(swatchCount);
+		List<Palette.Swatch> swatches = new ArrayList<>(swatchCount);
 		for (int i = 0; i < swatchCount; i++) {
 			int color = in.readInt();
 			int population = in.readInt();
-			swatches.add(new Swatch(color, population));
+			swatches.add(new Palette.Swatch(color, population));
 		}
-		Builder builder = new Builder(swatches);
+		Palette.Builder builder = new Palette.Builder(swatches);
 		int targets = in.readInt();
 		for (int i = 0; i < targets; i++) {
 			Target target = new Target.Builder()
@@ -119,7 +126,7 @@ class PaletteSerializer implements Serializable {
 		Log.i("PALETTE", "LightMuted: " + palette.getLightMutedSwatch());
 		Log.i("PALETTE", "DarkMuted: " + palette.getDarkMutedSwatch());
 
-		List<Swatch> swatches = palette.getSwatches();
+		List<Palette.Swatch> swatches = palette.getSwatches();
 		for (int i = 0; i < swatches.size(); i++) {
 			Log.i("PALETTE", i + " Swatch: " + swatches.get(i));
 		}

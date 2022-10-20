@@ -4,16 +4,18 @@ import org.json.JSONArray;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.LoaderManager.LoaderCallbacks;
-import android.support.v4.content.Loader;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.TypedValue;
 import android.view.View;
 
-import com.bumptech.glide.*;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.supportapp.GlideRecyclerFragment;
 import com.bumptech.glide.supportapp.utils.SpacingItemDecoration;
+
+import androidx.annotation.Nullable;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 public class TestFragment extends GlideRecyclerFragment {
 	private RequestManager glide;
@@ -33,7 +35,7 @@ public class TestFragment extends GlideRecyclerFragment {
 
 	@Override public void onStart() {
 		super.onStart();
-		getLoaderManager().initLoader(0, null, new LoaderCallbacks<JSONArray>() {
+		getLoaderManager().initLoader(0, null, new LoaderManager.LoaderCallbacks<JSONArray>() {
 			@Override public Loader<JSONArray> onCreateLoader(int id, Bundle args) {
 				return new PicasaFeedLoader(getContext());
 			}
@@ -46,4 +48,3 @@ public class TestFragment extends GlideRecyclerFragment {
 		});
 	}
 }
-

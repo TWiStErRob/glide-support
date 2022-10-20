@@ -1,12 +1,17 @@
 package com.bumptech.glide.supportapp.stackoverflow._31867322_generate_bitmap;
 
 import android.content.Context;
-import android.graphics.*;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.view.Gravity;
 import android.widget.TextView;
 
-import static android.util.TypedValue.*;
-import static android.view.View.MeasureSpec.*;
+import static android.util.TypedValue.COMPLEX_UNIT_SP;
+import static android.util.TypedValue.applyDimension;
+import static android.view.View.MeasureSpec.EXACTLY;
+import static android.view.View.MeasureSpec.makeMeasureSpec;
 
 class Generators {
 	/** OP's original implementation fixed for real centering */

@@ -62,6 +62,7 @@ android {
 	}
 
 	packagingOptions {
+		jniLibs.useLegacyPackaging = false
 		resources {
 			excludes += [
 					"META-INF/DEPENDENCIES.txt",
@@ -87,7 +88,7 @@ dependencies {
 	//implementation(name: 'somefile_name', ext: 'aar')
 }
 
-dependencies { // Glide v4 (last non-AndroidX release)
+dependencies { // Glide v4
 	def glideVersion = '4.9.0'
 	//noinspection GradleDependency latest v3, no need to upgrade to v4
 	glide4Implementation "com.github.bumptech.glide:glide:${glideVersion}"
@@ -109,16 +110,12 @@ dependencies { // Glide v4 (last non-AndroidX release)
 	glide4Implementation "com.github.bumptech.glide:volley-integration:${glideVersion}"
 	glide4Implementation 'com.android.volley:volley:1.2.1'
 
-	def supportVersion = '28.0.0'
-
 	// Basic Android dependencies
-	glide4Implementation "com.android.support:support-annotations:${supportVersion}"
-	glide4Implementation "com.android.support:support-v4:${supportVersion}"
-	glide4Implementation "com.android.support:appcompat-v7:${supportVersion}"
-	glide4Implementation("com.android.support:exifinterface:${supportVersion}")
-
-	// Extra dependencies for individual issues
-	glide4Implementation "com.android.support:recyclerview-v7:${supportVersion}"
+	glide4Implementation("androidx.annotation:annotation:1.5.0")
+	glide4Implementation("androidx.legacy:legacy-support-v4:1.0.0")
+	glide4Implementation("androidx.appcompat:appcompat:1.0.0")
+	glide4Implementation("androidx.exifinterface:exifinterface:1.0.0")
+	glide4Implementation("androidx.recyclerview:recyclerview:1.0.0")
 
 	glide4Implementation("com.facebook.stetho:stetho:1.5.1")
 	glide4Implementation("com.facebook.stetho:stetho-okhttp3:1.5.1")
@@ -153,20 +150,18 @@ dependencies { // Glide v3
 	//noinspection GradleDependency cannot upgrade because not in Maven Central, or needs Glide v4.
 	glide3Implementation("jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.0")
 
-	def supportVersion = "28.0.0"
-
 	// Basic Android dependencies
-	glide3Implementation("com.android.support:support-annotations:${supportVersion}")
-	glide3Implementation("com.android.support:support-v4:${supportVersion}")
-	glide3Implementation("com.android.support:appcompat-v7:${supportVersion}")
+	glide3Implementation("androidx.annotation:annotation:1.5.0")
+	glide3Implementation("androidx.legacy:legacy-support-v4:1.0.0")
+	glide3Implementation("androidx.appcompat:appcompat:1.0.0")
 
 	// Extra dependencies for individual issues
-	glide3Implementation("com.android.support:cardview-v7:${supportVersion}")
-	glide3Implementation("com.android.support:recyclerview-v7:${supportVersion}")
-	glide3Implementation("com.android.support:palette-v7:${supportVersion}")
-	glide3Implementation("com.android.support:percent:${supportVersion}")
-	glide3Implementation("com.android.support:design:${supportVersion}")
-	glide3Implementation("com.android.support:exifinterface:${supportVersion}")
+	glide3Implementation("androidx.cardview:cardview:1.0.0")
+	glide3Implementation("androidx.recyclerview:recyclerview:1.0.0")
+	glide3Implementation("androidx.palette:palette:1.0.0")
+	glide3Implementation("androidx.percentlayout:percentlayout:1.0.0")
+	glide3Implementation("com.google.android.material:material:1.0.0")
+	glide3Implementation("androidx.exifinterface:exifinterface:1.0.0")
 	glide3Implementation("com.firebase:firebase-client-android:2.5.2")
 
 	glide3Implementation("com.facebook.stetho:stetho:1.5.1")

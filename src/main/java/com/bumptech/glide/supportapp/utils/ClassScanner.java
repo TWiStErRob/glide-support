@@ -43,6 +43,7 @@ public abstract class ClassScanner {
 			Log.i(TAG, "Scanning APK: " + apk.getAbsolutePath());
 			@SuppressWarnings("deprecation") // This is the only way I know.
 			dalvik.system.DexFile dexFile = new dalvik.system.DexFile(apk);
+			@SuppressWarnings("deprecation") // This is the only way I know.
 			Enumeration<String> classNames = dexFile.entries();
 			while (classNames.hasMoreElements()) {
 				String className = classNames.nextElement();

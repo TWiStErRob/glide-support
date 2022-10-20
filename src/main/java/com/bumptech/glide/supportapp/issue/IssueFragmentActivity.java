@@ -26,7 +26,9 @@ public class IssueFragmentActivity extends GlideBaseActivity {
 		String fragmentClass = getFragmentClass();
 		if (savedInstanceState == null) {
 			Log.d("SYS", "Creating fragment: " + fragmentClass);
-			Fragment fragment = Fragment.instantiate(this, fragmentClass);
+			Fragment fragment = getSupportFragmentManager()
+					.getFragmentFactory()
+			        .instantiate(getClassLoader(), fragmentClass);
 			getSupportFragmentManager()
 					.beginTransaction()
 					.add(android.R.id.content, fragment)

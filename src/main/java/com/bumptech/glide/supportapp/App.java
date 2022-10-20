@@ -1,11 +1,11 @@
 package com.bumptech.glide.supportapp;
 
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
 import com.bumptech.glide.load.engine.cache.DiskCache;
 
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.preference.PreferenceManager;
 
 public class App extends android.app.Application {
 	private static App instance;

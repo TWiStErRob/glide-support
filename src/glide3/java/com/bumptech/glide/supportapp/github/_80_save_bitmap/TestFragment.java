@@ -28,6 +28,7 @@ public class TestFragment extends GlideImageFragment {
 							GlideAnimation<? super byte[]> glideAnimation) {
 						new AsyncTask<Void, Void, Void>() {
 							@Override protected Void doInBackground(Void... params) {
+								@SuppressWarnings("deprecation") // Historical code.
 								File sdcard = Environment.getExternalStorageDirectory();
 								File file = new File(sdcard + "/YourDir/imageName.jpg");
 								File dir = file.getParentFile();

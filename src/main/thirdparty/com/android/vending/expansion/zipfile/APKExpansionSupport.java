@@ -32,6 +32,7 @@ public class APKExpansionSupport {
 		if (Environment.getExternalStorageState().equals(
 				Environment.MEDIA_MOUNTED)) {
 			// Build the full path to the app's expansion files
+			@SuppressWarnings("deprecation") // Historical code.
 			File root = Environment.getExternalStorageDirectory();
 			File expPath = new File(root.toString() + EXP_PATH + packageName);
 

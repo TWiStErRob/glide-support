@@ -18,7 +18,6 @@ repositories {
 	}
 	// https://github.com/bumptech/glide/wiki/Snapshots#obtaining-snapshots
 	maven { name = "glide-snapshot"; url = "https://oss.sonatype.org/content/repositories/snapshots" }
-	flatDir name: 'libs', dirs: 'libs'
 }
 
 android {
@@ -83,9 +82,6 @@ android {
 dependencies {
 	// Immediate SNAPSHOT resolution (in case the built version is too new), default is a day
 	//configurations.glide4Implementation.resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
-
-	implementation fileTree(dir: 'libs', include: [ '*.jar' ])
-	//implementation(name: 'somefile_name', ext: 'aar')
 }
 
 dependencies { // Glide v4

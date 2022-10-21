@@ -23,6 +23,7 @@ android {
 		targetSdkVersion 28
 		versionCode = 1
 		versionName = "0.1"
+		multiDexEnabled = true
 		vectorDrawables.useSupportLibrary = true
 		proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 	}
@@ -49,8 +50,8 @@ android {
 	}
 
 	compileOptions {
-		sourceCompatibility = JavaVersion.VERSION_1_7
-		targetCompatibility = JavaVersion.VERSION_1_7
+		sourceCompatibility = JavaVersion.VERSION_11
+		targetCompatibility = JavaVersion.VERSION_11
 	}
 
 	packagingOptions {
@@ -87,6 +88,7 @@ dependencies {
 	implementation("androidx.palette:palette:1.0.0")
 	implementation("androidx.percentlayout:percentlayout:1.0.0")
 	implementation("com.google.android.material:material:1.7.0")
+	implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
 }
 
 dependencies { // Glide v4

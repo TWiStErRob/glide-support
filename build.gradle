@@ -1,5 +1,5 @@
 plugins {
-	id("com.android.application") version "7.3.0"
+	id("com.android.application") version "7.3.1"
 }
 
 repositories {
@@ -73,6 +73,8 @@ android {
 	}
 }
 
+def stethoVersion = "1.6.0"
+
 dependencies {
 	// Immediate SNAPSHOT resolution (in case the built version is too new), default is a day
 	//configurations.glide4Implementation.resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
@@ -105,17 +107,17 @@ dependencies { // Glide v4
 	// OkHttp
 	//noinspection GradleDependency the warning is for v3 below.
 	glide4Implementation "com.github.bumptech.glide:okhttp3-integration:${glideVersion}"
-	glide4Implementation 'com.squareup.okhttp3:okhttp:4.9.3'
-	glide4Implementation 'com.squareup.okhttp3:logging-interceptor:4.4.0'
+	glide4Implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+	glide4Implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
 
 	// Volley
 	//noinspection GradleDependency the warning is for v3 below.
 	glide4Implementation "com.github.bumptech.glide:volley-integration:${glideVersion}"
 	glide4Implementation 'com.android.volley:volley:1.2.1'
 
-	glide4Implementation("com.facebook.stetho:stetho:1.5.1")
-	glide4Implementation("com.facebook.stetho:stetho-okhttp3:1.5.1")
-	glide4Implementation("com.facebook.stetho:stetho-urlconnection:1.5.1")
+	glide4Implementation("com.facebook.stetho:stetho:${stethoVersion}")
+	glide4Implementation("com.facebook.stetho:stetho-okhttp3:${stethoVersion}")
+	glide4Implementation("com.facebook.stetho:stetho-urlconnection:${stethoVersion}")
 }
 
 dependencies { // Glide v3
@@ -132,8 +134,8 @@ dependencies { // Glide v3
 	// OkHttp3
 	//noinspection GradleDependency latest v3, no need to upgrade to v4
 	glide3Implementation "com.github.bumptech.glide:okhttp3-integration:${glideIntegrationVersion}"
-	glide3Implementation 'com.squareup.okhttp3:okhttp:4.9.3'
-	glide3Implementation 'com.squareup.okhttp3:logging-interceptor:4.4.0'
+	glide3Implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+	glide3Implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
 
 	// Volley
 	//noinspection GradleDependency latest v3, no need to upgrade to v4
@@ -149,9 +151,9 @@ dependencies { // Glide v3
 	// Extra dependencies for individual issues
 	glide3Implementation("com.firebase:firebase-client-android:2.5.2")
 
-	glide3Implementation("com.facebook.stetho:stetho:1.5.1")
-	glide3Implementation("com.facebook.stetho:stetho-okhttp3:1.5.1")
-	glide3Implementation("com.facebook.stetho:stetho-urlconnection:1.5.1")
+	glide3Implementation("com.facebook.stetho:stetho:${stethoVersion}")
+	glide3Implementation("com.facebook.stetho:stetho-okhttp3:${stethoVersion}")
+	glide3Implementation("com.facebook.stetho:stetho-urlconnection:${stethoVersion}")
 
 	glide3Implementation("com.squareup.picasso:picasso:2.71828")
 }

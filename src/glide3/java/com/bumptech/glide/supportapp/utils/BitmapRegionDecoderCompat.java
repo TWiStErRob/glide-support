@@ -16,7 +16,7 @@ public class BitmapRegionDecoderCompat {
 	 */
 	@SuppressWarnings("deprecation")
 	public static @NonNull BitmapRegionDecoder newInstance(String source) throws IOException {
-		if (Build.VERSION_CODES.R <= Build.VERSION.SDK_INT) {
+		if (Build.VERSION_CODES.S <= Build.VERSION.SDK_INT) {
 			return BitmapRegionDecoder.newInstance(source);
 		} else {
 			return BitmapRegionDecoder.newInstance(source, false);
@@ -28,7 +28,7 @@ public class BitmapRegionDecoderCompat {
 	 */
 	@SuppressWarnings("deprecation")
 	public static @NonNull BitmapRegionDecoder newInstance(InputStream source) throws IOException {
-		if (Build.VERSION_CODES.R <= Build.VERSION.SDK_INT) {
+		if (Build.VERSION_CODES.S <= Build.VERSION.SDK_INT) {
 			return BitmapRegionDecoder.newInstance(source);
 		} else {
 			return BitmapRegionDecoder.newInstance(source, false);
@@ -40,7 +40,7 @@ public class BitmapRegionDecoderCompat {
 	 */
 	@SuppressWarnings("deprecation")
 	public static @NonNull BitmapRegionDecoder newInstance(ParcelFileDescriptor source) throws IOException {
-		if (Build.VERSION_CODES.R <= Build.VERSION.SDK_INT) {
+		if (Build.VERSION_CODES.S <= Build.VERSION.SDK_INT) {
 			return BitmapRegionDecoder.newInstance(source);
 		} else {
 			return BitmapRegionDecoder.newInstance(source.getFileDescriptor(), false);

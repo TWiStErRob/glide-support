@@ -122,7 +122,7 @@ dependencies { // Glide v4
 
 dependencies { // Glide v3
 	def glideVersion = '3.9.0-SNAPSHOT'
-	def glideIntegrationVersion = '1.6.0-SNAPSHOT'
+	def glideIntegrationVersion = '4.14.2'
 	//noinspection GradleDependency latest v3, no need to upgrade to v4
 	glide3Implementation "com.github.bumptech.glide:glide:${glideVersion}"
 

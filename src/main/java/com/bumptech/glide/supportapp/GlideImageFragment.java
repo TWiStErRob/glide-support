@@ -35,6 +35,7 @@ public abstract class GlideImageFragment extends GlideBaseImageFragment {
 				load();
 			}
 		});
+		load();
 	}
 
 	@Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -65,11 +66,6 @@ public abstract class GlideImageFragment extends GlideBaseImageFragment {
 			Toast.makeText(getContext(), "Load: " + e, Toast.LENGTH_SHORT).show();
 		}
 		Log.i("GLIDE", "Load started");
-	}
-
-	@Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-		load();
 	}
 
 	protected abstract void load(Context context) throws Exception;

@@ -42,7 +42,7 @@ public class TestFragment extends GlideRecyclerFragment {
 		args.putSerializable(DetailFragment.ARG_ITEM, vh.item);
 		fragment.setArguments(args);
 		@SuppressLint("CommitTransaction")
-		FragmentTransaction transaction = getFragmentManager()
+		FragmentTransaction transaction = getParentFragmentManager()
 				.beginTransaction()
 				.replace(android.R.id.content, fragment)
 				.addToBackStack("details");

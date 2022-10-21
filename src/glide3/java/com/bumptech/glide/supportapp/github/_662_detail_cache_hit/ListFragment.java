@@ -110,7 +110,7 @@ public class ListFragment extends Fragment {
 
 				itemView.setOnClickListener(new OnClickListener() {
 					@Override public void onClick(View v) {
-						cb.selected(getAdapterPosition(), bound);
+						cb.selected(getBindingAdapterPosition(), bound);
 					}
 				});
 			}

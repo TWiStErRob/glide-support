@@ -51,6 +51,8 @@ public abstract class GlideDualImageFragment extends GlideBaseImageFragment {
 				load2();
 			}
 		});
+		load1();
+		load2();
 	}
 
 	@Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -114,12 +116,6 @@ public abstract class GlideDualImageFragment extends GlideBaseImageFragment {
 			Toast.makeText(getContext(), "Load #2: " + e, Toast.LENGTH_SHORT).show();
 		}
 		Log.i("GLIDE", "Load #2 started");
-	}
-
-	@Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-		load1();
-		load2();
 	}
 
 	protected abstract void load1(Context context, ImageView imageView) throws Exception;

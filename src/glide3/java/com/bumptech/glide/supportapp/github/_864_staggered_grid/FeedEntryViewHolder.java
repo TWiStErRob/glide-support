@@ -40,7 +40,7 @@ class FeedEntryViewHolder extends RecyclerView.ViewHolder {
 			bindImage(entry.getJSONObject("media$group").getJSONArray("media$content").getJSONObject(0));
 			bindAuthor(entry.getJSONArray("author").getJSONObject(0));
 		} finally {
-			previousPosition = getAdapterPosition();
+			previousPosition = getBindingAdapterPosition();
 		}
 	}
 
@@ -78,7 +78,7 @@ class FeedEntryViewHolder extends RecyclerView.ViewHolder {
 		float oldAspect = info.aspectRatio;
 		float newAspect = width / height;
 		Log.v("LAYOUT", String.format("recycled %d to %d: %dx%d, aspect %.3f -> %.3f",
-				previousPosition, getAdapterPosition(), image.getWidth(), image.getHeight(), oldAspect, newAspect));
+				previousPosition, getBindingAdapterPosition(), image.getWidth(), image.getHeight(), oldAspect, newAspect));
 
 		info.aspectRatio = newAspect;
 		layoutParams.height = 0; // @see PercentLayoutHelper.PercentLayoutInfo.fillLayoutParams()

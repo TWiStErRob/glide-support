@@ -66,7 +66,7 @@ public class GlideRecyclerFragment extends BaseFragment {
 			final SimpleViewHolder holder = onCreateViewHolder(parent, viewType, view);
 			holder.itemView.setOnClickListener(new OnClickListener() {
 				@Override public void onClick(View v) {
-					onBindViewHolder(holder, holder.getAdapterPosition());
+					onBindViewHolder(holder, holder.getBindingAdapterPosition());
 				}
 			});
 			return holder;

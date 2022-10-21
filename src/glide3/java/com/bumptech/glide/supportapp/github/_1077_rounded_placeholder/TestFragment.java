@@ -1,19 +1,22 @@
 package com.bumptech.glide.supportapp.github._1077_rounded_placeholder;
 
 import android.content.Context;
-import android.graphics.*;
+import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
-import android.graphics.drawable.*;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.Transformation;
 import com.bumptech.glide.load.engine.Resource;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapResource;
-import com.bumptech.glide.supportapp.*;
+import com.bumptech.glide.supportapp.GlideImageFragment;
+import com.bumptech.glide.supportapp.R;
 
+import androidx.core.content.ContextCompat;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class TestFragment extends GlideImageFragment {

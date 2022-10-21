@@ -3,16 +3,16 @@ package com.bumptech.glide.supportapp.github._1133_stetho_integration;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.supportapp.GlideDualImageFragment;
 import com.bumptech.glide.supportapp.utils.LoggingListener;
 
-import static com.bumptech.glide.load.engine.DiskCacheStrategy.NONE;
+import androidx.annotation.Nullable;
 
 public class TestFragment extends GlideDualImageFragment {
 
@@ -32,7 +32,7 @@ public class TestFragment extends GlideDualImageFragment {
 				.with(this)
 				.load("http://facebook.github.io/stetho/static/logo.png")
 				.apply(new RequestOptions()
-						.diskCacheStrategy(NONE)
+						.diskCacheStrategy(DiskCacheStrategy.NONE)
 						.skipMemoryCache(true)
 				)
 				.listener(new LoggingListener<Drawable>())

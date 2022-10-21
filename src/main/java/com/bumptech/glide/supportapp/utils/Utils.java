@@ -1,9 +1,17 @@
 package com.bumptech.glide.supportapp.utils;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
-import android.content.*;
-import android.content.pm.*;
+import android.content.ComponentName;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.util.Log;
 
@@ -52,7 +60,8 @@ public class Utils {
 	public static String getMetadataValue(Context context, ComponentName name, String metadataName) {
 		String result = null;
 		try {
-			ActivityInfo ai = context.getPackageManager().getActivityInfo(name, PackageManager.GET_META_DATA);
+			ActivityInfo ai = PackageManagerCompat.getActivityInfo(
+					context.getPackageManager(), name, PackageManager.GET_META_DATA);
 			if (ai.metaData != null) {
 				String clazz = ai.metaData.getString(metadataName);
 				if (clazz != null) {

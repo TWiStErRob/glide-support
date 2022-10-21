@@ -1,16 +1,22 @@
 package com.bumptech.glide.supportapp.github._864_staggered_grid;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.concurrent.TimeUnit;
 
-import org.json.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import android.content.Context;
 import android.util.Log;
 
 import com.bumptech.glide.supportapp.utils.UsefulAsyncTaskLoader;
 
-import okhttp3.*;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 class PicasaFeedLoader extends UsefulAsyncTaskLoader<JSONArray> {
 	private static final String TAG = "FeedLoader";

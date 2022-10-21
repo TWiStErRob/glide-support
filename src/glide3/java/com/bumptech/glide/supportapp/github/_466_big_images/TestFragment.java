@@ -3,7 +3,8 @@ package com.bumptech.glide.supportapp.github._466_big_images;
 import java.io.File;
 
 import android.content.Context;
-import android.graphics.*;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.util.Log;
 
@@ -13,6 +14,7 @@ import com.bumptech.glide.supportapp.GlideImageFragment;
 import com.bumptech.glide.supportapp.utils.LoggingListener;
 
 public class TestFragment extends GlideImageFragment {
+	@SuppressWarnings("deprecation") // Historical code.
 	private final File folder = Environment.getExternalStorageDirectory();
 	// download https://drive.google.com/file/d/0B6kFDyLnqV5FXzBieGpoYUxET1k/view?usp=sharing as 1..5.jpg
 

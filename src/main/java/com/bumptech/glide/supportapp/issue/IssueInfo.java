@@ -1,13 +1,22 @@
 package com.bumptech.glide.supportapp.issue;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.DrawableRes;
-import android.support.v4.app.Fragment;
+import android.graphics.drawable.Drawable;
 
 import com.bumptech.glide.module.GlideModule;
+import com.bumptech.glide.supportapp.R;
+
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 public class IssueInfo {
 	private static final Map<String, String> SOURCES = new HashMap<>();
@@ -17,6 +26,15 @@ public class IssueInfo {
 		SOURCES.put("groups", "https://groups.google.com/forum/#!topic/glidelibrary/%s");
 		SOURCES.put("stackoverflow", "http://stackoverflow.com/questions/%s");
 		SOURCES.put("random", null);
+	}
+
+	private static final Map<String, Integer> ICONS = new HashMap<>();
+
+	static {
+		ICONS.put("github", R.drawable.source_github);
+		ICONS.put("groups", R.drawable.source_groups);
+		ICONS.put("stackoverflow", R.drawable.source_stackoverflow);
+		ICONS.put("random", R.drawable.source_random);
 	}
 
 	private final ClassNameSplitter clazz;
@@ -52,8 +70,8 @@ public class IssueInfo {
 		}
 		return String.format(Locale.ROOT, format, getID());
 	}
-	public @DrawableRes int getIcon(Context context) {
-		return context.getResources().getIdentifier("source_" + source, "drawable", context.getPackageName());
+	public @NonNull Drawable getIcon(@NonNull Context context) {
+		return ContextCompat.getDrawable(context, ICONS.get(source));
 	}
 
 	public Class<?> getEntryClass() {

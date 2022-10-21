@@ -2,14 +2,22 @@ package com.bumptech.glide.supportapp;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.MenuItemCompat;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.*;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.core.view.MenuItemCompat;
 
 public abstract class GlideDualImageFragment extends GlideBaseImageFragment {
 	protected static final String LI = "<br>&nbsp;&nbsp;*&nbsp;";
@@ -43,6 +51,8 @@ public abstract class GlideDualImageFragment extends GlideBaseImageFragment {
 				load2();
 			}
 		});
+		load1();
+		load2();
 	}
 
 	@Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -51,8 +61,8 @@ public abstract class GlideDualImageFragment extends GlideBaseImageFragment {
 				menu.add(0, 9, 0, "Clear image 1").setIcon(android.R.drawable.ic_menu_close_clear_cancel);
 		MenuItem clearImage2 =
 				menu.add(0, 10, 0, "Clear image 2").setIcon(android.R.drawable.ic_menu_close_clear_cancel);
-		MenuItemCompat.setShowAsAction(clearImage1, MenuItemCompat.SHOW_AS_ACTION_ALWAYS);
-		MenuItemCompat.setShowAsAction(clearImage2, MenuItemCompat.SHOW_AS_ACTION_ALWAYS);
+		clearImage1.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		clearImage2.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 	}
 
 	@Override public boolean onOptionsItemSelected(MenuItem item) {
@@ -106,12 +116,6 @@ public abstract class GlideDualImageFragment extends GlideBaseImageFragment {
 			Toast.makeText(getContext(), "Load #2: " + e, Toast.LENGTH_SHORT).show();
 		}
 		Log.i("GLIDE", "Load #2 started");
-	}
-
-	@Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-		load1();
-		load2();
 	}
 
 	protected abstract void load1(Context context, ImageView imageView) throws Exception;

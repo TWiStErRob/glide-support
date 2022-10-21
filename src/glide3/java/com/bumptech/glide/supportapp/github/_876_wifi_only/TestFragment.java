@@ -2,7 +2,8 @@ package com.bumptech.glide.supportapp.github._876_wifi_only;
 
 import android.content.Context;
 
-import com.bumptech.glide.*;
+import com.bumptech.glide.DrawableTypeRequest;
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.supportapp.GlideImageFragment;
 import com.bumptech.glide.supportapp.utils.NetworkDisablingLoader;

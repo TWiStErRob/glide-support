@@ -2,20 +2,31 @@ package com.bumptech.glide.supportapp.github._847_shared_transition;
 
 import java.util.List;
 
-import android.os.Build.*;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.*;
 import android.transition.Transition;
 import android.util.Log;
-import android.view.*;
-import android.widget.*;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.bumptech.glide.*;
+import com.bumptech.glide.DrawableRequestBuilder;
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.supportapp.R;
-import com.bumptech.glide.supportapp.utils.*;
+import com.bumptech.glide.supportapp.utils.ForceCrossfadeListener;
+import com.bumptech.glide.supportapp.utils.LoggingListener;
+import com.bumptech.glide.supportapp.utils.LoggingTransitionListener;
+import com.bumptech.glide.supportapp.utils.MultiRequestListener;
+import com.bumptech.glide.supportapp.utils.NetworkDisablingLoader;
+
+import androidx.annotation.Nullable;
+import androidx.core.app.SharedElementCallback;
+import androidx.fragment.app.Fragment;
 
 public abstract class DetailFragment extends Fragment {
 	static final String ARG_ITEM = "item";
@@ -40,7 +51,9 @@ public abstract class DetailFragment extends Fragment {
 		if (VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
 			LoggingTransitionListener.listenForAll("onCreate", this);
 		}
-		item = (Item)getArguments().getSerializable(ARG_ITEM);
+		@SuppressWarnings("deprecation") // TODO replace with ktx or compat when available.
+		Item argItem = (Item)getArguments().getSerializable(ARG_ITEM);
+		this.item = argItem;
 		setupGlide();
 	}
 

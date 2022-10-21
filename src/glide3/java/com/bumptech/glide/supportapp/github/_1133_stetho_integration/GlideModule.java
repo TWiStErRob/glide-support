@@ -4,7 +4,8 @@ import java.io.InputStream;
 
 import android.content.Context;
 
-import com.bumptech.glide.*;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.load.model.GlideUrl;
 
 // http://arnaud-camus.fr/combining-glide-and-stetho-to-easily-debug-your-image-loading-system/

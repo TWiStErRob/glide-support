@@ -2,12 +2,19 @@ package com.bumptech.glide.supportapp;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.MenuItemCompat;
 import android.util.Log;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.*;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.core.view.MenuItemCompat;
 
 public abstract class GlideImageFragment extends GlideBaseImageFragment {
 	protected ImageView imageView;
@@ -28,12 +35,13 @@ public abstract class GlideImageFragment extends GlideBaseImageFragment {
 				load();
 			}
 		});
+		load();
 	}
 
 	@Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		super.onCreateOptionsMenu(menu, inflater);
 		MenuItem clearImage = menu.add(0, 9, 0, "Clear image").setIcon(android.R.drawable.ic_menu_close_clear_cancel);
-		MenuItemCompat.setShowAsAction(clearImage, MenuItemCompat.SHOW_AS_ACTION_ALWAYS);
+		clearImage.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 	}
 
 	@Override public boolean onOptionsItemSelected(MenuItem item) {
@@ -58,11 +66,6 @@ public abstract class GlideImageFragment extends GlideBaseImageFragment {
 			Toast.makeText(getContext(), "Load: " + e, Toast.LENGTH_SHORT).show();
 		}
 		Log.i("GLIDE", "Load started");
-	}
-
-	@Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-		load();
 	}
 
 	protected abstract void load(Context context) throws Exception;

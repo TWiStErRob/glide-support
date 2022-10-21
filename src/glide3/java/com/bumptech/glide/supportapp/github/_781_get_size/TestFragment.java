@@ -8,7 +8,8 @@ import android.graphics.BitmapFactory.Options;
 import android.net.Uri;
 import android.util.Log;
 
-import com.bumptech.glide.*;
+import com.bumptech.glide.GenericRequestBuilder;
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.model.StreamEncoder;
 import com.bumptech.glide.load.model.stream.StreamUriLoader;

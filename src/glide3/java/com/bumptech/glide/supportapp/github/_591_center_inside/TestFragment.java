@@ -3,10 +3,9 @@ package com.bumptech.glide.supportapp.github._591_center_inside;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
 import android.util.Log;
-import android.view.*;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
@@ -16,7 +15,11 @@ import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.supportapp.GlidePagerFragment;
-import com.squareup.picasso.*;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
+
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.PagerAdapter;
 
 public class TestFragment extends GlidePagerFragment {
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

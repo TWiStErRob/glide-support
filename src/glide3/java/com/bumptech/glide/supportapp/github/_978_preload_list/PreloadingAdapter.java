@@ -1,13 +1,18 @@
 package com.bumptech.glide.supportapp.github._978_preload_list;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
 
-import android.view.*;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.*;
+import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 
-import com.bumptech.glide.*;
+import com.bumptech.glide.GenericRequestBuilder;
+import com.bumptech.glide.ListPreloader;
 import com.bumptech.glide.ListPreloader.PreloadModelProvider;
 import com.bumptech.glide.util.ViewPreloadSizeProvider;
 

@@ -2,7 +2,9 @@ package com.bumptech.glide.supportapp.github._943_double_crossFade;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.*;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;

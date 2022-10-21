@@ -1,15 +1,18 @@
 package com.bumptech.glide.supportapp.issue;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.List;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.*;
 
 import com.bumptech.glide.supportapp.IssueEntryClassScanner;
 import com.bumptech.glide.supportapp.R;
 import com.bumptech.glide.supportapp.utils.Utils;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class IssueListActivity extends AppCompatActivity {
 

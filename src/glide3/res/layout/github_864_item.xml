@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
+<androidx.cardview.widget.CardView
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
@@ -8,7 +8,7 @@
 	app:contentPadding="4dp"
 	app:cardCornerRadius="8dp"
 	>
-	<android.support.percent.PercentFrameLayout
+	<androidx.percentlayout.widget.PercentFrameLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:clickable="true"
@@ -33,7 +33,7 @@
 			android:textColor="@android:color/white"
 			tools:text="Image Title"
 			/>
-	</android.support.percent.PercentFrameLayout>
+	</androidx.percentlayout.widget.PercentFrameLayout>
 	<ImageView
 		android:id="@+id/github_864_author_icon"
 		android:layout_width="32dp"
@@ -44,4 +44,4 @@
 		android:layout_marginEnd="4dp"
 		tools:ignore="ContentDescription"
 		/>
-</android.support.v7.widget.CardView>
+</androidx.cardview.widget.CardView>

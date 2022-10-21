@@ -3,8 +3,8 @@ package com.bumptech.glide.supportapp.utils;
 import java.util.Locale;
 
 import android.graphics.Bitmap;
-import android.graphics.drawable.*;
-import android.support.annotation.*;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
@@ -12,7 +12,11 @@ import android.view.ViewGroup.LayoutParams;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.*;
+import com.bumptech.glide.request.target.CustomViewTarget;
+import com.bumptech.glide.request.target.Target;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class LoggingListener<R> implements RequestListener<R> {
 	private final int level;
@@ -62,10 +66,17 @@ public class LoggingListener<R> implements RequestListener<R> {
 		return isFirstResource? "first" : "not first";
 	}
 
+	@SuppressWarnings("deprecation")
 	private String getTargetDescription(Target<R> target) {
 		String result;
-		if (target instanceof ViewTarget) {
-			View v = ((ViewTarget)target).getView();
+		if (target instanceof com.bumptech.glide.request.target.ViewTarget) {
+			View v = ((com.bumptech.glide.request.target.ViewTarget<?, ?>)target).getView();
+			LayoutParams p = v.getLayoutParams();
+			result = String.format(Locale.ROOT,
+					"%s(params=%dx%d->size=%dx%d)", target, p.width, p.height, v.getWidth(),
+					v.getHeight());
+		} else if (target instanceof CustomViewTarget) {
+			View v = ((CustomViewTarget<?, ?>)target).getView();
 			LayoutParams p = v.getLayoutParams();
 			result = String.format(Locale.ROOT,
 					"%s(params=%dx%d->size=%dx%d)", target, p.width, p.height, v.getWidth(), v.getHeight());

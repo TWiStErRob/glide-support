@@ -1,16 +1,20 @@
 package com.bumptech.glide.supportapp.random.__sync_cache;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
-import android.view.*;
-import android.widget.*;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.supportapp.*;
+import com.bumptech.glide.supportapp.GlideListFragment;
+import com.bumptech.glide.supportapp.R;
 import com.bumptech.glide.supportapp.utils.LoggingListener;
+
+import androidx.annotation.Nullable;
 
 /**
  * @see <a href="https://groups.google.com/d/msgid/glidelibrary/03644dfd-6a00-4441-b078-0edaf8bb76f4%40googlegroups.com">

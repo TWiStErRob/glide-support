@@ -5,14 +5,17 @@ import java.util.Arrays;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.*;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.bumptech.glide.*;
-import com.bumptech.glide.supportapp.*;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.supportapp.GlideRecyclerFragment;
 import com.bumptech.glide.supportapp.R;
 import com.bumptech.glide.supportapp.utils.LoggingListener;
+
+import androidx.annotation.Nullable;
 
 /**
  * @see <a href="http://www.imagemagick.org/Usage/anim_basics/">Source Images</a>

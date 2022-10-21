@@ -1,9 +1,11 @@
 package com.bumptech.glide.supportapp.github._718_raw;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
 
 import android.content.Context;
-import android.graphics.*;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.ResourceDecoder;

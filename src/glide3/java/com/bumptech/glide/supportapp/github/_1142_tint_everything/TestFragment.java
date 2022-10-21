@@ -3,13 +3,17 @@ package com.bumptech.glide.supportapp.github._1142_tint_everything;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.supportapp.*;
+import com.bumptech.glide.supportapp.GlideImageFragment;
+import com.bumptech.glide.supportapp.R;
 import com.bumptech.glide.supportapp.utils.Utils;
+
+import androidx.annotation.Nullable;
 
 /**
  * Same load, and different scenarios are controlled by the model passed to load.

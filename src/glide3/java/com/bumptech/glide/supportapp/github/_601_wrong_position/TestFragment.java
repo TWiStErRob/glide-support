@@ -6,15 +6,21 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.bumptech.glide.*;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
-import com.bumptech.glide.supportapp.*;
-import com.bumptech.glide.supportapp.utils.*;
+import com.bumptech.glide.supportapp.GlideRecyclerFragment;
+import com.bumptech.glide.supportapp.R;
+import com.bumptech.glide.supportapp.utils.LoggingListener;
+import com.bumptech.glide.supportapp.utils.LoggingTarget;
+
+import androidx.annotation.Nullable;
 
 /**
  * The way I could reproduce the issue: scroll to the bottom of the list,

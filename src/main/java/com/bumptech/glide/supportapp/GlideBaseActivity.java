@@ -1,15 +1,17 @@
 package com.bumptech.glide.supportapp;
 
 import android.graphics.Color;
-import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.view.*;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.supportapp.utils.ClearCachesTask;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.BlendModeColorFilterCompat;
+import androidx.core.graphics.BlendModeCompat;
 
 public abstract class GlideBaseActivity extends AppCompatActivity {
 	@Override public boolean onCreateOptionsMenu(Menu menu) {
@@ -23,15 +25,19 @@ public abstract class GlideBaseActivity extends AppCompatActivity {
 
 	protected void item(Menu menu, int id, String title, String color, boolean always) {
 		Drawable icon = ContextCompat.getDrawable(this, android.R.drawable.ic_menu_delete).mutate();
-		icon.setColorFilter(Color.parseColor(color), Mode.SCREEN);
+		icon.setColorFilter(BlendModeColorFilterCompat.createBlendModeColorFilterCompat(
+				Color.parseColor(color),
+				BlendModeCompat.SCREEN
+		));
 		MenuItem item = menu.add(0, id, 0, title).setIcon(icon);
 		if (always) {
-			MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_ALWAYS);
+			item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 		} else {
-			MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
+			item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
 		}
 	}
-	
+
+	@SuppressWarnings("deprecation") // Historical code.
 	@Override public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case 1:

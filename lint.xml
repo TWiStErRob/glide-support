@@ -9,15 +9,10 @@
 	<issue id="UnknownNullness" severity="ignore" />
 	<issue id="SyntheticAccessor" severity="ignore" />
 	<issue id="StaticFieldLeak" severity="ignore" />
+
 	<issue id="StringFormatTrivial" severity="ignore">
 		<!-- Don't care about performance in this project, but also generally readability wins. -->
 	</issue>
-	<issue id="InvalidPackage">
-		<ignore regexp="java\.nio\.file" />
-	</issue>
-
-	<!-- AllowBackup/FullBackupContent Problems: somehow the manifest is not merged into the variant so lint doesn't pick it up -->
-	<issue id="AllowBackup" severity="ignore" />
 
 	<issue id="UnusedResources">
 		<!-- Keep these as they could be used to test things out with file formats. -->
@@ -40,9 +35,15 @@
 		<ignore path="**/res/drawable*/glide_*.*" />
 	</issue>
 
-	<issue id="NewerVersionAvailable">
-		<!-- Cannot come more forward than 4.9.0, because of AndroidX -->
-		<ignore regexp="A newer version of com.github.bumptech.glide:(.*) than 4\.9\.0 is available: .*" />
+	<issue id="InvalidPackage">
+		<!-- TODEL Fixed in "Electric Eel" = AGP 7.4 https://github.com/Kotlin/kotlinx.coroutines/issues/3277 -->
+		<!--
+		    org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.6.1/kotlinx-coroutines-core-jvm-1.6.1.jar:
+		    Invalid package reference in org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm;
+		    not included in Android: java.lang.instrument.
+		    Referenced from kotlinx.coroutines.debug.AgentPremain.
+		-->
+		<ignore regexp="kotlinx-coroutines-core-jvm-\d+\.\d+\.\d+\.jar" />
 	</issue>
 
 </lint>

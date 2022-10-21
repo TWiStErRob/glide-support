@@ -3,15 +3,18 @@ package com.bumptech.glide.supportapp.utils;
 import java.util.Locale;
 
 import android.graphics.Bitmap;
-import android.graphics.drawable.*;
-import android.support.annotation.NonNull;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 
 import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.*;
+import com.bumptech.glide.request.target.Target;
+import com.bumptech.glide.request.target.ViewTarget;
+
+import androidx.annotation.NonNull;
 
 public class LoggingListener<A, B> implements RequestListener<A, B> {
 	private final int level;

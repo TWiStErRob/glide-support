@@ -19,7 +19,9 @@ package com.android.vending.expansion.zipfile;
 //To implement APEZProvider in your application, you'll want to change
 //the AUTHORITY to match what you define in the manifest.
 
-import com.android.vending.expansion.zipfile.ZipResourceFile.ZipEntryRO;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
 
 import android.content.ContentProvider;
 import android.content.ContentProviderOperation;
@@ -38,9 +40,8 @@ import android.net.Uri;
 import android.os.ParcelFileDescriptor;
 import android.provider.BaseColumns;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
+import com.android.vending.expansion.zipfile.ZipResourceFile.ZipEntryRO;
+import com.bumptech.glide.supportapp.utils.PackageManagerCompat;
 
 /**
  * This content provider is an optional part of the library.
@@ -125,16 +126,18 @@ public abstract class APEZProvider extends ContentProvider {
 	    if ( !mInit ) {
             Context ctx = getContext();
             PackageManager pm = ctx.getPackageManager();
-            ProviderInfo pi = pm.resolveContentProvider(getAuthority(), PackageManager.GET_META_DATA);
+            ProviderInfo pi = PackageManagerCompat.resolveContentProvider(
+					pm, getAuthority(), PackageManager.GET_META_DATA);
             PackageInfo packInfo;
             try {
-                packInfo = pm.getPackageInfo(ctx.getPackageName(), 0);
+                packInfo = PackageManagerCompat.getPackageInfo(pm, ctx.getPackageName(), 0);
             } catch (NameNotFoundException e1) {
                 e1.printStackTrace();
                 return false;
             }
             int patchFileVersion;
             int mainFileVersion;
+			@SuppressWarnings("deprecation")
             int appVersionCode = packInfo.versionCode;
             String[] resourceFiles = null;
             if ( null != pi.metaData ) {

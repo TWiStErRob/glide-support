@@ -1,13 +1,12 @@
 package com.bumptech.glide.supportapp.github._864_staggered_grid;
 
-import org.json.*;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import android.support.percent.PercentFrameLayout;
-import android.support.percent.PercentLayoutHelper.PercentLayoutInfo;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.*;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
@@ -16,6 +15,7 @@ import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.supportapp.R;
 import com.bumptech.glide.supportapp.utils.LoggingListener;
 
+import androidx.recyclerview.widget.RecyclerView;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 class FeedEntryViewHolder extends RecyclerView.ViewHolder {
@@ -40,7 +40,7 @@ class FeedEntryViewHolder extends RecyclerView.ViewHolder {
 			bindImage(entry.getJSONObject("media$group").getJSONArray("media$content").getJSONObject(0));
 			bindAuthor(entry.getJSONArray("author").getJSONObject(0));
 		} finally {
-			previousPosition = getAdapterPosition();
+			previousPosition = getBindingAdapterPosition();
 		}
 	}
 
@@ -69,14 +69,16 @@ class FeedEntryViewHolder extends RecyclerView.ViewHolder {
 	}
 
 	private void fixlayout(float width, float height) {
-		PercentFrameLayout.LayoutParams layoutParams =
-				(PercentFrameLayout.LayoutParams)image.getLayoutParams();
-		PercentLayoutInfo info = layoutParams.getPercentLayoutInfo();
+		@SuppressWarnings("deprecation") // legacy code, TODO migrate to ConstraintLayout.
+		androidx.percentlayout.widget.PercentFrameLayout.LayoutParams layoutParams =
+				(androidx.percentlayout.widget.PercentFrameLayout.LayoutParams)image.getLayoutParams();
+		@SuppressWarnings("deprecation") // legacy code, TODO migrate to ConstraintLayout.
+		androidx.percentlayout.widget.PercentLayoutHelper.PercentLayoutInfo info = layoutParams.getPercentLayoutInfo();
 
 		float oldAspect = info.aspectRatio;
 		float newAspect = width / height;
 		Log.v("LAYOUT", String.format("recycled %d to %d: %dx%d, aspect %.3f -> %.3f",
-				previousPosition, getAdapterPosition(), image.getWidth(), image.getHeight(), oldAspect, newAspect));
+				previousPosition, getBindingAdapterPosition(), image.getWidth(), image.getHeight(), oldAspect, newAspect));
 
 		info.aspectRatio = newAspect;
 		layoutParams.height = 0; // @see PercentLayoutHelper.PercentLayoutInfo.fillLayoutParams()

@@ -4,8 +4,10 @@ import android.content.Context;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.animation.*;
-import com.bumptech.glide.supportapp.*;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.animation.ViewAnimationFactory;
+import com.bumptech.glide.supportapp.GlideImageFragment;
+import com.bumptech.glide.supportapp.R;
 
 public class TestFragment extends GlideImageFragment {
 	@Override protected void load(Context context) throws Exception {

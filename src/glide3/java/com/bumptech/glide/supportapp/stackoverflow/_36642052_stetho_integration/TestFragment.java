@@ -2,16 +2,16 @@ package com.bumptech.glide.supportapp.stackoverflow._36642052_stetho_integration
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.supportapp.GlideDualImageFragment;
 import com.bumptech.glide.supportapp.utils.LoggingListener;
 
-import static com.bumptech.glide.load.engine.DiskCacheStrategy.*;
+import androidx.annotation.Nullable;
 
 /**
  * Similar example to bumptech/glide#1133, but without OkHttp3
@@ -33,7 +33,7 @@ public class TestFragment extends GlideDualImageFragment {
 		Glide
 				.with(this)
 				.load("http://facebook.github.io/stetho/static/logo.png")
-				.diskCacheStrategy(NONE)
+				.diskCacheStrategy(DiskCacheStrategy.NONE)
 				.skipMemoryCache(true)
 				.listener(new LoggingListener<String, GlideDrawable>())
 				.into(imageView)

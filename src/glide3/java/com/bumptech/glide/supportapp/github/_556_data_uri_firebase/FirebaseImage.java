@@ -3,7 +3,11 @@ package com.bumptech.glide.supportapp.github._556_data_uri_firebase;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicReference;
 
-import com.firebase.client.*;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.FirebaseException;
+import com.firebase.client.ValueEventListener;
 
 class FirebaseImage {
 	// final Firebase fb; // see FirebaseImageModelLoader ctor

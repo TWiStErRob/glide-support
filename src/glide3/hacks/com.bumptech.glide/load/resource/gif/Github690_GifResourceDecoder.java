@@ -3,7 +3,8 @@ package com.bumptech.glide.load.resource.gif;
 import android.content.Context;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.gifdecoder.*;
+import com.bumptech.glide.gifdecoder.GifDecoder;
+import com.bumptech.glide.gifdecoder.GifHeader;
 
 /**
  * .asGif().decoder(new FixedGifResourceDecoder(context))

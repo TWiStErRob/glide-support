@@ -1,20 +1,22 @@
 package com.bumptech.glide.supportapp.github._662_detail_cache_hit;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.*;
 import android.util.TypedValue;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.*;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
-import static android.view.ViewGroup.LayoutParams.*;
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -23,13 +25,17 @@ import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.bumptech.glide.supportapp.R;
 import com.bumptech.glide.supportapp.utils.LoggingListener;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 public class ListFragment extends Fragment {
 	public interface Callback {
 		void selected(int position, ListItem model);
 	}
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		// simulate    <android.support.v7.widget.RecyclerView android:id="@android:id/list"
+		// simulate    <androidx.recyclerview.widget.RecyclerView android:id="@android:id/list"
 		// inflate of   android:layout_width="match_parent" android:layout_height="match_parent" />
 		RecyclerView view = new RecyclerView(getActivity());
 		view.setLayoutParams(
@@ -104,7 +110,7 @@ public class ListFragment extends Fragment {
 
 				itemView.setOnClickListener(new OnClickListener() {
 					@Override public void onClick(View v) {
-						cb.selected(getAdapterPosition(), bound);
+						cb.selected(getBindingAdapterPosition(), bound);
 					}
 				});
 			}

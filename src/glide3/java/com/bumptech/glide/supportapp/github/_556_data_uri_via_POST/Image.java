@@ -2,7 +2,8 @@ package com.bumptech.glide.supportapp.github._556_data_uri_via_POST;
 
 import java.io.IOException;
 
-import org.json.*;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Image {
 	private final String key;

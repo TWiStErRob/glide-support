@@ -2,10 +2,11 @@ package com.bumptech.glide.supportapp.utils;
 
 import android.annotation.TargetApi;
 import android.os.Build.VERSION_CODES;
-import android.support.v4.app.Fragment;
 import android.transition.Transition;
 import android.transition.Transition.TransitionListener;
 import android.util.Log;
+
+import androidx.fragment.app.Fragment;
 
 @TargetApi(VERSION_CODES.KITKAT)
 public class LoggingTransitionListener implements TransitionListener {

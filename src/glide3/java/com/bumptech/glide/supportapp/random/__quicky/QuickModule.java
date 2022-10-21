@@ -2,7 +2,8 @@ package com.bumptech.glide.supportapp.random.__quicky;
 
 import android.content.Context;
 
-import com.bumptech.glide.*;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.module.GlideModule;
 
 public class QuickModule implements GlideModule {

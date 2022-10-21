@@ -1,15 +1,19 @@
 package com.bumptech.glide.supportapp.github._1272_palette_cache;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 import android.graphics.Bitmap;
-import android.support.v7.graphics.Palette;
 import android.util.Log;
 
 import com.bumptech.glide.load.ResourceDecoder;
 import com.bumptech.glide.load.engine.Resource;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
-import com.bumptech.glide.supportapp.github._1013_palette.*;
+import com.bumptech.glide.supportapp.github._1013_palette.PaletteBitmap;
+import com.bumptech.glide.supportapp.github._1013_palette.PaletteBitmapResource;
+
+import androidx.palette.graphics.Palette;
 
 public class PaletteBitmapDecoder implements ResourceDecoder<InputStream, PaletteBitmap> {
 	private final ResourceDecoder<InputStream, Bitmap> bitmapDecoder;

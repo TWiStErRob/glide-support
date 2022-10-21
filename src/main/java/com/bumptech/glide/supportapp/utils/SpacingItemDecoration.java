@@ -1,8 +1,9 @@
 package com.bumptech.glide.supportapp.utils;
 
 import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /** @see http://stackoverflow.com/a/32190325/253468 */
 public class SpacingItemDecoration extends RecyclerView.ItemDecoration {

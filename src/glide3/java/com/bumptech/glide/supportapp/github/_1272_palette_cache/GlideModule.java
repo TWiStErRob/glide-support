@@ -2,7 +2,8 @@ package com.bumptech.glide.supportapp.github._1272_palette_cache;
 
 import android.content.Context;
 
-import com.bumptech.glide.*;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.load.engine.cache.ExternalCacheDiskCacheFactory;
 
 public class GlideModule implements com.bumptech.glide.module.GlideModule {

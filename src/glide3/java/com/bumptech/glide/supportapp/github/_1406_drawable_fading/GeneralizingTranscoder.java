@@ -1,9 +1,9 @@
 package com.bumptech.glide.supportapp.github._1406_drawable_fading;
 
-import android.support.annotation.NonNull;
-
 import com.bumptech.glide.load.engine.Resource;
 import com.bumptech.glide.load.resource.transcode.ResourceTranscoder;
+
+import androidx.annotation.NonNull;
 
 public class GeneralizingTranscoder<ResourceType, Specific extends General, General>
 		implements ResourceTranscoder<ResourceType, General> {

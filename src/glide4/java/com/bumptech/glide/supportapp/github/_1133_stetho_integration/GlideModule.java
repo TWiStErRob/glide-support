@@ -3,13 +3,14 @@ package com.bumptech.glide.supportapp.github._1133_stetho_integration;
 import java.io.InputStream;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.Registry;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.module.LibraryGlideModule;
+
+import androidx.annotation.NonNull;
 
 @com.bumptech.glide.annotation.GlideModule
 public class GlideModule extends LibraryGlideModule implements com.bumptech.glide.module.GlideModule {

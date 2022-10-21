@@ -1,25 +1,33 @@
 package com.bumptech.glide.supportapp.github._232_progress;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.*;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.*;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.*;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
-import com.bumptech.glide.request.target.*;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.supportapp.R;
-import com.bumptech.glide.supportapp.utils.*;
+import com.bumptech.glide.supportapp.utils.DelayBitmapTransformation;
+import com.bumptech.glide.supportapp.utils.LoggingListener;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class TestFragment extends Fragment {
 	@Override public @Nullable View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,7 +58,7 @@ public class TestFragment extends Fragment {
 		return list;
 	}
 
-	private static class ProgressViewHolder extends ViewHolder {
+	private static class ProgressViewHolder extends RecyclerView.ViewHolder {
 		private final ImageView image;
 		private final TextView text;
 		private final ProgressBar progress;
@@ -138,7 +146,7 @@ public class TestFragment extends Fragment {
 		}
 	}
 
-	private static class ProgressAdapter extends Adapter<ProgressViewHolder> {
+	private static class ProgressAdapter extends RecyclerView.Adapter<ProgressViewHolder> {
 		private final List<String> models;
 		public ProgressAdapter(List<String> models) {
 			this.models = models;

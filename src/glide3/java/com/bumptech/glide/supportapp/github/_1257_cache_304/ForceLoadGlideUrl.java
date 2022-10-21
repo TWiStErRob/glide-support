@@ -1,6 +1,8 @@
 package com.bumptech.glide.supportapp.github._1257_cache_304;
 
-import com.bumptech.glide.load.model.*;
+import com.bumptech.glide.load.model.GlideUrl;
+import com.bumptech.glide.load.model.Headers;
+import com.bumptech.glide.load.model.LazyHeaders;
 
 public class ForceLoadGlideUrl extends GlideUrl {
 	private static final Headers FORCE_ETAG_CHECK = new LazyHeaders.Builder()

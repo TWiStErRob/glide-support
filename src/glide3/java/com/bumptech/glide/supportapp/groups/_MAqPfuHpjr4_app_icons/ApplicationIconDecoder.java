@@ -4,7 +4,8 @@ import java.io.IOException;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
-import android.graphics.drawable.*;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 
 import com.bumptech.glide.load.ResourceDecoder;
 import com.bumptech.glide.load.engine.Resource;

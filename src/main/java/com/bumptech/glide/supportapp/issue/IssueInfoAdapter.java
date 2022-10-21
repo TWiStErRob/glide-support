@@ -2,21 +2,27 @@ package com.bumptech.glide.supportapp.issue;
 
 import java.util.List;
 
-import android.content.*;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
+import android.content.Context;
+import android.content.Intent;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
 import android.util.Log;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.*;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.bumptech.glide.supportapp.*;
+import com.bumptech.glide.supportapp.GlideReset;
+import com.bumptech.glide.supportapp.R;
 import com.bumptech.glide.supportapp.issue.IssueInfoAdapter.TestInfoViewHolder;
 import com.bumptech.glide.supportapp.utils.Utils;
 
-public class IssueInfoAdapter extends Adapter<TestInfoViewHolder> {
+import androidx.recyclerview.widget.RecyclerView;
+
+public class IssueInfoAdapter extends RecyclerView.Adapter<TestInfoViewHolder> {
 	private final List<IssueInfo> issues;
 	public IssueInfoAdapter(List<IssueInfo> issues) {
 		this.issues = issues;
@@ -77,7 +83,7 @@ public class IssueInfoAdapter extends Adapter<TestInfoViewHolder> {
 		private void bind(IssueInfo info) {
 			boundInfo = info;
 			Context context = itemView.getContext();
-			icon.setImageResource(info.getIcon(context));
+			icon.setImageDrawable(info.getIcon(context));
 			String name = info.getName();
 			if (!info.getModules().isEmpty()) {
 				name += " (modules: " + info.getModules().size() + ")";

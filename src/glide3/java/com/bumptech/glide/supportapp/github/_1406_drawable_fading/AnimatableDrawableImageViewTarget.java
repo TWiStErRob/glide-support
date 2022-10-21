@@ -1,11 +1,13 @@
 package com.bumptech.glide.supportapp.github._1406_drawable_fading;
 
-import android.graphics.drawable.*;
-import android.support.annotation.NonNull;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.DrawableImageViewTarget;
+
+import androidx.annotation.NonNull;
 
 public class AnimatableDrawableImageViewTarget extends DrawableImageViewTarget {
 	private Animatable animatable;

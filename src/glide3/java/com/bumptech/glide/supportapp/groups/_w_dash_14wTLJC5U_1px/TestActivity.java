@@ -1,17 +1,22 @@
 package com.bumptech.glide.supportapp.groups._w_dash_14wTLJC5U_1px;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.*;
-import android.support.v7.app.AppCompatActivity;
-import android.view.*;
-import android.widget.*;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
-import static android.view.ViewGroup.LayoutParams.*;
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
 import com.bumptech.glide.Glide;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 public class TestActivity extends AppCompatActivity {
 	@Override protected void onCreate(@Nullable Bundle savedInstanceState) {

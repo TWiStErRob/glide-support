@@ -1,13 +1,16 @@
 package com.bumptech.glide.supportapp.github._556_data_uri_firebase;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 
 import android.content.Context;
 import android.util.Base64;
 
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.data.DataFetcher;
-import com.bumptech.glide.load.model.*;
+import com.bumptech.glide.load.model.GenericLoaderFactory;
+import com.bumptech.glide.load.model.ModelLoader;
+import com.bumptech.glide.load.model.ModelLoaderFactory;
 import com.bumptech.glide.load.model.stream.StreamModelLoader;
 import com.firebase.client.Firebase;
 

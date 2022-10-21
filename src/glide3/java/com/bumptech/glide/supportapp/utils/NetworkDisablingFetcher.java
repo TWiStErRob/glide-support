@@ -1,6 +1,7 @@
 package com.bumptech.glide.supportapp.utils;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
 
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.data.DataFetcher;

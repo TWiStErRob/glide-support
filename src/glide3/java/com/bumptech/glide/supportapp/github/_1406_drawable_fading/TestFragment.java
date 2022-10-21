@@ -4,22 +4,40 @@ import java.io.InputStream;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.*;
-import android.support.v4.content.ContextCompat;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 
-import com.bumptech.glide.*;
+import com.bumptech.glide.GenericRequestBuilder;
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.model.StreamEncoder;
 import com.bumptech.glide.load.model.stream.StreamStringLoader;
-import com.bumptech.glide.load.resource.bitmap.*;
+import com.bumptech.glide.load.resource.bitmap.BitmapEncoder;
+import com.bumptech.glide.load.resource.bitmap.FileDescriptorBitmapDecoder;
+import com.bumptech.glide.load.resource.bitmap.FitCenter;
+import com.bumptech.glide.load.resource.bitmap.ImageVideoBitmapDecoder;
+import com.bumptech.glide.load.resource.bitmap.StreamBitmapDecoder;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.load.resource.file.FileToStreamDecoder;
-import com.bumptech.glide.load.resource.gif.*;
-import com.bumptech.glide.load.resource.gifbitmap.*;
-import com.bumptech.glide.load.resource.transcode.*;
-import com.bumptech.glide.supportapp.*;
-import com.bumptech.glide.supportapp.utils.*;
+import com.bumptech.glide.load.resource.gif.GifResourceDecoder;
+import com.bumptech.glide.load.resource.gif.GifResourceEncoder;
+import com.bumptech.glide.load.resource.gifbitmap.GifBitmapWrapper;
+import com.bumptech.glide.load.resource.gifbitmap.GifBitmapWrapperResourceDecoder;
+import com.bumptech.glide.load.resource.gifbitmap.GifBitmapWrapperResourceEncoder;
+import com.bumptech.glide.load.resource.gifbitmap.GifBitmapWrapperStreamResourceDecoder;
+import com.bumptech.glide.load.resource.gifbitmap.GifBitmapWrapperTransformation;
+import com.bumptech.glide.load.resource.transcode.GifBitmapWrapperDrawableTranscoder;
+import com.bumptech.glide.load.resource.transcode.GlideBitmapDrawableTranscoder;
+import com.bumptech.glide.supportapp.App;
+import com.bumptech.glide.supportapp.GlideImageFragment;
+import com.bumptech.glide.supportapp.R;
+import com.bumptech.glide.supportapp.utils.LoggingListener;
+import com.bumptech.glide.supportapp.utils.LoggingTarget;
+import com.bumptech.glide.supportapp.utils.ObjectIdentitySignature;
+import com.bumptech.glide.supportapp.utils.PassthroughModelLoader;
+
+import androidx.core.content.ContextCompat;
 
 public class TestFragment extends GlideImageFragment {
 	private GenericRequestBuilder<String, ?, GifBitmapWrapper, Drawable> urlGlide;

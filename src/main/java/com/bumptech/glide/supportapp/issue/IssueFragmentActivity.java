@@ -1,14 +1,16 @@
 package com.bumptech.glide.supportapp.issue;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.ViewGroup.*;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.FrameLayout;
 
 import com.bumptech.glide.supportapp.GlideBaseActivity;
 import com.bumptech.glide.supportapp.random.__quicky.QuickFragment;
 import com.bumptech.glide.supportapp.utils.Utils;
+
+import androidx.fragment.app.Fragment;
 
 public class IssueFragmentActivity extends GlideBaseActivity {
 	public static final String CONTENT_FRAGMENT = "contentFragment";
@@ -24,7 +26,9 @@ public class IssueFragmentActivity extends GlideBaseActivity {
 		String fragmentClass = getFragmentClass();
 		if (savedInstanceState == null) {
 			Log.d("SYS", "Creating fragment: " + fragmentClass);
-			Fragment fragment = Fragment.instantiate(this, fragmentClass);
+			Fragment fragment = getSupportFragmentManager()
+					.getFragmentFactory()
+			        .instantiate(getClassLoader(), fragmentClass);
 			getSupportFragmentManager()
 					.beginTransaction()
 					.add(android.R.id.content, fragment)

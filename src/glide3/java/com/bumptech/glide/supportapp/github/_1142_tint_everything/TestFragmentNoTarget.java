@@ -4,14 +4,15 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.*;
-import android.support.v4.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.supportapp.R;
 
-import static com.bumptech.glide.supportapp.github._1142_tint_everything.Tinter.*;
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 /**
  * Same load, and different scenarios are controlled by the model passed to load.
@@ -33,7 +34,7 @@ public class TestFragmentNoTarget extends TestFragment {
 		// need to mutate otherwise all references to this drawable will be tinted
 		// (try to remove the .mutate() call and observe the images on the buttons)
 		Drawable drawable = ContextCompat.getDrawable(getContext(), res).mutate();
-		return tint(drawable, ColorStateList.valueOf(color));
+		return Tinter.tint(drawable, ColorStateList.valueOf(color));
 	}
 
 	@Override protected void load(Context context) throws Exception {

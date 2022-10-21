@@ -3,11 +3,14 @@ package com.bumptech.glide.supportapp.github._700_tall_image;
 import java.util.Locale;
 
 import android.content.Context;
-import android.graphics.*;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.*;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
@@ -16,6 +19,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.bumptech.glide.supportapp.utils.LoggingListener;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 public class ImageChunkAdapter extends RecyclerView.Adapter<ImageChunkAdapter.ImageChunkViewHolder> {
 	private final String url;

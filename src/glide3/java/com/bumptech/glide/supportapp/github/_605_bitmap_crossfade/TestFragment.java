@@ -3,7 +3,8 @@ package com.bumptech.glide.supportapp.github._605_bitmap_crossfade;
 import android.content.Context;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.supportapp.*;
+import com.bumptech.glide.supportapp.GlideImageFragment;
+import com.bumptech.glide.supportapp.R;
 
 /** @see com.bumptech.glide.supportapp.github._840_bitmap_crossfade.TestFragment */
 public class TestFragment extends GlideImageFragment {

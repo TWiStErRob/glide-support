@@ -5,7 +5,8 @@ import android.graphics.drawable.BitmapDrawable;
 
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.animation.DrawableCrossFadeFactory;
-import com.bumptech.glide.request.target.*;
+import com.bumptech.glide.request.target.ImageViewTarget;
+import com.bumptech.glide.request.target.Target;
 
 public class BitmapCrossfadeRequestListener<T> implements RequestListener<T, Bitmap> {
 	@Override public boolean onException(Exception e, T model, Target<Bitmap> target, boolean isFirstResource) {

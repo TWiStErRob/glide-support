@@ -1,16 +1,19 @@
 package com.bumptech.glide.supportapp.github._1257_cache_304;
 
-import java.io.*;
+import java.io.File;
+import java.io.InputStream;
 
 import android.content.Context;
 
-import com.bumptech.glide.*;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.integration.okhttp3.OkHttpUrlLoader;
 import com.bumptech.glide.load.model.ModelLoaderFactory;
 import com.facebook.stetho.Stetho;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
-import okhttp3.*;
+import okhttp3.Cache;
+import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 
 public class GlideModule implements com.bumptech.glide.module.GlideModule {

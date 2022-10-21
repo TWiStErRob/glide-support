@@ -1,14 +1,19 @@
 package com.bumptech.glide.supportapp.github._861_preload_loop;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.Iterator;
 
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
 import com.bumptech.glide.GenericRequestBuilder;
 import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.animation.*;
-import com.bumptech.glide.request.target.*;
+import com.bumptech.glide.request.animation.DrawableCrossFadeFactory;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.animation.GlideAnimationFactory;
+import com.bumptech.glide.request.target.DrawableImageViewTarget;
+import com.bumptech.glide.request.target.SizeReadyCallback;
+import com.bumptech.glide.request.target.Target;
 
 public class LoadCycler<M, T extends Drawable> {
 	private Iterable<M> models = Collections.emptyList();

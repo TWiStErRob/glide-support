@@ -4,8 +4,10 @@ import java.io.IOException;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.*;
+import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
 
 import com.bumptech.glide.Glide;
@@ -27,6 +29,7 @@ public class DrawableBitmapResourceDecoder implements ResourceDecoder<Drawable, 
 
 	@Override public Resource<Bitmap> decode(Drawable drawable, int width, int height) throws IOException {
 		@SuppressLint("WrongConstant") // formatHasAlpha supports any PixelFormat value.
+		@SuppressWarnings("deprecation") // Historical code.
 		Config config = PixelFormat.formatHasAlpha(drawable.getOpacity())? Config.ARGB_8888 : Config.RGB_565;
 		Bitmap bitmap = pool.get(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), config);
 		if (bitmap == null) {

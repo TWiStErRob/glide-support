@@ -2,16 +2,15 @@ package com.bumptech.glide.supportapp.github._1142_tint_everything;
 
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.ColorInt;
 import android.widget.ImageView;
 
-import static android.content.res.ColorStateList.*;
+import static android.content.res.ColorStateList.valueOf;
 
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.ImageViewTarget;
 
-import static com.bumptech.glide.supportapp.github._1142_tint_everything.Tinter.*;
+import androidx.annotation.ColorInt;
 
 public class TintTarget extends ImageViewTarget<GlideDrawable> {
 	private final ColorStateList placeholderColor;
@@ -43,17 +42,17 @@ public class TintTarget extends ImageViewTarget<GlideDrawable> {
 	}
 
 	@Override public void onLoadStarted(Drawable placeholder) {
-		super.onLoadStarted(tint(placeholder, placeholderColor));
+		super.onLoadStarted(Tinter.tint(placeholder, placeholderColor));
 	}
 	@Override public void onLoadFailed(Exception e, Drawable errorDrawable) {
-		super.onLoadFailed(e, tint(errorDrawable, errorColor));
+		super.onLoadFailed(e, Tinter.tint(errorDrawable, errorColor));
 	}
 	@Override public void onLoadCleared(Drawable placeholder) {
-		super.onLoadCleared(tint(placeholder, placeholderColor));
+		super.onLoadCleared(Tinter.tint(placeholder, placeholderColor));
 	}
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	@Override public void onResourceReady(GlideDrawable resource, GlideAnimation glideAnimation) {
-		Drawable tinted = tint(resource, resultColor);
+		Drawable tinted = Tinter.tint(resource, resultColor);
 		// animate works with drawable likely because it's accepting Drawables, but declaring GlideDrawable as generics
 		if (glideAnimation == null || !glideAnimation.animate(tinted, this)) {
 			view.setImageDrawable(tinted);

@@ -2,16 +2,17 @@ package com.bumptech.glide.supportapp.github._1013_palette;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.v7.graphics.Palette;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.Resource;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.transcode.ResourceTranscoder;
 
+import androidx.palette.graphics.Palette;
+
 /**
  * A {@link com.bumptech.glide.load.resource.transcode.ResourceTranscoder} for generating
- * {@link android.support.v7.graphics.Palette}s from {@link android.graphics.Bitmap}s in the background.
+ * {@link androidx.palette.graphics.Palette}s from {@link android.graphics.Bitmap}s in the background.
  */
 public class PaletteBitmapTranscoder implements ResourceTranscoder<Bitmap, PaletteBitmap> {
 	private final BitmapPool bitmapPool;

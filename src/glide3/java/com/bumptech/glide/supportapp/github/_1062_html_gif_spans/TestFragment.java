@@ -3,12 +3,13 @@ package com.bumptech.glide.supportapp.github._1062_html_gif_spans;
 import java.util.Arrays;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.AbsListView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.supportapp.GlideListFragment;
+
+import androidx.annotation.Nullable;
 
 public class TestFragment extends GlideListFragment {
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -58,4 +59,3 @@ public class TestFragment extends GlideListFragment {
 		});
 	}
 }
- 

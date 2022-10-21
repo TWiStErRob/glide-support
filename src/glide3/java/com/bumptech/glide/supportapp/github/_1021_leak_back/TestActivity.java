@@ -3,16 +3,17 @@ package com.bumptech.glide.supportapp.github._1021_leak_back;
 import java.util.Locale;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
 
-import static android.view.ViewGroup.LayoutParams.*;
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.supportapp.utils.LoggingListener;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class TestActivity extends AppCompatActivity {
 	private static final String URL_TEMPLATE = "http://placehold.it/300x200/FFFFFF/000000&text=%d";

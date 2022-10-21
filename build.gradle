@@ -1,13 +1,6 @@
-buildscript {
-	repositories {
-		mavenCentral()
-		google()
-	}
-	dependencies {
-		classpath("com.android.tools.build:gradle:7.3.1")
-	}
+plugins {
+	id("com.android.application") version "7.3.0"
 }
-apply plugin: "com.android.application"
 
 repositories {
 	mavenCentral()
@@ -18,11 +11,10 @@ repositories {
 	}
 	// https://github.com/bumptech/glide/wiki/Snapshots#obtaining-snapshots
 	maven { name = "glide-snapshot"; url = "https://oss.sonatype.org/content/repositories/snapshots" }
-	flatDir name: 'libs', dirs: 'libs'
 }
 
 android {
-	compileSdkVersion = 28
+	compileSdkVersion = 33
 	namespace = "com.bumptech.glide.supportapp"
 	defaultConfig {
 		//noinspection MinSdkTooLow holding back for when AndroidX is migrated.
@@ -31,6 +23,7 @@ android {
 		targetSdkVersion 28
 		versionCode = 1
 		versionName = "0.1"
+		multiDexEnabled = true
 		vectorDrawables.useSupportLibrary = true
 		proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 	}
@@ -57,11 +50,12 @@ android {
 	}
 
 	compileOptions {
-		sourceCompatibility = JavaVersion.VERSION_1_7
-		targetCompatibility = JavaVersion.VERSION_1_7
+		sourceCompatibility = JavaVersion.VERSION_11
+		targetCompatibility = JavaVersion.VERSION_11
 	}
 
 	packagingOptions {
+		jniLibs.useLegacyPackaging = false
 		resources {
 			excludes += [
 					"META-INF/DEPENDENCIES.txt",
@@ -83,33 +77,23 @@ dependencies {
 	// Immediate SNAPSHOT resolution (in case the built version is too new), default is a day
 	//configurations.glide4Implementation.resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
 
-	implementation fileTree(dir: 'libs', include: [ '*.jar' ])
-	//implementation(name: 'somefile_name', ext: 'aar')
-
-	def supportVersion = '28.0.0'
-
 	// Basic Android dependencies
-	implementation "com.android.support:support-annotations:${supportVersion}"
-	implementation "com.android.support:support-v4:${supportVersion}"
-	implementation "com.android.support:appcompat-v7:${supportVersion}"
+	implementation("androidx.annotation:annotation:1.5.0")
+	implementation("androidx.appcompat:appcompat:1.5.1")
+	implementation("androidx.preference:preference:1.2.0")
 
 	// Extra dependencies for individual issues
-	implementation "com.android.support:cardview-v7:${supportVersion}"
-	implementation "com.android.support:recyclerview-v7:${supportVersion}"
-	implementation "com.android.support:palette-v7:${supportVersion}"
-	implementation "com.android.support:percent:${supportVersion}"
-	implementation "com.android.support:design:${supportVersion}"
-	implementation "com.android.support:exifinterface:${supportVersion}"
-	implementation 'com.firebase:firebase-client-android:2.5.2'
-	implementation 'com.facebook.stetho:stetho:1.5.1'
-	implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
-	implementation 'com.facebook.stetho:stetho-urlconnection:1.5.1'
+	implementation("androidx.cardview:cardview:1.0.0")
+	implementation("androidx.recyclerview:recyclerview:1.2.1")
+	implementation("androidx.palette:palette:1.0.0")
+	implementation("androidx.percentlayout:percentlayout:1.0.0")
+	implementation("com.google.android.material:material:1.7.0")
+	implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
 }
 
-
-dependencies { // Glide v4 (last non-AndroidX release)
-	def glideVersion = '4.9.0'
-	//noinspection GradleDependency latest v3, no need to upgrade to v4
+dependencies { // Glide v4
+	def glideVersion = '4.14.2'
+	//noinspection GradleDependency false positive from below, this is actually a good version.
 	glide4Implementation "com.github.bumptech.glide:glide:${glideVersion}"
 	glide4Implementation "com.github.bumptech.glide:annotations:${glideVersion}"
 	glide4AnnotationProcessor "com.github.bumptech.glide:compiler:${glideVersion}"
@@ -128,6 +112,10 @@ dependencies { // Glide v4 (last non-AndroidX release)
 	//noinspection GradleDependency the warning is for v3 below.
 	glide4Implementation "com.github.bumptech.glide:volley-integration:${glideVersion}"
 	glide4Implementation 'com.android.volley:volley:1.2.1'
+
+	glide4Implementation("com.facebook.stetho:stetho:1.5.1")
+	glide4Implementation("com.facebook.stetho:stetho-okhttp3:1.5.1")
+	glide4Implementation("com.facebook.stetho:stetho-urlconnection:1.5.1")
 }
 
 dependencies { // Glide v3
@@ -157,11 +145,19 @@ dependencies { // Glide v3
 	glide3Implementation("jp.wasabeef:glide-transformations:1.0.6")
 	//noinspection GradleDependency cannot upgrade because not in Maven Central, or needs Glide v4.
 	glide3Implementation("jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.0")
+
+	// Extra dependencies for individual issues
+	glide3Implementation("com.firebase:firebase-client-android:2.5.2")
+
+	glide3Implementation("com.facebook.stetho:stetho:1.5.1")
+	glide3Implementation("com.facebook.stetho:stetho-okhttp3:1.5.1")
+	glide3Implementation("com.facebook.stetho:stetho-urlconnection:1.5.1")
+
+	glide3Implementation("com.squareup.picasso:picasso:2.71828")
 }
 
 dependencies { // Competition
-	implementation 'com.squareup.picasso:picasso:2.71828'
-	implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+	//implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5' // not used yet
 	//implementation 'com.facebook.fresco:fresco:0.9.0' // not used yet, it has too many dependencies
 }
 
@@ -170,7 +166,12 @@ tasks.withType(JavaCompile).configureEach {
 			"-Werror",
 			"-Xlint:all",
 			"-Xlint:-auxiliaryclass",
-			"-Xlint:-deprecation",
 			"-Xlint:-processing",
 	]
+	if (it.name.contains("Glide4")) {
+		options.compilerArgs += [
+				// The framework in IssueInfoAdapter and GlideReset needs GlideModules at runtime.
+				"-Xlint:-deprecation",
+		]
+	}
 }

@@ -1,8 +1,10 @@
 package com.bumptech.glide.supportapp.github._943_double_crossFade;
 
-import android.graphics.drawable.*;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
 
-import com.bumptech.glide.request.animation.*;
+import com.bumptech.glide.request.animation.DrawableCrossFadeFactory;
+import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.animation.GlideAnimation.ViewAdapter;
 import com.bumptech.glide.supportapp.utils.WrappingViewAdapter;
 

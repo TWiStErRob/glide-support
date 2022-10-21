@@ -5,21 +5,31 @@ import java.util.concurrent.ExecutionException;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.*;
+import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
-import android.os.*;
-import android.os.Build.*;
-import android.support.annotation.Nullable;
-import android.view.*;
+import android.graphics.Point;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
+import android.os.Bundle;
+import android.view.Display;
+import android.view.View;
+import android.view.WindowManager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.supportapp.GlideRecyclerFragment;
 
+import androidx.annotation.Nullable;
+
 public class TestFragment extends GlideRecyclerFragment {
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		new AsyncTask<Void, Void, Point>() {
+		download();
+	}
+
+	@SuppressWarnings("deprecation") // Historical code.
+	private void download() {
+		new android.os.AsyncTask<Void, Void, Point>() {
 			String url = "http://imgfave-herokuapp-com.global.ssl.fastly.net/image_cache/142083463797243_tall.jpg";
 			//String url = "https://upload.wikimedia.org/wikipedia/commons/a/a3/Berliner_Fernsehturm,_Sicht_vom_Neptunbrunnen_-_Berlin_Mitte.jpg";
 			@Override protected Point doInBackground(Void... params) {

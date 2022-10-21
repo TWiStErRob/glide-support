@@ -1,9 +1,11 @@
 package com.bumptech.glide.supportapp.github._847_shared_transition;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 
-import android.support.annotation.ColorInt;
+import androidx.annotation.ColorInt;
 
 class Item implements Serializable {
 	private static final long serialVersionUID = -8313038232621345965L;

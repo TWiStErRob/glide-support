@@ -2,23 +2,30 @@ package com.bumptech.glide.supportapp.github._639_cache_fallback_3g_wifi;
 
 import java.io.File;
 import java.util.Locale;
-import java.util.concurrent.*;
-import java.util.concurrent.atomic.*;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
-import android.view.*;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.bumptech.glide.*;
+import com.bumptech.glide.DrawableRequestBuilder;
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.*;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.supportapp.GlideImageFragment;
-import com.bumptech.glide.supportapp.utils.*;
+import com.bumptech.glide.supportapp.utils.NetworkDisablingLoader;
+import com.bumptech.glide.supportapp.utils.TextDrawable;
 
 public class TestFragment extends GlideImageFragment {
 	@Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -216,4 +223,3 @@ public class TestFragment extends GlideImageFragment {
 		}
 	}
 }
-

@@ -6,23 +6,29 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.support.v7.graphics.Palette;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.bumptech.glide.*;
+import com.bumptech.glide.GenericRequestBuilder;
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.model.StreamEncoder;
 import com.bumptech.glide.load.model.stream.StreamUriLoader;
-import com.bumptech.glide.load.resource.bitmap.*;
+import com.bumptech.glide.load.resource.bitmap.Downsampler;
+import com.bumptech.glide.load.resource.bitmap.StreamBitmapDecoder;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.load.resource.file.FileToStreamDecoder;
 import com.bumptech.glide.request.Request;
 import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.*;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.supportapp.GlideImageFragment;
-import com.bumptech.glide.supportapp.utils.*;
+import com.bumptech.glide.supportapp.utils.DelayTranscoder;
+import com.bumptech.glide.supportapp.utils.LoggingListener;
+import com.bumptech.glide.supportapp.utils.LoggingTarget;
+
+import androidx.palette.graphics.Palette;
 
 /**
  * Demonstrates how to handle Palette in a separate request, with full caching support.
@@ -141,4 +147,3 @@ public class TestFragment_Separate extends GlideImageFragment {
 		}
 	}
 }
-

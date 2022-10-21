@@ -14,12 +14,10 @@ package com.android.vending.expansion.zipfile;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import java.io.File;
-import java.io.FileFilter;
 import java.io.IOException;
 import java.util.Vector;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import android.content.Context;
 import android.os.Environment;
@@ -34,6 +32,7 @@ public class APKExpansionSupport {
 		if (Environment.getExternalStorageState().equals(
 				Environment.MEDIA_MOUNTED)) {
 			// Build the full path to the app's expansion files
+			@SuppressWarnings("deprecation") // Historical code.
 			File root = Environment.getExternalStorageDirectory();
 			File expPath = new File(root.toString() + EXP_PATH + packageName);
 

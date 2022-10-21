@@ -4,20 +4,26 @@ import java.util.Arrays;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.drawable.*;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.bumptech.glide.*;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
-import com.bumptech.glide.supportapp.*;
-import com.bumptech.glide.supportapp.utils.*;
+import com.bumptech.glide.supportapp.GlideRecyclerFragment;
+import com.bumptech.glide.supportapp.R;
+import com.bumptech.glide.supportapp.utils.DelayTransformation;
+import com.bumptech.glide.supportapp.utils.LoggingListener;
+import com.bumptech.glide.supportapp.utils.LoggingTarget;
+
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 public class TestFragment_List extends GlideRecyclerFragment {
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

@@ -147,11 +147,7 @@ public class TestFragment extends GlideRecyclerFragment {
 					this.setResource(resource);
 					setColors(resource.palette);
 				} else {
-					if (VERSION_CODES.HONEYCOMB <= VERSION.SDK_INT) {
-						animateColors(resource.palette);
-					} else {
-						setColors(resource.palette);
-					}
+					animateColors(resource.palette);
 				}
 			}
 			@Override public void onLoadCleared(Drawable placeholder) {

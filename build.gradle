@@ -144,7 +144,7 @@ dependencies { // Glide v3
 
 	// Glide Transformations
 	//noinspection GradleDependency cannot upgrade because not in Maven Central, or needs Glide v4.
-	glide3Implementation("jp.wasabeef:glide-transformations:1.0.6")
+	glide3Implementation("jp.wasabeef:glide-transformations:4.3.0")
 	//noinspection GradleDependency cannot upgrade because not in Maven Central, or needs Glide v4.
 	glide3Implementation("jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.0")
 

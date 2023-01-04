@@ -84,7 +84,7 @@ jobs:
             # Search for the line that contains the AGP version.
             /id\("com.android.application"\) version "(.*)"/,${
               # If found, replace with latest version. (s//.../ will use the last match)
-              s//id("com.android.application") version "8.0.0-alpha09"/;
+              s//id("com.android.application") version "8.0.0-alpha11"/;
               # GOTO end of script. (therefore skipping exit 1)
               b;
             };

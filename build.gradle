@@ -176,5 +176,10 @@ tasks.withType(JavaCompile).configureEach {
 				// The framework in IssueInfoAdapter and GlideReset needs GlideModules at runtime.
 				"-Xlint:-deprecation",
 		]
+		options.fork = true
+		options.forkOptions.jvmArgs += [
+				// TODEL https://github.com/bumptech/glide/issues/5003 along with fork=true.
+				"--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED",
+		]
 	}
 }

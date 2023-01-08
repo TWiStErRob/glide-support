@@ -61,11 +61,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Set up JDK 11.
+      - name: Set up JDK 17.
         uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
-          java-version: 11
+          java-version: 17
 
       - name: Set up Android SDK.
         uses: android-actions/setup-android@v2
@@ -84,7 +84,7 @@ jobs:
             # Search for the line that contains the AGP version.
             /id\("com.android.application"\) version "(.*)"/,${
               # If found, replace with latest version. (s//.../ will use the last match)
-              s//id("com.android.application") version "8.0.0-alpha09"/;
+              s//id("com.android.application") version "8.0.0-alpha11"/;
               # GOTO end of script. (therefore skipping exit 1)
               b;
             };

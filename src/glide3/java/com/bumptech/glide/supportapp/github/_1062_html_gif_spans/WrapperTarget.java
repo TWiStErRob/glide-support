@@ -1,6 +1,5 @@
 package com.bumptech.glide.supportapp.github._1062_html_gif_spans;
 
-import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;

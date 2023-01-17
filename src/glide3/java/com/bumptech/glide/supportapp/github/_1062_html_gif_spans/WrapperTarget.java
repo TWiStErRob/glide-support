@@ -1,6 +1,5 @@
 package com.bumptech.glide.supportapp.github._1062_html_gif_spans;
 
-import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
@@ -11,7 +10,7 @@ import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 
-import androidx.appcompat.graphics.drawable.DrawableWrapper;
+import androidx.appcompat.graphics.drawable.DrawableWrapperCompat;
 
 /**
  * Glide target for fixed sized Drawables that require sync return.
@@ -27,11 +26,16 @@ import androidx.appcompat.graphics.drawable.DrawableWrapper;
  * }
  * </code></pre>
  */
-@SuppressLint("RestrictedApi") // DrawableWrapper is a handy class, wouldn't want to copy-paste it
 class WrapperTarget extends SimpleTarget<GlideDrawable> {
-	/** Workaround because the AppCompat DrawableWrapper doesn't support null drawable as the API23 version does */
+	/**
+	 * Workaround because the androidx {@link DrawableWrapperCompat} doesn't support null drawable
+	 * while being used, while the SDK {@link android.graphics.drawable.DrawableWrapper} does.
+	 * Setting "something" as the wrapped drawable allows the wrapper to be used without crashing.
+	 */
 	private final ColorDrawable nullObject = new ColorDrawable(Color.TRANSPARENT);
-	private final DrawableWrapper wrapper = new DrawableWrapper(null/* temporarily null until a setDrawable call*/);
+	private final DrawableWrapperCompat wrapper = new DrawableWrapperCompat(
+			null /* temporarily null until a setDrawable call*/
+	);
 	public WrapperTarget(int size) {
 		super(size, size);
 		setDrawable(null);
@@ -47,12 +51,14 @@ class WrapperTarget extends SimpleTarget<GlideDrawable> {
 		setDrawable(placeholder);
 	}
 
-
 	@Override public void onLoadFailed(Exception e, Drawable errorDrawable) {
 		setDrawable(errorDrawable);
 	}
 
-	@Override public void onResourceReady(GlideDrawable glideDrawable, GlideAnimation<? super GlideDrawable> glideAnimation) {
+	@Override public void onResourceReady(
+			GlideDrawable glideDrawable,
+			GlideAnimation<? super GlideDrawable> glideAnimation
+	) {
 		// start GlideDrawable, even if it's not animated (these methods are No-op in that case)
 		glideDrawable.setLoopCount(GlideDrawable.LOOP_FOREVER);
 		glideDrawable.start();
@@ -68,7 +74,7 @@ class WrapperTarget extends SimpleTarget<GlideDrawable> {
 			drawable = nullObject;
 		}
 		drawable.setBounds(calcBounds(drawable, Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM));
-		wrapper.setWrappedDrawable(drawable);
+		wrapper.setDrawable(drawable);
 		// invalidate wrapper drawable so it re-draws itself and displays the new wrapped drawable
 		wrapper.invalidateSelf();
 	}

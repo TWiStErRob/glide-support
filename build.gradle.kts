@@ -93,7 +93,7 @@ dependencies {
 	implementation("androidx.recyclerview:recyclerview:1.2.1")
 	implementation("androidx.palette:palette:1.0.0")
 	implementation("androidx.percentlayout:percentlayout:1.0.0")
-	implementation("com.google.android.material:material:1.7.0")
+	implementation("com.google.android.material:material:1.8.0")
 	implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
 }
 

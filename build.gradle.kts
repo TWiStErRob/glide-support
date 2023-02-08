@@ -85,7 +85,7 @@ dependencies {
 
 	// Basic Android dependencies
 	implementation("androidx.annotation:annotation:1.5.0")
-	implementation("androidx.appcompat:appcompat:1.6.0")
+	implementation("androidx.appcompat:appcompat:1.6.1")
 	implementation("androidx.preference:preference:1.2.0")
 
 	// Extra dependencies for individual issues

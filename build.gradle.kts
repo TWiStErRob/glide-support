@@ -84,7 +84,7 @@ dependencies {
 	//configurations.glide4Implementation.resolutionStrategy.cacheChangingModulesFor 0, "seconds"
 
 	// Basic Android dependencies
-	implementation("androidx.annotation:annotation:1.5.0")
+	implementation("androidx.annotation:annotation:1.6.0")
 	implementation("androidx.appcompat:appcompat:1.6.1")
 	implementation("androidx.preference:preference:1.2.0")
 

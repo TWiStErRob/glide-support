@@ -82,7 +82,6 @@ val stethoVersion = "1.6.0"
 dependencies {
 	// Immediate SNAPSHOT resolution (in case the built version is too new), default is a day
 	//configurations.glide4Implementation.resolutionStrategy.cacheChangingModulesFor 0, "seconds"
-	implementation("org.jetbrains.kotlin:kotlin-bom:1.8.10")
 
 	// Basic Android dependencies
 	implementation("androidx.annotation:annotation:1.6.0")
@@ -185,3 +184,22 @@ fun DependencyHandler.glide3Implementation(dependencyNotation: Any): Dependency?
 
 fun DependencyHandler.glide4Implementation(dependencyNotation: Any): Dependency? =
 	add("glide4Implementation", dependencyNotation)
+
+// Lock in the version of Kotlin used so that the transitive dependencies are consistently upgraded.
+dependencies {
+	implementation("org.jetbrains.kotlin:kotlin-bom:1.8.10")
+}
+// https://kotlinlang.org/docs/whatsnew18.html#usage-of-the-latest-kotlin-stdlib-version-in-transitive-dependencies
+// Not using the kotlin-gradle-plugin, so doing it manually.
+configurations.configureEach {
+	resolutionStrategy.eachDependency {
+		if (requested.group == "org.jetbrains.kotlin" && requested.name == "kotlin-stdlib-jdk7") {
+			useTarget("${target.group}:kotlin-stdlib:${target.version}")
+			because("Since Kotlin 1.8, jdk7 and jdk8 have been merged into stdlib.")
+		}
+		if (requested.group == "org.jetbrains.kotlin" && requested.name == "kotlin-stdlib-jdk8") {
+			useTarget("${target.group}:kotlin-stdlib:${target.version}")
+			because("Since Kotlin 1.8, jdk7 and jdk8 have been merged into stdlib.")
+		}
+	}
+}

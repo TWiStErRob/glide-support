@@ -1,7 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
 plugins {
-	// TODO AGP 7.4 / 8.0, make all warnings fail in gradle.properties https://issuetracker.google.com/issues/264177800
 	id("com.android.application") version "7.4.1"
 }
 

@@ -82,6 +82,7 @@ val stethoVersion = "1.6.0"
 dependencies {
 	// Immediate SNAPSHOT resolution (in case the built version is too new), default is a day
 	//configurations.glide4Implementation.resolutionStrategy.cacheChangingModulesFor 0, "seconds"
+	implementation("org.jetbrains.kotlin:kotlin-bom:1.8.10")
 
 	// Basic Android dependencies
 	implementation("androidx.annotation:annotation:1.6.0")

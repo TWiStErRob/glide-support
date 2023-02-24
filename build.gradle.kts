@@ -101,7 +101,7 @@ dependencies {
 }
 
 dependencies { // Glide v4
-	val glideVersion = "4.14.2"
+	val glideVersion = "4.15.0"
 	glide4Implementation("com.github.bumptech.glide:glide:${glideVersion}")
 	glide4Implementation("com.github.bumptech.glide:annotations:${glideVersion}")
 	"glide4AnnotationProcessor"("com.github.bumptech.glide:compiler:${glideVersion}")

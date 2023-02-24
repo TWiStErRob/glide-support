@@ -126,7 +126,7 @@ dependencies { // Glide v4
 }
 
 dependencies { // Glide v3
-	val glideVersion = "3.9.0-SNAPSHOT"
+	val glideVersion = "4.15.0"
 	val glideIntegrationVersion = "1.6.0-SNAPSHOT"
 	glide3Implementation("com.github.bumptech.glide:glide:${glideVersion}")
 

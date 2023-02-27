@@ -1,7 +1,7 @@
 @file:Suppress("UnstableApiUsage")
 
 plugins {
-	id("com.android.application") version "7.4.1"
+	id("com.android.application") version "7.4.2"
 }
 
 repositories {

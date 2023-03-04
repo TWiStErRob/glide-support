@@ -66,7 +66,7 @@ jobs:
             ${{ github.workspace }}/build/outputs/apk/
 
   shadow-build-agp:
-    name: "🔮 Build & Verify (AGP shadow)"
+    name: "🔮 Shadow Build / AGP"
     needs: validate
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -93,7 +93,7 @@ jobs:
           -Pcom.bumptech.glide.build.shadow=gradle/shadow-agp.versions.toml
 
   shadow-build-glide3-snapshot:
-    name: "🔮 Build & Verify (Glide 3 SNAPSHOT shadow)"
+    name: "🔮 Shadow Build / Glide 3 SNAPSHOT"
     needs: validate
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -120,7 +120,7 @@ jobs:
           -Pcom.bumptech.glide.build.shadow=gradle/shadow-glide3-snapshot.versions.toml
 
   shadow-build-glide4-snapshot:
-    name: "🔮 Build & Verify (Glide 4 SNAPSHOT shadow)"
+    name: "🔮 Shadow Build / Glide 4 SNAPSHOT"
     needs: validate
     runs-on: ubuntu-latest
     timeout-minutes: 10

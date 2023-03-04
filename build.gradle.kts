@@ -1,7 +1,7 @@
 @file:Suppress("UnstableApiUsage")
 
 plugins {
-	id("com.android.application") version "7.4.1"
+	id("com.android.application") version "7.4.2"
 }
 
 repositories {
@@ -82,8 +82,12 @@ dependencies {
 	// Immediate SNAPSHOT resolution (in case the built version is too new), default is a day
 	//configurations.glide4Implementation.resolutionStrategy.cacheChangingModulesFor 0, "seconds"
 
+	// Lock in the version of Kotlin used so that the transitive dependencies are consistently upgraded.
+	// https://kotlinlang.org/docs/whatsnew18.html#usage-of-the-latest-kotlin-stdlib-version-in-transitive-dependencies
+	implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.10"))
+
 	// Basic Android dependencies
-	implementation("androidx.annotation:annotation:1.5.0")
+	implementation("androidx.annotation:annotation:1.6.0")
 	implementation("androidx.appcompat:appcompat:1.6.1")
 	implementation("androidx.preference:preference:1.2.0")
 
@@ -97,7 +101,7 @@ dependencies {
 }
 
 dependencies { // Glide v4
-	val glideVersion = "4.14.2"
+	val glideVersion = "4.15.0"
 	glide4Implementation("com.github.bumptech.glide:glide:${glideVersion}")
 	glide4Implementation("com.github.bumptech.glide:annotations:${glideVersion}")
 	"glide4AnnotationProcessor"("com.github.bumptech.glide:compiler:${glideVersion}")

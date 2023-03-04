@@ -84,11 +84,11 @@ jobs:
         run: |
           # Based on https://stackoverflow.com/a/15966279/253468
           # Based on https://stackoverflow.com/a/26469351/253468
-          sed --in-place --regexp-extended --file - build.gradle.kts <<'SED_SCRIPT'
+          sed --in-place --regexp-extended --file - gradle/libs.versions.toml <<'SED_SCRIPT'
             # Search for the line that contains the AGP version.
-            /id\("com.android.application"\) version "(.*)"/,${
+            /agp = "(.*)"/,${
               # If found, replace with latest version. (s//.../ will use the last match)
-              s//id("com.android.application") version "8.0.0-beta04"/;
+              s//agp = "8.0.0-beta04"/;
               # GOTO end of script. (therefore skipping exit 1)
               b;
             };

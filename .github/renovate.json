@@ -11,7 +11,7 @@
 			"registryUrlTemplate": "https://maven.google.com",
 			"depNameTemplate": "com.android.tools.build:gradle",
 			"matchStrings": [
-				"s//id\\(\"com.android.application\"\\) version \"(?<currentValue>.*)\"/"
+				"s//agp = \"(?<currentValue>.*)\"/"
 			],
 			"versioningTemplate": "gradle"
 		}

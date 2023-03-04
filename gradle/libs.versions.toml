@@ -1,0 +1,74 @@
+[versions]
+agp = "7.4.2"
+kotlin = "1.8.10"
+
+stetho = "1.6.0"
+okhttp2 = "2.7.5"
+okhttp3 = "4.10.0"
+volley = "1.0.19"
+volley2 = "1.2.1"
+
+glide3 = "3.9.0-SNAPSHOT"
+glide3-integration = "1.6.0-SNAPSHOT"
+glide3-wasabeef = "1.0.6"
+glide3-gpuimage = "1.4.0"
+
+glide4 = "4.15.0"
+
+firebase = "2.5.2"
+picasso = "2.71828"
+
+androidx-annotation = "1.6.0"
+androidx-appcompat = "1.6.1"
+androidx-preference = "1.2.0"
+androidx-cardview = "1.0.0"
+androidx-recyclerview = "1.2.1"
+androidx-palette = "1.0.0"
+androidx-percentlayout = "1.0.0"
+androidx-lifecycle = "2.5.1"
+androidx-material = "1.8.0"
+
+[libraries]
+kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin" }
+
+glide3 = { module = "com.github.bumptech.glide:glide", version.ref = "glide3" }
+glide3-okhttp2 = { module = "com.github.bumptech.glide:okhttp-integration", version.ref = "glide3-integration" }
+glide3-okhttp3 = { module = "com.github.bumptech.glide:okhttp3-integration", version.ref = "glide3-integration" }
+glide3-volley = { module = "com.github.bumptech.glide:volley-integration", version.ref = "glide3-integration" }
+glide3-wasabeef = { module = "jp.wasabeef:glide-transformations", version.ref = "glide3-wasabeef" }
+glide3-gpuimage = { module = "jp.co.cyberagent.android.gpuimage:gpuimage-library", version.ref = "glide3-gpuimage" }
+
+glide4 = { module = "com.github.bumptech.glide:glide", version.ref = "glide4" }
+glide4-annotations = { module = "com.github.bumptech.glide:annotations", version.ref = "glide4" }
+glide4-compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide4" }
+glide4-okhttp3 = { module = "com.github.bumptech.glide:okhttp3-integration", version.ref = "glide4" }
+glide4-volley = { module = "com.github.bumptech.glide:volley-integration", version.ref = "glide4" }
+glide4-recyclerview = { module = "com.github.bumptech.glide:recyclerview-integration", version.ref = "glide4" }
+
+stetho = { module = "com.facebook.stetho:stetho", version.ref = "stetho" }
+stetho-okhttp3 = { module = "com.facebook.stetho:stetho-okhttp3", version.ref = "stetho" }
+stetho-urlconnection = { module = "com.facebook.stetho:stetho-urlconnection", version.ref = "stetho" }
+
+okhttp2 = { module = "com.squareup.okhttp:okhttp", version.ref = "okhttp2" }
+okhttp3 = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp3" }
+okhttp3-logging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp3" }
+
+volley = { module = "com.mcxiaoke.volley:library", version.ref = "volley" }
+volley2 = { module = "com.android.volley:volley", version.ref = "volley2" }
+
+firebase = { module = "com.firebase:firebase-client-android", version.ref = "firebase" }
+
+picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
+
+androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "androidx-annotation" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
+androidx-preference = { module = "androidx.preference:preference", version.ref = "androidx-preference" }
+androidx-cardview = { module = "androidx.cardview:cardview", version.ref = "androidx-cardview" }
+androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "androidx-recyclerview" }
+androidx-palette = { module = "androidx.palette:palette", version.ref = "androidx-palette" }
+androidx-percentlayout = { module = "androidx.percentlayout:percentlayout", version.ref = "androidx-percentlayout" }
+androidx-lifecycleViewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
+androidx-material = { module = "com.google.android.material:material", version.ref = "androidx-material" }
+
+[plugins]
+agp = { id = "com.android.application", version.ref = "agp" }

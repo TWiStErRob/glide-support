@@ -1,7 +1,5 @@
-@file:Suppress("UnstableApiUsage")
-
 plugins {
-	id("com.android.application") version "7.4.2"
+	alias(libs.plugins.agp)
 }
 
 repositories {
@@ -15,6 +13,7 @@ repositories {
 	maven("glide-snapshot") { setUrl("https://oss.sonatype.org/content/repositories/snapshots") }
 }
 
+@Suppress("UnstableApiUsage")
 android {
 	compileSdk = 33
 	namespace = "com.bumptech.glide.supportapp"
@@ -76,85 +75,79 @@ android {
 	}
 }
 
-val stethoVersion = "1.6.0"
-
 dependencies {
 	// Immediate SNAPSHOT resolution (in case the built version is too new), default is a day
 	//configurations.glide4Implementation.resolutionStrategy.cacheChangingModulesFor 0, "seconds"
 
 	// Lock in the version of Kotlin used so that the transitive dependencies are consistently upgraded.
 	// https://kotlinlang.org/docs/whatsnew18.html#usage-of-the-latest-kotlin-stdlib-version-in-transitive-dependencies
-	implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.10"))
+	implementation(platform(libs.kotlin.bom))
 
 	// Basic Android dependencies
-	implementation("androidx.annotation:annotation:1.6.0")
-	implementation("androidx.appcompat:appcompat:1.6.1")
-	implementation("androidx.preference:preference:1.2.0")
+	implementation(libs.androidx.annotation)
+	implementation(libs.androidx.appcompat)
+	implementation(libs.androidx.preference)
 
 	// Extra dependencies for individual issues
-	implementation("androidx.cardview:cardview:1.0.0")
-	implementation("androidx.recyclerview:recyclerview:1.2.1")
-	implementation("androidx.palette:palette:1.0.0")
-	implementation("androidx.percentlayout:percentlayout:1.0.0")
-	implementation("com.google.android.material:material:1.8.0")
-	implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+	implementation(libs.androidx.cardview)
+	implementation(libs.androidx.recyclerview)
+	implementation(libs.androidx.palette)
+	implementation(libs.androidx.percentlayout)
+	implementation(libs.androidx.material)
+	implementation(libs.androidx.lifecycleViewmodel)
 }
 
 dependencies { // Glide v4
-	val glideVersion = "4.15.0"
-	glide4Implementation("com.github.bumptech.glide:glide:${glideVersion}")
-	glide4Implementation("com.github.bumptech.glide:annotations:${glideVersion}")
-	"glide4AnnotationProcessor"("com.github.bumptech.glide:compiler:${glideVersion}")
-	@Suppress("GradleDependency", "GradleDynamicVersion")
-	glide4Implementation("com.github.bumptech.glide:recyclerview-integration:${glideVersion}@aar")
+	glide4Implementation(libs.glide4)
+	glide4Implementation(libs.glide4.annotations)
+	"glide4AnnotationProcessor"(libs.glide4.compiler)
+	glide4Implementation(libs.glide4.recyclerview)
 
 	// (DO NOT USE in production, not even for testing)
-	"testGlide4CompileOnly"("com.github.bumptech.glide:compiler:${glideVersion}")
+	"testGlide4CompileOnly"(libs.glide4.compiler)
 
 	// OkHttp
-	glide4Implementation("com.github.bumptech.glide:okhttp3-integration:${glideVersion}")
-	glide4Implementation("com.squareup.okhttp3:okhttp:4.10.0")
-	glide4Implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+	glide4Implementation(libs.glide4.okhttp3)
+	glide4Implementation(libs.okhttp3)
+	glide4Implementation(libs.okhttp3.logging)
 
 	// Volley
-	glide4Implementation("com.github.bumptech.glide:volley-integration:${glideVersion}")
-	glide4Implementation("com.android.volley:volley:1.2.1")
+	glide4Implementation(libs.glide4.volley)
+	glide4Implementation(libs.volley2)
 
-	glide4Implementation("com.facebook.stetho:stetho:${stethoVersion}")
-	glide4Implementation("com.facebook.stetho:stetho-okhttp3:${stethoVersion}")
-	glide4Implementation("com.facebook.stetho:stetho-urlconnection:${stethoVersion}")
+	glide4Implementation(libs.stetho)
+	glide4Implementation(libs.stetho.okhttp3)
+	glide4Implementation(libs.stetho.urlconnection)
 }
 
 dependencies { // Glide v3
-	val glideVersion = "3.9.0-SNAPSHOT"
-	val glideIntegrationVersion = "1.6.0-SNAPSHOT"
-	glide3Implementation("com.github.bumptech.glide:glide:${glideVersion}")
+	glide3Implementation(libs.glide3)
 
 	// OkHttp
-	glide3Implementation("com.github.bumptech.glide:okhttp-integration:${glideIntegrationVersion}")
-	glide3Implementation("com.squareup.okhttp:okhttp:2.7.5")
+	glide3Implementation(libs.glide3.okhttp2)
+	glide3Implementation(libs.okhttp2)
 
 	// OkHttp3
-	glide3Implementation("com.github.bumptech.glide:okhttp3-integration:${glideIntegrationVersion}")
-	glide3Implementation("com.squareup.okhttp3:okhttp:4.10.0")
-	glide3Implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+	glide3Implementation(libs.glide3.okhttp3)
+	glide3Implementation(libs.okhttp3)
+	glide3Implementation(libs.okhttp3.logging)
 
 	// Volley
-	glide3Implementation("com.github.bumptech.glide:volley-integration:${glideIntegrationVersion}")
-	glide3Implementation("com.mcxiaoke.volley:library:1.0.19")
+	glide3Implementation(libs.glide3.volley)
+	glide3Implementation(libs.volley)
 
 	// Glide Transformations
-	glide3Implementation("jp.wasabeef:glide-transformations:1.0.6")
-	glide3Implementation("jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.0")
+	glide3Implementation(libs.glide3.wasabeef)
+	glide3Implementation(libs.glide3.gpuimage)
 
 	// Extra dependencies for individual issues
-	glide3Implementation("com.firebase:firebase-client-android:2.5.2")
+	glide3Implementation(libs.firebase)
 
-	glide3Implementation("com.facebook.stetho:stetho:${stethoVersion}")
-	glide3Implementation("com.facebook.stetho:stetho-okhttp3:${stethoVersion}")
-	glide3Implementation("com.facebook.stetho:stetho-urlconnection:${stethoVersion}")
+	glide3Implementation(libs.stetho)
+	glide3Implementation(libs.stetho.okhttp3)
+	glide3Implementation(libs.stetho.urlconnection)
 
-	glide3Implementation("com.squareup.picasso:picasso:2.71828")
+	glide3Implementation(libs.picasso)
 }
 
 dependencies { // Competition

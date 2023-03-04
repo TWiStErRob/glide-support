@@ -1,4 +1,8 @@
 [versions]
+# Note: versions enclosed in brackets are closed ranges:
+# [x] = [x, x] in Gradle's Version Ranges feature.
+# These are not supported by Renovate, and therefore are excluded from version bump PRs.
+
 agp = "7.4.2"
 kotlin = "1.8.10"
 
@@ -8,10 +12,14 @@ okhttp3 = "4.10.0"
 volley = "1.0.19"
 volley2 = "1.2.1"
 
-glide3 = "3.8.0"
-glide3-integration = "1.5.0"
-glide3-wasabeef = "1.0.6"
-glide3-gpuimage = "1.4.0"
+# Last stable version of Glide 3.x
+glide3 = "[3.8.0]"
+# Last stable version of Glide 3.x
+glide3-integration = "[1.5.0]"
+# There are newer Glide 3 compatible versions, but not on mavenCentral().
+glide3-wasabeef = "[1.0.6]"
+# There are newer versions, but not compatible with Glide 3 and not on mavenCentral().
+glide3-gpuimage = "[1.4.0]"
 
 glide4 = "4.15.0"
 

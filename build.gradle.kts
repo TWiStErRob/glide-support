@@ -1,8 +1,10 @@
 @file:Suppress("UnstableApiUsage")
 
 plugins {
-	id("com.android.application") version "7.4.2"
+	alias(libs.plugins.agp)
 }
+
+println(com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION)
 
 repositories {
 	mavenCentral()
@@ -76,8 +78,6 @@ android {
 	}
 }
 
-val stethoVersion = "1.6.0"
-
 dependencies {
 	// Immediate SNAPSHOT resolution (in case the built version is too new), default is a day
 	//configurations.glide4Implementation.resolutionStrategy.cacheChangingModulesFor 0, "seconds"
@@ -101,8 +101,8 @@ dependencies {
 }
 
 dependencies { // Glide v4
-	val glideVersion = "4.15.0"
-	glide4Implementation("com.github.bumptech.glide:glide:${glideVersion}")
+	val glideVersion = libs.versions.glide4.get()
+	glide4Implementation(libs.glide4)
 	glide4Implementation("com.github.bumptech.glide:annotations:${glideVersion}")
 	"glide4AnnotationProcessor"("com.github.bumptech.glide:compiler:${glideVersion}")
 	@Suppress("GradleDependency", "GradleDynamicVersion")
@@ -120,13 +120,14 @@ dependencies { // Glide v4
 	glide4Implementation("com.github.bumptech.glide:volley-integration:${glideVersion}")
 	glide4Implementation("com.android.volley:volley:1.2.1")
 
-	glide4Implementation("com.facebook.stetho:stetho:${stethoVersion}")
-	glide4Implementation("com.facebook.stetho:stetho-okhttp3:${stethoVersion}")
-	glide4Implementation("com.facebook.stetho:stetho-urlconnection:${stethoVersion}")
+	glide4Implementation(libs.stetho)
+	glide4Implementation(libs.stetho.okhttp)
+	glide4Implementation(libs.stetho.urlconnection)
 }
 
 dependencies { // Glide v3
-	val glideVersion = "3.9.0-SNAPSHOT"
+	val glideVersion = libs.versions.glide3.get()
+	glide3Implementation(libs.glide3)
 	val glideIntegrationVersion = "1.6.0-SNAPSHOT"
 	glide3Implementation("com.github.bumptech.glide:glide:${glideVersion}")
 
@@ -150,9 +151,9 @@ dependencies { // Glide v3
 	// Extra dependencies for individual issues
 	glide3Implementation("com.firebase:firebase-client-android:2.5.2")
 
-	glide3Implementation("com.facebook.stetho:stetho:${stethoVersion}")
-	glide3Implementation("com.facebook.stetho:stetho-okhttp3:${stethoVersion}")
-	glide3Implementation("com.facebook.stetho:stetho-urlconnection:${stethoVersion}")
+	glide3Implementation(libs.stetho)
+	glide3Implementation(libs.stetho.okhttp)
+	glide3Implementation(libs.stetho.urlconnection)
 
 	glide3Implementation("com.squareup.picasso:picasso:2.71828")
 }

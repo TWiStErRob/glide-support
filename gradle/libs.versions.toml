@@ -1,0 +1,18 @@
+[versions]
+agp = "7.4.2"
+
+stetho = "1.6.0"
+
+glide3 = "3.8.0"
+glide4 = "4.15.0"
+
+[libraries]
+glide3 = { module = "com.github.bumptech.glide:glide", version.ref = "glide3" }
+glide4 = { module = "com.github.bumptech.glide:glide", version.ref = "glide4" }
+
+stetho = { module = "com.facebook.stetho:stetho", version.ref = "stetho" }
+stetho-okhttp = { module = "com.facebook.stetho:stetho-okhttp3", version.ref = "stetho" }
+stetho-urlconnection = { module = "com.facebook.stetho:stetho-urlconnection", version.ref = "stetho" }
+
+[plugins]
+agp = { id = "com.android.application", version.ref = "agp" }

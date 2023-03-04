@@ -53,7 +53,7 @@ okhttp2 = { module = "com.squareup.okhttp:okhttp", version.ref = "okhttp2" }
 okhttp3 = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp3" }
 okhttp3-logging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp3" }
 
-volley = { module = "com.mcxiaoke.volley:library:1.0.19", version.ref = "volley" }
+volley = { module = "com.mcxiaoke.volley:library", version.ref = "volley" }
 volley2 = { module = "com.android.volley:volley", version.ref = "volley2" }
 
 firebase = { module = "com.firebase:firebase-client-android", version.ref = "firebase" }

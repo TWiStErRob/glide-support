@@ -1,35 +1,43 @@
 name: CI
 on:
   push
-
 concurrency:
-  # Documentation suggests ${{ github.head_ref }}, but that's only available on pull_request/pull_request_target triggers, so using ${{ github.ref }}.
-  # On master, we want all builds to complete even if merging happens faster to make it easier to discover at which point something broke.
-  # More info: https://stackoverflow.com/a/68422069/253468:
   group: ${{ github.ref == 'refs/heads/master' && format('ci-master-{0}', github.sha) || format('ci-{0}', github.ref) }}
   cancel-in-progress: true
+
 jobs:
+
+  validate:
+    name: "🦺 Validation"
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    permissions:
+      # actions/checkout
+      contents: read
+    steps:
+      - name: "Checkout ${{ github.ref }} branch in ${{ github.repository }} repository."
+        uses: actions/checkout@v3
+
+      - name: "Validate Gradle Wrapper JARs."
+        uses: gradle/wrapper-validation-action@v1
+
+
   build:
-    name: 🔨 Build & Verify
+    name: "🔨 Build & Verify"
+    needs: validate
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Set up JDK 11.
+      - name: "Set up JDK 11."
         uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
           java-version: 11
 
-      - name: Set up Android SDK.
-        uses: android-actions/setup-android@v2
-
-      - name: Checkout ${{ github.ref }} branch in ${{ github.repository }} repository.
+      - name: "Checkout ${{ github.ref }} branch in ${{ github.repository }} repository."
         uses: actions/checkout@v3
 
-      - name: Validate Gradle Wrapper JARs.
-        uses: gradle/wrapper-validation-action@v1
-
-      - name: Build & Verify project using Gradle.
+      - name: "Build & Verify project using Gradle."
         id: gradle
         run: >
           ./gradlew
@@ -40,43 +48,39 @@ jobs:
           assemble
           lint
 
-      - name: Upload "Reports" artifact.
+      - name: "Upload 'Reports' artifact."
         if: success() || failure()
         uses: actions/upload-artifact@v3
         with:
-          name: Reports
+          name: 'Reports'
           path: |
             ${{ github.workspace }}/build/reports/
 
-      - name: Upload "APKs" artifact.
+      - name: "Upload 'APKs' artifact."
         if: success() || failure()
         uses: actions/upload-artifact@v3
         with:
-          name: APKs
+          name: 'APKs'
           path: |
             ${{ github.workspace }}/build/outputs/apk/
 
+
   shadow-build-agp:
-    name: 🔨 Build & Verify (AGP shadow)
+    name: "🔮 Shadow Build / AGP"
+    needs: validate
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Set up JDK 17.
+      - name: "Set up JDK 17."
         uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
           java-version: 17
 
-      - name: Set up Android SDK.
-        uses: android-actions/setup-android@v2
-
-      - name: Checkout ${{ github.ref }} branch in ${{ github.repository }} repository.
+      - name: "Checkout ${{ github.ref }} branch in ${{ github.repository }} repository."
         uses: actions/checkout@v3
 
-      - name: Validate Gradle Wrapper JARs.
-        uses: gradle/wrapper-validation-action@v1
-
-      - name: Patch build so latest AGP version is used.
+      - name: "Patch build so latest AGP version is used."
         run: |
           # Based on https://stackoverflow.com/a/15966279/253468
           # Based on https://stackoverflow.com/a/26469351/253468
@@ -92,7 +96,7 @@ jobs:
             $q1;
           SED_SCRIPT
 
-      - name: Build & Verify project using Gradle.
+      - name: "Build & Verify project using Gradle."
         id: gradle
         run: >
           ./gradlew

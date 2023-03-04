@@ -9,7 +9,7 @@ volley = "1.0.19"
 volley2 = "1.2.1"
 
 glide3 = "3.8.0"
-glide3-integration = "1.5.0"
+glide3-integration = "4.15.0"
 glide3-wasabeef = "1.0.6"
 glide3-gpuimage = "1.4.0"
 

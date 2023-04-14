@@ -1,6 +1,6 @@
 [versions]
 glide4 = "4.15.0-SNAPSHOT"
 
-# Only exists so Renovate knows what versions.agp means above.
+# Only exists so Renovate knows what versions mean above.
 [libraries]
 shadow-glide4 = { module = "com.github.bumptech.glide:glide", version.ref = "glide4" }

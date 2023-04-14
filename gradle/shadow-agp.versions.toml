@@ -1,6 +1,6 @@
 [versions]
 agp = "8.0.0-beta03"
 
+# Only exists so Renovate knows what versions mean above.
 [plugins]
-# Only exists so Renovate knows what versions.agp means above.
 shadow-agp = { id = "com.android.application", version.ref = "agp" }

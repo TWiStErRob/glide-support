@@ -13,7 +13,6 @@ repositories {
 	maven("glide-snapshot") { setUrl("https://oss.sonatype.org/content/repositories/snapshots") }
 }
 
-@Suppress("UnstableApiUsage")
 android {
 	compileSdk = 33
 	namespace = "com.bumptech.glide.supportapp"
@@ -26,9 +25,11 @@ android {
 		versionName = "0.1"
 		multiDexEnabled = true
 		vectorDrawables.useSupportLibrary = true
+		@Suppress("UnstableApiUsage")
 		proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
 	}
 	sourceSets["main"].java.srcDir("src/main/thirdparty")
+	@Suppress("UnstableApiUsage")
 	flavorDimensions += "version"
 	productFlavors {
 		create("glide3") {
@@ -52,11 +53,11 @@ android {
 	}
 
 	compileOptions {
-		sourceCompatibility = JavaVersion.VERSION_11
-		targetCompatibility = JavaVersion.VERSION_11
+		sourceCompatibility = JavaVersion.VERSION_17
+		targetCompatibility = JavaVersion.VERSION_17
 	}
 
-	packagingOptions {
+	packaging {
 		jniLibs.useLegacyPackaging = false
 		resources {
 			excludes += listOf(

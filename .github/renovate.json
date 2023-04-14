@@ -2,5 +2,11 @@
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
 	"extends": [
 		"local>TWiStErRob/renovate-config"
+	],
+	"packageRules": [
+		{
+			"matchPaths": ["gradle/shadow-agp.versions.toml"],
+			"ignoreUnstable": false
+		}
 	]
 }

@@ -1,3 +1,10 @@
 [versions]
 glide3 = "3.9.0-SNAPSHOT"
 glide3-integration = "1.6.0-SNAPSHOT"
+
+# Only exists so Renovate knows what versions.agp means above.
+[libraries]
+shadow-glide3 = { module = "com.github.bumptech.glide:glide", version.ref = "glide3" }
+shadow-glide3-okhttp2 = { module = "com.github.bumptech.glide:okhttp-integration", version.ref = "glide3-integration" }
+shadow-glide3-okhttp3 = { module = "com.github.bumptech.glide:okhttp3-integration", version.ref = "glide3-integration" }
+shadow-glide3-volley = { module = "com.github.bumptech.glide:volley-integration", version.ref = "glide3-integration" }

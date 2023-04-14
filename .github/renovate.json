@@ -5,8 +5,20 @@
 	],
 	"packageRules": [
 		{
-			"matchPaths": ["gradle/shadow-agp.versions.toml"],
+			"matchPaths": [
+				"gradle/shadow-glide3-snapshot.versions.toml",
+				"gradle/shadow-glide4-snapshot.versions.toml",
+				"gradle/shadow-agp.versions.toml"
+			],
 			"ignoreUnstable": false
+		},
+		{
+			"matchPaths": [
+				"gradle/shadow-glide3-snapshot.versions.toml",
+				"gradle/shadow-glide4-snapshot.versions.toml"
+			],
+			"matchUpdateTypes": ["major"],
+			"enabled": false
 		}
 	]
 }

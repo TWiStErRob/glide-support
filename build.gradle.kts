@@ -56,7 +56,7 @@ android {
 		targetCompatibility = JavaVersion.VERSION_17
 	}
 
-	packagingOptions {
+	packaging {
 		jniLibs.useLegacyPackaging = false
 		resources {
 			excludes += listOf(

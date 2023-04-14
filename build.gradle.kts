@@ -8,13 +8,13 @@ repositories {
 	// https://github.com/bumptech/glide/wiki/Snapshots#building-snapshots-locally
 	if (project.hasProperty("local.repo")) {
 		maven {
-			name = "glide-local"
+			name = "Glide Local"
 			url = uri(project.property("local.repo")!!)
 		}
 	}
 	// https://github.com/bumptech/glide/wiki/Snapshots#obtaining-snapshots
 	maven {
-		name = "glide-snapshot"
+		name = "Glide Snapshot"
 		url = uri("https://oss.sonatype.org/content/repositories/snapshots")
 	}
 }

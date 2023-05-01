@@ -3,7 +3,7 @@
 # [x] = [x, x] in Gradle's Version Ranges feature.
 # These are not supported by Renovate, and therefore are excluded from version bump PRs.
 
-agp = "8.0.0"
+agp = "8.0.1"
 kotlin = "1.8.21"
 
 stetho = "1.6.0"

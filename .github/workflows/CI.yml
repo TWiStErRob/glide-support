@@ -70,13 +70,12 @@ jobs:
     needs: validate
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    env:
-      # Workaround for https://github.com/actions/upload-artifact/issues/231
-      ANDROID_SDK_ROOT: ${{ env.ANDROID_SDK_ROOT }}
     steps:
       - name: "env"
         run: env
 
+      - name: "Workaround for https://github.com/actions/upload-artifact/issues/231" 
+        run: echo "ANDROID_SDK_ROOT=${{ env.ANDROID_SDK_ROOT }}" >> $GITHUB_ENV
       - name: "Upload 'Licenses' artifact."
         if: success() || failure()
         uses: actions/upload-artifact@v3

@@ -77,6 +77,10 @@ jobs:
           distribution: 'zulu'
           java-version: 17
 
+      # TODO remove when AGP doesn't use an RC build tools any more.
+      - name: "Set up Android SDK as a workaround for https://github.com/actions/runner-images/issues/7506."
+        uses: android-actions/setup-android@v2
+
       - name: "Checkout ${{ github.ref }} branch in ${{ github.repository }} repository."
         uses: actions/checkout@v3
 

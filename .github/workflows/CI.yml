@@ -71,6 +71,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - name: "env"
+        run: env
+
       - name: "Upload 'Licenses' artifact."
         if: success() || failure()
         uses: actions/upload-artifact@v3

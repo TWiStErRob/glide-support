@@ -71,24 +71,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: "env"
-        run: env
-
-      - name: "Workaround for https://github.com/actions/upload-artifact/issues/231" 
-        run: echo "ANDROID_SDK_ROOT=${ANDROID_SDK_ROOT}" >> $GITHUB_ENV
-      - name: "Upload 'Licenses' artifact."
-        if: success() || failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: 'Licenses'
-          path: |
-            ${{ env.ANDROID_SDK_ROOT }}/licenses/
-
+      - run: echo $PATH
       - name: "Set up JDK 17."
         uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
           java-version: 17
+
+      # TODO remove when AGP doesn't use an RC build tools any more.
+      - name: "Workaround for https://github.com/actions/runner-images/issues/7506."
+        run: yes | sdkmanager "build-tools;34.0.0-rc3"
 
       - name: "Checkout ${{ github.ref }} branch in ${{ github.repository }} repository."
         uses: actions/checkout@v3

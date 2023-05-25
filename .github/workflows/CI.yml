@@ -77,6 +77,16 @@ jobs:
           distribution: 'zulu'
           java-version: 17
 
+      # TODO remove when AGP doesn't use an RC build tools any more.
+      - name: "Set up Android SDK as a workaround for https://github.com/actions/runner-images/issues/7506."
+        uses: android-actions/setup-android@v2
+
+      # TODO remove when AGP doesn't use an RC build tools any more.
+      - name: "Install Android SDK components as a workaround for https://github.com/actions/runner-images/issues/7506."
+        run: |
+          # 34.0.0-rc3 is required by AGP 8.2.0-alpha02 (was able to auto-download it) and AGP 8.2.0-alpha03 (no more autodownload).
+          sdkmanager --install "build-tools;34.0.0-rc3"
+
       - name: "Checkout ${{ github.ref }} branch in ${{ github.repository }} repository."
         uses: actions/checkout@v3
 

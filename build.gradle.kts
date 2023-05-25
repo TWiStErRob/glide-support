@@ -7,10 +7,16 @@ repositories {
 	google()
 	// https://github.com/bumptech/glide/wiki/Snapshots#building-snapshots-locally
 	if (project.hasProperty("local.repo")) {
-		maven("glide-local") { setUrl(project.property("local.repo")!!) }
+		maven {
+			name = "Glide Local"
+			url = uri(project.property("local.repo")!!)
+		}
 	}
 	// https://github.com/bumptech/glide/wiki/Snapshots#obtaining-snapshots
-	maven("glide-snapshot") { setUrl("https://oss.sonatype.org/content/repositories/snapshots") }
+	maven {
+		name = "Glide Snapshot"
+		url = uri("https://oss.sonatype.org/content/repositories/snapshots")
+	}
 }
 
 android {

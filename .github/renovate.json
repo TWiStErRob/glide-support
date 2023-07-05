@@ -5,7 +5,7 @@
 	],
 	"packageRules": [
 		{
-			"matchPaths": [
+			"matchFileNames": [
 				"gradle/shadow-glide3-snapshot.versions.toml",
 				"gradle/shadow-glide4-snapshot.versions.toml",
 				"gradle/shadow-agp.versions.toml"
@@ -13,7 +13,7 @@
 			"ignoreUnstable": false
 		},
 		{
-			"matchPaths": [
+			"matchFileNames": [
 				"gradle/shadow-glide3-snapshot.versions.toml",
 				"gradle/shadow-glide4-snapshot.versions.toml"
 			],

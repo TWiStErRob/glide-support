@@ -21,7 +21,7 @@ glide3-wasabeef = "[1.0.6]"
 # There are newer versions, but not compatible with Glide 3 and not on mavenCentral().
 glide3-gpuimage = "[1.4.0]"
 
-glide4 = "4.15.1"
+glide4 = "4.16.0"
 
 firebase = "2.5.2"
 picasso = "2.71828"

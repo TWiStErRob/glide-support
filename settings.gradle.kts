@@ -1,4 +1,5 @@
 import net.twisterrob.gradle.doNotNagAbout
+import org.gradle.kotlin.dsl.support.serviceOf
 
 pluginManagement {
 	repositories {
@@ -15,7 +16,7 @@ dependencyResolutionManagement {
 			if (shadowPath.isNotBlank()) {
 				// Overlay another toml file on top of the default one.
 				org.gradle.api.internal.catalog.parser.TomlCatalogFileParser
-					.parse(file(shadowPath).toPath(), this)
+					.parse(file(shadowPath).toPath(), this) { settings.serviceOf<Problems>() }
 			}
 		}
 	}

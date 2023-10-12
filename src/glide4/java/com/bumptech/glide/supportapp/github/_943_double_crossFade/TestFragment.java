@@ -3,13 +3,17 @@ package com.bumptech.glide.supportapp.github._943_double_crossFade;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.TransitionDrawable;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.supportapp.GlideImageFragment;
 
+/**
+ * This is proof that the #943 issue doesn't come up with Glide 4.x.
+ * After the blue placeholder flashes, the thumbnail is loaded and crossfades into the full image,
+ * this is observable over 5 seconds as the image gets clearer and clearer.
+ * If it wasn't working the image would have red or blue tint.
+ */
 public class TestFragment extends GlideImageFragment {
 	@Override protected void load(Context context) throws Exception {
 		String url =
@@ -26,18 +30,11 @@ public class TestFragment extends GlideImageFragment {
 						.skipMemoryCache(true)
 						.centerCrop()
 						.sizeMultiplier(.05f)
-						// .dontAnimate() doesn't work here, see GRB.buildRequestRecursive.
-						.crossFade(0)
+						// .dontAnimate() doesn't work here, see RequestBuilder.buildRequestRecursive.
+						.transition(DrawableTransitionOptions.withCrossFade(0))
 				)
 				.placeholder(new ColorDrawable(Color.BLUE))
-				.crossFade(5000)
-				.into(new GlideDrawableImageViewTarget(imageView) {
-					@Override public void setDrawable(Drawable drawable) {
-						if (drawable instanceof TransitionDrawable) {
-							//((TransitionDrawable)drawable).setCrossFadeEnabled(false);
-						}
-						super.setDrawable(drawable);
-					}
-				});
+				.transition(DrawableTransitionOptions.withCrossFade(5000))
+				.into(imageView);
 	}
 }

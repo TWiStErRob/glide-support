@@ -16,7 +16,7 @@ dependencyResolutionManagement {
 			if (shadowPath.isNotBlank()) {
 				// Overlay another toml file on top of the default one.
 				org.gradle.api.internal.catalog.parser.TomlCatalogFileParser
-					.parse(file(shadowPath).toPath(), this) { settings.serviceOf<Problems>() }
+					.parse(file(shadowPath).toPath(), this) { settings.serviceOf() }
 			}
 		}
 	}

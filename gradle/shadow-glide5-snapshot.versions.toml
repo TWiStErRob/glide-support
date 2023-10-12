@@ -1,5 +1,5 @@
 [versions]
-glide4 = "4.16.0"
+glide4 = "5.0.0-SNAPSHOT"
 
 # Only exists so Renovate knows what versions mean above.
 [libraries]

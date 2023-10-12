@@ -131,8 +131,8 @@ jobs:
           -Pcom.bumptech.glide.build.shadow=gradle/shadow-glide3-snapshot.versions.toml
 
 
-  shadow-build-glide4-snapshot:
-    name: "🔮 Shadow Build / Glide 4 SNAPSHOT"
+  shadow-build-glide5-snapshot:
+    name: "🔮 Shadow Build / Glide 5 SNAPSHOT"
     needs: validate
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -156,4 +156,4 @@ jobs:
           --continue
           assemble
           lint
-          -Pcom.bumptech.glide.build.shadow=gradle/shadow-glide4-snapshot.versions.toml
+          -Pcom.bumptech.glide.build.shadow=gradle/shadow-glide5-snapshot.versions.toml

@@ -25,17 +25,14 @@ android {
 	defaultConfig {
 		@Suppress("MinSdkTooLow") // holding back for when AndroidX is migrated.
 		minSdk = 14
-		@Suppress("ExpiredTargetSdkVersion") // holding back for when AndroidX is migrated.
-		targetSdk = 28
+		targetSdk = 34
 		versionCode = 1
 		versionName = "0.1"
 		multiDexEnabled = true
 		vectorDrawables.useSupportLibrary = true
-		@Suppress("UnstableApiUsage")
 		proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
 	}
 	sourceSets["main"].java.srcDir("src/main/thirdparty")
-	@Suppress("UnstableApiUsage")
 	flavorDimensions += "version"
 	productFlavors {
 		create("glide3") {

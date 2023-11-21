@@ -80,6 +80,8 @@ jobs:
       # TODO remove when AGP doesn't use an RC build tools any more.
       - name: "Set up Android SDK as a workaround for https://github.com/actions/runner-images/issues/7506."
         uses: android-actions/setup-android@v3
+        with:
+          log-accepted-android-sdk-licenses: false
 
       # TODO remove when AGP doesn't use an RC build tools any more.
       - name: "Install Android SDK components as a workaround for https://github.com/actions/runner-images/issues/7506."

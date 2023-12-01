@@ -29,43 +29,10 @@ plugins {
 val isCI = System.getenv("GITHUB_ACTIONS") == "true"
 val gradleVersion: String = GradleVersion.current().version
 
-// TODEL Gradle sync in IDEA 2023.1 (vs. Gradle 8.1): https://issuetracker.google.com/issues/274469173 
+// TODEL Gradle 8.2 sync in AS FL 2022.2.1 / AS GI 2022.3.1 / IDEA 2023.1, fixed in 2023.2.
+// https://youtrack.jetbrains.com/issue/IDEA-320266
 @Suppress("MaxLineLength")
-doNotNagAbout(
-	"The org.gradle.util.VersionNumber type has been deprecated. " +
-		"This is scheduled to be removed in Gradle 9.0. " +
-		"Consult the upgrading guide for further information: " +
-		"https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_8.html#org_gradle_util_reports_deprecations",
-	// There are 3 instances on consecutive lines, so just ignore the whole file.
-	"at com.android.ide.gradle.model.builder.AndroidStudioToolingPluginKt.isGradleAtLeast(AndroidStudioToolingPlugin.kt:"
-)
-
-// TODEL Gradle 8.2 vs AGP https://issuetracker.google.com/issues/279306626
-@Suppress("MaxLineLength")
-doNotNagAbout(
-	"The BuildIdentifier.isCurrentBuild() method has been deprecated. " +
-		"This is scheduled to be removed in Gradle 9.0. " +
-		"Use getBuildPath() to get a unique identifier for the build. " +
-		"Consult the upgrading guide for further information: " +
-		"https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_8.html#build_identifier_name_and_current_deprecation",
-	// There are many instances coming from different code locations, all aggregated here:
-	"at com.android.build.gradle.internal.ide.dependencies.BuildMappingUtils.getBuildId(BuildMapping.kt:40)"
-)
-// Android Studio Flamingo Sync https://issuetracker.google.com/issues/279306626#comment4
-@Suppress("MaxLineLength")
-doNotNagAbout(
-	"The BuildIdentifier.getName() method has been deprecated. " +
-		"This is scheduled to be removed in Gradle 9.0. " +
-		"Use getBuildPath() to get a unique identifier for the build. " +
-		"Consult the upgrading guide for further information: " +
-		"https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_8.html#build_identifier_name_and_current_deprecation",
-	"at com.android.build.gradle.internal.ide.dependencies.LibraryServiceImpl\$getProjectInfo\$1.apply(LibraryService.kt:138)"
-)
-
-// TODEL Gradle 8.2 sync in AS FL 2022.2.1 / IDEA 2023.1 https://youtrack.jetbrains.com/issue/IDEA-320266.
-// AGP fixed 7.4.0-beta02 and 8.0.0-alpha02 https://issuetracker.google.com/issues/241354494
-@Suppress("MaxLineLength")
-if ((System.getProperty("idea.version") ?: "") < "2023.1") {
+if ((System.getProperty("idea.version") ?: "") < "2023.2") {
 	doNotNagAbout(
 		"The org.gradle.api.plugins.JavaPluginConvention type has been deprecated. " +
 			"This is scheduled to be removed in Gradle 9.0. " +
@@ -93,14 +60,14 @@ if ((System.getProperty("idea.version") ?: "") < "2023.1") {
 			"This is scheduled to be removed in Gradle 9.0. " +
 			"Consult the upgrading guide for further information: " +
 			"https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_8.html#deprecated_access_to_conventions",
-		"at org.jetbrains.plugins.gradle.tooling.builder.ProjectExtensionsDataBuilderImpl.buildAll(ProjectExtensionsDataBuilderImpl.groovy:40)"
+		"at org.jetbrains.plugins.gradle.tooling.builder.ProjectExtensionsDataBuilderImpl.buildAll(ProjectExtensionsDataBuilderImpl.groovy:"
 	)
 	doNotNagAbout(
 		"The org.gradle.api.plugins.Convention type has been deprecated. " +
 			"This is scheduled to be removed in Gradle 9.0. " +
 			"Consult the upgrading guide for further information: " +
 			"https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_8.html#deprecated_access_to_conventions",
-		"at org.jetbrains.plugins.gradle.tooling.builder.ProjectExtensionsDataBuilderImpl.buildAll(ProjectExtensionsDataBuilderImpl.groovy:41)"
+		"at org.jetbrains.plugins.gradle.tooling.builder.ProjectExtensionsDataBuilderImpl.buildAll(ProjectExtensionsDataBuilderImpl.groovy:"
 	)
 	doNotNagAbout(
 		"The org.gradle.api.plugins.JavaPluginConvention type has been deprecated. " +

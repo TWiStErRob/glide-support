@@ -50,7 +50,7 @@ jobs:
 
       - name: "Upload 'Reports' artifact."
         if: success() || failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: 'Reports'
           path: |
@@ -58,7 +58,7 @@ jobs:
 
       - name: "Upload 'APKs' artifact."
         if: success() || failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: 'APKs'
           path: |

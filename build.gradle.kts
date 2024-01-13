@@ -23,8 +23,8 @@ android {
 	compileSdk = 34
 	namespace = "com.bumptech.glide.supportapp"
 	defaultConfig {
-		@Suppress("MinSdkTooLow") // holding back for when AndroidX is migrated.
-		minSdk = 14
+		@Suppress("MinSdkTooLow") // Latest requirement: https://android-developers.googleblog.com/2023/10/androidx-minsdkversion-19.html
+		minSdk = 19
 		targetSdk = 34
 		versionCode = 1
 		versionName = "0.1"

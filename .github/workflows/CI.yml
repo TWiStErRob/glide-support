@@ -9,17 +9,7 @@ jobs:
 
   validate:
     name: "🦺 Validation"
-    runs-on: ubuntu-latest
-    timeout-minutes: 2
-    permissions:
-      # actions/checkout
-      contents: read
-    steps:
-      - name: "Checkout ${{ github.ref }} branch in ${{ github.repository }} repository."
-        uses: actions/checkout@v4
-
-      - name: "Validate Gradle Wrapper JARs."
-        uses: gradle/wrapper-validation-action@v1
+    uses: TWiStErRob/github-workflows/.github/workflows/validate.yml@19333c04e57739ec6074b09c6ca09c225c94dc09 # v1
 
 
   build:

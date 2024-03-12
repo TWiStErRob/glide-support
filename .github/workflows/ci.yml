@@ -109,6 +109,10 @@ jobs:
     needs: validate
     timeout-minutes: 10
 
+    permissions:
+      # actions/checkout
+      contents: read
+
     runs-on: ubuntu-latest
     steps:
 

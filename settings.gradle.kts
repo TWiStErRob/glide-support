@@ -23,7 +23,7 @@ dependencyResolutionManagement {
 }
 
 plugins {
-	id("net.twisterrob.gradle.plugin.nagging") version "0.16"
+	id("net.twisterrob.gradle.plugin.nagging") version "0.17"
 }
 
 val isCI = System.getenv("GITHUB_ACTIONS") == "true"

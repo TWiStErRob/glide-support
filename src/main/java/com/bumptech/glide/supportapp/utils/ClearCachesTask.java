@@ -18,6 +18,10 @@ public class ClearCachesTask extends android.os.AsyncTask<Void, Void, Void> {
 		this.clearDisk = clearDisk;
 	}
 
+	public void execute() {
+		super.execute();
+	}
+
 	@Override protected void onPreExecute() {
 		if (clearMemory) {
 			Log.i("GLIDE", "Clearing memory cache");

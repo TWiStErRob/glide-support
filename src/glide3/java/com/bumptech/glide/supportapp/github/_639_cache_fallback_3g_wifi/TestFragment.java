@@ -35,50 +35,9 @@ import androidx.core.view.MenuProvider;
 
 public class TestFragment extends GlideImageFragment {
 
-	private final MenuProvider testMenuProvider = new MenuProvider() {
-		@Override public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
-			menu.add(0, 10, 0, "Load");
-			menu.add(0, 11, 0, "Cache 3G").setIcon(android.R.drawable.presence_audio_online);
-			menu.add(0, 12, 0, "Cache Wifi").setIcon(android.R.drawable.presence_video_online);
-			menu.add(0, 13, 0, "On 3G");
-			menu.add(0, 14, 0, "On Wifi");
-		}
-
-		private boolean net3g = false;
-		private boolean netWifi = true;
-
-		@Override public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
-			String fast = "http://placehold.it/1920x1080?text=wifi";
-			String slow = "http://placehold.it/640x480?text=3g";
-			switch (menuItem.getItemId()) {
-				case 11:
-					cache(slow, "3g preloaded", "3g preload failed");
-					return true;
-				case 12:
-					cache(fast, "wifi preloaded", "wifi preload failed");
-					return true;
-				case 13:
-					net3g = true;
-					netWifi = false;
-					Toast.makeText(getActivity(), "On 3G now", Toast.LENGTH_SHORT).show();
-					return true;
-				case 14:
-					net3g = false;
-					netWifi = true;
-					Toast.makeText(getActivity(), "On Wifi now", Toast.LENGTH_SHORT).show();
-					return true;
-				case 10:
-					simulateLoading(slow, fast, net3g);
-					return true;
-				default:
-					return false;
-			}
-		}
-	};
-
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		getActivity().addMenuProvider(testMenuProvider, getViewLifecycleOwner());
+		requireActivity().addMenuProvider(new TestMenuProvider(), getViewLifecycleOwner());
 	}
 
 	private void cache(String slow, String successMessage, String failMessage) {
@@ -225,6 +184,47 @@ public class TestFragment extends GlideImageFragment {
 				boolean isFromMemoryCache, boolean isFirstResource) {
 			Log.i("GLIDE", "fast loaded");
 			return false;
+		}
+	}
+
+	private class TestMenuProvider implements MenuProvider {
+		@Override public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
+			menu.add(0, 10, 0, "Load");
+			menu.add(0, 11, 0, "Cache 3G").setIcon(android.R.drawable.presence_audio_online);
+			menu.add(0, 12, 0, "Cache Wifi").setIcon(android.R.drawable.presence_video_online);
+			menu.add(0, 13, 0, "On 3G");
+			menu.add(0, 14, 0, "On Wifi");
+		}
+
+		private boolean net3g = false;
+		private boolean netWifi = true;
+
+		@Override public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
+			String fast = "http://placehold.it/1920x1080?text=wifi";
+			String slow = "http://placehold.it/640x480?text=3g";
+			switch (menuItem.getItemId()) {
+				case 11:
+					cache(slow, "3g preloaded", "3g preload failed");
+					return true;
+				case 12:
+					cache(fast, "wifi preloaded", "wifi preload failed");
+					return true;
+				case 13:
+					net3g = true;
+					netWifi = false;
+					Toast.makeText(getActivity(), "On 3G now", Toast.LENGTH_SHORT).show();
+					return true;
+				case 14:
+					net3g = false;
+					netWifi = true;
+					Toast.makeText(getActivity(), "On Wifi now", Toast.LENGTH_SHORT).show();
+					return true;
+				case 10:
+					simulateLoading(slow, fast, net3g);
+					return true;
+				default:
+					return false;
+			}
 		}
 	}
 }

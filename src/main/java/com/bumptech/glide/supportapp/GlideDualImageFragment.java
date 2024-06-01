@@ -27,37 +27,6 @@ public abstract class GlideDualImageFragment extends GlideBaseImageFragment {
 	protected ImageView imageView2;
 	private TextView usage;
 
-	private final MenuProvider baseMenuProvider = new MenuProvider() {
-
-		@Override public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
-			MenuItem clearImage1 = menu.add(0, 9, 0, "Clear image 1")
-			                           .setIcon(android.R.drawable.ic_menu_close_clear_cancel);
-			MenuItem clearImage2 = menu.add(0, 10, 0, "Clear image 2")
-			                           .setIcon(android.R.drawable.ic_menu_close_clear_cancel);
-			clearImage1.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-			clearImage2.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-		}
-
-		@Override public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
-			switch (menuItem.getItemId()) {
-				case 9:
-					Log.i("GLIDE", "Clearing target 1 " + imageView1);
-					clear(imageView1);
-					Log.i("GLIDE", "Clearing target 1 " + imageView1 + " finished");
-					Toast.makeText(getContext(), "Target 1 cleared", Toast.LENGTH_SHORT).show();
-					return true;
-				case 10:
-					Log.i("GLIDE", "Clearing target 2 " + imageView2);
-					clear(imageView2);
-					Log.i("GLIDE", "Clearing target 2 " + imageView2 + " finished");
-					Toast.makeText(getContext(), "Target 2 cleared", Toast.LENGTH_SHORT).show();
-					return true;
-				default:
-					return false;
-			}
-		}
-	};
-
 	@Override public @Nullable View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.base_image_dual, container, false);
@@ -65,7 +34,7 @@ public abstract class GlideDualImageFragment extends GlideBaseImageFragment {
 
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		getActivity().addMenuProvider(baseMenuProvider, getViewLifecycleOwner());
+		requireActivity().addMenuProvider(new DualImageMenuProvider(), getViewLifecycleOwner());
 		usage = (TextView)view.findViewById(android.R.id.text1);
 		imageView1 = (ImageView)view.findViewById(android.R.id.icon1);
 		imageView2 = (ImageView)view.findViewById(android.R.id.icon2);
@@ -120,4 +89,35 @@ public abstract class GlideDualImageFragment extends GlideBaseImageFragment {
 
 	protected abstract void load1(Context context, ImageView imageView) throws Exception;
 	protected abstract void load2(Context context, ImageView imageView) throws Exception;
+
+	private class DualImageMenuProvider implements MenuProvider {
+
+		@Override public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
+			MenuItem clearImage1 = menu.add(0, 9, 0, "Clear image 1")
+			                           .setIcon(android.R.drawable.ic_menu_close_clear_cancel);
+			MenuItem clearImage2 = menu.add(0, 10, 0, "Clear image 2")
+			                           .setIcon(android.R.drawable.ic_menu_close_clear_cancel);
+			clearImage1.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+			clearImage2.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		}
+
+		@Override public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
+			switch (menuItem.getItemId()) {
+				case 9:
+					Log.i("GLIDE", "Clearing target 1 " + imageView1);
+					clear(imageView1);
+					Log.i("GLIDE", "Clearing target 1 " + imageView1 + " finished");
+					Toast.makeText(getContext(), "Target 1 cleared", Toast.LENGTH_SHORT).show();
+					return true;
+				case 10:
+					Log.i("GLIDE", "Clearing target 2 " + imageView2);
+					clear(imageView2);
+					Log.i("GLIDE", "Clearing target 2 " + imageView2 + " finished");
+					Toast.makeText(getContext(), "Target 2 cleared", Toast.LENGTH_SHORT).show();
+					return true;
+				default:
+					return false;
+			}
+		}
+	}
 }

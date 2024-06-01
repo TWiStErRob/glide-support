@@ -4,18 +4,21 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.core.view.MenuItemCompat;
+import androidx.annotation.NonNull;
+import androidx.core.view.MenuProvider;
 
 public abstract class GlideImageActivity extends GlideBaseImageActivity {
 	protected ImageView imageView;
 	@Override public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		addMenuProvider(new ImageMenuProvider());
 		onCreateView();
 		imageView = (ImageView)findViewById(android.R.id.icon);
 		imageView.setOnClickListener(new OnClickListener() {
@@ -27,25 +30,6 @@ public abstract class GlideImageActivity extends GlideBaseImageActivity {
 	}
 	protected void onCreateView() {
 		setContentView(R.layout.base_image);
-	}
-	@Override public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		MenuItem clearImage = menu.add(0, 9, 0, "Clear image").setIcon(android.R.drawable.ic_menu_close_clear_cancel);
-		clearImage.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-		return true;
-	}
-
-	@Override public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-			case 9:
-				Log.i("GLIDE", "Clearing target " + imageView);
-				clear(imageView);
-				Log.i("GLIDE", "Clearing target " + imageView + " finished");
-				Toast.makeText(this, "Target cleared", Toast.LENGTH_SHORT).show();
-				return true;
-			default:
-				return super.onOptionsItemSelected(item);
-		}
 	}
 
 	public void load() {
@@ -60,4 +44,26 @@ public abstract class GlideImageActivity extends GlideBaseImageActivity {
 	}
 
 	protected abstract void load(Context context) throws Exception;
+	
+	private class ImageMenuProvider implements MenuProvider {
+
+		@Override public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
+			MenuItem clearImage = menu.add(0, 9, 0, "Clear image")
+			                          .setIcon(android.R.drawable.ic_menu_close_clear_cancel);
+			clearImage.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		}
+
+		@Override public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
+			switch (menuItem.getItemId()) {
+				case 9:
+					Log.i("GLIDE", "Clearing target " + imageView);
+					clear(imageView);
+					Log.i("GLIDE", "Clearing target " + imageView + " finished");
+					Toast.makeText(GlideImageActivity.this, "Target cleared", Toast.LENGTH_SHORT).show();
+					return true;
+				default:
+					return false;
+			}
+		}
+	}
 }

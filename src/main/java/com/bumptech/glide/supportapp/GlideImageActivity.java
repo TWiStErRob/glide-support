@@ -12,12 +12,13 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.view.MenuProvider;
 
 public abstract class GlideImageActivity extends GlideBaseImageActivity {
 	protected ImageView imageView;
 	@Override public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		addMenuProvider(new MenuProvider());
+		addMenuProvider(new ImageMenuProvider());
 		onCreateView();
 		imageView = (ImageView)findViewById(android.R.id.icon);
 		imageView.setOnClickListener(new OnClickListener() {
@@ -44,7 +45,7 @@ public abstract class GlideImageActivity extends GlideBaseImageActivity {
 
 	protected abstract void load(Context context) throws Exception;
 	
-	private class MenuProvider implements androidx.core.view.MenuProvider {
+	private class ImageMenuProvider implements MenuProvider {
 
 		@Override public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
 			MenuItem clearImage = menu.add(0, 9, 0, "Clear image")

@@ -9,10 +9,12 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.bumptech.glide.DrawableRequestBuilder;
@@ -27,105 +29,108 @@ import com.bumptech.glide.supportapp.GlideImageFragment;
 import com.bumptech.glide.supportapp.utils.NetworkDisablingLoader;
 import com.bumptech.glide.supportapp.utils.TextDrawable;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.view.MenuProvider;
+
 public class TestFragment extends GlideImageFragment {
-	@Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		super.onCreateOptionsMenu(menu, inflater);
-		menu.add(0, 10, 0, "Load");
-		menu.add(0, 11, 0, "Cache 3G").setIcon(android.R.drawable.presence_audio_online);
-		menu.add(0, 12, 0, "Cache Wifi").setIcon(android.R.drawable.presence_video_online);
-		menu.add(0, 13, 0, "On 3G");
-		menu.add(0, 14, 0, "On Wifi");
-	}
-	private boolean net3g = false;
-	private boolean netWifi = true;
 
-	@Override public boolean onOptionsItemSelected(MenuItem item) {
-		String fast = "http://placehold.it/1920x1080?text=wifi";
-		String slow = "http://placehold.it/640x480?text=3g";
-		switch (item.getItemId()) {
-			case 11:
-				Glide.with(this)
-				     .load(slow)
-				     .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-				     .skipMemoryCache(true)
-				     .listener(new RequestListener<String, GlideDrawable>() {
-					     @Override public boolean onException(Exception e, String model,
-							     Target<GlideDrawable> target,
-							     boolean isFirstResource) {
-						     Log.i("GLIDE", "3g preload failed", e);
-						     return false;
-					     }
-					     @Override public boolean onResourceReady(GlideDrawable resource, String model,
-							     Target<GlideDrawable> target,
-							     boolean isFromMemoryCache, boolean isFirstResource) {
-						     Log.i("GLIDE", "3g preloaded");
-						     return false;
-					     }
-				     })
-				     .preload()
-				;
-				return true;
-			case 12:
-				Glide.with(this)
-				     .load(fast)
-				     .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-				     .skipMemoryCache(true)
-				     .listener(new RequestListener<String, GlideDrawable>() {
-					     @Override public boolean onException(Exception e, String model,
-							     Target<GlideDrawable> target,
-							     boolean isFirstResource) {
-						     Log.i("GLIDE", "wifi preload failed", e);
-						     return false;
-					     }
-					     @Override public boolean onResourceReady(GlideDrawable resource, String model,
-							     Target<GlideDrawable> target,
-							     boolean isFromMemoryCache, boolean isFirstResource) {
-						     Log.i("GLIDE", "wifi preloaded");
-						     return false;
-					     }
-				     })
-				     .preload()
-				;
-				return true;
-			case 13:
-				net3g = true;
-				netWifi = false;
-				Toast.makeText(getActivity(), "On 3G now", Toast.LENGTH_SHORT).show();
-				return true;
-			case 14:
-				net3g = false;
-				netWifi = true;
-				Toast.makeText(getActivity(), "On Wifi now", Toast.LENGTH_SHORT).show();
-				return true;
-			case 10:
-				DrawableRequestBuilder<String> slowLoad;
-				DrawableRequestBuilder<String> fastLoad;
-
-				if (net3g) {
-					slowLoad = Glide.with(this).load(slow);
-					fastLoad = Glide.with(this).using(new NetworkDisablingLoader<String>()).load(fast);
-				} else {
-					slowLoad = Glide.with(this).load(slow);
-					fastLoad = Glide.with(this).load(fast);
-				}
-
-				slowLoad
-						.diskCacheStrategy(DiskCacheStrategy.SOURCE)
-						.skipMemoryCache(true)
-						.error(new TextDrawable("slow failed"))
-						.listener(new SlowListener());
-				fastLoad
-						.diskCacheStrategy(DiskCacheStrategy.SOURCE)
-						.skipMemoryCache(true)
-						.error(new TextDrawable("fast failed"))
-						.listener(new FastListener());
-
-				fastLoad.thumbnail(slowLoad).into(imageView);
-				return true;
-			default:
-				return super.onOptionsItemSelected(item);
+	private final MenuProvider testMenuProvider = new MenuProvider() {
+		@Override public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
+			menu.add(0, 10, 0, "Load");
+			menu.add(0, 11, 0, "Cache 3G").setIcon(android.R.drawable.presence_audio_online);
+			menu.add(0, 12, 0, "Cache Wifi").setIcon(android.R.drawable.presence_video_online);
+			menu.add(0, 13, 0, "On 3G");
+			menu.add(0, 14, 0, "On Wifi");
 		}
+
+		private boolean net3g = false;
+		private boolean netWifi = true;
+
+		@Override public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
+			String fast = "http://placehold.it/1920x1080?text=wifi";
+			String slow = "http://placehold.it/640x480?text=3g";
+			switch (menuItem.getItemId()) {
+				case 11:
+					cache(slow, "3g preloaded", "3g preload failed");
+					return true;
+				case 12:
+					cache(fast, "wifi preloaded", "wifi preload failed");
+					return true;
+				case 13:
+					net3g = true;
+					netWifi = false;
+					Toast.makeText(getActivity(), "On 3G now", Toast.LENGTH_SHORT).show();
+					return true;
+				case 14:
+					net3g = false;
+					netWifi = true;
+					Toast.makeText(getActivity(), "On Wifi now", Toast.LENGTH_SHORT).show();
+					return true;
+				case 10:
+					simulateLoading(slow, fast, net3g);
+					return true;
+				default:
+					return false;
+			}
+		}
+	};
+
+	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+		super.onViewCreated(view, savedInstanceState);
+		getActivity().addMenuProvider(testMenuProvider, getViewLifecycleOwner());
 	}
+
+	private void cache(String slow, String successMessage, String failMessage) {
+		Glide
+				.with(this)
+				.load(slow)
+				.diskCacheStrategy(DiskCacheStrategy.SOURCE)
+				.skipMemoryCache(true)
+				.listener(new RequestListener<>() {
+					@Override public boolean onException(Exception e, String model,
+							Target<GlideDrawable> target,
+							boolean isFirstResource) {
+						Log.i("GLIDE", failMessage, e);
+						return false;
+					}
+					@Override public boolean onResourceReady(GlideDrawable resource, String model,
+							Target<GlideDrawable> target,
+							boolean isFromMemoryCache, boolean isFirstResource) {
+						Log.i("GLIDE", successMessage);
+						return false;
+					}
+				})
+				.preload()
+		;
+	}
+
+	private void simulateLoading(String slowUrl, String fastUrl, boolean isNetworkSlow) {
+		DrawableRequestBuilder<String> slowLoad;
+		DrawableRequestBuilder<String> fastLoad;
+
+		if (isNetworkSlow) {
+			slowLoad = Glide.with(this).load(slowUrl);
+			fastLoad = Glide.with(this).using(new NetworkDisablingLoader<String>()).load(fastUrl);
+		} else {
+			slowLoad = Glide.with(this).load(slowUrl);
+			fastLoad = Glide.with(this).load(fastUrl);
+		}
+
+		slowLoad
+				.diskCacheStrategy(DiskCacheStrategy.SOURCE)
+				.skipMemoryCache(true)
+				.error(new TextDrawable("slow failed"))
+				.listener(new SlowListener());
+		fastLoad
+				.diskCacheStrategy(DiskCacheStrategy.SOURCE)
+				.skipMemoryCache(true)
+				.error(new TextDrawable("fast failed"))
+				.listener(new FastListener());
+
+		fastLoad.thumbnail(slowLoad).into(imageView);
+	}
+
 	@Override protected void load(final Context context) throws Exception {
 	}
 
@@ -179,7 +184,7 @@ public class TestFragment extends GlideImageFragment {
 						latch.countDown();
 					}
 					@Override public void onResourceReady(
-							GlideDrawable resource, GlideAnimation<?super GlideDrawable> glideAnimation) {
+							GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
 						Log.i("GLIDE", String.format(Locale.ROOT, "onResourceReady(%s, %s)", resource, glideAnimation));
 						cached.set(true);
 						latch.countDown();

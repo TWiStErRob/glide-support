@@ -13,15 +13,34 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.view.MenuItemCompat;
+import androidx.core.view.MenuProvider;
 
 public abstract class GlideImageFragment extends GlideBaseImageFragment {
 	protected ImageView imageView;
-	@Override public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setHasOptionsMenu(true);
-	}
+
+	private final MenuProvider baseMenuProvider = new MenuProvider() {
+
+		@Override public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
+			MenuItem clearImage = menu.add(0, 9, 0, "Clear image")
+			                          .setIcon(android.R.drawable.ic_menu_close_clear_cancel);
+			clearImage.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		}
+
+		@Override public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
+			switch (menuItem.getItemId()) {
+				case 9:
+					Log.i("GLIDE", "Clearing target " + imageView);
+					clear(imageView);
+					Log.i("GLIDE", "Clearing target " + imageView + " finished");
+					Toast.makeText(getContext(), "Target cleared", Toast.LENGTH_SHORT).show();
+					return true;
+				default:
+					return false;
+			}
+		}
+	};
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.base_image, container, false);
@@ -29,6 +48,7 @@ public abstract class GlideImageFragment extends GlideBaseImageFragment {
 
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
+		requireActivity().addMenuProvider(baseMenuProvider, getViewLifecycleOwner());
 		imageView = (ImageView)view.findViewById(android.R.id.icon);
 		((View)view.getParent()).setOnClickListener(new OnClickListener() {
 			@Override public void onClick(View v) {
@@ -36,25 +56,6 @@ public abstract class GlideImageFragment extends GlideBaseImageFragment {
 			}
 		});
 		load();
-	}
-
-	@Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		super.onCreateOptionsMenu(menu, inflater);
-		MenuItem clearImage = menu.add(0, 9, 0, "Clear image").setIcon(android.R.drawable.ic_menu_close_clear_cancel);
-		clearImage.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-	}
-
-	@Override public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-			case 9:
-				Log.i("GLIDE", "Clearing target " + imageView);
-				clear(imageView);
-				Log.i("GLIDE", "Clearing target " + imageView + " finished");
-				Toast.makeText(getContext(), "Target cleared", Toast.LENGTH_SHORT).show();
-				return true;
-			default:
-				return super.onOptionsItemSelected(item);
-		}
 	}
 
 	public void load() {

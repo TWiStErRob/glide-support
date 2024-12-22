@@ -26,7 +26,7 @@ jobs:
       # actions/checkout
       contents: read
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
 
       - name: "Set up JDK 17."
@@ -78,7 +78,7 @@ jobs:
       # actions/checkout
       contents: read
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
 
       - name: "Set up JDK 17."
@@ -113,7 +113,7 @@ jobs:
       # actions/checkout
       contents: read
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
 
       - name: "Set up JDK 17."
@@ -148,7 +148,7 @@ jobs:
       # actions/checkout
       contents: read
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
 
       - name: "Set up JDK 17."

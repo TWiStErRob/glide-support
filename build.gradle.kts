@@ -20,12 +20,12 @@ repositories {
 }
 
 android {
-	compileSdk = 34
+	compileSdk = 35
 	namespace = "com.bumptech.glide.supportapp"
 	defaultConfig {
 		@Suppress("MinSdkTooLow") // Latest requirement: https://github.com/ebelinski/apilevels/pull/55
 		minSdk = 21
-		targetSdk = 34
+		targetSdk = 35
 		versionCode = 1
 		versionName = "0.1"
 		multiDexEnabled = true
@@ -165,6 +165,8 @@ tasks.withType<JavaCompile>().configureEach {
 		"-Xlint:all",
 		"-Xlint:-auxiliaryclass",
 		"-Xlint:-processing",
+		// TODEL Workaround for https://issuetracker.google.com/issues/359561906, remove when android-35 v3 is released.
+		"-Xlint:-classfile",
 	)
 	if (name.contains("Glide4")) {
 		options.compilerArgs = options.compilerArgs + listOf(

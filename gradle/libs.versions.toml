@@ -4,7 +4,7 @@
 # These are not supported by Renovate, and therefore are excluded from version bump PRs.
 
 agp = "8.8.0"
-kotlin = "2.1.0"
+kotlin = "2.1.10"
 
 stetho = "1.6.0"
 okhttp2 = "2.7.5"

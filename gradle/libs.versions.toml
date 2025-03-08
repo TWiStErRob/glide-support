@@ -13,7 +13,7 @@ volley = "1.0.19"
 volley2 = "1.2.1"
 
 # Last stable version of Glide 3.x
-glide3 = "[3.8.0]"
+glide3 = "[4.16.0]"
 # Last stable version of Glide 3.x
 glide3-integration = "[1.5.0]"
 # There are newer Glide 3 compatible versions, but not on mavenCentral().

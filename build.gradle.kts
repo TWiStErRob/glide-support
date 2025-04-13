@@ -165,8 +165,6 @@ tasks.withType<JavaCompile>().configureEach {
 		"-Xlint:all",
 		"-Xlint:-auxiliaryclass",
 		"-Xlint:-processing",
-		// TODEL Workaround for https://issuetracker.google.com/issues/359561906, remove when android-35 v3 is released.
-		"-Xlint:-classfile",
 	)
 	if (name.contains("Glide4")) {
 		options.compilerArgs = options.compilerArgs + listOf(

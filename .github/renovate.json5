@@ -13,6 +13,7 @@
 			enabled: false,
 		},
 		{
+			description: "Shadow builds are for cutting edge versions of libraries.", 
 			matchFileNames: [
 				"gradle/shadow-glide3-snapshot.versions.toml",
 				"gradle/shadow-glide5-snapshot.versions.toml",
@@ -21,6 +22,7 @@
 			ignoreUnstable: false,
 		},
 		{
+			description: "Overlays for specific major versions of Glide.", 
 			matchFileNames: [
 				"gradle/shadow-glide3-snapshot.versions.toml",
 				"gradle/shadow-glide5-snapshot.versions.toml",

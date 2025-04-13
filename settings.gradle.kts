@@ -64,3 +64,15 @@ doNotNagAbout(
 			"Consult the upgrading guide for further information: " +
 			"https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_8.html#groovy_boolean_properties"
 )
+
+// TODEL Gradle 8.14 vs AGP 8.9 https://issuetracker.google.com/issues/408334529
+@Suppress("detekt.MaxLineLength")
+doNotNagAbout(
+	"Retrieving attribute with a null key. " +
+			"This behavior has been deprecated. " +
+			"This will fail with an error in Gradle 10.0. " +
+			"Don't request attributes from attribute containers using null keys. " +
+			"Consult the upgrading guide for further information: " +
+			"https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_8.html#null-attribute-lookup",
+	"at com.android.build.gradle.internal.ide.dependencies.ArtifactUtils.isAndroidProjectDependency(ArtifactUtils.kt:539)",
+)

@@ -5,6 +5,14 @@
 	],
 	packageRules: [
 		{
+			description: "Separate versions file for older majors.",
+			matchFileNames: [
+				"gradle/oldLibs.versions.toml",
+			],
+			matchUpdateTypes: ["major"],
+			enabled: false,
+		},
+		{
 			matchFileNames: [
 				"gradle/shadow-glide3-snapshot.versions.toml",
 				"gradle/shadow-glide5-snapshot.versions.toml",

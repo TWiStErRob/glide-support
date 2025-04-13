@@ -10,13 +10,17 @@ pluginManagement {
 
 dependencyResolutionManagement {
 	versionCatalogs {
+		fun VersionCatalogBuilder.load(path: String) {
+			// Overlay another toml file on top of the default one.
+			org.gradle.api.internal.catalog.parser.TomlCatalogFileParser
+				.parse(file(path).toPath(), this) { settings.serviceOf() }
+		}
 		create(defaultLibrariesExtensionName.get()) {
 			// Implicit behavior: from(files("gradle/libs.versions.toml"))
+			load("gradle/oldLibs.versions.toml")
 			val shadowPath = settings.extra.get("com.bumptech.glide.build.shadow").toString()
 			if (shadowPath.isNotBlank()) {
-				// Overlay another toml file on top of the default one.
-				org.gradle.api.internal.catalog.parser.TomlCatalogFileParser
-					.parse(file(shadowPath).toPath(), this) { settings.serviceOf() }
+				load(shadowPath)
 			}
 		}
 	}

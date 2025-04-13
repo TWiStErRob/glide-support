@@ -1,24 +1,34 @@
 {
-	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
-	"extends": [
-		"local>TWiStErRob/renovate-config"
+	$schema: "https://docs.renovatebot.com/renovate-schema.json",
+	extends: [
+		"local>TWiStErRob/renovate-config",
 	],
-	"packageRules": [
+	packageRules: [
 		{
-			"matchFileNames": [
-				"gradle/shadow-glide3-snapshot.versions.toml",
-				"gradle/shadow-glide5-snapshot.versions.toml",
-				"gradle/shadow-agp.versions.toml"
+			description: "Separate versions file for older majors.",
+			matchFileNames: [
+				"gradle/oldLibs.versions.toml",
 			],
-			"ignoreUnstable": false
+			matchUpdateTypes: ["major"],
+			enabled: false,
 		},
 		{
-			"matchFileNames": [
+			description: "Shadow builds are for cutting edge versions of libraries.", 
+			matchFileNames: [
 				"gradle/shadow-glide3-snapshot.versions.toml",
-				"gradle/shadow-glide5-snapshot.versions.toml"
+				"gradle/shadow-glide5-snapshot.versions.toml",
+				"gradle/shadow-agp.versions.toml",
 			],
-			"matchUpdateTypes": ["major"],
-			"enabled": false
-		}
-	]
+			ignoreUnstable: false,
+		},
+		{
+			description: "Overlays for specific major versions of Glide.", 
+			matchFileNames: [
+				"gradle/shadow-glide3-snapshot.versions.toml",
+				"gradle/shadow-glide5-snapshot.versions.toml",
+			],
+			matchUpdateTypes: ["major"],
+			enabled: false,
+		},
+	],
 }

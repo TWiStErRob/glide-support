@@ -10,7 +10,7 @@ pluginManagement {
 
 dependencyResolutionManagement {
 	versionCatalogs {
-		fun load(path: String) {
+		fun VersionCatalogBuilder.load(path: String) {
 			// Overlay another toml file on top of the default one.
 			org.gradle.api.internal.catalog.parser.TomlCatalogFileParser
 				.parse(file(path).toPath(), this) { settings.serviceOf() }

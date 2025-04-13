@@ -29,82 +29,16 @@ plugins {
 val isCI = System.getenv("GITHUB_ACTIONS") == "true"
 val gradleVersion: String = GradleVersion.current().version
 
-// TODEL Gradle 8.2 sync in AS FL 2022.2.1 / AS GI 2022.3.1 / IDEA 2023.1, fixed in 2023.2.
-// https://youtrack.jetbrains.com/issue/IDEA-320266
-@Suppress("MaxLineLength")
-if ((System.getProperty("idea.version") ?: "") < "2023.2") {
-	doNotNagAbout(
-		"The org.gradle.api.plugins.JavaPluginConvention type has been deprecated. " +
-			"This is scheduled to be removed in Gradle 9.0. " +
-			"Consult the upgrading guide for further information: " +
-			"https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_8.html#java_convention_deprecation",
-		"at org.jetbrains.kotlin.idea.gradleTooling.KotlinTasksPropertyUtilsKt.getPureKotlinSourceRoots(KotlinTasksPropertyUtils.kt:59)"
-	)
-	doNotNagAbout(
-		"The Project.getConvention() method has been deprecated. " +
-			"This is scheduled to be removed in Gradle 9.0. " +
-			"Consult the upgrading guide for further information: " +
-			"https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_8.html#deprecated_access_to_conventions",
-		"at org.jetbrains.kotlin.idea.gradleTooling.KotlinTasksPropertyUtilsKt.getPureKotlinSourceRoots(KotlinTasksPropertyUtils.kt:59)"
-	)
-	doNotNagAbout(
-		"The org.gradle.api.plugins.Convention type has been deprecated. " +
-			"This is scheduled to be removed in Gradle 9.0. " +
-			"Consult the upgrading guide for further information: " +
-			"https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_8.html#deprecated_access_to_conventions",
-		"at org.jetbrains.kotlin.idea.gradleTooling.KotlinTasksPropertyUtilsKt.getPureKotlinSourceRoots(KotlinTasksPropertyUtils.kt:59)"
-	)
-
-	doNotNagAbout(
-		"The Project.getConvention() method has been deprecated. " +
-			"This is scheduled to be removed in Gradle 9.0. " +
-			"Consult the upgrading guide for further information: " +
-			"https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_8.html#deprecated_access_to_conventions",
-		"at org.jetbrains.plugins.gradle.tooling.builder.ProjectExtensionsDataBuilderImpl.buildAll(ProjectExtensionsDataBuilderImpl.groovy:"
-	)
-	doNotNagAbout(
-		"The org.gradle.api.plugins.Convention type has been deprecated. " +
-			"This is scheduled to be removed in Gradle 9.0. " +
-			"Consult the upgrading guide for further information: " +
-			"https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_8.html#deprecated_access_to_conventions",
-		"at org.jetbrains.plugins.gradle.tooling.builder.ProjectExtensionsDataBuilderImpl.buildAll(ProjectExtensionsDataBuilderImpl.groovy:"
-	)
-	doNotNagAbout(
-		"The org.gradle.api.plugins.JavaPluginConvention type has been deprecated. " +
-			"This is scheduled to be removed in Gradle 9.0. " +
-			"Consult the upgrading guide for further information: " +
-			"https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_8.html#java_convention_deprecation",
-		// at org.jetbrains.plugins.gradle.tooling.builder.ExternalProjectBuilderImpl.doBuild(ExternalProjectBuilderImpl.groovy:108)
-		// at org.jetbrains.plugins.gradle.tooling.builder.ExternalProjectBuilderImpl.doBuild(ExternalProjectBuilderImpl.groovy:117)
-		// at org.jetbrains.plugins.gradle.tooling.builder.ExternalProjectBuilderImpl.doBuild(ExternalProjectBuilderImpl.groovy:118)
-		"at org.jetbrains.plugins.gradle.tooling.builder.ExternalProjectBuilderImpl.doBuild(ExternalProjectBuilderImpl.groovy:1"
-	)
-	// No method and line number in stack to match all these:
-	//  * getJavaPluginConvention(JavaPluginUtil.java:13)
-	//  * getSourceSetContainer(JavaPluginUtil.java:18)
-	//  * getSourceSetContainer(JavaPluginUtil.java:19)
-	doNotNagAbout(
-		"The org.gradle.api.plugins.JavaPluginConvention type has been deprecated. " +
-			"This is scheduled to be removed in Gradle 9.0. " +
-			"Consult the upgrading guide for further information: " +
-			"https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_8.html#java_convention_deprecation",
-		"at org.jetbrains.plugins.gradle.tooling.util.JavaPluginUtil."
-	)
-	doNotNagAbout(
-		"The Project.getConvention() method has been deprecated. " +
-			"This is scheduled to be removed in Gradle 9.0. " +
-			"Consult the upgrading guide for further information: " +
-			"https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_8.html#deprecated_access_to_conventions",
-		"at org.jetbrains.plugins.gradle.tooling.util.JavaPluginUtil."
-	)
-	doNotNagAbout(
-		"The org.gradle.api.plugins.Convention type has been deprecated. " +
-			"This is scheduled to be removed in Gradle 9.0. " +
-			"Consult the upgrading guide for further information: " +
-			"https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_8.html#deprecated_access_to_conventions",
-		"at org.jetbrains.plugins.gradle.tooling.util.JavaPluginUtil."
-	)
-} else {
-	val error: (String) -> Unit = (if (isCI) ::error else logger::warn)
-	error("Android Studio version changed, please review hack.")
-}
+// TODEL Gradle 8.13 vs AGP 8.0-8.9 https://issuetracker.google.com/issues/370546370
+@Suppress("detekt.MaxLineLength")
+doNotNagAbout(
+	"Declaring an 'is-' property with a Boolean type has been deprecated. Starting with Gradle 9.0, this property will be ignored by Gradle. The combination of method name and return type is not consistent with Java Bean property rules and will become unsupported in future versions of Groovy. Add a method named 'getCrunchPngs' with the same behavior and mark the old one with @Deprecated, or change the type of 'com.android.build.gradle.internal.dsl.BuildType\$AgpDecorated.isCrunchPngs' (and the setter) to 'boolean'. Consult the upgrading guide for further information: https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_8.html#groovy_boolean_properties"
+)
+@Suppress("detekt.MaxLineLength")
+doNotNagAbout(
+	"Declaring an 'is-' property with a Boolean type has been deprecated. Starting with Gradle 9.0, this property will be ignored by Gradle. The combination of method name and return type is not consistent with Java Bean property rules and will become unsupported in future versions of Groovy. Add a method named 'getUseProguard' with the same behavior and mark the old one with @Deprecated, or change the type of 'com.android.build.gradle.internal.dsl.BuildType.isUseProguard' (and the setter) to 'boolean'. Consult the upgrading guide for further information: https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_8.html#groovy_boolean_properties"
+)
+@Suppress("detekt.MaxLineLength")
+doNotNagAbout(
+	"Declaring an 'is-' property with a Boolean type has been deprecated. Starting with Gradle 9.0, this property will be ignored by Gradle. The combination of method name and return type is not consistent with Java Bean property rules and will become unsupported in future versions of Groovy. Add a method named 'getWearAppUnbundled' with the same behavior and mark the old one with @Deprecated, or change the type of 'com.android.build.api.variant.impl.ApplicationVariantImpl.isWearAppUnbundled' (and the setter) to 'boolean'. Consult the upgrading guide for further information: https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_8.html#groovy_boolean_properties"
+)

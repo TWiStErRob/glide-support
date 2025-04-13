@@ -1,24 +1,24 @@
 {
-	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
-	"extends": [
-		"local>TWiStErRob/renovate-config"
+	$schema: "https://docs.renovatebot.com/renovate-schema.json",
+	extends: [
+		"local>TWiStErRob/renovate-config",
 	],
-	"packageRules": [
+	packageRules: [
 		{
-			"matchFileNames": [
+			matchFileNames: [
 				"gradle/shadow-glide3-snapshot.versions.toml",
 				"gradle/shadow-glide5-snapshot.versions.toml",
-				"gradle/shadow-agp.versions.toml"
+				"gradle/shadow-agp.versions.toml",
 			],
-			"ignoreUnstable": false
+			ignoreUnstable: false,
 		},
 		{
-			"matchFileNames": [
+			matchFileNames: [
 				"gradle/shadow-glide3-snapshot.versions.toml",
-				"gradle/shadow-glide5-snapshot.versions.toml"
+				"gradle/shadow-glide5-snapshot.versions.toml",
 			],
-			"matchUpdateTypes": ["major"],
-			"enabled": false
-		}
-	]
+			matchUpdateTypes: ["major"],
+			enabled: false,
+		},
+	],
 }

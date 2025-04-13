@@ -30,7 +30,6 @@ plugins {
 	id("net.twisterrob.gradle.plugin.nagging") version "0.17"
 }
 
-val isCI = System.getenv("GITHUB_ACTIONS") == "true"
 val gradleVersion: String = GradleVersion.current().version
 
 // TODEL Gradle 8.13 vs AGP 8.0-8.9 https://issuetracker.google.com/issues/370546370

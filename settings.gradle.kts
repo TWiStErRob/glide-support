@@ -27,7 +27,7 @@ dependencyResolutionManagement {
 }
 
 plugins {
-	id("net.twisterrob.gradle.plugin.nagging") version "0.17"
+	id("net.twisterrob.gradle.plugin.nagging") version "0.18"
 }
 
 val gradleVersion: String = GradleVersion.current().version

@@ -1,0 +1,23 @@
+<lint>
+
+	<issue id="NewerVersionAvailable" severity="ignore">
+		<!-- This repository is using Renovate to keep dependencies up to date. -->
+	</issue>
+
+	<issue id="GradleDependency" severity="ignore">
+		<!-- This repository is using Renovate to keep dependencies up to date. -->
+	</issue>
+
+	<issue id="SimilarGradleDependency" severity="ignore">
+		<!-- This project demonstrates multiple versions of a library in parallel, similarities are inevitable. -->
+	</issue>
+	
+	<issue id="ConvertToWebp" severity="ignore">
+		<!-- This project is about an image loader, all files are in the format they should be. -->
+	</issue>
+	
+	<issue id="LintBaseline" severity="ignore">
+		<!-- Using the baseline to ignore non-trivial issues until all fixed. -->
+	</issue>
+
+</lint>

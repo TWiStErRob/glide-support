@@ -37,7 +37,7 @@ public abstract class DetailFragment extends Fragment {
 	private static final LoggingListener<Object, GlideDrawable> FULL_LOGGER = new LoggingListener<>("full");
 	@SuppressWarnings("unchecked")
 	private static final MultiRequestListener<Object, GlideDrawable> FORCE_FADER = new MultiRequestListener<>(
-			FULL_LOGGER, new ForceCrossfadeListener<GlideDrawable>(1500)
+			FULL_LOGGER, new ForceCrossfadeListener<>(1500)
 	);
 
 	protected Item item;
@@ -48,11 +48,9 @@ public abstract class DetailFragment extends Fragment {
 
 	@Override public void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		if (VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
-			LoggingTransitionListener.listenForAll("onCreate", this);
-		}
+		LoggingTransitionListener.listenForAll("onCreate", this);
 		@SuppressWarnings("deprecation") // TODO replace with ktx or compat when available.
-		Item argItem = (Item)getArguments().getSerializable(ARG_ITEM);
+		Item argItem = (Item)requireArguments().getSerializable(ARG_ITEM);
 		this.item = argItem;
 		setupGlide();
 	}
@@ -77,7 +75,7 @@ public abstract class DetailFragment extends Fragment {
 				.centerCrop()
 				.listener(THUMB_LOGGER) // irrelevant for cache
 		;
-		int width = getActivity().getWindow().getDecorView().getWidth(); // this assumes that the fragment is created
+		int width = requireActivity().getWindow().getDecorView().getWidth(); // this assumes that the fragment is created
 		// from an existing fragment inside the same activity (list-detail), otherwise getWidth() may be 0
 		full = Glide
 				.with(this)
@@ -99,42 +97,36 @@ public abstract class DetailFragment extends Fragment {
 
 	private void setupImage(ImageView view) {
 		this.imageView = view;
-		if (VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
-			imageView.setTransitionName(getArguments().getString(ARG_TRANS_NAME_IMAGE));
-			// set up listener for entering transition to finish it with full image
-			((Transition)getSharedElementEnterTransition()).addListener(new LoggingTransitionListener("sharedEnter") {
-				@Override public void onTransitionEnd(Transition transition) {
-					super.onTransitionEnd(transition);
-					loadFull(true); // finish loading the full image
-					// without this the bad quality thumbnail would stay loaded
-					// it cannot be loaded elsewhere because it would finish mid-transition
+		imageView.setTransitionName(requireArguments().getString(ARG_TRANS_NAME_IMAGE));
+		// set up listener for entering transition to finish it with full image
+		((Transition)getSharedElementEnterTransition()).addListener(new LoggingTransitionListener("sharedEnter") {
+			@Override public void onTransitionEnd(Transition transition) {
+				super.onTransitionEnd(transition);
+				loadFull(true); // finish loading the full image
+				// without this the bad quality thumbnail would stay loaded
+				// it cannot be loaded elsewhere because it would finish mid-transition
 
-					// this will be called when the back-transition completes too, but Glide swallows that
-				}
-			});
-			// set up callback for leaving transition (for some reason it works only with Enter and not Exit)
-			setEnterSharedElementCallback(new SharedElementCallback() {
-				@Override public void onSharedElementStart(List<String> sharedElementNames, List<View> sharedElements,
-						List<View> sharedElementSnapshots) {
-					super.onSharedElementStart(sharedElementNames, sharedElements, sharedElementSnapshots);
-					loadThumb(); // reset thumbnail when going back
-					// without this the size of the ImageView jumps back to thumbnail size
-				}
-			});
-			loadThumb(); // load the thumbnail that was shown in the grid
-			// without this there would be no transition
-			// this cannot be loadFull because it would resize badly
-			full.preload(); // start loading so that when really needed we just need to do a crossfade
-			// since the full load has override on it as well this will start to preload that
-		} else {
-			loadFull(false);
-		}
+				// this will be called when the back-transition completes too, but Glide swallows that
+			}
+		});
+		// set up callback for leaving transition (for some reason it works only with Enter and not Exit)
+		setEnterSharedElementCallback(new SharedElementCallback() {
+			@Override public void onSharedElementStart(List<String> sharedElementNames, List<View> sharedElements,
+					List<View> sharedElementSnapshots) {
+				super.onSharedElementStart(sharedElementNames, sharedElements, sharedElementSnapshots);
+				loadThumb(); // reset thumbnail when going back
+				// without this the size of the ImageView jumps back to thumbnail size
+			}
+		});
+		loadThumb(); // load the thumbnail that was shown in the grid
+		// without this there would be no transition
+		// this cannot be loadFull because it would resize badly
+		full.preload(); // start loading so that when really needed we just need to do a crossfade
+		// since the full load has override on it as well this will start to preload that
 	}
 
 	private void setupText(TextView textView) {
-		if (VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
-			textView.setTransitionName(getArguments().getString(ARG_TRANS_NAME_TEXT));
-		}
+		textView.setTransitionName(requireArguments().getString(ARG_TRANS_NAME_TEXT));
 		textView.setText(item.color);
 	}
 }

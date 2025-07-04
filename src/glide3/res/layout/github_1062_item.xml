@@ -16,7 +16,6 @@
 			android:id="@+id/github_1062_avatar"
 			android:layout_width="32dp"
 			android:layout_height="32dp"
-			android:layout_marginRight="4dp"
 			android:layout_marginEnd="4dp"
 			tools:src="@drawable/glide"
 			tools:ignore="ContentDescription"
@@ -27,7 +26,6 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_toEndOf="@id/github_1062_avatar"
-			android:layout_toRightOf="@id/github_1062_avatar"
 			android:textStyle="bold"
 			tools:text="User name"
 			/>
@@ -39,7 +37,6 @@
 			android:layout_gravity="bottom"
 			android:layout_below="@id/github_1062_name"
 			android:layout_toEndOf="@id/github_1062_avatar"
-			android:layout_toRightOf="@id/github_1062_avatar"
 			tools:text="Html message text that could be overly long and wrap into multiple lines and may also contain images."
 			/>
 	</RelativeLayout>

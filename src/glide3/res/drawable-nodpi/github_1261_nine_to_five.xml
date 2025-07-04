@@ -1,9 +1,8 @@
 <!-- From https://github.com/chiuki/animated-vector-drawable -->
 <animated-vector
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
 	android:drawable="@drawable/github_1261_clock"
-	tools:targetApi="lollipop">
+	>
 	<target android:name="hours" android:animation="@anim/github_1261_hours_rotation" />
 	<target android:name="minutes" android:animation="@anim/github_1261_minutes_rotation" />
 </animated-vector>

@@ -6,11 +6,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build.VERSION_CODES;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.Key;
@@ -77,7 +75,6 @@ public class TestFragment extends GlideImageFragment {
 		// the key here is that Engine uses fetcher.getId() for constructing OriginalKey from EngineKey
 		// see Engine.load and also signature can be ignored because it is an EmptySignature instance for most
 		App.getInstance().getDiskCache().put(key, new Writer() {
-			@TargetApi(VERSION_CODES.KITKAT) // for try-with-resources
 			@Override public boolean write(File file) {
 				try (OutputStream out = new FileOutputStream(file)) {
 					// mimic default behavior you can also use Bitmap.compress

@@ -56,8 +56,8 @@ android {
 	}
 
 	compileOptions {
-		sourceCompatibility = JavaVersion.VERSION_17
-		targetCompatibility = JavaVersion.VERSION_17
+		sourceCompatibility = libs.versions.java.map(JavaVersion::toVersion).get()
+		targetCompatibility = libs.versions.java.map(JavaVersion::toVersion).get()
 	}
 
 	packaging {

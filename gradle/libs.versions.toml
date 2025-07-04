@@ -8,7 +8,7 @@ kotlin = "2.2.0"
 
 stetho = "1.6.0"
 okhttp2 = "2.7.5"
-okhttp3 = "4.12.0"
+okhttp3 = "5.0.0"
 volley = "1.0.19"
 volley2 = "1.2.1"
 

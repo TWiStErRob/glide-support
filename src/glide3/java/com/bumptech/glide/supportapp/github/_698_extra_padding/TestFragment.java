@@ -1,12 +1,13 @@
 package com.bumptech.glide.supportapp.github._698_extra_padding;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build.VERSION_CODES;
 import android.util.TypedValue;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.ImageView.ScaleType;
+
+import androidx.annotation.RequiresApi;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -15,7 +16,7 @@ import com.bumptech.glide.supportapp.GlideImageFragment;
 import com.bumptech.glide.supportapp.R;
 import com.bumptech.glide.supportapp.utils.LoggingListener;
 
-@TargetApi(VERSION_CODES.M)
+@RequiresApi(VERSION_CODES.M)
 public class TestFragment extends GlideImageFragment {
 	@Override protected void load(final Context context) {
 		String url =

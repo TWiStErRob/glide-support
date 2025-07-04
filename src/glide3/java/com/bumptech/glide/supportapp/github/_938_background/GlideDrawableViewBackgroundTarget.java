@@ -28,7 +28,7 @@ public class GlideDrawableViewBackgroundTarget extends ViewBackgroundTarget<Glid
 	}
 
 	@Override protected void setResource(GlideDrawable resource) {
-		setBackground(resource);
+		view.setBackground(resource);
 	}
 
 	@Override public void onStart() {

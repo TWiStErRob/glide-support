@@ -3,7 +3,7 @@ import org.gradle.kotlin.dsl.support.serviceOf
 
 pluginManagement {
 	repositories {
-		mavenCentral()
+		gradlePluginPortal()
 		google()
 	}
 }
@@ -28,6 +28,7 @@ dependencyResolutionManagement {
 
 plugins {
 	id("net.twisterrob.gradle.plugin.nagging") version "0.18"
+	id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
 val gradleVersion: String = GradleVersion.current().version

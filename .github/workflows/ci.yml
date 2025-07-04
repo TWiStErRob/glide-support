@@ -29,14 +29,14 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
 
-      - name: "Set up JDK 17."
+      - name: "Checkout ${{ github.ref }} branch in ${{ github.repository }} repository."
+        uses: actions/checkout@v4
+
+      - name: "Set up JDK."
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: 17
-
-      - name: "Checkout ${{ github.ref }} branch in ${{ github.repository }} repository."
-        uses: actions/checkout@v4
+          java-version-file: '.java-version'
 
       - name: "Build & Verify project using Gradle."
         id: gradle
@@ -81,14 +81,14 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
 
-      - name: "Set up JDK 17."
+      - name: "Checkout ${{ github.ref }} branch in ${{ github.repository }} repository."
+        uses: actions/checkout@v4
+
+      - name: "Set up JDK."
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: 17
-
-      - name: "Checkout ${{ github.ref }} branch in ${{ github.repository }} repository."
-        uses: actions/checkout@v4
+          java-version-file: '.java-version'
 
       - name: "Build & Verify project using Gradle."
         id: gradle
@@ -116,14 +116,14 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
 
-      - name: "Set up JDK 17."
+      - name: "Checkout ${{ github.ref }} branch in ${{ github.repository }} repository."
+        uses: actions/checkout@v4
+
+      - name: "Set up JDK."
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: 17
-
-      - name: "Checkout ${{ github.ref }} branch in ${{ github.repository }} repository."
-        uses: actions/checkout@v4
+          java-version-file: '.java-version'
 
       - name: "Build & Verify project using Gradle."
         id: gradle
@@ -151,14 +151,14 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
 
-      - name: "Set up JDK 17."
+      - name: "Checkout ${{ github.ref }} branch in ${{ github.repository }} repository."
+        uses: actions/checkout@v4
+
+      - name: "Set up JDK."
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: 17
-
-      - name: "Checkout ${{ github.ref }} branch in ${{ github.repository }} repository."
-        uses: actions/checkout@v4
+          java-version-file: '.java-version'
 
       - name: "Build & Verify project using Gradle."
         id: gradle

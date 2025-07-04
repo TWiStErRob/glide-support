@@ -269,7 +269,7 @@ public class ZipResourceFile {
      * Opens the specified file read-only. We memory-map the entire thing and
      * close the file before returning.
      */
-    void addPatchFile(String zipFileName) throws IOException
+    final void addPatchFile(String zipFileName) throws IOException
     {
         File file = new File(zipFileName);
         RandomAccessFile f = new RandomAccessFile(file, "r");

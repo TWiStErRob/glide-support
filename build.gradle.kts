@@ -19,6 +19,12 @@ repositories {
 	}
 }
 
+java {
+	toolchain {
+		languageVersion = libs.versions.java.map(JavaLanguageVersion::of)
+	}
+}
+
 android {
 	compileSdk = 35
 	namespace = "com.bumptech.glide.supportapp"
@@ -53,11 +59,6 @@ android {
 		if (variant.buildType == "release") {
 			variant.enable = false
 		}
-	}
-
-	compileOptions {
-		sourceCompatibility = JavaVersion.VERSION_17
-		targetCompatibility = JavaVersion.VERSION_17
 	}
 
 	packaging {

@@ -17,7 +17,7 @@ import androidx.palette.graphics.Target;
 class PaletteSerializer implements Serializable {
 	private static final long serialVersionUID = 2237950322023662639L;
 
-	private /*final*/ Palette palette;
+	private transient /*final*/ Palette palette;
 	public PaletteSerializer(Palette palette) {
 		this.palette = palette;
 	}

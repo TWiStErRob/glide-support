@@ -13,6 +13,7 @@ class Item implements Serializable {
 	final String color;
 	final String thumbUrl;
 	final String fullUrl;
+	@SuppressWarnings("serial") // ArrayList is Serializable.
 	final List<String> images = Arrays.asList(
 			"http://www.gettyimages.ca/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg",
 			"http://www.gettyimages.ca/gi-resources/images/Homepage/Category-Creative/UK/UK_Creative_462809583.jpg"

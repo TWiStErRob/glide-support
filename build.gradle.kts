@@ -75,8 +75,10 @@ android {
 	}
 
 	lint {
+		lintConfig = rootProject.file("config/lint/lint.xml")
+		baseline = rootProject.file("config/lint/baseline.xml")
 		checkAllWarnings = true
-		abortOnError = false
+		warningsAsErrors = true
 	}
 }
 

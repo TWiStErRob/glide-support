@@ -4,21 +4,16 @@ import java.util.Arrays;
 import java.util.List;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.os.Build;
-import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.transition.TransitionInflater;
 import android.transition.TransitionSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.supportapp.GlideRecyclerFragment;
 import com.bumptech.glide.supportapp.R;
 import com.bumptech.glide.supportapp.utils.LoggingListener;
@@ -47,23 +42,21 @@ public class TestFragment extends GlideRecyclerFragment {
 				.replace(android.R.id.content, fragment)
 				.addToBackStack("details");
 
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-			TransitionInflater inf = TransitionInflater.from(getActivity());
-			setExitTransition(inf.inflateTransition(android.R.transition.fade));
-			fragment.setEnterTransition(inf.inflateTransition(android.R.transition.fade));
-			fragment.setSharedElementEnterTransition(getTrans(inf));
-			setSharedElementReturnTransition(inf.inflateTransition(R.transition.github_847));
+		TransitionInflater inf = TransitionInflater.from(getActivity());
+		setExitTransition(inf.inflateTransition(android.R.transition.fade));
+		fragment.setEnterTransition(inf.inflateTransition(android.R.transition.fade));
+		fragment.setSharedElementEnterTransition(getTrans(inf));
+		setSharedElementReturnTransition(inf.inflateTransition(R.transition.github_847));
 
-			args.putString(DetailFragment.ARG_TRANS_NAME_IMAGE, vh.image.getTransitionName());
-			transaction.addSharedElement(vh.image, vh.image.getTransitionName());
+		args.putString(DetailFragment.ARG_TRANS_NAME_IMAGE, vh.image.getTransitionName());
+		transaction.addSharedElement(vh.image, vh.image.getTransitionName());
 
-			args.putString(DetailFragment.ARG_TRANS_NAME_TEXT, vh.text.getTransitionName());
-			transaction.addSharedElement(vh.text, vh.text.getTransitionName());
-		}
+		args.putString(DetailFragment.ARG_TRANS_NAME_TEXT, vh.text.getTransitionName());
+		transaction.addSharedElement(vh.text, vh.text.getTransitionName());
 
 		transaction.commit();
 	}
-	@TargetApi(VERSION_CODES.KITKAT)
+
 	private TransitionSet getTrans(TransitionInflater inf) {
 		TransitionSet set = (TransitionSet)inf.inflateTransition(R.transition.github_847);
 		set.addListener(new LoggingTransitionListener("list")); // need to add a dummy listener
@@ -97,13 +90,9 @@ public class TestFragment extends GlideRecyclerFragment {
 			public Item item;
 			public ItemViewHolder(View view) {
 				super(view);
-				image = (ImageView)view.findViewById(R.id.image);
-				text = (TextView)view.findViewById(R.id.text);
-				view.setOnClickListener(new OnClickListener() {
-					@Override public void onClick(View v) {
-						clicked(ItemViewHolder.this);
-					}
-				});
+				image = view.findViewById(R.id.image);
+				text = view.findViewById(R.id.text);
+				view.setOnClickListener(v -> clicked(ItemViewHolder.this));
 			}
 			void bind(Item item, int position) {
 				this.item = item;
@@ -112,15 +101,13 @@ public class TestFragment extends GlideRecyclerFragment {
 						.load(item.thumbUrl)
 						.override(256, 256)
 						.centerCrop()
-						.listener(new LoggingListener<String, GlideDrawable>("adapter"))
+						.listener(new LoggingListener<>("adapter"))
 						.into(image)
 				;
 				text.setText(item.color);
 
-				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-					text.setTransitionName("transtext" + position);
-					image.setTransitionName("transimage" + position);
-				}
+				text.setTransitionName("transtext" + position);
+				image.setTransitionName("transimage" + position);
 			}
 		}
 	}

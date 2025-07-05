@@ -11,6 +11,6 @@ public class DrawableViewBackgroundTarget extends ViewBackgroundTarget<Drawable>
 		super(view);
 	}
 	@Override protected void setResource(Drawable resource) {
-		setBackground(resource);
+		view.setBackground(resource);
 	}
 }

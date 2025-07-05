@@ -1,8 +1,6 @@
 package com.bumptech.glide.supportapp.github._938_background;
 
 import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
 import android.view.View;
 
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -15,13 +13,13 @@ public abstract class ViewBackgroundTarget<Z> extends ViewTarget<View, Z> implem
 		super(view);
 	}
 	@Override public void onLoadCleared(Drawable placeholder) {
-		setBackground(placeholder);
+		view.setBackground(placeholder);
 	}
 	@Override public void onLoadStarted(Drawable placeholder) {
-		setBackground(placeholder);
+		view.setBackground(placeholder);
 	}
 	@Override public void onLoadFailed(Exception e, Drawable errorDrawable) {
-		setBackground(errorDrawable);
+		view.setBackground(errorDrawable);
 	}
 	@Override public void onResourceReady(Z resource, GlideAnimation<? super Z> glideAnimation) {
 		if (glideAnimation == null || !glideAnimation.animate(resource, this)) {
@@ -29,19 +27,10 @@ public abstract class ViewBackgroundTarget<Z> extends ViewTarget<View, Z> implem
 		}
 	}
 	@Override public void setDrawable(Drawable drawable) {
-		setBackground(drawable);
+		view.setBackground(drawable);
 	}
 	@Override public Drawable getCurrentDrawable() {
 		return view.getBackground();
-	}
-
-	@SuppressWarnings("deprecation")
-	protected void setBackground(Drawable drawable) {
-		if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN) {
-			view.setBackground(drawable);
-		} else {
-			view.setBackgroundDrawable(drawable);
-		}
 	}
 
 	protected abstract void setResource(Z resource);

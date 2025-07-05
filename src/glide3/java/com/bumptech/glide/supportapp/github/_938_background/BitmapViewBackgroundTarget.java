@@ -12,6 +12,6 @@ public class BitmapViewBackgroundTarget extends ViewBackgroundTarget<Bitmap> {
 		super(view);
 	}
 	@Override protected void setResource(Bitmap resource) {
-		setBackground(new BitmapDrawable(view.getResources(), resource));
+		view.setBackground(new BitmapDrawable(view.getResources(), resource));
 	}
 }

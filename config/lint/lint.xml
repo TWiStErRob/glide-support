@@ -8,6 +8,10 @@
 		<!-- This repository is using Renovate to keep dependencies up to date. -->
 	</issue>
 
+	<issue id="AndroidGradlePluginVersion" severity="ignore">
+		<!-- This repository is using Renovate to keep dependencies up to date. -->
+	</issue>
+
 	<issue id="SimilarGradleDependency" severity="ignore">
 		<!-- This project demonstrates multiple versions of a library in parallel, similarities are inevitable. -->
 	</issue>

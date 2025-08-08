@@ -4,7 +4,7 @@
 # These are not supported by Renovate, and therefore are excluded from version bump PRs.
 
 java = "24"
-agp = "8.11.1"
+agp = "8.12.0"
 kotlin = "2.2.0"
 
 stetho = "1.6.0"

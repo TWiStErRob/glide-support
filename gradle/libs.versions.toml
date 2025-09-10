@@ -5,7 +5,7 @@
 
 java = "24"
 agp = "8.13.0"
-kotlin = "2.2.10"
+kotlin = "2.2.20"
 
 stetho = "1.6.0"
 okhttp2 = "2.7.5"

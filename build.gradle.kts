@@ -36,7 +36,7 @@ android {
 		versionName = "0.1"
 		multiDexEnabled = true
 		vectorDrawables.useSupportLibrary = true
-		proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+		proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
 	}
 	sourceSets["main"].java.srcDir("src/main/thirdparty")
 	flavorDimensions += "version"

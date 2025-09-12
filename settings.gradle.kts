@@ -40,7 +40,7 @@ doNotNagAbout(
 		"Declaring dependencies using multi-string notation has been deprecated. ".escape() +
 				"This will fail with an error in Gradle 10. ".escape() +
 				"Please use single-string notation instead: ".escape() +
-				"\"${"com.android.tools.build:aapt2:".escape()}\\d+\\.\\d+\\.\\d+-\\d+:(windows|linux|osx)${"\". ".escape()}" +
+				"\"${"com.android.tools.build:aapt2:".escape()}\\d+\\.\\d+\\.\\d+(-(alpha|beta|rc)\\d+)?-\\d+:(windows|linux|osx)${"\". ".escape()}" +
 				"Consult the upgrading guide for further information: ".escape() +
 				"https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_9.html#dependency_multi_string_notation".escape() +
 				".*",
@@ -55,7 +55,7 @@ doNotNagAbout(
 		"Declaring dependencies using multi-string notation has been deprecated. ".escape() +
 				"This will fail with an error in Gradle 10. ".escape() +
 				"Please use single-string notation instead: ".escape() +
-				"\"${"com.android.tools.lint:lint-gradle:".escape()}\\d+\\.\\d+\\.\\d+${"\". ".escape()}" +
+				"\"${"com.android.tools.lint:lint-gradle:".escape()}\\d+\\.\\d+\\.\\d+(-(alpha|beta|rc)\\d+)?${"\". ".escape()}" +
 				"Consult the upgrading guide for further information: ".escape() +
 				"https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_9.html#dependency_multi_string_notation".escape() +
 				".*",

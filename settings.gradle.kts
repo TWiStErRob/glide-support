@@ -33,14 +33,34 @@ plugins {
 
 val gradleVersion: String = GradleVersion.current().version
 
-// TODEL Gradle 8.14 vs AGP 8.9 https://issuetracker.google.com/issues/408334529
+// TODEL Gradle 9.1 vs AGP 8.13 https://issuetracker.google.com/issues/444260628
 @Suppress("detekt.MaxLineLength")
 doNotNagAbout(
-	"Retrieving attribute with a null key. " +
-			"This behavior has been deprecated. " +
-			"This will fail with an error in Gradle 10. " +
-			"Don't request attributes from attribute containers using null keys. " +
-			"Consult the upgrading guide for further information: " +
-			"https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_8.html#null-attribute-lookup",
-	"at com.android.build.gradle.internal.ide.dependencies.ArtifactUtils.isAndroidProjectDependency(ArtifactUtils.kt:539)",
+	Regex(
+		"Declaring dependencies using multi-string notation has been deprecated. ".escape() +
+				"This will fail with an error in Gradle 10. ".escape() +
+				"Please use single-string notation instead: ".escape() +
+				"\"${"com.android.tools.build:aapt2:".escape()}\\d+\\.\\d+\\.\\d+-\\d+:(windows|linux|osx)${"\". ".escape()}" +
+				"Consult the upgrading guide for further information: ".escape() +
+				"https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_9.html#dependency_multi_string_notation".escape() +
+				".*",
+	),
+	//"at com.android.build.gradle.internal.res.Aapt2FromMaven\$Companion.create(Aapt2FromMaven.kt:139)",
 )
+
+// TODEL Gradle 9.1 vs AGP 8.13 https://issuetracker.google.com/issues/444260628
+@Suppress("detekt.MaxLineLength")
+doNotNagAbout(
+	Regex(
+		"Declaring dependencies using multi-string notation has been deprecated. ".escape() +
+				"This will fail with an error in Gradle 10. ".escape() +
+				"Please use single-string notation instead: ".escape() +
+				"\"${"com.android.tools.lint:lint-gradle:".escape()}\\d+\\.\\d+\\.\\d+${"\". ".escape()}" +
+				"Consult the upgrading guide for further information: ".escape() +
+				"https://docs.gradle.org/${gradleVersion}/userguide/upgrading_version_9.html#dependency_multi_string_notation".escape() +
+				".*",
+	),
+	//"at com.android.build.gradle.internal.lint.LintFromMaven\$Companion.from(AndroidLintInputs.kt:2850)",
+)
+
+private fun String.escape(): String = Regex.escape(this)

@@ -10,7 +10,7 @@ jobs:
 
   validate:
     name: "🦺 Validation"
-    uses: TWiStErRob/github-workflows/.github/workflows/validate.yml@8945ab97e9e6c0ebea42144bc37397f7fa6a1c60 # v3
+    uses: TWiStErRob/github-workflows/.github/workflows/validate.yml@cb91b4b05800bd3de29bc0e63900f304a45fbf06 # v3
     permissions:
       contents: read
       security-events: write

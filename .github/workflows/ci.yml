@@ -55,7 +55,7 @@ jobs:
 
       - name: "Upload 'Reports' artifact."
         if: ${{ success() || failure() }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: 'Reports'
           if-no-files-found: error
@@ -64,7 +64,7 @@ jobs:
 
       - name: "Upload 'APKs' artifact."
         if: ${{ success() || failure() }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: 'APKs'
           if-no-files-found: error

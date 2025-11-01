@@ -38,20 +38,20 @@ android {
 		vectorDrawables.useSupportLibrary = true
 		proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
 	}
-	sourceSets["main"].java.srcDir("src/main/thirdparty")
+	sourceSets["main"].java.directories.add("src/main/thirdparty")
 	flavorDimensions += "version"
 	productFlavors {
 		create("glide3") {
 			dimension = "version"
 			applicationId = "com.bumptech.glide.supportapp.v3"
-			sourceSets["glide3"].java.srcDir("src/glide3/thirdparty")
-			sourceSets["glide3"].java.srcDir("src/glide3/hacks")
+			sourceSets["glide3"].java.directories.add("src/glide3/thirdparty")
+			sourceSets["glide3"].java.directories.add("src/glide3/hacks")
 		}
 		create("glide4") {
 			dimension = "version"
 			applicationId = "com.bumptech.glide.supportapp.v4"
-			sourceSets["glide4"].java.srcDir("src/glide4/thirdparty")
-			sourceSets["glide4"].java.srcDir("src/glide4/hacks")
+			sourceSets["glide4"].java.directories.add("src/glide4/thirdparty")
+			sourceSets["glide4"].java.directories.add("src/glide4/hacks")
 		}
 	}
 

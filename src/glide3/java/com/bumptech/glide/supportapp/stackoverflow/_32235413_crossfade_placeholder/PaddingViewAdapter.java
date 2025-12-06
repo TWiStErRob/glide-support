@@ -1,5 +1,6 @@
 package com.bumptech.glide.supportapp.stackoverflow._32235413_crossfade_placeholder;
 
+import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.InsetDrawable;
 import android.graphics.drawable.TransitionDrawable;
@@ -36,6 +37,7 @@ class PaddingViewAdapter implements ViewAdapter {
 		return drawable;
 	}
 
+	@SuppressLint("ObsoleteSdkInt") // keep it in case someone copies this function for < 23
 	@Override public void setDrawable(Drawable drawable) {
 		if (VERSION.SDK_INT >= VERSION_CODES.M && drawable instanceof TransitionDrawable) {
 			// For some reason padding is taken into account differently on M than before in LayerDrawable

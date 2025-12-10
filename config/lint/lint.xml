@@ -1,4 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <lint>
+
+	<!-- This is a test project, don't bother with these. -->
+	<issue id="LogConditional" severity="ignore" />
+	<issue id="ContentDescription" severity="ignore" />
+	<issue id="SelectableText" severity="ignore" />
+	<issue id="UnknownNullness" severity="ignore" />
+	<issue id="SyntheticAccessor" severity="ignore" />
+	<issue id="StaticFieldLeak" severity="ignore" />
 
 	<issue id="NewerVersionAvailable" severity="ignore">
 		<!-- This repository is using Renovate to keep dependencies up to date. -->
@@ -15,23 +24,48 @@
 	<issue id="SimilarGradleDependency" severity="ignore">
 		<!-- This project demonstrates multiple versions of a library in parallel, similarities are inevitable. -->
 	</issue>
-	
+
 	<issue id="ConvertToWebp" severity="ignore">
 		<!-- This project is about an image loader, all files are in the format they should be. -->
 	</issue>
-	
+
 	<issue id="LintBaseline" severity="ignore">
 		<!-- Using the baseline to ignore non-trivial issues until all fixed. -->
 	</issue>
-	
+
 	<issue id="ObsoleteSdkInt">
 		<!-- Moving this file to just res/transition makes it invisible to R. -->
 		<ignore path="**/src/glide3/res/transition-v21" />
 	</issue>
-	
+
 	<issue id="NotificationPermission">
 		<!-- See https://github.com/bumptech/glide/pull/5220, which is only available 4.16.0 -->
 		<ignore regexp=".*\(usage from com\.bumptech\.glide\.request\.target\.NotificationTarget\).*" />
+	</issue>
+
+	<issue id="StringFormatTrivial" severity="ignore">
+		<!-- Don't care about performance in this project, but also generally readability wins. -->
+	</issue>
+
+	<issue id="UnusedResources">
+		<!-- Keep these as they could be used to test things out with file formats. -->
+		<ignore path="**/res/drawable*/glide_*.*" />
+		<ignore path="**/res/raw*/glide_*.*" />
+		<ignore regexp="R\.string\.glide_base64" />
+		<!-- These are useful to just drop it in to compile, without worrying what the actual value is. -->
+		<ignore regexp="R\..*\.just_so_it_compiles" />
+	</issue>
+
+	<issue id="IconLocation">
+		<!-- Don't want to duplicate files, they're only used for tests, in production DO put them in their corresponding folder. -->
+		<ignore path="**/res/drawable/glide.png" />
+		<ignore path="**/res/drawable/glide_*.*" />
+		<ignore path="**/res/drawable/source_*.*" />
+	</issue>
+
+	<issue id="GifUsage">
+		<!-- GIFs are needed to test Glide features and compatibility. -->
+		<ignore path="**/res/drawable*/glide_*.*" />
 	</issue>
 
 </lint>

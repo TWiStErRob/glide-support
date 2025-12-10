@@ -2,7 +2,6 @@
 <lint>
 
 	<!-- This is a test project, don't bother with these. -->
-	<issue id="GoogleAppIndexingWarning" severity="ignore" />
 	<issue id="LogConditional" severity="ignore" />
 	<issue id="ContentDescription" severity="ignore" />
 	<issue id="SelectableText" severity="ignore" />

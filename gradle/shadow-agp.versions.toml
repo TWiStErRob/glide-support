@@ -1,5 +1,5 @@
 [versions]
-agp = "9.2.0-alpha01"
+agp = "9.2.0-alpha02"
 
 # Only exists so Renovate knows what versions mean above.
 [plugins]

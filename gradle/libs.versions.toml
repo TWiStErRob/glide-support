@@ -23,7 +23,7 @@ androidx-cardview = "1.0.0"
 androidx-recyclerview = "1.4.0"
 androidx-palette = "1.0.0"
 androidx-percentlayout = "1.0.0"
-androidx-lifecycle = "2.10.0"
+androidx-lifecycle = "2.11.0"
 androidx-material = "1.14.0"
 
 [libraries]

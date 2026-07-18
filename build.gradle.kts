@@ -26,7 +26,7 @@ java {
 }
 
 android {
-	compileSdk = 35
+	compileSdk = 36
 	namespace = "com.bumptech.glide.supportapp"
 	defaultConfig {
 		@Suppress("MinSdkTooLow") // Latest requirement: https://github.com/ebelinski/apilevels/pull/74
